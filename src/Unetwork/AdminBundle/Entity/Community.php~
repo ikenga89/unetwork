@@ -57,17 +57,7 @@ class Community
     }
     
 
-     // ...
-
-    /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
-     */
-    protected $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
+ 
 }
 
 
