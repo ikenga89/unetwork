@@ -9,6 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commentaire
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
+     */
+    protected $actuality;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")

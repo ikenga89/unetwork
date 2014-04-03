@@ -51,5 +51,179 @@ class Cv
      * @ORM\Column(type="string", length=40)
      */
 	protected $formation;
+<<<<<<< HEAD
 
+=======
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Cv
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Cv
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return Cv
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set pageperso
+     *
+     * @param string $pageperso
+     * @return Cv
+     */
+    public function setPageperso($pageperso)
+    {
+        $this->pageperso = $pageperso;
+
+        return $this;
+    }
+
+    /**
+     * Get pageperso
+     *
+     * @return string 
+     */
+    public function getPageperso()
+    {
+        return $this->pageperso;
+    }
+
+    /**
+     * Set presentation
+     *
+     * @param string $presentation
+     * @return Cv
+     */
+    public function setPresentation($presentation)
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return string 
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Cv
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set formation
+     *
+     * @param string $formation
+     * @return Cv
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Get formation
+     *
+     * @return string 
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+>>>>>>> FETCH_HEAD
 }
