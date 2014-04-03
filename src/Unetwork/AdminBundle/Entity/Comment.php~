@@ -13,7 +13,7 @@ class Comment
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comment")
+     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comments")
      * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
      */
     protected $actuality;

@@ -15,7 +15,7 @@ class Actuality
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
      */
-    protected $comment;
+    protected $comments;
 
 	/**
      * @ORM\Id
@@ -45,13 +45,33 @@ class Actuality
     protected $updated;
 
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="actualitys")
+     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     */
+    protected $community;
+
+
+
+
+
+
+
+
+
+
+
+
     public function __construct()
     {
-        $this->comment = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> FETCH_HEAD
     /**
      * Get id
      *
@@ -154,6 +174,7 @@ class Actuality
         return $this->updated;
     }
 
+<<<<<<< HEAD
     /**
      * Add comment
      *
@@ -186,4 +207,6 @@ class Actuality
     {
         return $this->comment;
     }
+=======
+>>>>>>> FETCH_HEAD
 }

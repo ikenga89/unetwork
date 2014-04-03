@@ -58,6 +58,7 @@ class Community
     
 
      // ...
+<<<<<<< HEAD
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
@@ -101,4 +102,17 @@ class Community
     {
         return $this->products;
     }
+=======
+
+    /**
+     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
+     */
+    protected $actualitys;
+
+    public function __construct()
+    {
+        $this->actualitys = new ArrayCollection();
+    }
+
+>>>>>>> FETCH_HEAD
 }
