@@ -45,6 +45,19 @@ class Actuality
     protected $updated;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function __construct()
     {
         $this->comment = new ArrayCollection();
