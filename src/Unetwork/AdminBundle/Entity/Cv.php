@@ -53,6 +53,15 @@ class Cv
      */
 	protected $formation;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="cv")
+     */
+    protected $experience;
+
+    public function __construct()
+    {
+        $this->experience = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -223,5 +232,38 @@ class Cv
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Add experience
+     *
+     * @param \Unetwork\AdminBundle\Entity\Experience $experience
+     * @return Cv
+     */
+    public function addExperience(\Unetwork\AdminBundle\Entity\Experience $experience)
+    {
+        $this->experience[] = $experience;
+
+        return $this;
+    }
+
+    /**
+     * Remove experience
+     *
+     * @param \Unetwork\AdminBundle\Entity\Experience $experience
+     */
+    public function removeExperience(\Unetwork\AdminBundle\Entity\Experience $experience)
+    {
+        $this->experience->removeElement($experience);
+    }
+
+    /**
+     * Get experience
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperience()
+    {
+        return $this->experience;
     }
 }

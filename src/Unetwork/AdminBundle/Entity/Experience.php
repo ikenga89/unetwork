@@ -38,6 +38,12 @@ class Experience
     protected $end;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="experience")
+     * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
+     */
+    protected $cv;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -137,5 +143,28 @@ class Experience
     public function getEnd()
     {
         return $this->end;
+    }
+
+    /**
+     * Set cv
+     *
+     * @param \Unetwork\AdminBundle\Entity\Cv $cv
+     * @return Experience
+     */
+    public function setCv(\Unetwork\AdminBundle\Entity\Cv $cv = null)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * Get cv
+     *
+     * @return \Unetwork\AdminBundle\Entity\Cv 
+     */
+    public function getCv()
+    {
+        return $this->cv;
     }
 }

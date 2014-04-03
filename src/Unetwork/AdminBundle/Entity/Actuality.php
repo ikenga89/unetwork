@@ -13,9 +13,9 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="actuality")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
      */
-    protected $commentaires;
+    protected $comment;
 
 	/**
      * @ORM\Id
@@ -47,7 +47,7 @@ class Actuality
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
+        $this->comment = new ArrayCollection();
     }
 
     /**
@@ -153,35 +153,35 @@ class Actuality
     }
 
     /**
-     * Add commentaires
+     * Add comment
      *
-     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     * @param \Unetwork\AdminBundle\Entity\Comment $comment
      * @return Actuality
      */
-    public function addCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comment)
     {
-        $this->commentaires[] = $commentaires;
+        $this->comment[] = $comment;
 
         return $this;
     }
 
     /**
-     * Remove commentaires
+     * Remove comment
      *
-     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     * @param \Unetwork\AdminBundle\Entity\Comment $comment
      */
-    public function removeCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comment)
     {
-        $this->commentaires->removeElement($commentaires);
+        $this->comment->removeElement($comment);
     }
 
     /**
-     * Get commentaires
+     * Get comment
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCommentaires()
+    public function getComment()
     {
-        return $this->commentaires;
+        return $this->comment;
     }
 }

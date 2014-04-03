@@ -13,9 +13,9 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="actuality")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
      */
-    protected $commentaires;
+    protected $comment;
 
 	/**
      * @ORM\Id
@@ -47,7 +47,7 @@ class Actuality
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
+        $this->comment = new ArrayCollection();
     }
 
     /**
@@ -150,5 +150,71 @@ class Actuality
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     * @return Actuality
+     */
+    public function addCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     * @return Actuality
+     */
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    {
+        $this->comment[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    {
+        $this->comment->removeElement($comment);
+    }
+
+    /**
+     * Get comment
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
