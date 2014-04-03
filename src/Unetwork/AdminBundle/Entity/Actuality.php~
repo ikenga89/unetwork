@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="community")
+ * @ORM\Table(name="actuality")
  */
-class Community
+class Actuality
 {
 	/**
      * @ORM\Id
@@ -20,6 +20,21 @@ class Community
      * @ORM\Column(type="string", length=200)
      */
     protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    protected $description;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $updated;
 
     /**
      * Get id
@@ -35,7 +50,7 @@ class Community
      * Set name
      *
      * @param string $name
-     * @return Community
+     * @return Actuality
      */
     public function setName($name)
     {
