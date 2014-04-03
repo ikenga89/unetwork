@@ -30,12 +30,12 @@ class Experience
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $datedebut;
+    protected $begin;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    protected $datefin;
+    protected $end;
 
     /**
      * Get id
@@ -94,6 +94,16 @@ class Experience
     }
 
     /**
+<<<<<<< HEAD
+     * Set begin
+     *
+     * @param \DateTime $begin
+     * @return Experience
+     */
+    public function setBegin($begin)
+    {
+        $this->begin = $begin;
+=======
      * Set datedebut
      *
      * @param \DateTime $datedebut
@@ -102,11 +112,32 @@ class Experience
     public function setDatedebut($datedebut)
     {
         $this->datedebut = $datedebut;
+>>>>>>> FETCH_HEAD
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * Get begin
+     *
+     * @return \DateTime 
+     */
+    public function getBegin()
+    {
+        return $this->begin;
+    }
+
+    /**
+     * Set end
+     *
+     * @param \DateTime $end
+     * @return Experience
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+=======
      * Get datedebut
      *
      * @return \DateTime 
@@ -125,11 +156,21 @@ class Experience
     public function setDatefin($datefin)
     {
         $this->datefin = $datefin;
+>>>>>>> FETCH_HEAD
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
+     * Get end
+     *
+     * @return \DateTime 
+     */
+    public function getEnd()
+    {
+        return $this->end;
+=======
      * Get datefin
      *
      * @return \DateTime 
@@ -137,5 +178,6 @@ class Experience
     public function getDatefin()
     {
         return $this->datefin;
+>>>>>>> FETCH_HEAD
     }
 }
