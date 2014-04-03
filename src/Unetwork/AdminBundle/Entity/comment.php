@@ -82,3 +82,5 @@ class Comment
         return $this->content;
     }
 }
+
+...
