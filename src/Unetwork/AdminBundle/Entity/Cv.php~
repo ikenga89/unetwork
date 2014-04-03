@@ -20,27 +20,27 @@ class Cv
     /**
      * @ORM\Column(type="string", length=50)
      */
-	protected $nom;
+	protected $firstname;
 
 	/**
      * @ORM\Column(type="string", length=50)
      */
-	protected $prenom;
+	protected $lastname;
 
 	/**
      * @ORM\Column(type="string", length=100)
      */
-	protected $ville;
+	protected $country;
 
 	/**
      * @ORM\Column(type="string", length=100)
      */
-	protected $pageperso;
+	protected $website;
 
 	/**
      * @ORM\Column(type="text")
      */
-	protected $presentation;
+	protected $description;
 
 	/**
      * @ORM\Column(type="string", length=100)
@@ -51,12 +51,5 @@ class Cv
      * @ORM\Column(type="string", length=40)
      */
 	protected $formation;
+
 }
-
-
-
-
-
-
-
-
