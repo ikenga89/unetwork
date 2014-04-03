@@ -67,11 +67,6 @@ class Actuality
         $this->comments = new ArrayCollection();
     }
 
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> FETCH_HEAD
     /**
      * Get id
      *
@@ -174,39 +169,60 @@ class Actuality
         return $this->updated;
     }
 
-<<<<<<< HEAD
+
     /**
-     * Add comment
+     * Add comments
      *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
      * @return Actuality
      */
-    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comments)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comments;
 
         return $this;
     }
 
     /**
-     * Remove comment
+     * Remove comments
      *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
      */
-    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comments)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comments);
     }
 
     /**
-     * Get comment
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
     }
-=======
->>>>>>> FETCH_HEAD
+
+    /**
+     * Set community
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $community
+     * @return Actuality
+     */
+    public function setCommunity(\Unetwork\AdminBundle\Entity\Actuality $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
 }

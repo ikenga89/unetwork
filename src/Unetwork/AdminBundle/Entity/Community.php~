@@ -58,51 +58,6 @@ class Community
     
 
      // ...
-<<<<<<< HEAD
-
-    /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
-     */
-    protected $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
-
-    /**
-     * Add products
-     *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
-     * @return Community
-     */
-    public function addProduct(\Unetwork\AdminBundle\Entity\Product $products)
-    {
-        $this->products[] = $products;
-
-        return $this;
-    }
-
-    /**
-     * Remove products
-     *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
-     */
-    public function removeProduct(\Unetwork\AdminBundle\Entity\Product $products)
-    {
-        $this->products->removeElement($products);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-=======
 
     /**
      * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
@@ -114,5 +69,37 @@ class Community
         $this->actualitys = new ArrayCollection();
     }
 
->>>>>>> FETCH_HEAD
+
+    /**
+     * Add actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
+     * @return Community
+     */
+    public function addActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
+    {
+        $this->actualitys[] = $actualitys;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
+     */
+    public function removeActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
+    {
+        $this->actualitys->removeElement($actualitys);
+    }
+
+    /**
+     * Get actualitys
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActualitys()
+    {
+        return $this->actualitys;
+    }
 }
