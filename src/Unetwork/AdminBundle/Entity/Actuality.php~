@@ -158,6 +158,11 @@ class Actuality
     {
         return $this->updated;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> FETCH_HEAD
 
     /**
      * Add comments
@@ -195,10 +200,17 @@ class Actuality
     /**
      * Set community
      *
+<<<<<<< HEAD
      * @param \Unetwork\AdminBundle\Entity\Community $community
      * @return Actuality
      */
     public function setCommunity(\Unetwork\AdminBundle\Entity\Community $community = null)
+=======
+     * @param \Unetwork\AdminBundle\Entity\Actuality $community
+     * @return Actuality
+     */
+    public function setCommunity(\Unetwork\AdminBundle\Entity\Actuality $community = null)
+>>>>>>> FETCH_HEAD
     {
         $this->community = $community;
 
@@ -208,10 +220,19 @@ class Actuality
     /**
      * Get community
      *
+<<<<<<< HEAD
      * @return \Unetwork\AdminBundle\Entity\Community 
+=======
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+>>>>>>> FETCH_HEAD
      */
     public function getCommunity()
     {
         return $this->community;
     }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> FETCH_HEAD
 }
