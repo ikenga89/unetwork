@@ -3,6 +3,7 @@
 namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -51,9 +52,7 @@ class Cv
      * @ORM\Column(type="string", length=40)
      */
 	protected $formation;
-<<<<<<< HEAD
 
-=======
 
     /**
      * Get id
@@ -66,118 +65,118 @@ class Cv
     }
 
     /**
-     * Set nom
+     * Set firstname
      *
-     * @param string $nom
+     * @param string $firstname
      * @return Cv
      */
-    public function setNom($nom)
+    public function setFirstname($firstname)
     {
-        $this->nom = $nom;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get firstname
      *
      * @return string 
      */
-    public function getNom()
+    public function getFirstname()
     {
-        return $this->nom;
+        return $this->firstname;
     }
 
     /**
-     * Set prenom
+     * Set lastname
      *
-     * @param string $prenom
+     * @param string $lastname
      * @return Cv
      */
-    public function setPrenom($prenom)
+    public function setLastname($lastname)
     {
-        $this->prenom = $prenom;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get lastname
      *
      * @return string 
      */
-    public function getPrenom()
+    public function getLastname()
     {
-        return $this->prenom;
+        return $this->lastname;
     }
 
     /**
-     * Set ville
+     * Set country
      *
-     * @param string $ville
+     * @param string $country
      * @return Cv
      */
-    public function setVille($ville)
+    public function setCountry($country)
     {
-        $this->ville = $ville;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get ville
+     * Get country
      *
      * @return string 
      */
-    public function getVille()
+    public function getCountry()
     {
-        return $this->ville;
+        return $this->country;
     }
 
     /**
-     * Set pageperso
+     * Set website
      *
-     * @param string $pageperso
+     * @param string $website
      * @return Cv
      */
-    public function setPageperso($pageperso)
+    public function setWebsite($website)
     {
-        $this->pageperso = $pageperso;
+        $this->website = $website;
 
         return $this;
     }
 
     /**
-     * Get pageperso
+     * Get website
      *
      * @return string 
      */
-    public function getPageperso()
+    public function getWebsite()
     {
-        return $this->pageperso;
+        return $this->website;
     }
 
     /**
-     * Set presentation
+     * Set description
      *
-     * @param string $presentation
+     * @param string $description
      * @return Cv
      */
-    public function setPresentation($presentation)
+    public function setDescription($description)
     {
-        $this->presentation = $presentation;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get presentation
+     * Get description
      *
      * @return string 
      */
-    public function getPresentation()
+    public function getDescription()
     {
-        return $this->presentation;
+        return $this->description;
     }
 
     /**
@@ -225,5 +224,4 @@ class Cv
     {
         return $this->formation;
     }
->>>>>>> FETCH_HEAD
 }
