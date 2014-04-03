@@ -94,6 +94,7 @@ class Experience
     }
 
     /**
+<<<<<<< HEAD
      * Set begin
      *
      * @param \DateTime $begin
@@ -102,11 +103,22 @@ class Experience
     public function setBegin($begin)
     {
         $this->begin = $begin;
+=======
+     * Set datedebut
+     *
+     * @param \DateTime $datedebut
+     * @return Experience
+     */
+    public function setDatedebut($datedebut)
+    {
+        $this->datedebut = $datedebut;
+>>>>>>> FETCH_HEAD
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Get begin
      *
      * @return \DateTime 
@@ -125,11 +137,32 @@ class Experience
     public function setEnd($end)
     {
         $this->end = $end;
+=======
+     * Get datedebut
+     *
+     * @return \DateTime 
+     */
+    public function getDatedebut()
+    {
+        return $this->datedebut;
+    }
+
+    /**
+     * Set datefin
+     *
+     * @param \DateTime $datefin
+     * @return Experience
+     */
+    public function setDatefin($datefin)
+    {
+        $this->datefin = $datefin;
+>>>>>>> FETCH_HEAD
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Get end
      *
      * @return \DateTime 
@@ -137,5 +170,14 @@ class Experience
     public function getEnd()
     {
         return $this->end;
+=======
+     * Get datefin
+     *
+     * @return \DateTime 
+     */
+    public function getDatefin()
+    {
+        return $this->datefin;
+>>>>>>> FETCH_HEAD
     }
 }

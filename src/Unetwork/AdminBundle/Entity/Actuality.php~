@@ -1,7 +1,9 @@
 <?php
 
 namespace Unetwork\AdminBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -9,6 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Actuality
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="actuality")
+     */
+    protected $commentaires;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -35,6 +43,12 @@ class Actuality
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+
+
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+    }
 
     /**
      * Get id

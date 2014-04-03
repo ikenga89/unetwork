@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="comment")
+ * @ORM\Table(name="commentaire")
  */
-class Comment
+class Commentaire
 {
 
     /**
@@ -23,18 +23,27 @@ class Comment
      */
     protected $id;
 
+	/**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $name;
+
+
+	/**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $prenom;
+
+
     /**
      * @ORM\Column(type="datetime")
      */
     protected $date;
 
+
 	/**
      * @ORM\Column(type="string", length=500)
      */
-<<<<<<< HEAD:src/Unetwork/AdminBundle/Entity/Comment.php~
-    protected $content;
-}
-=======
     protected $contenu;
 
 
@@ -139,5 +148,27 @@ class Comment
     {
         return $this->contenu;
     }
+
+    /**
+     * Set actuality
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actuality
+     * @return Commentaire
+     */
+    public function setActuality(\Unetwork\AdminBundle\Entity\Actuality $actuality = null)
+    {
+        $this->actuality = $actuality;
+
+        return $this;
+    }
+
+    /**
+     * Get actuality
+     *
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     */
+    public function getActuality()
+    {
+        return $this->actuality;
+    }
 }
->>>>>>> FETCH_HEAD:src/Unetwork/AdminBundle/Entity/Commentaire.php~
