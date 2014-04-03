@@ -338,7 +338,7 @@
 
 		.button-style1
 		{
-			background: #70a0e9 url('/css/images/overlay.png');
+			background: #70a0e9 url('/public/css/images/overlay.png');
 			color: #fff;
 		}
 
@@ -371,7 +371,7 @@
 
 		.button-style3
 		{
-			background: #2f333b url('/css/images/overlay.png');
+			background: #2f333b url('/public/css/images/overlay.png');
 			color: #fff;
 		}
 
@@ -447,7 +447,7 @@
 				position: relative;
 				display: inline-block;
 				color: #fff;
-				background: #2f333b url('/css/images/overlay.png');
+				background: #2f333b url('/public/css/images/overlay.png');
 				border-radius: 1em;
 				text-align: center;
 			}
@@ -909,7 +909,7 @@
 			left: -35px;
 			width: 35px;
 			height: 38px;
-			background: url('/css/images/shadow.png');
+			background: url('/public/css/images/shadow.png');
 		}
 		
 		.wrapper .title:after
@@ -920,7 +920,7 @@
 			right: -35px;
 			width: 35px;
 			height: 38px;
-			background: url('/css/images/shadow.png');
+			background: url('/public/css/images/shadow.png');
 			-moz-transform: scaleX(-1);
 			-webkit-transform: scaleX(-1);
 			-o-transform: scaleX(-1);
@@ -930,7 +930,7 @@
 
 	#header-wrapper
 	{
-		background: url('..//images/banner.jpg') center center;
+		background: url('/public/images/banner.jpg') center center;
 		background-size: cover;
 	}
 	
@@ -942,12 +942,12 @@
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background: url('/css/images/overlay.png');
+			background: url('/public/css/images/overlay.png');
 		}
 	
 	#footer-wrapper
 	{
-		background: #282b34 url('/css/images/overlay.png');
+		background: #282b34 url('/public/css/images/overlay.png');
 		color: #eee;
 		color: rgba(255,255,255,0.5);
 		padding-top: 20px;
@@ -1010,7 +1010,7 @@
 
 		#footer-wrapper .title
 		{
-			background: #282b34 url('/css/images/overlay.png');
+			background: #282b34 url('/public/css/images/overlay.png');
 			color: #eee;
 		}
 		
@@ -1044,19 +1044,19 @@
 			
 				#footer-wrapper .feature-list h3:before
 				{
-					background: #3d4249 url('/css/images/overlay.png');
+					background: #3d4249 url('/public/css/images/overlay.png');
 				}
 	
 	.wrapper-style1
 	{
-		background: #70a0e9 url('/css/images/overlay.png');
+		background: #70a0e9 url('/public/css/images/overlay.png');
 		color: #eee;
 		color: rgba(255,255,255,0.75);
 	}
 	
 		.wrapper-style1 .title
 		{
-			background: #70a0e9 url('/css/images/overlay.png');
+			background: #70a0e9 url('/public/css/images/overlay.png');
 			color: #fff;
 		}
 	
@@ -1086,12 +1086,12 @@
 	
 	.wrapper-style3
 	{
-		background: #f3f3f3 url('/css/images/overlay.png');
+		background: #f3f3f3 url('/public/css/images/overlay.png');
 	}
 	
 		.wrapper-style3 .title
 		{
-			background: #f3f3f3 url('/css/images/overlay.png');
+			background: #f3f3f3 url('/public/css/images/overlay.png');
 			color: #484d55;
 		}
 		
@@ -1109,7 +1109,7 @@
 	
 	.facebook_api
 	{
-		background: #f3f3f3 url('/css/images/overlay.png');
+		background: #f3f3f3 url('/public/css/images/overlay.png');
 		color: #484d55;
 		margin:20px; 
 		
