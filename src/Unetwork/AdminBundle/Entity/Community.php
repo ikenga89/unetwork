@@ -68,30 +68,37 @@ class Community
     {
         $this->products = new ArrayCollection();
     }
+
+    /**
+     * Add products
+     *
+     * @param \Unetwork\AdminBundle\Entity\Product $products
+     * @return Community
+     */
+    public function addProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Unetwork\AdminBundle\Entity\Product $products
+     */
+    public function removeProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
