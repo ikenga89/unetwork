@@ -1,0 +1,62 @@
+<?php
+
+namespace Unetwork\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cv")
+ */
+class Cv
+{
+	/**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+	protected $nom;
+
+	/**
+     * @ORM\Column(type="string", length=50)
+     */
+	protected $prenom;
+
+	/**
+     * @ORM\Column(type="string", length=100)
+     */
+	protected $ville;
+
+	/**
+     * @ORM\Column(type="string", length=100)
+     */
+	protected $pageperso;
+
+	/**
+     * @ORM\Column(type="text")
+     */
+	protected $presentation;
+
+	/**
+     * @ORM\Column(type="string", length=100)
+     */
+	protected $email;
+
+	/**
+     * @ORM\Column(type="string", length=40)
+     */
+	protected $formation;
+}
+
+
+
+
+
+
+
+
