@@ -1,7 +1,9 @@
 <?php
 
 namespace Unetwork\AdminBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -9,6 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Actuality
 {
+
+    /**
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="actuality")
+     */
+    protected $commentaires;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -35,6 +43,12 @@ class Actuality
      * @ORM\Column(type="datetime")
      */
     protected $updated;
+
+
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -136,5 +150,38 @@ class Actuality
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add commentaires
+     *
+     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     * @return Actuality
+     */
+    public function addCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires[] = $commentaires;
+
+        return $this;
+    }
+
+    /**
+     * Remove commentaires
+     *
+     * @param \Unetwork\AdminBundle\Entity\Commentaire $commentaires
+     */
+    public function removeCommentaire(\Unetwork\AdminBundle\Entity\Commentaire $commentaires)
+    {
+        $this->commentaires->removeElement($commentaires);
+    }
+
+    /**
+     * Get commentaires
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommentaires()
+    {
+        return $this->commentaires;
     }
 }

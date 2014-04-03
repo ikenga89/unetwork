@@ -9,6 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commentaire
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="commentaires")
+     * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
+     */
+    protected $actuality;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -140,5 +147,28 @@ class Commentaire
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set actuality
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actuality
+     * @return Commentaire
+     */
+    public function setActuality(\Unetwork\AdminBundle\Entity\Actuality $actuality = null)
+    {
+        $this->actuality = $actuality;
+
+        return $this;
+    }
+
+    /**
+     * Get actuality
+     *
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     */
+    public function getActuality()
+    {
+        return $this->actuality;
     }
 }
