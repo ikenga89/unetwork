@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class RechercheController extends Controller
 {
     /**
-     * @Route("/recherche")
+     * @Route("/app/recherche")
      * @Template()
      */
     public function rechercheAction()
