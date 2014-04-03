@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Comment
 {
 
+
     /**
      * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comment")
      * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
@@ -112,4 +113,5 @@ class Comment
     {
         return $this->actuality;
     }
+
 }

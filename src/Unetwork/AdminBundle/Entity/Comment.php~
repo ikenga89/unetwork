@@ -1,7 +1,10 @@
 <?php
 
 namespace Unetwork\AdminBundle\Entity;
+<<<<<<< HEAD
 
+=======
+>>>>>>> FETCH_HEAD
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
+<<<<<<< HEAD
 
     /**
      * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comment")
@@ -17,6 +21,8 @@ class Comment
      */
     protected $actuality;
 
+=======
+>>>>>>> FETCH_HEAD
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -89,6 +95,7 @@ class Comment
     {
         return $this->content;
     }
+<<<<<<< HEAD
 
     /**
      * Set actuality
@@ -113,3 +120,6 @@ class Comment
         return $this->actuality;
     }
 }
+=======
+}
+>>>>>>> FETCH_HEAD
