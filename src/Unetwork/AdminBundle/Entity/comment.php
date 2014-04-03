@@ -81,5 +81,4 @@ class Comment
     {
         return $this->content;
     }
-    /*dd */
 }
