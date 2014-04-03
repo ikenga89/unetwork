@@ -14,6 +14,10 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $actualities = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->findAll();
+
+        return array("actualities"=>$actualities);
     }
 }

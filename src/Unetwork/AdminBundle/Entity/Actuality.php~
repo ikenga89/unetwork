@@ -158,4 +158,60 @@ class Actuality
     {
         return $this->updated;
     }
+
+    /**
+     * Add comments
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
+     * @return Actuality
+     */
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Set community
+     *
+     * @param \Unetwork\AdminBundle\Entity\Community $community
+     * @return Actuality
+     */
+    public function setCommunity(\Unetwork\AdminBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \Unetwork\AdminBundle\Entity\Community 
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
 }

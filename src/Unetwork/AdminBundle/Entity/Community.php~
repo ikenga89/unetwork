@@ -68,4 +68,37 @@ class Community
     }
 
 
+
+    /**
+     * Add actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
+     * @return Community
+     */
+    public function addActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
+    {
+        $this->actualitys[] = $actualitys;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
+     */
+    public function removeActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
+    {
+        $this->actualitys->removeElement($actualitys);
+    }
+
+    /**
+     * Get actualitys
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActualitys()
+    {
+        return $this->actualitys;
+    }
 }

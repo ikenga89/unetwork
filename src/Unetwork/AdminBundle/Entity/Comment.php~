@@ -91,4 +91,27 @@ class Comment
         return $this->content;
     }
 
+
+    /**
+     * Set actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
+     * @return Comment
+     */
+    public function setActualitys(\Unetwork\AdminBundle\Entity\Actuality $actualitys = null)
+    {
+        $this->actualitys = $actualitys;
+
+        return $this;
+    }
+
+    /**
+     * Get actualitys
+     *
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     */
+    public function getActualitys()
+    {
+        return $this->actualitys;
+    }
 }
