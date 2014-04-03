@@ -1,3 +1,8 @@
+unetwork_admin:
+    resource: "@UnetworkAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 unetwork_public:
     resource: "@UnetworkPublicBundle/Controller/"
     type:     annotation
