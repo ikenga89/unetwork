@@ -50,6 +50,9 @@ class Actuality
         $this->comment = new ArrayCollection();
     }
 
+<<<<<<< HEAD
+    
+=======
     /**
      * Get id
      *
@@ -184,6 +187,7 @@ class Actuality
     {
         return $this->commentaires;
     }
+<<<<<<< HEAD
 
     /**
      * Add comment
@@ -217,4 +221,7 @@ class Actuality
     {
         return $this->comment;
     }
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> FETCH_HEAD
 }

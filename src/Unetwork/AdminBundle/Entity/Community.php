@@ -1,7 +1,9 @@
 <?php
 
 namespace Unetwork\AdminBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -52,5 +54,51 @@ class Community
     public function getName()
     {
         return $this->name;
+    }
+    
+
+     // ...
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     */
+    protected $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+    /**
+     * Add products
+     *
+     * @param \Unetwork\AdminBundle\Entity\Product $products
+     * @return Community
+     */
+    public function addProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Unetwork\AdminBundle\Entity\Product $products
+     */
+    public function removeProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

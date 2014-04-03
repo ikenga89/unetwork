@@ -50,6 +50,8 @@ class Actuality
         $this->comment = new ArrayCollection();
     }
 
+    
+
     /**
      * Get id
      *
