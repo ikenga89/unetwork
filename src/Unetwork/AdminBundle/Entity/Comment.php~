@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="commentaire")
+ * @ORM\Table(name="comment")
  */
-class Commentaire
+class Comment
 {
 	/**
      * @ORM\Id
@@ -16,27 +16,13 @@ class Commentaire
      */
     protected $id;
 
-	/**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $name;
-
-
-	/**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $prenom;
-
-
     /**
      * @ORM\Column(type="datetime")
      */
     protected $date;
 
-
 	/**
      * @ORM\Column(type="string", length=500)
      */
-    protected $contenu;
-
+    protected $content;
 }
