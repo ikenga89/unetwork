@@ -24,6 +24,17 @@ class Community
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     */
+    protected $actualitys;
+
+
+    public function __construct()
+    {
+        $this->actualitys = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -55,28 +66,16 @@ class Community
     {
         return $this->name;
     }
-    
 
-     // ...
-
-    /**
-     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
-     */
-    protected $actualitys;
-
-    public function __construct()
-    {
-        $this->actualitys = new ArrayCollection();
-    }
 
 
     /**
      * Add actualitys
      *
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
      * @return Community
      */
-    public function addActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
+    public function addActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
     {
         $this->actualitys[] = $actualitys;
 
@@ -86,9 +85,9 @@ class Community
     /**
      * Remove actualitys
      *
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
      */
-    public function removeActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
+    public function removeActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
     {
         $this->actualitys->removeElement($actualitys);
     }

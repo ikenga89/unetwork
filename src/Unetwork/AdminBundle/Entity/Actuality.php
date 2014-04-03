@@ -13,7 +13,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
      */
     protected $comments;
 
@@ -46,20 +46,10 @@ class Actuality
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="actualitys")
+     * @ORM\ManyToOne(targetEntity="Community", inversedBy="actualitys")
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
     protected $community;
-
-
-
-
-
-
-
-
-
-
 
 
     public function __construct()
@@ -169,7 +159,6 @@ class Actuality
         return $this->updated;
     }
 
-
     /**
      * Add comments
      *
@@ -206,10 +195,10 @@ class Actuality
     /**
      * Set community
      *
-     * @param \Unetwork\AdminBundle\Entity\Actuality $community
+     * @param \Unetwork\AdminBundle\Entity\Community $community
      * @return Actuality
      */
-    public function setCommunity(\Unetwork\AdminBundle\Entity\Actuality $community = null)
+    public function setCommunity(\Unetwork\AdminBundle\Entity\Community $community = null)
     {
         $this->community = $community;
 
@@ -219,7 +208,7 @@ class Actuality
     /**
      * Get community
      *
-     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     * @return \Unetwork\AdminBundle\Entity\Community 
      */
     public function getCommunity()
     {

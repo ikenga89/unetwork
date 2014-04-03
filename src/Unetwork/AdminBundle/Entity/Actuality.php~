@@ -13,7 +13,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
      */
     protected $comments;
 
@@ -46,20 +46,10 @@ class Actuality
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="actualitys")
+     * @ORM\ManyToOne(targetEntity="Community", inversedBy="actualitys")
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
     protected $community;
-
-
-
-
-
-
-
-
-
-
 
 
     public function __construct()
@@ -168,6 +158,7 @@ class Actuality
     {
         return $this->updated;
     }
+<<<<<<< HEAD
 
 
     /**
@@ -225,4 +216,6 @@ class Actuality
     {
         return $this->community;
     }
+=======
+>>>>>>> FETCH_HEAD
 }

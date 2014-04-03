@@ -24,6 +24,17 @@ class Community
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     */
+    protected $actualitys;
+
+
+    public function __construct()
+    {
+        $this->actualitys = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -55,6 +66,7 @@ class Community
     {
         return $this->name;
     }
+<<<<<<< HEAD
     
 
      // ...
@@ -102,4 +114,8 @@ class Community
     {
         return $this->actualitys;
     }
+=======
+
+
+>>>>>>> FETCH_HEAD
 }
