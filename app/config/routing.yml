@@ -1,5 +1,13 @@
+
 unetwork_app:
     resource: "@UnetworkAppBundle/Controller/"
+
+    type:     annotation
+    prefix:   /
+
+unetwork_admin:
+    resource: "@UnetworkAdminBundle/Controller/"
+
     type:     annotation
     prefix:   /
 
