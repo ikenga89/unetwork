@@ -60,45 +60,46 @@ class Community
      // ...
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
      */
-    protected $products;
+    protected $actualitys;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->actualitys = new ArrayCollection();
     }
 
+
     /**
-     * Add products
+     * Add actualitys
      *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
+     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
      * @return Community
      */
-    public function addProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    public function addActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
     {
-        $this->products[] = $products;
+        $this->actualitys[] = $actualitys;
 
         return $this;
     }
 
     /**
-     * Remove products
+     * Remove actualitys
      *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
+     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
      */
-    public function removeProduct(\Unetwork\AdminBundle\Entity\Product $products)
+    public function removeActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
     {
-        $this->products->removeElement($products);
+        $this->actualitys->removeElement($actualitys);
     }
 
     /**
-     * Get products
+     * Get actualitys
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProducts()
+    public function getActualitys()
     {
-        return $this->products;
+        return $this->actualitys;
     }
 }

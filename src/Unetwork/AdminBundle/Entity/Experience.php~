@@ -131,7 +131,6 @@ class Experience
     public function setEnd($end)
     {
         $this->end = $end;
-<<<<<<< HEAD
 
         return $this;
     }
@@ -155,14 +154,11 @@ class Experience
     public function setCv(\Unetwork\AdminBundle\Entity\Cv $cv = null)
     {
         $this->cv = $cv;
-=======
->>>>>>> FETCH_HEAD
 
         return $this;
     }
 
     /**
-<<<<<<< HEAD
      * Get cv
      *
      * @return \Unetwork\AdminBundle\Entity\Cv 
@@ -170,14 +166,5 @@ class Experience
     public function getCv()
     {
         return $this->cv;
-=======
-     * Get end
-     *
-     * @return \DateTime 
-     */
-    public function getEnd()
-    {
-        return $this->end;
->>>>>>> FETCH_HEAD
     }
 }

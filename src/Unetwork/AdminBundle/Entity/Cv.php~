@@ -53,7 +53,6 @@ class Cv
      */
 	protected $formation;
 
-<<<<<<< HEAD
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="cv")
      */
@@ -63,8 +62,6 @@ class Cv
     {
         $this->experience = new ArrayCollection();
     }
-=======
->>>>>>> FETCH_HEAD
 
     /**
      * Get id
@@ -236,7 +233,6 @@ class Cv
     {
         return $this->formation;
     }
-<<<<<<< HEAD
 
     /**
      * Add experience
@@ -270,6 +266,4 @@ class Cv
     {
         return $this->experience;
     }
-=======
->>>>>>> FETCH_HEAD
 }

@@ -56,30 +56,17 @@ class Community
         return $this->name;
     }
     
+
+     // ...
+
+    /**
+     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
+     */
+    protected $actualitys;
+
+    public function __construct()
+    {
+        $this->actualitys = new ArrayCollection();
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,7 +15,7 @@ class Actuality
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
      */
-    protected $comment;
+    protected $comments;
 
 	/**
      * @ORM\Id
@@ -45,7 +45,11 @@ class Actuality
     protected $updated;
 
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="actualitys")
+     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     */
+    protected $community;
 
 
 
@@ -60,10 +64,8 @@ class Actuality
 
     public function __construct()
     {
-        $this->comment = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
-
-    
 
     /**
      * Get id
@@ -167,36 +169,60 @@ class Actuality
         return $this->updated;
     }
 
+
     /**
-     * Add comment
+     * Add comments
      *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
      * @return Actuality
      */
-    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comments)
     {
-        $this->comment[] = $comment;
+        $this->comments[] = $comments;
 
         return $this;
     }
 
     /**
-     * Remove comment
+     * Remove comments
      *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
      */
-    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comment)
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comments)
     {
-        $this->comment->removeElement($comment);
+        $this->comments->removeElement($comments);
     }
 
     /**
-     * Get comment
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
+    }
+
+    /**
+     * Set community
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $community
+     * @return Actuality
+     */
+    public function setCommunity(\Unetwork\AdminBundle\Entity\Actuality $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \Unetwork\AdminBundle\Entity\Actuality 
+     */
+    public function getCommunity()
+    {
+        return $this->community;
     }
 }
