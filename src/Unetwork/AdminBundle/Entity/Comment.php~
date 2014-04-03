@@ -16,7 +16,7 @@ class Comment
      * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comments")
      * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
      */
-    protected $actuality;
+    protected $actualitys;
 
 	/**
      * @ORM\Id
@@ -89,29 +89,6 @@ class Comment
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * Set actuality
-     *
-     * @param \Unetwork\AdminBundle\Entity\Actuality $actuality
-     * @return Comment
-     */
-    public function setActuality(\Unetwork\AdminBundle\Entity\Actuality $actuality = null)
-    {
-        $this->actuality = $actuality;
-
-        return $this;
-    }
-
-    /**
-     * Get actuality
-     *
-     * @return \Unetwork\AdminBundle\Entity\Actuality 
-     */
-    public function getActuality()
-    {
-        return $this->actuality;
     }
 
 }

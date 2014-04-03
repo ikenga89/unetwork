@@ -24,6 +24,17 @@ class Community
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     */
+    protected $actualitys;
+
+
+    public function __construct()
+    {
+        $this->actualitys = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -55,64 +66,6 @@ class Community
     {
         return $this->name;
     }
-    
 
-     // ...
-<<<<<<< HEAD
 
-    /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
-     */
-    protected $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
-
-    /**
-     * Add products
-     *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
-     * @return Community
-     */
-    public function addProduct(\Unetwork\AdminBundle\Entity\Product $products)
-    {
-        $this->products[] = $products;
-
-        return $this;
-    }
-
-    /**
-     * Remove products
-     *
-     * @param \Unetwork\AdminBundle\Entity\Product $products
-     */
-    public function removeProduct(\Unetwork\AdminBundle\Entity\Product $products)
-    {
-        $this->products->removeElement($products);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-=======
-
-    /**
-     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
-     */
-    protected $actualitys;
-
-    public function __construct()
-    {
-        $this->actualitys = new ArrayCollection();
-    }
-
->>>>>>> FETCH_HEAD
 }

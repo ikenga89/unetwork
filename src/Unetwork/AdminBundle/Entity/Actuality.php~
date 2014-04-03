@@ -13,7 +13,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actuality")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
      */
     protected $comments;
 
@@ -46,20 +46,10 @@ class Actuality
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="actualitys")
+     * @ORM\ManyToOne(targetEntity="Community", inversedBy="actualitys")
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
     protected $community;
-
-
-
-
-
-
-
-
-
-
 
 
     public function __construct()
@@ -67,11 +57,6 @@ class Actuality
         $this->comments = new ArrayCollection();
     }
 
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> FETCH_HEAD
     /**
      * Get id
      *
@@ -173,40 +158,4 @@ class Actuality
     {
         return $this->updated;
     }
-
-<<<<<<< HEAD
-    /**
-     * Add comment
-     *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
-     * @return Actuality
-     */
-    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comment)
-    {
-        $this->comment[] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Remove comment
-     *
-     * @param \Unetwork\AdminBundle\Entity\Comment $comment
-     */
-    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comment)
-    {
-        $this->comment->removeElement($comment);
-    }
-
-    /**
-     * Get comment
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
-=======
->>>>>>> FETCH_HEAD
 }
