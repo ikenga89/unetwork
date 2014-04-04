@@ -14,7 +14,12 @@ class CommentController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        
+        $comments = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->findAll();
+
+        return array("comments"=>$comments);
     }
      /**
      * @Route("/admin/comment/create/{id}", name="admin_comment_create")
@@ -28,9 +33,13 @@ class CommentController extends Controller
      * @Route("/admin/comment/edit/{id}", name="admin_comment_edit")
      * @Template()
      */
-    public function editAction()
+    public function editAction($id)
     {
-        return array();
+          $comment = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->find($id);
+
+        return array("comment"=>$comment);
     }
      /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
