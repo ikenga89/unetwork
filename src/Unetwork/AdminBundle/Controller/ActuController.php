@@ -40,10 +40,18 @@ class ActuController extends Controller
     }
     /**
      * @Route("/admin/actu/delete/{id}", name="admin_actu_delete")
-     * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $actuality = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->find($id);
+
+        $em->remove($actuality);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_actu'));
     }
 }
