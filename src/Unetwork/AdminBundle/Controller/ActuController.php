@@ -19,7 +19,7 @@ class ActuController extends Controller
     {
          $actualities = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Actuality')
-        ->findAll();
+        ->findBy(Array(),Array('updated'=>'DESC'));
         return array("actualities"=>$actualities);
     }
     /**

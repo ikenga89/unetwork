@@ -6,18 +6,16 @@
   <a href="{{ path('admin_actu_create') }}"> Ajouter </a>
 
 	<div class="table-responsive">
-            {% for flashMessage in app.session.flashbag.get('notice') %}
-                <div class="flash-notice">
-                    {{ flashMessage }}
-                </div>
-            {% endfor %}
+
+            {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
             <table class="table table-striped">
               <thead>
                 <tr>
                  		<th> Id </th>                 		
-                 		<th> Texte </th>     
-                 		<th> Communauté </th>
+                 		<th> Communauté  </th>     
+                 		<th> Contenu</th>
+                 		<th> Date </th>
                  		<th> Modifier/Supprimer </th>
                  		<th> Commentaires </th>
                  		
@@ -32,10 +30,12 @@
 	                 		 <td> 	{{ actuality.id }}  </td>    
 	                 		 <td> 	{{ actuality.community.name }}   </td>
 	                 		 <td> 	{{ actuality.description|truncate(500) }}  </td>
+	                 		 <td> 	{{ actuality.created|date("m/d/Y h:i") }}  </td>
+
 	                 	
 	                 		  	<td> 	
 	                 		   		<a href="{{ path('admin_actu_edit', {'id' : actuality.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
-	                 		   		<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		   		<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
 	                 		    </td>
 
 	                 		   	<td> 	

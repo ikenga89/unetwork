@@ -24,7 +24,7 @@ class Community
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
 
@@ -39,4 +39,103 @@ class Community
         $this->actualitys = new ArrayCollection();
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Community
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
+     * @return Community
+     */
+    public function addActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
+    {
+        $this->actualitys[] = $actualitys;
+
+        return $this;
+    }
+
+    /**
+     * Remove actualitys
+     *
+     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
+     */
+    public function removeActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
+    {
+        $this->actualitys->removeElement($actualitys);
+    }
+
+    /**
+     * Get actualitys
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActualitys()
+    {
+        return $this->actualitys;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     * @return Community
+     */
+    public function addUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     */
+    public function removeUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

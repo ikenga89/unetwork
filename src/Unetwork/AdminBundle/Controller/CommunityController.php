@@ -5,30 +5,74 @@ namespace Unetwork\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unetwork\AdminBundle\Form\CommunityType;
+use Unetwork\AdminBundle\Entity\Community;
+use Symfony\Component\HttpFoundation\Request;
+
+
 
 class CommunityController extends Controller
 {
+
+ 
+
+
     /**
      * @Route("/admin/community", name="admin_community")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
+        $community = new Community();
+        $form = $this->createForm(new CommunityType(), $community);
+        $form->handleRequest($request);
+
+        if ($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($community);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_community'));
+        }
+
+
         $communities = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
-        ->findAll();
+        ->findBy(Array(),Array('name'=>'ASC'));
 
-        return array("communities" => $communities);
+        return array("communities" => $communities, "form" => $form->createView());
     }
+
+
+
+
 
     /**
      * @Route("/admin/community/create", name="admin_community_create")
      * @Template()
      */
-    public function createAction()
+/*    public function createAction(Request $request)
     {
-        return array();
+
+        $community = new Community();
+        $form = $this->createForm(new CommunityType(), $community);
+        $form->handleRequest($request);
+
+        if ($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($community);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_community'));
+        }
+        return array("form" => $form->createView());
     }
+*/
+
+
+
+
 
     /**
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")

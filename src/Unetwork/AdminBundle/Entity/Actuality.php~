@@ -13,7 +13,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
      */
     protected $comments;
 
@@ -23,11 +23,6 @@ class Actuality
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-	/**
-     * @ORM\Column(type="string", length=200)
-     */
-    protected $name;
 
     /**
      * @ORM\Column(type="string", length=500)
@@ -65,29 +60,6 @@ class Actuality
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Actuality
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
