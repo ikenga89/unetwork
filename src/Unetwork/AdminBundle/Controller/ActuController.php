@@ -14,7 +14,10 @@ class ActuController extends Controller
      */
     public function indexAction()
     {
-        return array();
+         $actualities = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->findAll();
+        return array("actualities"=>$actualities);
     }
     /**
      * @Route("/admin/actu/create/{id}", name="admin_actu_create")
