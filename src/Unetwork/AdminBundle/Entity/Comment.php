@@ -35,7 +35,7 @@ class Comment
 
 	/**
      * @ORM\Column(type="string", length=500)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $content;
 
