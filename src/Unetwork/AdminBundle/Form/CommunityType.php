@@ -9,21 +9,19 @@ class CommunityType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name',
-            'required'    => false,
-
-            );
+        $builder->add('name');
+        $builder->add('envoyer', 'submit');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\TaskBundle\Entity\Category',
+            'data_class' => 'Unetwork\AdminBundle\Entity\Community',
         ));
     }
 
     public function getName()
     {
-        return 'category';
+        return 'community';
     }
 }

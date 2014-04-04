@@ -17,7 +17,7 @@ class CommentController extends Controller
         
         $comments = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Comment')
-        ->findAll();
+        ->findBy(Array(),Array('date'=>'DESC'));
 
         return array("comments"=>$comments);
     }
