@@ -49,13 +49,25 @@ class CommentController extends Controller
      * @Route("/admin/comment/edit/{id}", name="admin_comment_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Request $request,$id)
     {
+
           $comment = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Comment')
         ->find($id);
 
-        return array("comment"=>$comment);
+        $form = $this->createForm(new CommentType(), $comment);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_comment'));
+        }
+
+        return array("form"=>$form->createView());
     }
      /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
