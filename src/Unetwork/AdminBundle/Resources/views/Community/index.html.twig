@@ -30,8 +30,8 @@
 	                 		 <td> 	{{ community.name }}  </td>
 	                 		 
 	                 		  	<td> 	
-	                 		   		<a href="{{ path('admin_community_edit',{'id': '$id' } ) }}"> <img src="/Admin/img/edit.png"/> </a> 
-	                 		   		<a href="{{ path('admin_community_delete',{'id': '$id' } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		   		<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> 
+	                 		   		<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
 	                 		    </td>
                  		 </tr>                
                		{% endfor %}     
