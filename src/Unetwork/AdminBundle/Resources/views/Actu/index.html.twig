@@ -8,22 +8,27 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                	{% for  in  %}
-                 		
-                 		 <th>  </th>
-                
-               		 {% endfor %}             
+                 		<th> Id </th>                 		
+                 		<th> Texte </th>     
+                 		<th> Communauté </th>
+                 		<th> Modifier </th>
+                 		<th> Supprimer </th>
+
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                	{% for in  %}                 		
-                 		 <td>  </td>                
+
+                	{% for actuality in actualities  %}                 		
+                 		 <tr>
+	                 		 <td> 	{{ actuality.id }}  </td>    
+ 
+	                 		 <td> 	{{ actuality.description|truncate(250) }}  </td>
+                 		 </tr>                
                		{% endfor %}     
 
 
-                </tr>
+               
               </tbody>
             </table>
           </div>
