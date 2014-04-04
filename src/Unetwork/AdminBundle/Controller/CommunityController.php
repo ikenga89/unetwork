@@ -5,9 +5,14 @@ namespace Unetwork\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unetwork\AdminBundle\Form;
 
 class CommunityController extends Controller
 {
+
+ 
+
+
     /**
      * @Route("/admin/community", name="admin_community")
      * @Template()
@@ -16,7 +21,7 @@ class CommunityController extends Controller
     {
         $communities = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
-        ->findAll();
+        ->findBy(Array(),Array('name'=>'ASC'));
 
         return array("communities" => $communities);
     }
