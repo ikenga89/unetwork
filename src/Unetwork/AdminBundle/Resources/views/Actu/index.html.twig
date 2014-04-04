@@ -17,6 +17,7 @@
                  		<th> Texte </th>     
                  		<th> Communauté </th>
                  		<th> Modifier/Supprimer </th>
+                 		<th> Commentaires </th>
                  		
 
                 </tr>
@@ -27,16 +28,18 @@
                 	{% for actuality in actualities  %}                 		
                  		 <tr>
 	                 		 <td> 	{{ actuality.id }}  </td>    
- 
+	                 		 <td> 	{{ actuality.community.name }}   </td>
 	                 		 <td> 	{{ actuality.description|truncate(500) }}  </td>
-	                 		  <td> 	
-	                 		  		{{ actuality.community.name }} 
-
-	                 		  </td>
+	                 	
 	                 		  	<td> 	
 	                 		   		<a href="{{ path('admin_actu_edit', {'id' : actuality.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
 	                 		   		<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
 	                 		    </td>
+
+	                 		   	<td> 	
+	                 		   		{{ actuality.comments| length }} <a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
+	                 		    </td>
+
                  		 </tr>                
                		{% endfor %}     
 

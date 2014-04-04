@@ -28,10 +28,7 @@
 		                 		 <td> 	{{ comment.id }}  </td>    
 	 
 		                 		 <td> 	{{ comment.content|truncate(500) }}  </td>
-		                 		  <td> 	
-		                 		  		{{ actuality.community.name }} 
 
-		                 		  </td>
 		                 		  	<td> 	
 		                 		   		<a href="{{ path('admin_actu_edit', {'id' : comment.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
 		                 		   		<a href="{{ path('admin_actu_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
