@@ -24,7 +24,7 @@ class Community
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
 
