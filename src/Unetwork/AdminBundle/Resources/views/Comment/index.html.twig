@@ -14,7 +14,8 @@
 	              <thead>
 	                <tr>
 	                 		<th> Id </th>                 		
-	                 		<th> Texte </th>     
+	                 		<th> Texte </th> 
+	                 		<th> Date </th>   
 	                 		<th> Supprimer </th>
 	                 		
 
@@ -23,14 +24,14 @@
 
 	              <tbody>
 
-	                	{% for comment in comments  %}                 		
+	                	{% for comment in comments   %}                 		
 	                 		 <tr>
 		                 		 <td> 	{{ comment.id }}  </td>    
 	 
 		                 		 <td> 	{{ comment.content|truncate(500) }}  </td>
+		                 		  <td> 	{{ comment.date|date("m/d/Y h:i") }}  </td>
 
-		                 		  	<td> 	
-		                 		   		<a href="{{ path('admin_actu_edit', {'id' : comment.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+		                 		  	<td>		                 		 
 		                 		   		<a href="{{ path('admin_actu_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
 		                 		    </td>
 	                 		 </tr>                
@@ -41,13 +42,5 @@
 	              </tbody>
 	            </table>
 	          </div>
-
-
-
-
-
-	{% for comment in comments %}
-			{{ comment.content }} 
-	{% endfor %}
 
 {% endblock %}
