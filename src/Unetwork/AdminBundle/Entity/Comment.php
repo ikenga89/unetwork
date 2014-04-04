@@ -3,6 +3,8 @@
 namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
@@ -27,11 +29,13 @@ class Comment
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $date;
 
 	/**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank()
      */
     protected $content;
 
