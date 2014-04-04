@@ -4,5 +4,11 @@
 
 	<h1>Actu</h1>
 
+	{% for actuality in actualities %}
+		{{ actuality.id }} 
+		{{ actuality.name }} 
+		{{ actuality.description }} 
+	{% endfor %}
+
 {% endblock %}
 
