@@ -5,9 +5,13 @@ namespace Unetwork\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unetwork\AdminBundle\Form\CommentType;
+use Unetwork\AdminBundle\Entity\Comment;
+use Symfony\Component\HttpFoundation\Request;
 
 class CommentController extends Controller
 {
+
     /**
      * @Route("/admin/comment", name="admin_comment")
      * @Template()
@@ -25,9 +29,21 @@ class CommentController extends Controller
      * @Route("/admin/comment/create", name="admin_comment_create")
      * @Template()
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
-        return array();
+        $comment = new Comment();
+        $form = $this->createForm(new CommentType(), $comment);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_comment'));
+        }
+
+        return array("form"=>$form->createView());
     }
      /**
      * @Route("/admin/comment/edit/{id}", name="admin_comment_edit")
