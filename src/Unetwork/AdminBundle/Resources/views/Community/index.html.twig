@@ -4,4 +4,9 @@
 
 	<h1>Community</h1>
 
+	{% for community in communities %}
+	{{ community.name }} <br />
+	{% endfor %}
+
+
 {% endblock %}

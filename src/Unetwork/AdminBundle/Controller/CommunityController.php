@@ -14,7 +14,11 @@ class CommunityController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $communities = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->findAll();
+
+        return array("communities" => $communities);
     }
 
     /**

@@ -14,7 +14,10 @@ class ActuController extends Controller
      */
     public function indexAction()
     {
-        return array();
+         $actualities = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->findAll();
+        return array("actualities"=>$actualities);
     }
     /**
      * @Route("/admin/actu/create/{id}", name="admin_actu_create")
@@ -28,9 +31,12 @@ class ActuController extends Controller
      * @Route("/admin/actu/edit/{id}", name="admin_actu_edit")
      * @Template()
      */
-    public function editAction()
-    {
-        return array();
+    public function editAction($id)
+    {   
+         $actuality = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->find($id);
+        return array("actuality"=>$actuality);
     }
     /**
      * @Route("/admin/actu/delete/{id}", name="admin_actu_delete")
