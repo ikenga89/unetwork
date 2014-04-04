@@ -47,12 +47,24 @@ class ActuController extends Controller
      * @Route("/admin/actu/edit/{id}", name="admin_actu_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {   
-         $actuality = $this->getDoctrine()
+        $actu = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->find($id);
-        return array("actuality"=>$actuality);
+    
+        $form = $this->createForm(new ActuType(), $actu);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($actu);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_actu'));
+        }
+
+        return array("form"=>$form->createView());
     }
     /**
      * @Route("/admin/actu/delete/{id}", name="admin_actu_delete")
