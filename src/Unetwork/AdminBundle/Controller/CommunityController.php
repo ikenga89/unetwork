@@ -35,8 +35,12 @@ class CommunityController extends Controller
      * @Template()
      */
     public function editAction($id)
-    {
-        return array();
+    {   
+        $community = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->find($id);
+
+        return array('community' => $community);
     }
 
     /**
@@ -45,7 +49,11 @@ class CommunityController extends Controller
      */
     public function deleteAction($id)
     {
-        return array();
+        $community = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->find($id);
+
+        return array('community' => $community);
     }
 
 
