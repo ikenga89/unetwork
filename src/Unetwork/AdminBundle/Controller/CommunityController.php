@@ -21,20 +21,38 @@ class CommunityController extends Controller
      * @Route("/admin/community", name="admin_community")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+
+        $community = new Community();
+        $form = $this->createForm(new CommunityType(), $community);
+        $form->handleRequest($request);
+
+        if ($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($community);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_community'));
+        }
+
+
         $communities = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
         ->findBy(Array(),Array('name'=>'ASC'));
 
-        return array("communities" => $communities);
+        return array("communities" => $communities, "form" => $form->createView());
     }
+
+
+
+
 
     /**
      * @Route("/admin/community/create", name="admin_community_create")
      * @Template()
      */
-    public function createAction(Request $request)
+/*    public function createAction(Request $request)
     {
 
         $community = new Community();
@@ -50,6 +68,11 @@ class CommunityController extends Controller
         }
         return array("form" => $form->createView());
     }
+*/
+
+
+
+
 
     /**
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")
