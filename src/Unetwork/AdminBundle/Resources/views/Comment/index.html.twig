@@ -31,8 +31,10 @@
 		                 		 <td> 	{{ comment.content|truncate(500) }}  </td>
 		                 		  <td> 	{{ comment.date|date("m/d/Y h:i") }}  </td>
 
+
 		                 		  	<td>		                 		 
 		                 		   		<a href="{{ path('admin_actu_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+
 		                 		    </td>
 	                 		 </tr>                
 	               		{% endfor %}     

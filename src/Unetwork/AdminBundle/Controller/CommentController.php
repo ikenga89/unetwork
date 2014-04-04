@@ -43,9 +43,8 @@ class CommentController extends Controller
     }
      /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
-     * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -60,5 +59,7 @@ class CommentController extends Controller
             'notice',
             "Le commentaire a bien été supprimé"
         );
+
+       return $this->redirect($this->generateUrl('admin_comment'));
     }
 }

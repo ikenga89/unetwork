@@ -58,6 +58,13 @@ class Cv
      */
     protected $experience;
 
+    /**
+     * @ORM\OneToOne(targetEntity="User", inversedBy="cv")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
+
+
     public function __construct()
     {
         $this->experience = new ArrayCollection();
@@ -265,5 +272,28 @@ class Cv
     public function getExperience()
     {
         return $this->experience;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $user
+     * @return Cv
+     */
+    public function setUser(\Unetwork\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Unetwork\AdminBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

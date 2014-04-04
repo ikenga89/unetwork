@@ -62,7 +62,7 @@ class CommunityController extends Controller
             'notice',
             "La communauté a bien été supprimé"
         );
-
+        return $this->redirect($this->generateUrl('admin_community'));
     }
 
 
