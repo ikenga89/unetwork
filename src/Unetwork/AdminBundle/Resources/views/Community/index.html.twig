@@ -4,9 +4,41 @@
 
 	<h1>Community</h1>
 
-	{% for community in communities %}
-	{{ community.name }} <br />
-	{% endfor %}
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                 		<th> Id </th>                 		
+                 		<th> Name</th>     
+                 		<th> Modifier / Supprimer </th>
+                 		
+
+                </tr>
+              </thead>
+
+              <tbody>
+
+                	{% for community in communities  %}                 		
+                 		 <tr>
+	                 		 <td> 	{{ community.id }}  </td>    
+ 
+	                 		 <td> 	{{ community.name }}  </td>
+	                 		 
+	                 		  	<td> 	
+	                 		   		<a href="{{ path('admin_community_edit',{'id': '$id' } ) }}"> <img src="/Admin/img/edit.png"/> </a> 
+	                 		   		<a href="{{ path('admin_community_delete',{'id': '$id' } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		    </td>
+                 		 </tr>                
+               		{% endfor %}     
+
+
+               
+              </tbody>
+            </table>
+          </div>
+
+
+
 
 
 {% endblock %}
