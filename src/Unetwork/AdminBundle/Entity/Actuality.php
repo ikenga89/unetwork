@@ -4,6 +4,7 @@ namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -26,16 +27,19 @@ class Actuality
 
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $created;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $updated;
 
