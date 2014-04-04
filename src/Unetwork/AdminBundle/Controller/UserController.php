@@ -17,7 +17,10 @@ class UserController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $users = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->findBy(Array(),Array('nom'=>'ASC'));
+        return array("users"=>$users);
     }
     /**
      * @Route("/admin/user/create", name="admin_user_create")
@@ -26,6 +29,7 @@ class UserController extends Controller
     public function createAction(Request $request)
     {
         $user = new User;
+
         $form = $this->createForm(new UserType(), $user);
 
         $form->handleRequest($request);
@@ -47,14 +51,33 @@ class UserController extends Controller
 
         return array('form'=>$form->createView());
     }
+
     /**
      * @Route("/admin/user/edit/{id}", name="admin_user_edit")
      * @Template()
      */
-    public function editAction()
+    public function editAction(Request $request,$id)
     {
-        return array();
+        $user = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->find($id);
+
+        $form = $this->createForm(new UserType('edit'), $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_user'));
+        }
+
+        return array('form'=>$form->createView());
     }
+
     /**
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")
      * @Template()

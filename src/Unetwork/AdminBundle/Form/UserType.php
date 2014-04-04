@@ -10,17 +10,26 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class UserType extends AbstractType
 {
+
+    private $type;
+
+    public function __construct($type = 'create'){
+        $this->type = $type;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('email', 'email');
-        $builder->add('password', 'password');
+        if($this->type=='create'){$builder->add('password', 'password');}
         $builder->add('nom');
         $builder->add('prenom');
-        $builder->add('roles', 'choice', array(
-            'choices'   => array('ROLE_ADMIN'=>'Admin', 'ROLE_USER'=>'User'),
-            'expanded'  => true,
-            'required'  => true,
-        ));
+        if($this->type=='create'){
+            $builder->add('roles', 'choice', array(
+                'choices'   => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),
+                'required'  => true,
+                'expanded'  => true,
+            ));
+        }
         $builder->add('save', 'submit');
 
     }
