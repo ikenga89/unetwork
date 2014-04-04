@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CommentController extends Controller
 {
     /**
-     * @Route("/admin/comment")
+     * @Route("/admin/comment", name="admin_comment")
      * @Template()
      */
     public function indexAction()
@@ -17,7 +17,7 @@ class CommentController extends Controller
         return array();
     }
      /**
-     * @Route("/admin/comment/create")
+     * @Route("/admin/comment/create/{id}", name="admin_comment_create")
      * @Template()
      */
     public function createAction()
@@ -25,7 +25,7 @@ class CommentController extends Controller
         return array();
     }
      /**
-     * @Route("/admin/comment/edit")
+     * @Route("/admin/comment/edit/{id}", name="admin_comment_edit")
      * @Template()
      */
     public function editAction()
@@ -33,7 +33,7 @@ class CommentController extends Controller
         return array();
     }
      /**
-     * @Route("/admin/comment/delete")
+     * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
      * @Template()
      */
     public function deleteAction()
