@@ -44,7 +44,7 @@ class CommentController extends Controller
      /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
      */
-    public function deleteAction($id)
+   public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -56,10 +56,11 @@ class CommentController extends Controller
         $em->flush();
 
        $this->get('session')->getFlashBag()->add(
-            'notice',
-            "Le commentaire a bien été supprimé"
+            'alert',
+            "Le commentaire a bien été supprimée"
         );
 
-       return $this->redirect($this->generateUrl('admin_comment'));
+
+        return $this->redirect($this->generateUrl('admin_comment'));
     }
 }
