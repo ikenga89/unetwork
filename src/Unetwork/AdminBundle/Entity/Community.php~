@@ -28,113 +28,15 @@ class Community
      */
     protected $actualitys;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="community")
+     */
+    protected $users;
+
 
     public function __construct()
     {
         $this->actualitys = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Community
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-<<<<<<< HEAD
-    
-
-     // ...
-
-<<<<<<< HEAD
-=======
-    /**
-     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
-     */
-    protected $actualitys;
-
-    public function __construct()
-    {
-        $this->actualitys = new ArrayCollection();
-    }
-
->>>>>>> FETCH_HEAD
-
-    /**
-     * Add actualitys
-     *
-<<<<<<< HEAD
-     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
-     * @return Community
-     */
-    public function addActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
-=======
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
-     * @return Community
-     */
-    public function addActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
->>>>>>> FETCH_HEAD
-    {
-        $this->actualitys[] = $actualitys;
-
-        return $this;
-    }
-
-    /**
-     * Remove actualitys
-     *
-<<<<<<< HEAD
-     * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
-     */
-    public function removeActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
-=======
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
-     */
-    public function removeActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
->>>>>>> FETCH_HEAD
-    {
-        $this->actualitys->removeElement($actualitys);
-    }
-
-    /**
-     * Get actualitys
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActualitys()
-    {
-        return $this->actualitys;
-    }
-<<<<<<< HEAD
-=======
-=======
-
-
->>>>>>> FETCH_HEAD
->>>>>>> FETCH_HEAD
 }

@@ -15,10 +15,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Unetwork\PublicBundle\UnetworkPublicBundle(),
             new Unetwork\AppBundle\UnetworkAppBundle(),
             new Unetwork\AdminBundle\UnetworkAdminBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
