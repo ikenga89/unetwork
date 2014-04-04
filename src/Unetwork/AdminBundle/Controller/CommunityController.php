@@ -52,7 +52,7 @@ class CommunityController extends Controller
      * @Route("/admin/community/create", name="admin_community_create")
      * @Template()
      */
-/*    public function createAction(Request $request)
+    public function createAction(Request $request)
     {
 
         $community = new Community();
@@ -68,7 +68,7 @@ class CommunityController extends Controller
         }
         return array("form" => $form->createView());
     }
-*/
+
 
 
 
@@ -78,11 +78,24 @@ class CommunityController extends Controller
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")
      * @Template()
      */
-    public function editAction($id)
+    public function editAction(Request $request ,$id)
     {   
         $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
         ->find($id);
+
+        $form = $this->createForm(new CommunityType(), $community);
+        $form->handleRequest($request);
+
+        if ($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($community);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_community'));
+        }
+        return array("form" => $form->createView());
+
 
         return array('community' => $community);
     }
