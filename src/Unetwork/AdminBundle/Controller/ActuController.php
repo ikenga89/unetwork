@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ActuController extends Controller
 {
     /**
-     * @Route("/admin/actu")
+     * @Route("/admin/actu", name="admin_actu")
      * @Template()
      */
     public function indexAction()
@@ -17,7 +17,7 @@ class ActuController extends Controller
         return array();
     }
     /**
-     * @Route("/admin/actu/create")
+     * @Route("/admin/actu/create/{id}", name="admin_actu_create")
      * @Template()
      */
     public function createAction()
@@ -25,7 +25,7 @@ class ActuController extends Controller
         return array();
     }
     /**
-     * @Route("/admin/actu/edit")
+     * @Route("/admin/actu/edit/{id}", name="admin_actu_edit")
      * @Template()
      */
     public function editAction()
@@ -33,7 +33,7 @@ class ActuController extends Controller
         return array();
     }
     /**
-     * @Route("/admin/actu/delete")
+     * @Route("/admin/actu/delete/{id}", name="admin_actu_delete")
      * @Template()
      */
     public function deleteAction()
