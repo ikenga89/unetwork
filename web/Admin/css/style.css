@@ -100,9 +100,17 @@ body {
 /*
 * PAGE CONNEXION
 */
+.body_connexion{
+  background-image: url("/Admin/img/pattern.png");
+}
 
 .connexion{
-  background-color: #444444;
+  margin-bottom:70px;
+
+  border-radius: 10px;
+background-color: #7694cb;
+text-align: center;
+
 
 }
 

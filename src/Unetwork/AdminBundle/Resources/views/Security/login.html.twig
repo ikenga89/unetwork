@@ -27,9 +27,24 @@
   <style type="text/css"></style><style id="holderjs-style" type="text/css"></style>
 </head>
 
-	<body>
-	<div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-4 main connexion">
-	Coucou c'est moi
+	<body class="body_Connexion">
+	<div class="col-sm-4 col-sm-offset-4 col-md-4 main connexion">
+		
+		{% if error %}
+ 		   <div>{{ error.message }}</div>
+		{% endif %}
+
+		<form action="{{ path('login_check') }}" method="post">
+		    <label for="username">Email:</label></br>
+		    <input type="email" id="username" name="_username" value="{{ last_username }}" /></br>
+		    <label for="password">Password:</label></br>
+		    <input type="password" id="password" name="_password" /></br>
+			<input type="hidden" name="_target_path" value="/app/index" /></br>
+    		<button type="submit">login</button>
+		</form>
+
+
+
 	</div>
 
 	</body>
@@ -39,17 +54,3 @@
 
 
 
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
-
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Email:</label>
-    <input type="email" id="username" name="_username" value="{{ last_username }}" />
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
-<input type="hidden" name="_target_path" value="/app/index" />
-
-    <button type="submit">login</button>
-</form>
