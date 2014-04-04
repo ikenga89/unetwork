@@ -5,6 +5,9 @@ namespace Unetwork\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unetwork\AdminBundle\Form\ActuType;
+use Unetwork\AdminBundle\Entity\Actuality;
+use Symfony\Component\HttpFoundation\Request;
 
 class ActuController extends Controller
 {
@@ -20,12 +23,25 @@ class ActuController extends Controller
         return array("actualities"=>$actualities);
     }
     /**
-     * @Route("/admin/actu/create/{id}", name="admin_actu_create")
+     * @Route("/admin/actu/create", name="admin_actu_create")
      * @Template()
      */
-    public function createAction()
-    {
-        return array();
+    public function createAction(Request $request)
+    {   
+
+        $actu = new Actuality();
+        $form = $this->createForm(new ActuType(), $actu);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($actu);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('admin_actu'));
+        }
+
+        return array("form"=>$form->createView());
     }
     /**
      * @Route("/admin/actu/edit/{id}", name="admin_actu_edit")

@@ -22,7 +22,7 @@ class CommentController extends Controller
         return array("comments"=>$comments);
     }
      /**
-     * @Route("/admin/comment/create/{id}", name="admin_comment_create")
+     * @Route("/admin/comment/create", name="admin_comment_create")
      * @Template()
      */
     public function createAction()
