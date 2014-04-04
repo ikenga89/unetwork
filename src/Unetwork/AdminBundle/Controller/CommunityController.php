@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class CommunityController extends Controller
 {
     /**
-     * @Route("/admin/community")
+     * @Route("/admin/community", name="admin_community")
      * @Template()
      */
     public function indexAction()
@@ -18,7 +18,7 @@ class CommunityController extends Controller
     }
 
     /**
-     * @Route("/admin/community/create")
+     * @Route("/admin/community/create", name="admin_community_create")
      * @Template()
      */
     public function createAction()
@@ -27,19 +27,19 @@ class CommunityController extends Controller
     }
 
     /**
-     * @Route("/admin/community/edit")
+     * @Route("/admin/community/edit/{id}", name="admin_community_edit")
      * @Template()
      */
-    public function editAction()
+    public function editAction($id)
     {
         return array();
     }
 
     /**
-     * @Route("/admin/community/delete")
+     * @Route("/admin/community/delete/{id}", name="admin_community_delete")
      * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
         return array();
     }
