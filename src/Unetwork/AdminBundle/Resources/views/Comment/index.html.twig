@@ -2,6 +2,44 @@
 
 {% block body %}
 
-	<h1>Comment</h1>
+	<h1>Commentaires</h1>
+
+		<div class="table-responsive">
+				{% for flashMessage in app.session.flashbag.get('notice') %}
+	                <div class="flash-notice">
+	                    {{ flashMessage }}
+	                </div>
+	            {% endfor %}
+	            <table class="table table-striped">
+	              <thead>
+	                <tr>
+	                 		<th> Id </th>                 		
+	                 		<th> Texte </th>     
+	                 		<th> Supprimer </th>
+	                 		
+
+	                </tr>
+	              </thead>
+
+	              <tbody>
+
+	                	{% for comment in comments  %}                 		
+	                 		 <tr>
+		                 		 <td> 	{{ comment.id }}  </td>    
+	 
+		                 		 <td> 	{{ comment.content|truncate(500) }}  </td>
+
+		                 		  	<td> 	
+		                 		   		<a href="{{ path('admin_comment_edit', {'id' : comment.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+		                 		   		<a href="{{ path('admin_comment_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+		                 		    </td>
+	                 		 </tr>                
+	               		{% endfor %}     
+
+
+	               
+	              </tbody>
+	            </table>
+	          </div>
 
 {% endblock %}

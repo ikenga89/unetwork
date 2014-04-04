@@ -14,7 +14,11 @@ class CommunityController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $communities = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->findAll();
+
+        return array("communities" => $communities);
     }
 
     /**
@@ -31,8 +35,12 @@ class CommunityController extends Controller
      * @Template()
      */
     public function editAction($id)
-    {
-        return array();
+    {   
+        $community = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->find($id);
+
+        return array('community' => $community);
     }
 
     /**
@@ -41,8 +49,25 @@ class CommunityController extends Controller
      */
     public function deleteAction($id)
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $community = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Community')
+        ->find($id);
+
+        $em->remove($community);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "La communauté a bien été supprimé"
+        );
+        return $this->redirect($this->generateUrl('admin_community'));
     }
 
 
 }
+
+
+
+

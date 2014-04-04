@@ -14,7 +14,12 @@ class CommentController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        
+        $comments = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->findAll();
+
+        return array("comments"=>$comments);
     }
      /**
      * @Route("/admin/comment/create/{id}", name="admin_comment_create")
@@ -28,16 +33,33 @@ class CommentController extends Controller
      * @Route("/admin/comment/edit/{id}", name="admin_comment_edit")
      * @Template()
      */
-    public function editAction()
+    public function editAction($id)
     {
-        return array();
+          $comment = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->find($id);
+
+        return array("comment"=>$comment);
     }
      /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
-     * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $comment = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->find($id);
+
+        $em->remove($comment);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "Le commentaire a bien été supprimé"
+        );
+
+       return $this->redirect($this->generateUrl('admin_comment'));
     }
 }
