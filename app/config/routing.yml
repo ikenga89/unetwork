@@ -1,12 +1,12 @@
 logout:
-    path:   /admin/logout
+    path:   /logout
 
 login:
     path:     /login
     defaults: { _controller: UnetworkAdminBundle:Security:login }
     
 login_check:
-    path: /admin/login_check
+    path: /login_check
 
 unetwork_app:
     resource: "@UnetworkAppBundle/Controller/"

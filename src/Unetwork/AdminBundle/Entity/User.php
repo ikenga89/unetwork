@@ -313,7 +313,8 @@ class User implements UserInterface, \Serializable
      */
     public function setRoles($roles)
     {
-        $this->roles = $roles;
+        $tab_roles = array($roles);
+        $this->roles = $tab_roles;
 
         return $this;
     }
