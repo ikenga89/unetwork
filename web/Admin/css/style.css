@@ -102,19 +102,28 @@ body {
 */
 .body_connexion{
   background-image: url("/Admin/img/pattern.png");
+  padding-top: 15%;
+}
+
+.logo{
+  width: 100%;
+ 
 }
 
 .connexion{
-  margin-bottom:70px;
-
-  border-radius: 10px;
-background-color: #7694cb;
-text-align: center;
-
+  color:white;
+  border-bottom:10px solid #3c475e;
+  border-radius: 20px;
+  background-color: #7694cb;
+  text-align: center;
 
 }
 
+.connexion input{
+width:75%;
+font-size:  1em;
 
+}
 
 
 
