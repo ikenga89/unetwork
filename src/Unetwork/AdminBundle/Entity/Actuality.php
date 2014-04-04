@@ -24,11 +24,6 @@ class Actuality
      */
     protected $id;
 
-	/**
-     * @ORM\Column(type="string", length=200)
-     */
-    protected $name;
-
     /**
      * @ORM\Column(type="string", length=500)
      */
@@ -65,29 +60,6 @@ class Actuality
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Actuality
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
