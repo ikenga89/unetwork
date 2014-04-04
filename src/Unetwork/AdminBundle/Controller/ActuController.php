@@ -52,6 +52,12 @@ class ActuController extends Controller
         $em->remove($actuality);
         $em->flush();
 
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "L'actualité a bien été supprimée"
+        );
+
+
         return $this->redirect($this->generateUrl('admin_actu'));
     }
 }

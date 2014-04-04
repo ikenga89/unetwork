@@ -47,6 +47,18 @@ class CommentController extends Controller
      */
     public function deleteAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $comment = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->find($id);
+
+        $em->remove($comment);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "Le commentaire a bien été supprimé"
+        );
     }
 }

@@ -49,11 +49,20 @@ class CommunityController extends Controller
      */
     public function deleteAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
         ->find($id);
 
-        return array('community' => $community);
+        $em->remove($community);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "La communauté a bien été supprimé"
+        );
+
     }
 
 

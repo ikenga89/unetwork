@@ -13,7 +13,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
      */
     protected $comments;
 

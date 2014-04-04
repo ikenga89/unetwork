@@ -5,6 +5,11 @@
 	<h1>Actu</h1>
 
 	<div class="table-responsive">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                <div class="flash-notice">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -29,8 +34,8 @@
 
 	                 		  </td>
 	                 		  	<td> 	
-	                 		   		<a href="{{ path('admin_actu_edit', {'id' : '$id' } ) }}"> <img src="/Admin/img/edit.png"/> </a>
-	                 		   		<a href="{{ path('admin_actu_delete',{'id': '$id' } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		   		<a href="{{ path('admin_actu_edit', {'id' : actuality.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+	                 		   		<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
 	                 		    </td>
                  		 </tr>                
                		{% endfor %}     
