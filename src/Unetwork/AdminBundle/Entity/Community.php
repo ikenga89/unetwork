@@ -4,6 +4,7 @@ namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -20,19 +21,26 @@ class Community
 
 	/**
      * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message = "Aucune valeur entrée")
      */
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
+
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="community")
+     */
+    protected $users;
 
 
     public function __construct()
     {
         $this->actualitys = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -67,8 +75,6 @@ class Community
         return $this->name;
     }
 
-
-
     /**
      * Add actualitys
      *
@@ -100,5 +106,38 @@ class Community
     public function getActualitys()
     {
         return $this->actualitys;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     * @return Community
+     */
+    public function addUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     */
+    public function removeUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

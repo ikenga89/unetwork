@@ -24,15 +24,21 @@ class Community
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community")
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
+
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="community")
+     */
+    protected $users;
 
 
     public function __construct()
     {
         $this->actualitys = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -66,39 +72,14 @@ class Community
     {
         return $this->name;
     }
-<<<<<<< HEAD
-    
-
-     // ...
-
-<<<<<<< HEAD
-=======
-    /**
-     * @ORM\OneToMany(targetEntity="Community", mappedBy="category")
-     */
-    protected $actualitys;
-
-    public function __construct()
-    {
-        $this->actualitys = new ArrayCollection();
-    }
-
->>>>>>> FETCH_HEAD
 
     /**
      * Add actualitys
      *
-<<<<<<< HEAD
      * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
      * @return Community
      */
     public function addActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
-=======
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
-     * @return Community
-     */
-    public function addActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
->>>>>>> FETCH_HEAD
     {
         $this->actualitys[] = $actualitys;
 
@@ -108,15 +89,9 @@ class Community
     /**
      * Remove actualitys
      *
-<<<<<<< HEAD
      * @param \Unetwork\AdminBundle\Entity\Actuality $actualitys
      */
     public function removeActuality(\Unetwork\AdminBundle\Entity\Actuality $actualitys)
-=======
-     * @param \Unetwork\AdminBundle\Entity\Community $actualitys
-     */
-    public function removeActuality(\Unetwork\AdminBundle\Entity\Community $actualitys)
->>>>>>> FETCH_HEAD
     {
         $this->actualitys->removeElement($actualitys);
     }
@@ -130,11 +105,37 @@ class Community
     {
         return $this->actualitys;
     }
-<<<<<<< HEAD
-=======
-=======
 
+    /**
+     * Add users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     * @return Community
+     */
+    public function addUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
 
->>>>>>> FETCH_HEAD
->>>>>>> FETCH_HEAD
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $users
+     */
+    public function removeUser(\Unetwork\AdminBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

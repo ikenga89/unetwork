@@ -4,6 +4,7 @@ namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -13,7 +14,7 @@ class Actuality
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
      */
     protected $comments;
 
@@ -24,23 +25,21 @@ class Actuality
      */
     protected $id;
 
-	/**
-     * @ORM\Column(type="string", length=200)
-     */
-    protected $name;
-
     /**
      * @ORM\Column(type="string", length=500)
+     * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $description;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $created;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $updated;
 
@@ -65,29 +64,6 @@ class Actuality
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Actuality
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

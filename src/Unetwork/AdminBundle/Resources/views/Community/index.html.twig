@@ -1,0 +1,47 @@
+{% extends 'UnetworkAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Community</h1>
+
+  {{ form(form) }}
+
+<div class="table-responsive">
+{% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                 		<th> Id </th>                 		
+                 		<th> Name</th>     
+                 		<th> Modifier / Supprimer </th>
+                 		
+
+                </tr>
+              </thead>
+
+              <tbody>
+
+                	{% for community in communities  %}                 		
+                 		 <tr>
+	                 		 <td> 	{{ community.id }}  </td>    
+ 
+	                 		 <td> 	{{ community.name }}  </td>
+	                 		 
+	                 		  	<td> 	
+	                 		   		<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> 
+	                 		   		<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		    </td>
+                 		 </tr>                
+               		{% endfor %}     
+
+
+               
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+{% endblock %}
