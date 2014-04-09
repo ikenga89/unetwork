@@ -14,9 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 class CommunityController extends Controller
 {
 
- 
-
-
     /**
      * @Route("/admin/community", name="admin_community")
      * @Template()
