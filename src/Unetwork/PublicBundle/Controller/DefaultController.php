@@ -17,7 +17,6 @@ class DefaultController extends Controller
      */
     public function homeAction(Request $request)
     {
-
 		$form = $this->createForm(new InscriptionType());
 
 		$form->handleRequest($request);
@@ -25,9 +24,28 @@ class DefaultController extends Controller
 		if($form->isValid()){
 
 			$data = $form->getData();
-			return $this->redirect($this->generateUrl('thanks'));
+
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Demande d\'inscription')
+            ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
+            ->setTo('xavier.guien@gmail.com')
+            ->setBody($this->renderView('UnetworkPublicBundle:Default:email.txt.twig', array('data' => $data)));
+            $this->get('mailer')->send($message);
+
+			return $this->redirect($this->generateUrl('public_thanks'));
 		}
 
         return array('form' => $form->createView());
     }
+
+    /**
+     * @Route("/thanks", name="public_thanks")
+     * @Template()
+     */
+    public function thanksAction()
+    {
+
+        return array();
+    }
+
 }
