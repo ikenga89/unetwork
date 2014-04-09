@@ -44,7 +44,6 @@ class DefaultController extends Controller
      */
     public function thanksAction()
     {
-
         return array();
     }
 
