@@ -11,6 +11,7 @@ class InscriptionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder->add('nom', 'text', array(
             'label' => 'Nom : ',
             'attr' => array(
@@ -58,6 +59,7 @@ class InscriptionType extends AbstractType
                 'class' => 'button button-style1',
             )
         ));
+
     }
 
     /*

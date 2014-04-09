@@ -17,7 +17,7 @@ class DefaultController extends Controller
      */
     public function homeAction(Request $request)
     {
-    	// Création formulaire
+
 		$form = $this->createForm(new InscriptionType());
 
 		$form->handleRequest($request);
@@ -28,7 +28,6 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('thanks'));
 		}
 
-
-        return array('form' => $form);
+        return array('form' => $form->createView());
     }
 }
