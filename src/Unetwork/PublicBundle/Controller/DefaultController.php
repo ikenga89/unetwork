@@ -35,7 +35,7 @@ class DefaultController extends Controller
 
             $this->get('session')->getFlashBag()->add(
                 'notice',
-                'Your changes were saved!'
+                'Votre demande d\'inscription à bien été envoyé !'
             );
 
 			return $this->redirect($this->generateUrl('public_home'));
