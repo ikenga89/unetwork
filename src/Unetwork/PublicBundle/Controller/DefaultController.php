@@ -12,7 +12,7 @@ use Unetwork\PublicBundle\Form\InscriptionType;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="public_home")
      * @Template()
      */
     public function homeAction(Request $request)
@@ -28,11 +28,17 @@ class DefaultController extends Controller
             $message = \Swift_Message::newInstance()
             ->setSubject('Demande d\'inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
-            ->setTo('xavier.guien@gmail.com')
+            ->setTo('maxime.sifflet@gmail.com')
             ->setBody($this->renderView('UnetworkPublicBundle:Default:email.txt.twig', array('data' => $data)));
             $this->get('mailer')->send($message);
 
-			return $this->redirect($this->generateUrl('public_thanks'));
+
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'Your changes were saved!'
+            );
+
+			return $this->redirect($this->generateUrl('public_home'));
 		}
 
         return array('form' => $form->createView());
