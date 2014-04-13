@@ -6,7 +6,7 @@
 								<div class="6u">
 										<ul class="facebook_ul">
 											<h3 class="fa fa-facebook-square"> Dernier Post</h3>
-											{#
+											
 													{% for post in posts  %}
 														{% if post.message is defined and loop.index < 2 %}
 															<li>
@@ -24,7 +24,7 @@
 												        {% endif %}
 												    {% endfor %}
 
-												    #}
+												    
 										</ul>
 								</div>
 						<!-- TWITTER -->
@@ -123,4 +123,5 @@
 										</div>
 									</div>
 								</div>
+
 							<!-- /Footer -->
