@@ -50,8 +50,25 @@ class DefaultController extends Controller
 
         $facebook_posts = $facebook->api('/110864882309437/posts');
 
+
+        $twitterClient = $this->container->get('guzzle.twitter.client');
+        $tweets = $twitterClient->get('statuses/user_timeline.json');
+        $tweets->getQuery()->set('count', 5);
+        $tweets->getQuery()->set('screen_name', 'SciencesULyon');
+        $response = $tweets->send();
+
+        $tweets = json_decode($response->getBody());
+
+        $all_tweet = array();
+        foreach ($tweets as $tweet) {
+            $text_tweet = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" TARGET=_BLANK >$1</a>', $tweet->text);
+            $all_tweet[] = array('text' => $text_tweet, 'created_at' => $tweet->created_at);
+        }
+
+
         return array(
             'posts' => $facebook_posts['data'],
+            'tweets' => $all_tweet,
             'form' => $form->createView(),
         );
     }

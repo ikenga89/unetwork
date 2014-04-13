@@ -12,12 +12,12 @@
 															<li>
 																<div class="row">
 														      		<div class="3u">
-														      		 	Le {{ post.created_time|date("d/m/Y") }}
+														      		 	{{ post.created_time|date("d/m/Y") }}
 														        	</div>
 
 														        	<div class="9u">
 														        		
-													       				{{ post.message|truncate(300) }}
+													       				{{ post.message|truncate(200) }}
 													       			</div>
 													       		</div>		
 												      		</li>
@@ -31,13 +31,13 @@
 								<div class="6u">
 										<ul class="twitter_ul">
 											<h3 class="fa fa-twitter-square"> Dernier Post</h3>
-															{#									
+																							
 														    {% for tweet in tweets  %}	
 														    	{% if loop.index < 3 %}
 															      	<li>
 															      		<div class="row">
 															      			<div class="3u">
-															      		 		Le    {{ tweet.created_at|date("d/m/Y") }}
+															      		 		{{ tweet.created_at|date("d/m/Y") }}
 															        		</div>
 
 															        		<div class="9u">
@@ -48,7 +48,7 @@
 																{% endif %}	
 															{% endfor %}
 
-															#}												
+																											
 										</ul>											
 								</div>
 					</div>			
