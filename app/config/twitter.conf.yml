@@ -1,0 +1,8 @@
+# app/config/twitter.conf.yml
+parameters:
+    twitter.baseurl: https://api.twitter.com/1.1
+    twitter.config:
+        consumer_key: ARfJFo5NwBMBvQ7MCJRBkQ
+        consumer_secret: ixMxmsuHV2LFLNE9QOXex3DcxGBkzX5ucLuKh4K3xWg
+        token: 2420427098-eK2Fdjo4dwkf3Rc0Huptgv4QeFCjNBBQKbLwBMa
+        token_secret: TXfS7cZW9THyI65vurPnSOp5rEmpnX9eoRi55ryS9cdju

@@ -24,4 +24,3 @@ unetwork_public:
     resource: "@UnetworkPublicBundle/Controller/"
     type:     annotation
     prefix:   /
-
