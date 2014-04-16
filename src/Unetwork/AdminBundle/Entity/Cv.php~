@@ -18,16 +18,6 @@ class Cv
      */
     protected $id;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-	protected $firstname;
-
-	/**
-     * @ORM\Column(type="string", length=50)
-     */
-	protected $lastname;
-
 	/**
      * @ORM\Column(type="string", length=100)
      */
@@ -42,11 +32,6 @@ class Cv
      * @ORM\Column(type="text")
      */
 	protected $description;
-
-	/**
-     * @ORM\Column(type="string", length=100)
-     */
-	protected $email;
 
 	/**
      * @ORM\Column(type="string", length=40)

@@ -9,6 +9,7 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
+        "symfony/security": "~2.2",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
@@ -19,7 +20,9 @@
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*"
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "facebook/php-sdk": "*",
+        "guzzle/guzzle":"dev-master"
     },
     "scripts": {
         "post-install-cmd": [
