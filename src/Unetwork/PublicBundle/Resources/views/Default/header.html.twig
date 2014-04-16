@@ -1,36 +1,39 @@
-{% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="flash-notice">
-        {{ flashMessage }}
-    </div>
-{% endfor %}
 <!-- Header Wrapper -->
-			<div id="header-wrapper" class="wrapper">
-				<div class="container">
-					<div class="row">
-						<div class="12u">
-							<!-- Header -->
-								<div id="header">
-									<!-- Logo -->
-										<div id="logo">
-										</div>
-									<!-- /Logo -->
-
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<li class="current_page_item"><a href="index.html">Home</a></li>
-												<li><a href="#intro-wrapper">Le projet</a></li>
-												<li><a href="#rejoindre">Nous Rejoindre</a></li>
-												<li><a href="#avis">Avis</a></li>
-											</ul>
-										</nav>
-									<!-- /Nav -->
-
+	<div id="header-wrapper" class="wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="12u">
+					<!-- Header -->
+						<div id="header">
+						{% for flashMessage in app.session.flashbag.get('notice') %}
+						    <div class="flash-notice">
+						        <div class="alert alert-success alert1">
+							        <a href="#" class="close" data-dismiss="alert">&times;</a>
+							        {{ flashMessage }}
 								</div>
-							<!-- /Header -->
+						    </div>
+						{% endfor %}
+							<!-- Logo -->
+								<div id="logo">
+								</div>
+							<!-- /Logo -->
+
+							<!-- Nav -->
+								<nav id="nav">
+									<ul>
+										<li class="current_page_item"><a href="index.html">Home</a></li>
+										<li><a href="#intro-wrapper">Le projet</a></li>
+										<li><a href="#rejoindre">Nous Rejoindre</a></li>
+										<li><a href="#avis">Avis</a></li>
+									</ul>
+								</nav>
+							<!-- /Nav -->
 
 						</div>
-					</div>
+					<!-- /Header -->
+
 				</div>
 			</div>
-		<!-- /Header Wrapper -->
+		</div>
+	</div>
+<!-- /Header Wrapper -->

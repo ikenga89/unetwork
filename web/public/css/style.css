@@ -141,6 +141,12 @@
 	{
 		padding: 10px;
 	}
+
+	form[name=inscription]{
+		width: 500px;
+	}
+	
+	
 	
 		form label
 		{
@@ -932,6 +938,18 @@
 	{
 		background: url('/public/images/banner.jpg') center center;
 		background-size: cover;
+	}
+
+	#header-wrapper .alert1
+	{
+		margin: 0 auto;
+		padding: 0px 10px;
+		width: 600px;
+	}
+
+	#header-wrapper .alert1 .close
+	{
+		line-height: 1.4;
 	}
 	
 		#header-wrapper:before
