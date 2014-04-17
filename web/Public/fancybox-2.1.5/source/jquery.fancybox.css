@@ -165,16 +165,16 @@
 /* Overlay helper */
 
 .fancybox-lock {
-    overflow: hidden !important;
+    /*overflow: hidden !important;*/
     width: auto;
 }
 
 .fancybox-lock body {
-    overflow: hidden !important;
+    /*overflow: hidden !important;*/
 }
 
 .fancybox-lock-test {
-    overflow-y: hidden !important;
+    /*overflow-y: hidden !important;*/
 }
 
 .fancybox-overlay {
@@ -195,7 +195,7 @@
 
 .fancybox-lock .fancybox-overlay {
 	overflow: auto;
-	overflow-y: scroll;
+	/*overflow-y: scroll;*/
 }
 
 /* Title helper */
