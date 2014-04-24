@@ -41,14 +41,15 @@ class DefaultController extends Controller
 			return $this->redirect($this->generateUrl('public_home'));
 		}
 
-
-
-        $facebook = new \Facebook(array(
-          'appId'  => '414516295351453',
-          'secret' => 'd7e480e45243e668ee39e6c868af52db',
-        ));
-
-        $facebook_posts = $facebook->api('/110864882309437/posts');
+        try {
+            $facebook = new \Facebook(array(
+              'appId'  => '414516295351453',
+              'secret' => 'd7e480e45243e668ee39e6c868af52db',
+            ));
+            $facebook_posts = $facebook->api('/110864882309437/posts');
+        } catch (Exception $e) {
+            $facebook_posts = array();
+        }
 
 
         $twitterClient = $this->container->get('guzzle.twitter.client');

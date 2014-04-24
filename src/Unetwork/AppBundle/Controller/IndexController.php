@@ -18,6 +18,11 @@ class IndexController extends Controller
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->findAll();
 
-        return array("actualities"=>$actualities);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        return array(
+            "actualities" => $actualities,
+            "user" => $user,
+        );
     }
 }
