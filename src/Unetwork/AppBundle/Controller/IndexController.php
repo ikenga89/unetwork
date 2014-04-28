@@ -18,6 +18,7 @@ class IndexController extends Controller
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->findAll();
 
+        /*
         $user = new user();
         $form = $this->createForm(new userType(), $user);
 
@@ -32,7 +33,14 @@ class IndexController extends Controller
                 'users' => $users;
             )));
         }
+        */
 
-        return array("actualities"=>$actualities);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        return array(
+            "actualities" => $actualities,
+            "user" => $user,
+        );
+
     }
 }
