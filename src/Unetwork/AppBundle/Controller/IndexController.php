@@ -18,6 +18,21 @@ class IndexController extends Controller
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->findAll();
 
+        $user = new user();
+        $form = $this->createForm(new userType(), $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // the validation passed, do something with the $author object
+            
+
+
+            return $this->redirect($this->generateUrl('app_recherche', array(
+                'users' => $users;
+            )));
+        }
+
         return array("actualities"=>$actualities);
     }
 }
