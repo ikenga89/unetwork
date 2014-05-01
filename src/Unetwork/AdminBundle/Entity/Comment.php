@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Comment
 {
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comments")
      * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")

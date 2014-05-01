@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Cv
 {
+    
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
