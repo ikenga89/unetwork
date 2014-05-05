@@ -49,6 +49,41 @@ class User implements UserInterface, \Serializable
     private $prenom;
 
     /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $tel;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_nais;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $linkedin;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $viadeo;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $url;
+
+    /**
      * @ORM\Column(type="array")
      */
     private $roles;
@@ -429,5 +464,166 @@ class User implements UserInterface, \Serializable
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return string 
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set date_nais
+     *
+     * @param \DateTime $dateNais
+     * @return User
+     */
+    public function setDateNais($dateNais)
+    {
+        $this->date_nais = $dateNais;
+
+        return $this;
+    }
+
+    /**
+     * Get date_nais
+     *
+     * @return \DateTime 
+     */
+    public function getDateNais()
+    {
+        return $this->date_nais;
+    }
+
+    /**
+     * Set linkedin
+     *
+     * @param string $linkedin
+     * @return User
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedin
+     *
+     * @return string 
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * Set viadeo
+     *
+     * @param string $viadeo
+     * @return User
+     */
+    public function setViadeo($viadeo)
+    {
+        $this->viadeo = $viadeo;
+
+        return $this;
+    }
+
+    /**
+     * Get viadeo
+     *
+     * @return string 
+     */
+    public function getViadeo()
+    {
+        return $this->viadeo;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return User
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return User
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }
