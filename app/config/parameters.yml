@@ -5,7 +5,7 @@ parameters:
     database_port: null
     database_name: unetwork
     database_user: root
-    database_password: null
+    database_password: unetwork
     mailer_transport: smtp
     mailer_host: smtp.gmail.com
     mailer_user: unetwork89@gmail.com
