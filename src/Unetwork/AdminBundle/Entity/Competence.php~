@@ -1,0 +1,49 @@
+<?php
+
+namespace Unetwork\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="competence")
+ */
+class Competence
+{
+	/**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $note;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="hobby")
+     * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
+     */
+    protected $cv;
+
+}

@@ -4,6 +4,7 @@ namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -22,27 +23,34 @@ class Cv
 	/**
      * @ORM\Column(type="string", length=100)
      */
-	protected $country;
+	protected $presentation;
 
-	/**
-     * @ORM\Column(type="string", length=100)
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
-	protected $website;
+    protected $created;
 
-	/**
-     * @ORM\Column(type="text")
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
-	protected $description;
-
-	/**
-     * @ORM\Column(type="string", length=40)
-     */
-	protected $formation;
+    protected $updated;
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="cv")
      */
     protected $experience;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Competence", mappedBy="cv")
+     */
+    protected $competence;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Hobby", mappedBy="cv")
+     */
+    protected $hobby;
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="cv")
@@ -54,6 +62,8 @@ class Cv
     public function __construct()
     {
         $this->experience = new ArrayCollection();
+        $this->competence = new ArrayCollection();
+        $this->hobby = new ArrayCollection();
     }
 
     /**
@@ -281,5 +291,140 @@ class Cv
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set presentation
+     *
+     * @param string $presentation
+     * @return Cv
+     */
+    public function setPresentation($presentation)
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return string 
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Cv
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Cv
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Add competence
+     *
+     * @param \Unetwork\AdminBundle\Entity\Competence $competence
+     * @return Cv
+     */
+    public function addCompetence(\Unetwork\AdminBundle\Entity\Competence $competence)
+    {
+        $this->competence[] = $competence;
+
+        return $this;
+    }
+
+    /**
+     * Remove competence
+     *
+     * @param \Unetwork\AdminBundle\Entity\Competence $competence
+     */
+    public function removeCompetence(\Unetwork\AdminBundle\Entity\Competence $competence)
+    {
+        $this->competence->removeElement($competence);
+    }
+
+    /**
+     * Get competence
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompetence()
+    {
+        return $this->competence;
+    }
+
+    /**
+     * Add hobby
+     *
+     * @param \Unetwork\AdminBundle\Entity\Hobby $hobby
+     * @return Cv
+     */
+    public function addHobby(\Unetwork\AdminBundle\Entity\Hobby $hobby)
+    {
+        $this->hobby[] = $hobby;
+
+        return $this;
+    }
+
+    /**
+     * Remove hobby
+     *
+     * @param \Unetwork\AdminBundle\Entity\Hobby $hobby
+     */
+    public function removeHobby(\Unetwork\AdminBundle\Entity\Hobby $hobby)
+    {
+        $this->hobby->removeElement($hobby);
+    }
+
+    /**
+     * Get hobby
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getHobby()
+    {
+        return $this->hobby;
     }
 }

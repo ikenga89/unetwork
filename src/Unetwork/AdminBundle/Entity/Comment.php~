@@ -39,6 +39,18 @@ class Comment
     protected $content;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
+
+    /**
      * Get id
      *
      * @return integer 

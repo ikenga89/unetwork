@@ -7,11 +7,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="experience")
+ * @ORM\Table(name="competence")
  */
-class Experience
+class Competence
 {
-    
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -20,24 +19,14 @@ class Experience
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=140)
+     * @ORM\Column(type="string", length=150)
      */
-    protected $typejob;
+    protected $name;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="integer")
      */
-    protected $description;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $begin;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $end;
+    protected $note;
 
     /**
      * @ORM\Column(type="datetime")
@@ -52,16 +41,11 @@ class Experience
     protected $updated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="experience")
+     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="hobby")
      * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
      */
     protected $cv;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="ExperienceType", inversedBy="experience")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     */
-    protected $type;
 
     /**
      * Get id
@@ -74,102 +58,102 @@ class Experience
     }
 
     /**
-     * Set typejob
+     * Set name
      *
-     * @param string $typejob
-     * @return Experience
+     * @param string $name
+     * @return Competence
      */
-    public function setTypejob($typejob)
+    public function setName($name)
     {
-        $this->typejob = $typejob;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get typejob
+     * Get name
      *
      * @return string 
      */
-    public function getTypejob()
+    public function getName()
     {
-        return $this->typejob;
+        return $this->name;
     }
 
     /**
-     * Set description
+     * Set note
      *
-     * @param string $description
-     * @return Experience
+     * @param integer $note
+     * @return Competence
      */
-    public function setDescription($description)
+    public function setNote($note)
     {
-        $this->description = $description;
+        $this->note = $note;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get note
      *
-     * @return string 
+     * @return integer 
      */
-    public function getDescription()
+    public function getNote()
     {
-        return $this->description;
+        return $this->note;
     }
 
     /**
-     * Set begin
+     * Set created
      *
-     * @param \DateTime $begin
-     * @return Experience
+     * @param \DateTime $created
+     * @return Competence
      */
-    public function setBegin($begin)
+    public function setCreated($created)
     {
-        $this->begin = $begin;
+        $this->created = $created;
 
         return $this;
     }
 
     /**
-     * Get begin
+     * Get created
      *
      * @return \DateTime 
      */
-    public function getBegin()
+    public function getCreated()
     {
-        return $this->begin;
+        return $this->created;
     }
 
     /**
-     * Set end
+     * Set updated
      *
-     * @param \DateTime $end
-     * @return Experience
+     * @param \DateTime $updated
+     * @return Competence
      */
-    public function setEnd($end)
+    public function setUpdated($updated)
     {
-        $this->end = $end;
+        $this->updated = $updated;
 
         return $this;
     }
 
     /**
-     * Get end
+     * Get updated
      *
      * @return \DateTime 
      */
-    public function getEnd()
+    public function getUpdated()
     {
-        return $this->end;
+        return $this->updated;
     }
 
     /**
      * Set cv
      *
      * @param \Unetwork\AdminBundle\Entity\Cv $cv
-     * @return Experience
+     * @return Competence
      */
     public function setCv(\Unetwork\AdminBundle\Entity\Cv $cv = null)
     {

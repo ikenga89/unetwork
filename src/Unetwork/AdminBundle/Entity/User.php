@@ -94,6 +94,18 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Community", inversedBy="users")
      * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
      */
@@ -625,5 +637,51 @@ class User implements UserInterface, \Serializable
     public function getUrl()
     {
         return $this->url;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }
