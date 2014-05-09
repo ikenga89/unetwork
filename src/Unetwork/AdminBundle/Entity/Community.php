@@ -36,18 +36,6 @@ class Community
      */
     protected $users;
 
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     */
-    protected $created;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     */
-    protected $updated;
-
 
     public function __construct()
     {
@@ -152,51 +140,5 @@ class Community
     public function getUsers()
     {
         return $this->users;
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     * @return Community
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     * @return Community
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \DateTime 
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
     }
 }

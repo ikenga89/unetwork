@@ -1,0 +1,55 @@
+.navbar-fixed-top {
+	background-image: none;
+	background: #e5e5e5;
+	border: none;
+}
+.logo img {
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+#recherche {
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+#recherche .champ {
+	background:#fff;
+	border:none;
+	color:#000;
+	vertical-align: middle;
+	border-radius: 12px 0px 0 12px;
+	padding: 3px 0px 3px 15px;
+	font-size: 15px;
+}
+
+#recherche .bouton {
+	display: inline-block;
+	background:#fff;
+	border:none;
+	vertical-align: middle;
+	margin-left: -5px;
+	border-radius: 0 12px 12px 0;
+	padding: 6px 0px 7px 5px;
+}
+#recherche .searchicon {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.param {
+	margin-top: 13px;
+	float: left;
+}
+
+.user {
+	margin-top: 5px;
+	float: left;
+	margin-right: 10px;
+}
+
+.glyphicon-cog:before {
+	font-size: 20px;
+	margin-top: 5px;
+}

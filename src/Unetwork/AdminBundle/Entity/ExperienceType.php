@@ -22,7 +22,7 @@ class ExperienceType
     /**
      * @ORM\Column(type="string", length=150)
      */
-    protected $libelle;
+    protected $description;
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="type")
@@ -99,28 +99,5 @@ class ExperienceType
     public function getExperience()
     {
         return $this->experience;
-    }
-
-    /**
-     * Set libelle
-     *
-     * @param string $libelle
-     * @return ExperienceType
-     */
-    public function setLibelle($libelle)
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
-
-    /**
-     * Get libelle
-     *
-     * @return string 
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
     }
 }
