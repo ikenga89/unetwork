@@ -26,7 +26,7 @@ class Actuality
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=250)
      * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $description;
