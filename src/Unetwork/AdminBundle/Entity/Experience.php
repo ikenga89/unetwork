@@ -22,7 +22,7 @@ class Experience
     /**
      * @ORM\Column(type="string", length=140)
      */
-    protected $typejob;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", length=250)
@@ -255,5 +255,28 @@ class Experience
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Experience
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }
