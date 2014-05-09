@@ -34,4 +34,70 @@ class ExperienceType
         $this->experience = new ArrayCollection();
     }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return ExperienceType
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add experience
+     *
+     * @param \Unetwork\AdminBundle\Entity\Experience $experience
+     * @return ExperienceType
+     */
+    public function addExperience(\Unetwork\AdminBundle\Entity\Experience $experience)
+    {
+        $this->experience[] = $experience;
+
+        return $this;
+    }
+
+    /**
+     * Remove experience
+     *
+     * @param \Unetwork\AdminBundle\Entity\Experience $experience
+     */
+    public function removeExperience(\Unetwork\AdminBundle\Entity\Experience $experience)
+    {
+        $this->experience->removeElement($experience);
+    }
+
+    /**
+     * Get experience
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getExperience()
+    {
+        return $this->experience;
+    }
 }

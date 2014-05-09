@@ -41,7 +41,7 @@ class Competence
     protected $updated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="hobby")
+     * @ORM\ManyToOne(targetEntity="Cv", inversedBy="competence")
      * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
      */
     protected $cv;
