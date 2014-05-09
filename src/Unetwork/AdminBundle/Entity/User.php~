@@ -3,16 +3,19 @@
 namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Unetwork\AdminBundle\Entity\User
  *
  * @ORM\Table(name="unetwork_users")
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity(repositoryClass="Unetwork\AdminBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable
 {
+    
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -46,6 +49,41 @@ class User implements UserInterface, \Serializable
     private $prenom;
 
     /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $tel;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_nais;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $linkedin;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $viadeo;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $twitter;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    private $url;
+
+    /**
      * @ORM\Column(type="array")
      */
     private $roles;
@@ -54,6 +92,18 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
 
     /**
      * @ORM\ManyToOne(targetEntity="Community", inversedBy="users")
@@ -317,5 +367,275 @@ class User implements UserInterface, \Serializable
         $this->roles = $tab_roles;
 
         return $this;
+    }
+
+
+
+
+
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $path;
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads';
+    }
+
+
+
+
+
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->path);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return User
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return string 
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set date_nais
+     *
+     * @param \DateTime $dateNais
+     * @return User
+     */
+    public function setDateNais($dateNais)
+    {
+        $this->date_nais = $dateNais;
+
+        return $this;
+    }
+
+    /**
+     * Get date_nais
+     *
+     * @return \DateTime 
+     */
+    public function getDateNais()
+    {
+        return $this->date_nais;
+    }
+
+    /**
+     * Set linkedin
+     *
+     * @param string $linkedin
+     * @return User
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedin
+     *
+     * @return string 
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * Set viadeo
+     *
+     * @param string $viadeo
+     * @return User
+     */
+    public function setViadeo($viadeo)
+    {
+        $this->viadeo = $viadeo;
+
+        return $this;
+    }
+
+    /**
+     * Get viadeo
+     *
+     * @return string 
+     */
+    public function getViadeo()
+    {
+        return $this->viadeo;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     * @return User
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return User
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

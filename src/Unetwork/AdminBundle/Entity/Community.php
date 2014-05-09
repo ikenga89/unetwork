@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Community
 {
+    
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")

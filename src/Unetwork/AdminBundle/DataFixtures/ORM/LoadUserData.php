@@ -56,6 +56,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $userAdmin->setPassword($password);
         $userAdmin->setNom('Nom');
         $userAdmin->setPrenom('Prenom');
+        $userAdmin->setCommunity($community);
         $userAdmin->setRoles('ROLE_ADMIN');
 
         $userUser = new User();

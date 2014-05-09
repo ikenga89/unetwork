@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Comment
 {
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Actuality", inversedBy="comments")
      * @ORM\JoinColumn(name="actuality_id", referencedColumnName="id")
@@ -38,6 +37,18 @@ class Comment
      * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $content;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
 
     /**
      * Get id
@@ -117,5 +128,51 @@ class Comment
     public function getActualitys()
     {
         return $this->actualitys;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Comment
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Comment
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

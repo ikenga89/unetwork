@@ -26,7 +26,6 @@ class IndexController extends Controller
 
         if ($form->isValid()) {
             // the validation passed, do something with the $author object
-            
 
 
             return $this->redirect($this->generateUrl('app_recherche', array(

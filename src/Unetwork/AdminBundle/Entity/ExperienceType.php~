@@ -1,0 +1,37 @@
+<?php
+
+namespace Unetwork\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="experience_type")
+ */
+class ExperienceType
+{
+    
+	/**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    protected $description;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="type")
+     */
+    protected $experience;
+
+    public function __construct()
+    {
+        $this->experience = new ArrayCollection();
+    }
+
+}

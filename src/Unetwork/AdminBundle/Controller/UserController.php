@@ -69,6 +69,7 @@ class UserController extends Controller
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
+            $user->preUpload();
             $em->persist($user);
             $em->flush();
 

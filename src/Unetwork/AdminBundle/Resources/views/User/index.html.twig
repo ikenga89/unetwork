@@ -1,6 +1,46 @@
+{% extends 'UnetworkAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Actu</h1>
+  	<a href="{{ path('admin_user_create') }}"> Ajouter </a>
+
+	<div class="table-responsive">
+
+        {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+            		<th></th>
+             		<th> Id </th>                 		
+             		<th> Nom  </th>     
+             		<th> Prénom</th>
+             		<th> Communauté </th>
+             		<th> Actions </th>
+
+            </tr>
+          </thead>
+
+          <tbody>
 {% for user in users %}
-	{{ user.email }}
-	{{ user.nom }}
-	{{ user.prenom }}
-	{{ user.community }}
+<tr>
+	<td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
+	 <td> 	{{ user.id }}  </td>    
+	 <td> 	{{ user.nom }}   </td>
+	 <td> 	{{ user.prenom }}  </td>
+	 <td> {{ user.community.name }} </td>
+
+
+	  	<td> 	
+	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
+	    </td>
+
+ </tr>
 {% endfor %}
+</tbody>
+            </table>
+          </div>
+
+{% endblock %}

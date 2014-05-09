@@ -23,6 +23,11 @@ class UserType extends AbstractType
         if($this->type=='create'){$builder->add('password', 'password');}
         $builder->add('nom');
         $builder->add('prenom');
+        $builder->add('file', 'file');
+        $builder->add('community', 'entity', array(
+            'class' => 'UnetworkAdminBundle:Community',
+            'property' => 'name',
+        ));
         if($this->type=='create'){
             $builder->add('roles', 'choice', array(
                 'choices'   => array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Admin'),

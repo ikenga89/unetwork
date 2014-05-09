@@ -3,6 +3,7 @@
 namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Experience
 {
+    
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -23,7 +25,7 @@ class Experience
     protected $typejob;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="string", length=250)
      */
     protected $description;
 
@@ -38,10 +40,28 @@ class Experience
     protected $end;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
+     */
+    protected $updated;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Cv", inversedBy="experience")
      * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
      */
     protected $cv;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ExperienceType", inversedBy="experience")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    protected $type;
 
     /**
      * Get id
@@ -166,5 +186,74 @@ class Experience
     public function getCv()
     {
         return $this->cv;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Experience
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Experience
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Unetwork\AdminBundle\Entity\ExperienceType $type
+     * @return Experience
+     */
+    public function setType(\Unetwork\AdminBundle\Entity\ExperienceType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Unetwork\AdminBundle\Entity\ExperienceType 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
