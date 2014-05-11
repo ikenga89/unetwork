@@ -65,9 +65,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $userAdmin->setTel('TelAdmin1');
         $userAdmin->setDateNais(new \DateTime('1990-01-01'));
         $userAdmin->setLinkedin('http://linkedin.com');
-        $userAdmin->setLinkedin('http://viadeo.com');
-        $userAdmin->setLinkedin('http://twitter.com');
-        $userAdmin->setLinkedin('http://url.com');
+        $userAdmin->setViadeo('http://viadeo.com');
+        $userAdmin->setTwitter('http://twitter.com');
+        $userAdmin->setUrl('http://url.com');
         $userAdmin->setCommunity($community);
         $userAdmin->setRoles('ROLE_ADMIN');
         $userAdmin->setCreated(new \DateTime);
@@ -86,9 +86,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $userUser->setTel('TelUser1');
         $userUser->setDateNais(new \DateTime('1990-01-01'));
         $userUser->setLinkedin('http://linkedin.com');
-        $userUser->setLinkedin('http://viadeo.com');
-        $userUser->setLinkedin('http://twitter.com');
-        $userUser->setLinkedin('http://url.com');
+        $userUser->setViadeo('http://viadeo.com');
+        $userUser->setTwitter('http://twitter.com');
+        $userUser->setUrl('http://url.com');
         $userUser->setCommunity($community);
         $userUser->setRoles('ROLE_USER');
         $userUser->setCreated(new \DateTime);
