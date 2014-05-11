@@ -1,7 +1,16 @@
+.row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.col-md-12{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 .navbar-fixed-top {
 	background-image: none;
 	background: #e5e5e5;
 	border: none;
+	height: 50px;
 }
 .logo img {
 	float: left;
@@ -55,4 +64,45 @@
 .glyphicon-cog:before {
 	font-size: 20px;
 	margin-top: 5px;
+}
+
+.body{
+	margin-top: 50px;
+}
+
+.body .header{
+	position: relative;
+	height: 500px;
+}
+
+.body .header .bottomBar{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.body .header .contImgProfil{
+	position: absolute;
+	width: 100%;
+	bottom: -100px;
+	text-align: center;
+	background: #ffffff;
+	-moz-box-shadow: 0px -4px 5px 0px #c0c0c0;
+-webkit-box-shadow: 0px -4px 5px 0px #c0c0c0;
+-o-box-shadow: 0px -4px 5px 0px #c0c0c0;
+box-shadow: 0px -4px 5px 0px #c0c0c0;
+}
+
+.body .header .contImgProfil img{
+	padding-top: 15px;
+	width: 280px;
+	height: 295px;
+}
+
+.body .header .bottomBar .username{
+	color: white;
+	font-size: 25px;
 }
