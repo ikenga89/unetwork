@@ -15,9 +15,12 @@ class ProfilController extends Controller
     public function profilAction()
     {
     	$user = $this->get('security.context')->getToken()->getUser();
+
+        $cv = $user->getCv();
         
         return array(
             "user" => $user,
+            "cv" => $cv,
         );
     }
 }
