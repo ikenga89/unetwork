@@ -2,7 +2,63 @@
 
 {% block body %}
 
-	<h1>Votre profil</h1>
+  	<div class="header">
+		  		<div class="bottomBar">
+		  			<div class="row">
+		  				<div class="col-md-2"></div>
+		  				<div class="col-md-3">
+		  					<span class="username">{{ user.prenom }} {{ user.nom }}</span>
+		  				</div>
+
+		  				<div class="col-md-2">
+		  					<div class="imgProfil">
+		  						<img src="/{{ user.getWebPath }}" />
+		  						{{ user.community.name }}
+		  					</div>
+		  				</div>
+
+		  				<div class="col-md-5"></div>
+		  				
+		  		</div>
+
+		  		<div class="info">
+
+		  			<div class="row">
+		  				<div class="col-md-1"></div>
+
+		  				<div class="col-md-6">
+		  					<h2>Présentation</h2>
+		  				</div>
+
+		  				<div class="col-md-5">
+		  					{{ user.linkedin }}
+		  					{{ user.viadeo }}
+		  					{{ user.twitter }}
+		  				</div>
+		  			</div>
+
+		  			<div class="row">
+		  				<div class="col-md-1"></div>
+
+		  				<div class="col-md-6">
+		  					<p>Lorem ipsum blablabla</p>
+		  				</div>
+
+		  				<div class="col-md-5">
+		  					{{ user.ville }}
+		  					<br/>
+		  					{{ user.email }}
+		  					<br />
+		  					{{ user.url }}
+		  				</div>
+		  			</div>
+
+		  		</div>
+  	</div>
+
+  	<div class="timeline">
+
+  	</div>
 
 {% endblock %}
 

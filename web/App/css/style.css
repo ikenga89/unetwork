@@ -84,19 +84,19 @@
 	background: rgba(0, 0, 0, 0.3);
 }
 
-.body .header .contImgProfil{
+.body .header .imgProfil{
 	position: absolute;
 	width: 100%;
 	bottom: -100px;
 	text-align: center;
 	background: #ffffff;
-	-moz-box-shadow: 0px -4px 5px 0px #c0c0c0;
--webkit-box-shadow: 0px -4px 5px 0px #c0c0c0;
--o-box-shadow: 0px -4px 5px 0px #c0c0c0;
-box-shadow: 0px -4px 5px 0px #c0c0c0;
+
+	border-left: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
 }
 
-.body .header .contImgProfil img{
+.body .header .imgProfil img{
 	padding-top: 15px;
 	width: 280px;
 	height: 295px;
@@ -105,4 +105,7 @@ box-shadow: 0px -4px 5px 0px #c0c0c0;
 .body .header .bottomBar .username{
 	color: white;
 	font-size: 25px;
+}
+.body .timeline{
+	background: #f5f5f5;
 }
