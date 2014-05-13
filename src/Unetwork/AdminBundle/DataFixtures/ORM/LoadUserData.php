@@ -96,11 +96,17 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         /*
         *   Cv
         */
-        $cv = new Cv();
-        $cv->setPresentation('PresentationCv1');
-        $cv->setUser($userUser);
-        $cv->setCreated(new \DateTime);
-        $cv->setUpdated(new \DateTime);
+        $cvAdmin = new Cv();
+        $cvAdmin->setPresentation('PresentationCv1');
+        $cvAdmin->setUser($userAdmin);
+        $cvAdmin->setCreated(new \DateTime);
+        $cvAdmin->setUpdated(new \DateTime);
+
+        $cvUser = new Cv();
+        $cvUser->setPresentation('PresentationCv1');
+        $cvUser->setUser($userUser);
+        $cvUser->setCreated(new \DateTime);
+        $cvUser->setUpdated(new \DateTime);
 
         /*
         *   ExperienceType
@@ -108,11 +114,14 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $experience_type1 = new ExperienceType();
         $experience_type1->setLibelle('libelle1');
 
+        $experience_type2 = new ExperienceType();
+        $experience_type2->setLibelle('libelle2');
+
         /*
         *   Experience
         */
         $experience = new Experience();
-        $experience->setCv($cv);
+        $experience->setCv($cvUser);
         $experience->setType($experience_type1);
         $experience->setName('name1');
         $experience->setDescription('description1');
@@ -125,7 +134,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         *   Competence
         */
         $competence = new Competence();
-        $competence->setCv($cv);
+        $competence->setCv($cvUser);
         $competence->setName('name1');
         $competence->setNote(3);
         $competence->setCreated(new \DateTime);
@@ -135,7 +144,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         *   Hobby
         */
         $hobby = new Hobby();
-        $hobby->setCv($cv);
+        $hobby->setCv($cvUser);
         $hobby->setName('name1');
         $hobby->setCreated(new \DateTime);
         $hobby->setUpdated(new \DateTime);
@@ -143,25 +152,66 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         /*
         *   Experience
         */
-        $experience = new Experience();
-        $experience->setCv($cv);
-        $experience->setType($experience_type1);
-        $experience->setName('name1');
-        $experience->setDescription($lorem);
-        $experience->setBegin(new \DateTime('2011-01-01'));
-        $experience->setEnd(new \DateTime('2012-02-01'));
-        $experience->setCreated(new \DateTime);
-        $experience->setUpdated(new \DateTime);
+        $experienceAdmin = new Experience();
+        $experienceAdmin->setCv($cvAdmin);
+        $experienceAdmin->setType($experience_type1);
+        $experienceAdmin->setName('experienceAdmin1');
+        $experienceAdmin->setDescription($lorem);
+        $experienceAdmin->setBegin(new \DateTime('2011-01-01'));
+        $experienceAdmin->setEnd(new \DateTime('2012-02-01'));
+        $experienceAdmin->setCreated(new \DateTime);
+        $experienceAdmin->setUpdated(new \DateTime);
 
-        $experience2 = new Experience();
-        $experience2->setCv($cv);
-        $experience2->setType($experience_type1);
-        $experience2->setName('name2');
-        $experience2->setDescription($lorem);
-        $experience2->setBegin(new \DateTime('2012-03-01'));
-        $experience2->setEnd(new \DateTime('2013-05-01'));
-        $experience2->setCreated(new \DateTime);
-        $experience2->setUpdated(new \DateTime);
+        $experienceAdmin2 = new Experience();
+        $experienceAdmin2->setCv($cvAdmin);
+        $experienceAdmin2->setType($experience_type2);
+        $experienceAdmin2->setName('experienceAdmin2');
+        $experienceAdmin2->setDescription($lorem);
+        $experienceAdmin2->setBegin(new \DateTime('2012-03-01'));
+        $experienceAdmin2->setEnd(new \DateTime('2013-05-01'));
+        $experienceAdmin2->setCreated(new \DateTime);
+        $experienceAdmin2->setUpdated(new \DateTime);
+
+        $experienceAdmin3 = new Experience();
+        $experienceAdmin3->setCv($cvAdmin);
+        $experienceAdmin3->setType($experience_type1);
+        $experienceAdmin3->setName('experienceAdmin3');
+        $experienceAdmin3->setDescription($lorem);
+        $experienceAdmin3->setBegin(new \DateTime('2013-06-01'));
+        $experienceAdmin3->setEnd(new \DateTime('2014-02-01'));
+        $experienceAdmin3->setCreated(new \DateTime);
+        $experienceAdmin3->setUpdated(new \DateTime);
+
+
+        $experienceUser = new Experience();
+        $experienceUser->setCv($cvUser);
+        $experienceUser->setType($experience_type1);
+        $experienceUser->setName('experienceUser1');
+        $experienceUser->setDescription($lorem);
+        $experienceUser->setBegin(new \DateTime('2011-01-01'));
+        $experienceUser->setEnd(new \DateTime('2012-02-01'));
+        $experienceUser->setCreated(new \DateTime);
+        $experienceUser->setUpdated(new \DateTime);
+
+        $experienceUser2 = new Experience();
+        $experienceUser2->setCv($cvUser);
+        $experienceUser2->setType($experience_type1);
+        $experienceUser2->setName('experienceUser2');
+        $experienceUser2->setDescription($lorem);
+        $experienceUser2->setBegin(new \DateTime('2012-03-01'));
+        $experienceUser2->setEnd(new \DateTime('2013-05-01'));
+        $experienceUser2->setCreated(new \DateTime);
+        $experienceUser2->setUpdated(new \DateTime);
+
+        $experienceUser3 = new Experience();
+        $experienceUser3->setCv($cvUser);
+        $experienceUser3->setType($experience_type1);
+        $experienceUser3->setName('experienceUser2');
+        $experienceUser3->setDescription($lorem);
+        $experienceUser3->setBegin(new \DateTime('2013-06-01'));
+        $experienceUser3->setEnd(new \DateTime('2014-02-01'));
+        $experienceUser3->setCreated(new \DateTime);
+        $experienceUser3->setUpdated(new \DateTime);
 
         /*
         *   Actuality
@@ -187,10 +237,16 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($community);
         $manager->persist($userAdmin);
         $manager->persist($userUser);
-        $manager->persist($cv);
+        $manager->persist($cvAdmin);
+        $manager->persist($cvUser);
         $manager->persist($experience_type1);
-        $manager->persist($experience);
-        $manager->persist($experience2);
+        $manager->persist($experience_type2);
+        $manager->persist($experienceAdmin);
+        $manager->persist($experienceAdmin2);
+        $manager->persist($experienceAdmin3);
+        $manager->persist($experienceUser);
+        $manager->persist($experienceUser2);
+        $manager->persist($experienceUser3);
         $manager->persist($competence);
         $manager->persist($hobby);
         $manager->persist($actuality);
