@@ -58,6 +58,20 @@
 
   	<div class="timeline">
 
+  		<div class="row">
+
+  			<div class="col-md-12">
+
+		  		{% for cvs in cv %}
+		  			<ul class="timeline">
+		  				<li class="timeline-blue">{{ cvs.presentation }}</li>
+		  			</ul>
+				{% endfor %}
+
+			</div>
+
+		</div>
+
   	</div>
 
 {% endblock %}
