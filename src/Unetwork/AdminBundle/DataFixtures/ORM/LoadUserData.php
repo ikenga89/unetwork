@@ -38,7 +38,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-
+        $lorem = 'Lorem ipsum Cillum labore do labore proident Duis aute id consectetur id veniam magna adipisicing voluptate laboris esse incididunt voluptate id nisi consectetur mollit deserunt anim dolor irure consequat cupidatat aliquip veniam in dolor proident quis ad Duis nisi eiusmod Duis incididunt proident consectetur do dolore laboris deserunt tempor eu consectetur est eu eu consequat eu ullamco ullamco dolore dolor mollit in sed anim reprehenderit adipisicing dolor proident Excepteur Ut amet Excepteur deserunt anim minim eiusmod in laboris fugiat laborum aliquip commodo aute anim consequat amet in magna velit fugiat deserunt Ut non Ut ex magna proident cillum consectetur voluptate do Excepteur qui cillum ullamco Ut dolor adipisicing veniam dolore nisi veniam esse sunt elit dolore cupidatat dolore ad enim aute aliqua voluptate cillum aute sunt mollit irure non cillum minim dolor veniam magna laborum quis ut ea aliquip enim pariatur irure magna nisi et anim adipisicing laboris irure dolor non.';
 
         /*
         *   Community
@@ -47,7 +47,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $community->setName('Informatique');
         $community->setCreated(new \DateTime);
         $community->setUpdated(new \DateTime);
-
 
         /*
         *   User
@@ -148,11 +147,21 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $experience->setCv($cv);
         $experience->setType($experience_type1);
         $experience->setName('name1');
-        $experience->setDescription('description1');
-        $experience->setBegin(new \DateTime);
-        $experience->setEnd(new \DateTime);
+        $experience->setDescription($lorem);
+        $experience->setBegin(new \DateTime('2011-01-01'));
+        $experience->setEnd(new \DateTime('2012-02-01'));
         $experience->setCreated(new \DateTime);
         $experience->setUpdated(new \DateTime);
+
+        $experience2 = new Experience();
+        $experience2->setCv($cv);
+        $experience2->setType($experience_type1);
+        $experience2->setName('name2');
+        $experience2->setDescription($lorem);
+        $experience2->setBegin(new \DateTime('2012-03-01'));
+        $experience2->setEnd(new \DateTime('2013-05-01'));
+        $experience2->setCreated(new \DateTime);
+        $experience2->setUpdated(new \DateTime);
 
         /*
         *   Actuality
@@ -181,6 +190,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($cv);
         $manager->persist($experience_type1);
         $manager->persist($experience);
+        $manager->persist($experience2);
         $manager->persist($competence);
         $manager->persist($hobby);
         $manager->persist($actuality);

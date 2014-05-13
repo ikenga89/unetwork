@@ -18,8 +18,10 @@
 		  				</div>
 
 		  				<div class="col-md-5"></div>
+		  			</div>
 		  				
 		  		</div>
+	</div>
 
 		  		<div class="info">
 
@@ -34,6 +36,7 @@
 		  					{{ user.linkedin }}
 		  					{{ user.viadeo }}
 		  					{{ user.twitter }}
+		  					{{ cvs.presentation }}
 		  				</div>
 		  			</div>
 
@@ -53,18 +56,35 @@
 		  				</div>
 		  			</div>
 
-		  		</div>
-  	</div>
-
-  	<div class="timeline">
+  	<div class="contTimeline">
 
   		<div class="row">
 
   			<div class="col-md-12">
 
-		  		{% for cvs in cv %}
+		  		{% for experience in experiences %}
 		  			<ul class="timeline">
-		  				<li class="timeline-blue">{{ cvs.presentation }}</li>
+		  				<li class="timeline-blue">
+		  					<div class="timeline-time">
+		  						<span style="display:inline-block">
+		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+								</span>
+								-
+								<span style="display:inline-block">
+								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+								</span>
+		  					</div>
+							<div class="timeline-icon">
+								<i class="fa fa-trophy"></i>
+							</div>
+							<div class="timeline-body">
+								{{ experience.name }}
+								<br />
+								{{ experience.description }}
+							</div>
+						</li>
 		  			</ul>
 				{% endfor %}
 
