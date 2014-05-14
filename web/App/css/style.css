@@ -133,3 +133,39 @@ a.dropdown-toggle {
 .navbar-nav > li > .dropdown-menu {
 	box-shadow: 0px 2px 9px 0px #bbb;
 }
+.contTimeline{
+	padding: 30px 30px 0px 0px;
+}
+.contTimeline ul.timeline:before{
+	background: none repeat scroll 0 0 #5C6C8E;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-body{
+	margin: 0 0 20px 25%;
+	background-color: #5C6C8E;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-body h2{
+	text-transform: uppercase;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-body:after{
+border-color: rgba(0, 0, 0, 0) #5C6C8E rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-icon{
+	margin: 5px 0 0 -30px;
+	box-shadow: 0 0 0 8px #5C6C8E;
+	background-color: #7082AA;
+	width: 50px;
+	height:50px;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-icon i{
+	line-height: 2.5;
+	font-size: 20px;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-time span.date{
+	text-transform: uppercase;
+	font-size: 9px;
+}
+.contTimeline ul.timeline li.timeline-blue div.timeline-time span.time{
+	font-size: 24px;
+	line-height: 24px;
+	color: #5C6C8E;
+}

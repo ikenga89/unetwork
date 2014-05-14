@@ -112,10 +112,10 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         *   ExperienceType
         */
         $experience_type1 = new ExperienceType();
-        $experience_type1->setLibelle('libelle1');
+        $experience_type1->setLibelle('fa fa-suitcase');
 
         $experience_type2 = new ExperienceType();
-        $experience_type2->setLibelle('libelle2');
+        $experience_type2->setLibelle('fa fa-trophy');
 
         /*
         *   Experience
