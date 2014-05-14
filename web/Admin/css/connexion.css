@@ -25,6 +25,7 @@ body {
   border-radius: 5px;
   padding: 7px;
   cursor: text;
+  margin-top: 30px;
 }
 .connexion input{
 width:75%;
@@ -32,7 +33,7 @@ font-size:  1em;
 }
 
 .btnSubmit {
-  margin-top: 20px;
+  margin-top:30px;
   width:75%;
   padding: 7px;
   background-color: #3f434b;
