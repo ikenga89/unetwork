@@ -1,0 +1,44 @@
+{% extends 'UnetworkAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Experiences</h1>
+
+
+
+
+
+	   <table class="table table-striped">
+             <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Competence </th>  
+                    <th> Description</th>                     
+                    <th> User</th>     
+                    <th> Date </th>
+                    <th>Suprimer</th>
+                </tr>
+            </thead> 
+
+            <tbody>
+
+                {% for experience in experiences  %}
+                    <tr>
+                        <td>{{ experience.id }}</td>
+                        <td>{{ experience.name }}</td>
+                        <td>{{ experience.description }}</td>
+                        <td>{{ experience.cv.user.nom }} {{ experience.cv.user.prenom }}</td>
+                        <td>{{ experience.updated|date("m/d/Y h:i") }}</td>
+
+                        <td>                                 
+                            <a href="{{ path('admin_experience_delete',{'id': experience.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+                        </td>
+                    </tr>      
+                {% endfor %} 
+            </tbody>     
+
+
+
+		 
+
+{% endblock %}

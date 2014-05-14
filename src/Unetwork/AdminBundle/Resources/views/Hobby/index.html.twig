@@ -1,0 +1,42 @@
+{% extends 'UnetworkAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Experiences</h1>
+
+
+
+
+
+	   <table class="table table-striped">
+             <thead>
+                <tr>
+                    <th> Id </th>
+                    <th> Hobby </th>                       
+                    <th> User</th>     
+                    <th> Date </th>
+                    <th>Suprimer</th>
+                </tr>
+            </thead> 
+
+            <tbody>
+
+                {% for hobby in hobbies  %}
+                    <tr>
+                        <td>{{ hobby.id }}</td>
+                        <td>{{ hobby.name }}</td>
+                        <td>{{ hobby.cv.user.nom }} {{ hobby.cv.user.prenom }}</td>
+                        <td>{{ hobby.updated|date("m/d/Y h:i") }}</td>
+
+                        <td>                                 
+                            <a href="{{ path('admin_hobby_delete',{'id': hobby.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+                        </td>
+                    </tr>      
+                {% endfor %} 
+            </tbody>     
+
+
+
+		 
+
+{% endblock %}
