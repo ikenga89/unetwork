@@ -30,10 +30,12 @@
 	color:#000;
 	vertical-align: middle;
 	border-radius: 12px 0px 0 12px;
-	padding: 3px 0px 3px 15px;
+	padding: 0px 15px 0px 15px;
 	border: 2px solid #dedede;
 	border-right: none;
+	height: 25px;
 }
+
 
 #recherche .bouton {
 	display: inline-block;
@@ -42,25 +44,32 @@
 	vertical-align: middle;
 	margin-left: -5px;
 	border-radius: 0 12px 12px 0;
-	padding: 4px 0px 5px 5px;
+	padding: 5px 0px 0px 5px;
 	border: 2px solid #dedede;
 	border-left: none;
+	height: 25px;
 }
 #recherche .searchicon {
 	vertical-align: middle;
 	margin-right: 10px;
+	top: -1px;
+	color: #dedede;
+	transition: 0.3s;
 }
-.param {
-	margin-top: 13px;
-	float: left;
+#recherche .searchicon:hover{
+	color: #bbb;
 }
 
+.param {
+
+	color: #3a4147;
+	float: left;
+}
 .user {
 	margin-top: 5px;
 	float: left;
 	margin-right: 10px;
 }
-
 .glyphicon-cog:before {
 	font-size: 20px;
 	margin-top: 5px;
@@ -112,8 +121,11 @@
 }
 
 a.dropdown-toggle {
+	transition: 0.3s;
 	height: 100%;
-
+}
+.nav > li > a:hover, .nav > li > a:focus {
+	color: #000!important;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{
 	background: none;
