@@ -44,7 +44,7 @@ class ExperienceController extends Controller
 
        $this->get('session')->getFlashBag()->add(
             'notice',
-            "L&rsquo;experience a bien été supprimé"
+            "L'experience a bien été supprimé"
         );
         return $this->redirect($this->generateUrl('admin_experience'));
     }

@@ -4,35 +4,34 @@
 
 	<h1>Competence</h1>
 
-	
+	{% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
+	<table class="table table-striped">
+        <thead>
+            <tr>
+             	<th> Id </th>
+             	<th> Competence </th>                 		
+             	<th> User</th>     
+             	<th> Date </th>
+             	<th>Suprimer</th>
+            </tr>
+        </thead> 
 
+        <tbody>
 
-		<table class="table table-striped">
-             <thead>
-                <tr>
-                 	<th> Id </th>
-                 	<th> Competence </th>                 		
-                 	<th> User</th>     
-                 	<th> Date </th>
-                 	<th>Suprimer</th>
-                </tr>
-            </thead> 
+        	{% for competence in competences  %}
+        		<tr>
+        			<td>{{ competence.id }}</td>
+        			<td>{{ competence.name }}</td>
+        			<td>{{ competence.cv.user.nom }} {{ competence.cv.user.prenom }}</td>
+        			<td>{{ competence.updated|date("m/d/Y h:i") }}</td>
 
-            <tbody>
-
-            	{% for competence in competences  %}
-            		<tr>
-            			<td>{{ competence.id }}</td>
-            			<td>{{ competence.name }}</td>
-            			<td>{{ competence.cv.user.nom }} {{ competence.cv.user.prenom }}</td>
-            			<td>{{ competence.updated|date("m/d/Y h:i") }}</td>
-
-		                <td>		                 		 
-		                 	<a href="{{ path('admin_competence_delete',{'id': competence.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
-		                </td>
-            		</tr>      
-               	{% endfor %} 
-            </tbody>     
+	                <td>		                 		 
+	                 	<a href="{{ path('admin_competence_delete',{'id': competence.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                </td>
+        		</tr>      
+           	{% endfor %} 
+        </tbody>
+    </table>     
 
 {% endblock %}

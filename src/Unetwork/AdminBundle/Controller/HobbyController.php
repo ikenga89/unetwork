@@ -44,7 +44,7 @@ class HobbyController extends Controller
 
        $this->get('session')->getFlashBag()->add(
             'notice',
-            "L&rsquo;hobby a bien été supprimé"
+            "L'hobby a bien été supprimé"
         );
         return $this->redirect($this->generateUrl('admin_hobby'));
     }
