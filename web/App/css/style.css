@@ -100,14 +100,13 @@
 	bottom: -100px;
 	text-align: center;
 	background: #ffffff;
-	width: 309px;
-	margin-left: -20px;
+	width: 265px;
 	box-shadow: 0px 6px 18px 0px #999;
 }
 
 .body .header .imgProfil img{
 	padding-top: 15px;
-	width: 250px;
+	width: 235px;
 	height: 250px;
 }
 
