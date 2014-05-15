@@ -115,6 +115,22 @@
 	color: white;
 	font-size: 25px;
 }
+.body .info .social_links{
+	padding: 20px 0px 0px 30px;
+}
+.body .info .social_links a{
+	margin-right: 10px;
+}
+.body .info .social_links a:hover{
+	text-decoration: none;
+}
+.body .info .info_links{
+	margin-left: 30px;
+}
+.body .info .info_links a{
+	display: inline-block;
+	margin-bottom: 10px;
+}
 .body .contTimeline{
 	position: relative;
 	background: #f5f5f5;
