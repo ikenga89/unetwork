@@ -10,7 +10,9 @@ class CommunityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
-        $builder->add('envoyer', 'submit');
+        $builder->add('Ajouter', 'submit'/* , array(
+        'validation_groups' => false,)*/
+        );
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -18,6 +20,7 @@ class CommunityType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Unetwork\AdminBundle\Entity\Community',
         ));
+
     }
 
     public function getName()

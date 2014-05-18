@@ -38,13 +38,13 @@ class Community
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Erreur insertion date created")
      */
     protected $created;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Erreur insertion date update")
      */
     protected $updated;
 

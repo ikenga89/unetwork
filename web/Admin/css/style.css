@@ -96,6 +96,31 @@ body {
 }
 
 
+/* ------  ------*/
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  vertical-align: middle;
+}
+
+
+/* ------  ------*/
+.th_modify, .td_modify{
+  width: 200px;
+  text-align: center;
+}
+
+.td_modify img{
+  cursor: pointer;
+}
+
+.th_id, .td_id{
+  width: 100px;
+}
+
+.input{
+  width: 100%;
+  max-width: 400px;
+}
 
 
 

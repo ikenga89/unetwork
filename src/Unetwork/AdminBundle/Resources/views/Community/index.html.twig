@@ -4,16 +4,27 @@
 
 	<h1>Community</h1>
 
-  {{ form(form) }}
+
 
 <div class="table-responsive">
 {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
+
+          <form action="{{ path('admin_community_create') }}" method="post">
+            <label>Name</label>
+            <input id="community_name" name="community_name" type="texte">
+            <input type="submit" value="Ajouter">
+          </form>
+
+
+
+
             <table class="table table-striped">
               <thead>
                 <tr>
-                 		<th> Id </th>                 		
+                 		<th class="th_id"> Id </th>                 		
                  		<th> Name</th>     
-                 		<th> Modifier / Supprimer </th>
+                 		<th class="th_modify"> Modifier / Supprimer </th>
                  		
 
                 </tr>
@@ -23,14 +34,15 @@
 
                 	{% for community in communities  %}                 		
                  		 <tr>
-	                 		 <td> 	{{ community.id }}  </td>    
+	                 		 <td class="td_id">{{ community.id }}</td>    
  
-	                 		 <td> 	{{ community.name }}  </td>
+	                 		 <td id="community_{{ community.id }}">{{ community.name }}</td>
 	                 		 
-	                 		  	<td> 	
-	                 		   		<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> 
-	                 		   		<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
-	                 		    </td>
+	                 		  <td class="td_modify"> 	
+	                 		   	<!--<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> -->
+                          <img src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
+	                 		   	<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                 		  </td>
                  		 </tr>                
                		{% endfor %}     
 
@@ -42,6 +54,11 @@
 
 
 
+<!-- Request -->
+<script type="text/javascript">
+  var link_update_community = "{{ path('admin_community_update') }}" ;
+</script>
+<script src="/Admin/js/community_request.js"></script>
 
 
 {% endblock %}
