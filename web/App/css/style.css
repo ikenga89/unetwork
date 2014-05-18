@@ -110,11 +110,27 @@
 	width: 235px;
 	height: 250px;
 }
-
+.imgProfil span {
+	color: #515151;
+	font-weight: bold;
+}
 .body .header .bottomBar .username{
 	color: white;
 	font-size: 25px;
 }
+.info {
+	box-shadow: 0px 0px 19px -2px #444;
+	margin-bottom: 10px;
+}
+
+.info p, .info h2, .info a {
+	color: #515151;
+	transition: 0.3s;
+}
+.info a:hover {
+	color: #787878;
+}
+
 .body .info .social_links{
 	padding: 20px 0px 0px 30px;
 }
