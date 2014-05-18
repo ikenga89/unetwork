@@ -99,7 +99,7 @@ class CommunityController extends Controller
      */
     public function editAction(Request $request ,$id)
     {   
-        $community = $this->getDoctrine()
+/*        $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
         ->find($id);
 
@@ -116,7 +116,7 @@ class CommunityController extends Controller
         return array("form" => $form->createView());
 
 
-        return array('community' => $community);
+        return array('community' => $community);*/
     }
 
 
