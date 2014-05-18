@@ -44,7 +44,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         *   Community
         */
         $community = new Community();
-        $community->setName('Informatique');
+        $community->setName('Concepteur Réalisateur Web');
+        $community->setAlias('crw');
         $community->setCreated(new \DateTime);
         $community->setUpdated(new \DateTime);
 
@@ -140,6 +141,20 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $competence->setCreated(new \DateTime);
         $competence->setUpdated(new \DateTime);
 
+        $competence2 = new Competence();
+        $competence2->setCv($cvUser);
+        $competence2->setName('name2');
+        $competence2->setNote(1);
+        $competence2->setCreated(new \DateTime);
+        $competence2->setUpdated(new \DateTime);
+
+        $competence3 = new Competence();
+        $competence3->setCv($cvUser);
+        $competence3->setName('name3');
+        $competence3->setNote(4);
+        $competence3->setCreated(new \DateTime);
+        $competence3->setUpdated(new \DateTime);
+
         /*
         *   Hobby
         */
@@ -148,6 +163,48 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $hobby->setName('name1');
         $hobby->setCreated(new \DateTime);
         $hobby->setUpdated(new \DateTime);
+
+        $hobby2 = new Hobby();
+        $hobby2->setCv($cvUser);
+        $hobby2->setName('name2');
+        $hobby2->setCreated(new \DateTime);
+        $hobby2->setUpdated(new \DateTime);
+
+        $hobby3 = new Hobby();
+        $hobby3->setCv($cvUser);
+        $hobby3->setName('name3');
+        $hobby3->setCreated(new \DateTime);
+        $hobby3->setUpdated(new \DateTime);
+
+        $hobby4 = new Hobby();
+        $hobby4->setCv($cvUser);
+        $hobby4->setName('name4');
+        $hobby4->setCreated(new \DateTime);
+        $hobby4->setUpdated(new \DateTime);
+
+        $hobby5 = new Hobby();
+        $hobby5->setCv($cvUser);
+        $hobby5->setName('name5');
+        $hobby5->setCreated(new \DateTime);
+        $hobby5->setUpdated(new \DateTime);
+
+        $hobby6 = new Hobby();
+        $hobby6->setCv($cvUser);
+        $hobby6->setName('name6');
+        $hobby6->setCreated(new \DateTime);
+        $hobby6->setUpdated(new \DateTime);
+
+        $hobby7 = new Hobby();
+        $hobby7->setCv($cvUser);
+        $hobby7->setName('name7');
+        $hobby7->setCreated(new \DateTime);
+        $hobby7->setUpdated(new \DateTime);
+
+        $hobby8 = new Hobby();
+        $hobby8->setCv($cvUser);
+        $hobby8->setName('name7');
+        $hobby8->setCreated(new \DateTime);
+        $hobby8->setUpdated(new \DateTime);
 
         /*
         *   Experience
@@ -248,7 +305,16 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($experienceUser2);
         $manager->persist($experienceUser3);
         $manager->persist($competence);
+        $manager->persist($competence2);
+        $manager->persist($competence3);
         $manager->persist($hobby);
+        $manager->persist($hobby2);
+        $manager->persist($hobby3);
+        $manager->persist($hobby4);
+        $manager->persist($hobby5);
+        $manager->persist($hobby6);
+        $manager->persist($hobby7);
+        $manager->persist($hobby8);
         $manager->persist($actuality);
         $manager->persist($comment);
 

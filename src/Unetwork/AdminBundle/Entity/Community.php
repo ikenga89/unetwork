@@ -27,6 +27,12 @@ class Community
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=4)
+     * @Assert\NotBlank(message = "Aucune valeur entrée")
+     */
+    protected $alias;
+
+    /**
      * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
@@ -198,5 +204,28 @@ class Community
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     * @return Community
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string 
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 }

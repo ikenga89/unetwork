@@ -93,7 +93,7 @@
 		  				</div>
 
 		  			</div>
-		  			
+
 		  		</div>
 
   	<div class="contTimeline">
@@ -131,6 +131,55 @@
 
 		</div>
 
+  	</div>
+
+  	<div class="footer">
+  		<div class="row">
+  			<div class="col-md-5">
+  				<div class="bloc">
+  					<h2>Ma communauté</h2>
+  					<div class="ssbloc">
+	  					<div class="community">
+		  					<span class="alias">
+		  						{{ user.community.alias }}
+		  					</span>
+		  					<span class="name">
+		  						{{ user.community.name }}
+		  					</span>
+	  					</div>
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="bloc">
+  					<h2>Mes compétences</h2>
+  					<div class="ssbloc">
+	  					{% for competence in user.cv.competence %} 
+	  					<div class="competence">
+		  					<span class="name">
+		  						{{ competence.name }}
+		  					</span>
+	  						{% for i in 1..5 %}
+	  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
+	  						{% endfor %}
+	  					</div>
+	  					{% endfor %}
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-3">
+  				<div class="bloc">
+  					<h2>Mes Hobbies</h2>
+  					{% for hobby in user.cv.hobby %} 
+					<div class="hobby">
+	  					<span class="name">
+	  						{{ hobby.name }}
+	  					</span>
+  					</div>
+  					{% endfor %}
+	  			</div>
+  			</div>
+  		</div>
   	</div>
 
 {% endblock %}
