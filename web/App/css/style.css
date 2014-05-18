@@ -131,11 +131,6 @@
 	display: inline-block;
 	margin-bottom: 10px;
 }
-.body .contTimeline{
-	position: relative;
-	background: #f5f5f5;
-}
-
 a.dropdown-toggle {
 	transition: 0.3s;
 	height: 100%;
@@ -151,6 +146,8 @@ a.dropdown-toggle {
 }
 .contTimeline{
 	padding: 30px 30px 0px 0px;
+	position: relative;
+	background: #f5f5f5;
 }
 .contTimeline ul.timeline:before{
 	background: none repeat scroll 0 0 #5C6C8E;
