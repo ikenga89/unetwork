@@ -117,7 +117,9 @@
 .imgProfil span {
 	color: #515151;
 	font-weight: bold;
+	font-size: 16px;
 }
+
 .body .header .bottomBar .username{
 	color: white;
 	font-size: 25px;
@@ -125,6 +127,9 @@
 .info {
 	padding-bottom: 15px;
 	border-bottom: 1px solid #d2d2d2;
+}
+.info h2 {
+	font-size: 25px;
 }
 
 .info p, .info h2, .info a {
@@ -134,7 +139,9 @@
 .info a:hover {
 	color: #787878;
 }
-
+.info p, .info a {
+	font-size: 16px;
+}
 .body .info .social_links{
 	padding: 20px 0px 0px 30px;
 }
@@ -208,10 +215,10 @@ line-height: 22px;
 }
 .contTimeline ul.timeline li.timeline-blue div.timeline-time span.date{
 	text-transform: uppercase;
-	font-size: 9px;
+	font-size: 14px;
 }
 .contTimeline ul.timeline li.timeline-blue div.timeline-time span.time{
-	font-size: 24px;
+	font-size: 28px;
 	line-height: 24px;
 	color: #5C6C8E;
 }
@@ -220,15 +227,18 @@ line-height: 22px;
 }
 
 .footer {
-	padding-bottom: 40px;
+	padding-bottom: 35px;
 	padding-top: 20px;
 	border-top: 1px solid #d2d2d2;
 }
 
 .footer .bloc h2{
 	color: #5C6C8E;
-	font-size: 20px;
+	font-size: 25px;
 	border-bottom: 2px solid #5C6C8E;
+}
+.footer .bloc span{
+	font-size: 16px;
 }
 .footer .bloc .ssbloc{
 	margin-top: 10px;
