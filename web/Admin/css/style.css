@@ -96,40 +96,31 @@ body {
 }
 
 
+/* ------  ------*/
 
-/*
-* PAGE CONNEXION
-*/
-.body_connexion{
-  background-image: url("/Admin/img/pattern.png");
-  padding-top: 15%;
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  vertical-align: middle;
 }
 
-.logo{
-  width: 100%;
- 
-}
 
-.connexion{
-  color:white;
-  border-bottom:10px solid #3c475e;
-  border-radius: 20px;
-  background-color: #7694cb;
+/* ------  ------*/
+.th_modify, .td_modify{
+  width: 200px;
   text-align: center;
-
 }
 
-.connexion input{
-width:75%;
-font-size:  1em;
-
+.td_modify img{
+  cursor: pointer;
 }
 
+.th_id, .td_id{
+  width: 100px;
+}
 
-
-
-
-
+.input{
+  width: 100%;
+  max-width: 400px;
+}
 
 
 

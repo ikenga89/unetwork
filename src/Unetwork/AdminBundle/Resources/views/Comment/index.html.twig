@@ -18,7 +18,8 @@
 	                <tr>
 	                 		<th> Id </th>                 		
 	                 		<th> Texte </th> 
-	                 		<th> Date </th>   
+	                 		<th> Date Création </th>
+	                 		<th> Date Modification </th>    
 	                 		<th> Supprimer </th>
 	                 		
 
@@ -32,7 +33,8 @@
 		                 		 <td> 	{{ comment.id }}  </td>    
 	 
 		                 		 <td> 	{{ comment.content|truncate(500) }}  </td>
-		                 		  <td> 	{{ comment.date|date("m/d/Y h:i") }}  </td>
+		                 		 <td> 	{{ comment.date|date("m/d/Y h:i") }}  </td>
+		                 		 <td> 	{{ comment.updated|date("m/d/Y h:i") }}  </td>
 
 
 		                 		  	<td>		                 		 

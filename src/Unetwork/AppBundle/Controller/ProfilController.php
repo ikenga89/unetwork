@@ -15,9 +15,23 @@ class ProfilController extends Controller
     public function profilAction()
     {
     	$user = $this->get('security.context')->getToken()->getUser();
+        /*
+        $user_ext = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->find($user->getId());
+        */
+
+        $cvs = $user->getCv();
+
+        $experiences = $cvs->getExperience();
+
+        //echo $user->getNom();
+        //echo $cv;
         
         return array(
             "user" => $user,
+            "cvs" => $cvs,
+            "experiences" => $experiences,
         );
     }
 }

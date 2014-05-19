@@ -3,9 +3,13 @@
 {% block body %}
 
   	<div class="header">
+  				<img class="couverture" scr="#" alt="couverture">
 		  		<div class="bottomBar">
-		  			<div class="row">
+
+		  			<div class="row bottomBandeau">
+
 		  				<div class="col-md-2"></div>
+
 		  				<div class="col-md-3">
 		  					<span class="username">{{ user.prenom }} {{ user.nom }}</span>
 		  				</div>
@@ -13,17 +17,24 @@
 		  				<div class="col-md-2">
 		  					<div class="imgProfil">
 		  						<img src="/{{ user.getWebPath }}" />
-		  						{{ user.community.name }}
+		  						<span>{{ user.community.name }}</span>
 		  					</div>
 		  				</div>
 
 		  				<div class="col-md-5"></div>
+
+		  			</div>
 		  				
 		  		</div>
+	</div>
+
+
+
 
 		  		<div class="info">
 
 		  			<div class="row">
+
 		  				<div class="col-md-1"></div>
 
 		  				<div class="col-md-6">
@@ -31,33 +42,144 @@
 		  				</div>
 
 		  				<div class="col-md-5">
-		  					{{ user.linkedin }}
-		  					{{ user.viadeo }}
-		  					{{ user.twitter }}
+
+		  					<div class="social_links">
+
+			  					<a href="{{ user.linkedin }}">
+			  						<i class="fa fa-linkedin-square fa-2x"></i>
+			  					</a>
+			  					<a href="{{ user.viadeo }}">
+			  						<i class="fa fa-vimeo-square fa-2x"></i>
+			  					</a>
+			  					<a href="{{ user.twitter }}">
+			  						<i class="fa fa-twitter-square fa-2x"></i>
+			  					</a>
+
+			  				</div>
+
 		  				</div>
+
 		  			</div>
 
 		  			<div class="row">
+
 		  				<div class="col-md-1"></div>
 
 		  				<div class="col-md-6">
-		  					<p>Lorem ipsum blablabla</p>
+		  					<p>{{ user.cv.presentation }}</p>
 		  				</div>
 
 		  				<div class="col-md-5">
-		  					{{ user.ville }}
-		  					<br/>
-		  					{{ user.email }}
-		  					<br />
-		  					{{ user.url }}
+
+		  					<div class="info_links">
+
+			  					<a href="{{ user.ville }}">
+			  						<i class="fa fa-map-marker"></i>
+			  						{{ user.ville }}
+			  					</a>
+			  					<br/>
+			  					<a href="{{ user.email }}">
+			  						<i class="fa fa-envelope"></i>
+			  						{{ user.email }}
+			  					</a>
+			  					<br />
+			  					<a href="{{ user.url }}">
+			  						<i class="fa fa-link"></i>
+			  						{{ user.url }}
+			  					</a>
+
+			  				</div>
+
 		  				</div>
+
 		  			</div>
 
 		  		</div>
+
+  	<div class="contTimeline">
+
+  		<div class="row">
+
+  			<div class="col-md-12">
+
+  				<ul class="timeline">
+
+		  		{% for experience in experiences %}
+		  			
+		  				<li class="timeline-blue">
+		  					<div class="timeline-time">
+		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+
+								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+		  					</div>
+							<div class="timeline-icon">
+								<i class="{{ experience.type.libelle }}"></i>
+							</div>
+							<div class="timeline-body">
+								<h2>{{ experience.name }}</h2>
+								<p>{{ experience.description }}</p>
+							</div>
+						</li>
+		  			
+				{% endfor %}
+
+				</ul>
+
+			</div>
+
+		</div>
+
   	</div>
 
-  	<div class="timeline">
-
+  	<div class="footer">
+  		<div class="row">
+  			<div class="col-md-5">
+  				<div class="bloc">
+  					<h2>Ma communauté</h2>
+  					<div class="ssbloc">
+	  					<div class="community">
+		  					<span class="alias">
+		  						{{ user.community.alias }}
+		  					</span>
+		  					<span class="name">
+		  						{{ user.community.name }}
+		  					</span>
+	  					</div>
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="bloc">
+  					<h2>Mes compétences</h2>
+  					<div class="ssbloc">
+	  					{% for competence in user.cv.competence %} 
+	  					<div class="competence">
+		  					<span class="name">
+		  						{{ competence.name }}
+		  					</span>
+	  						{% for i in 1..5 %}
+	  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
+	  						{% endfor %}
+	  					</div>
+	  					{% endfor %}
+	  				</div>
+  				</div>
+  			</div>
+  			<div class="col-md-3">
+  				<div class="bloc">
+  					<h2>Mes Hobbies</h2>
+  					{% for hobby in user.cv.hobby %} 
+					<div class="hobby">
+	  					<span class="name">
+	  						{{ hobby.name }}
+	  					</span>
+  					</div>
+  					{% endfor %}
+	  			</div>
+  			</div>
+  		</div>
   	</div>
 
 {% endblock %}

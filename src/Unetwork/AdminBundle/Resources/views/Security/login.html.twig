@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/Admin/css/style.css" rel="stylesheet">
+    <link href="/Admin/css/connexion.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,9 +29,8 @@
 </head>
 
 	<body class="body_Connexion">
-	<div class="col-sm-4 col-sm-offset-4 col-md-4 main connexion">
-		<p> <h2>Se connecter à </h2></p>
-		<p><img class="logo"src="/Admin/img/logo.png"> </p>
+	<div class="col-xs-8 col-sm-offset-8 col-sm-4 col-sm-offset-4 col-md-4 main connexion">
+		<img class="logo"src="/Admin/img/logo.png">
 
 		{% if error %}
  		   <div>{{ error.message }}</div>
@@ -38,12 +38,11 @@
         
 
 		<form action="{{ path('login_check') }}" method="post">
-		    <label for="username"> <h2>Email:</h2></label></br>
-		    <input class="btn btn btn-default btn-lg" type="email" id="username" name="_username" value="{{ last_username }}" /></br>
-		   	<label for="password"><h2>Password:</h2></label></br>
-		    <input class="btn btn-default btn-lg" type="password" id="password" name="_password" /></br>
-			<input class="btn btn-default btn-lg" type="hidden" name="_target_path" value="/app/index" /></br>
-    		<button class="btn btn-default btn-lg" type="submit">login</button>
+		    <input placeholder="Identifiant..." class="btn btn btn-default btn-lg" type="email" id="username" name="_username" value="{{ last_username }}" />
+
+		    <input placeholder="Mot de passe..." class="btn btn-default btn-lg" type="password" id="password" name="_password" />
+			<input class="btn btn-default btn-lg" type="hidden" name="_target_path" value="/app/index" />
+    		<button class="btn btn-default btn-lg btnSubmit" type="submit">Se connecter</button>
 		</form>
 
 

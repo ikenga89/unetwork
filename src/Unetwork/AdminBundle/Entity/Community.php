@@ -27,6 +27,12 @@ class Community
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=4)
+     * @Assert\NotBlank(message = "Aucune valeur entrée")
+     */
+    protected $alias;
+
+    /**
      * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
      */
     protected $actualitys;
@@ -38,13 +44,13 @@ class Community
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Erreur insertion date created")
      */
     protected $created;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Erreur insertion date update")
      */
     protected $updated;
 
@@ -198,5 +204,28 @@ class Community
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set alias
+     *
+     * @param string $alias
+     * @return Community
+     */
+    public function setAlias($alias)
+    {
+        $this->alias = $alias;
+
+        return $this;
+    }
+
+    /**
+     * Get alias
+     *
+     * @return string 
+     */
+    public function getAlias()
+    {
+        return $this->alias;
     }
 }

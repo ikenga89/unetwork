@@ -1,0 +1,53 @@
+
+/*
+* PAGE CONNEXION
+*/
+
+body {
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.connexion{
+  color:white;
+  background-color: #7694cb;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 9px 0px #999;
+}
+
+.logo{
+  width: 60%;
+}
+
+#username, #password {
+  border-radius: 5px;
+  padding: 7px;
+  cursor: text;
+  margin-top: 35px;
+  text-align: left;
+}
+.connexion input{
+width:75%;
+font-size:  1em;
+}
+
+.btnSubmit {
+  margin-top:35px;
+  width:75%;
+  padding: 7px;
+  background-color: #3f434b;
+  font-size: 1.2em;
+  color: #fff;
+  transition: 0.3s;
+  border: none;
+}
+.btnSubmit:hover {
+  background-color: #3f434b;
+  box-shadow: 0px 0px 8px 0px #acb6d8;
+  color: #fff;
+}
+.btnSubmit:active{
+  box-shadow: 0px 0px 8px 0px #inset;
+}

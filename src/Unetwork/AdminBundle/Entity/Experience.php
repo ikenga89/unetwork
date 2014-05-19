@@ -25,7 +25,7 @@ class Experience
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="text")
      */
     protected $description;
 

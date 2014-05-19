@@ -1,20 +1,36 @@
 <div class="row">
-  <div class="col-md-12">
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<a href="{{ path('app_index') }}" class="logo">
-			<img src="/App/img/logo.png"/>
-		</a>
-		<div id="recherche">
-			<input type="text" placeholder="Rechercher..." class="champ"/>
-			<a href="#" class="bouton">
-				<span class="glyphicon glyphicon-search searchicon"></span>
+		<div class="col-md-4">
+			<a href="{{ path('app_index') }}" class="logo">
+				<img src="/App/img/logo.png"/>
 			</a>
+			<div id="recherche">
+				<input type="text" placeholder="Rechercher..." class="champ"/>
+				<a href="#" class="bouton">
+					<span class="glyphicon glyphicon-search searchicon"></span>
+				</a>
+			</div>
 		</div>
-		<div class="user">
-			<img width="40" height="40" src="/{{ user.getWebPath }}" />
-			<span>{{ user.prenom }} {{ user.nom }}</span>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<div class="rightMenu">
+	  			<ul class="nav navbar-nav navbar-right">
+		  			<li class="dropdown">
+			          	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			          		<span class="glyphicon glyphicon-cog param"></span>
+			          	</a>
+			          	<ul class="dropdown-menu">
+				            <li><a href="#">Paramètres</a></li>
+				            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+			          	</ul>
+			        </li>
+		    	</ul>
+		    </div>
+			<div class="user">
+				<img width="40" height="40" src="/{{ user.getWebPath }}" />
+				<span>{{ user.prenom }} {{ user.nom }}</span>
+	  		</div>
   		</div>
-  		<span class="glyphicon glyphicon-cog param"></span>
 	</nav>
-  </div>
 </div>
