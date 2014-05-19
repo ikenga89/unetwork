@@ -99,12 +99,14 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         */
         $cvAdmin = new Cv();
         $cvAdmin->setPresentation('PresentationCv1');
+        $cvAdmin->setJobname('Développeur web');
         $cvAdmin->setUser($userAdmin);
         $cvAdmin->setCreated(new \DateTime);
         $cvAdmin->setUpdated(new \DateTime);
 
         $cvUser = new Cv();
         $cvUser->setPresentation('PresentationCv1');
+        $cvUser->setJobname('Développeur web');
         $cvUser->setUser($userUser);
         $cvUser->setCreated(new \DateTime);
         $cvUser->setUpdated(new \DateTime);

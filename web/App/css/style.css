@@ -80,6 +80,11 @@ a.user:hover{
 	text-decoration: none;
 	color: #5c6f80;
 }
+a.user:focus{
+	background: rgba(255,255,255,0.3);
+	text-decoration: none;
+	color: #5c6f80;
+}
 .glyphicon-cog:before {
 	font-size: 20px;
 	margin-top: 5px;
@@ -101,6 +106,7 @@ a.user:hover{
 .header .couverture {
 	width: 100%;
 	height: 351px;
+	margin-top: -1px;
 }
 
 .body .header .bottomBar{
@@ -118,7 +124,7 @@ a.user:hover{
 	background: #ffffff;
 	width: 265px;
 	margin-left: -20px;
-	box-shadow: 0px -3px 3px -1px #999;
+	box-shadow: 0px -2px 9px -1px #999;
 }
 
 .body .header .imgProfil img{
