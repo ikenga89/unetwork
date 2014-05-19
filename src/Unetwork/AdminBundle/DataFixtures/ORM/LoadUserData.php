@@ -318,7 +318,7 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($actuality);
         $manager->persist($comment);
 
-
         $manager->flush();
+
     }
 }
