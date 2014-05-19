@@ -279,6 +279,18 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $actuality->setUpdated(new \DateTime);
         $actuality->setCommunity($community);
 
+        $actuality2 = new Actuality();
+        $actuality2->setDescription('description2');
+        $actuality2->setCreated(new \DateTime);
+        $actuality2->setUpdated(new \DateTime);
+        $actuality2->setCommunity($community);
+
+        $actuality3 = new Actuality();
+        $actuality3->setDescription('description3');
+        $actuality3->setCreated(new \DateTime);
+        $actuality3->setUpdated(new \DateTime);
+        $actuality3->setCommunity($community);
+
         /*
         *   Comment
         */
@@ -289,7 +301,61 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment->setCreated(new \DateTime);
         $comment->setUpdated(new \DateTime);
 
+        $comment2 = new Comment();
+        $comment2->setDate(new \DateTime);
+        $comment2->setContent('comment2');
+        $comment2->setActualitys($actuality);
+        $comment2->setCreated(new \DateTime);
+        $comment2->setUpdated(new \DateTime);
 
+        $comment3 = new Comment();
+        $comment3->setDate(new \DateTime);
+        $comment3->setContent('comment3');
+        $comment3->setActualitys($actuality);
+        $comment3->setCreated(new \DateTime);
+        $comment3->setUpdated(new \DateTime);
+
+        $comment4 = new Comment();
+        $comment4->setDate(new \DateTime);
+        $comment4->setContent('comment1');
+        $comment4->setActualitys($actuality2);
+        $comment4->setCreated(new \DateTime);
+        $comment4->setUpdated(new \DateTime);
+
+        $comment5 = new Comment();
+        $comment5->setDate(new \DateTime);
+        $comment5->setContent('comment2');
+        $comment5->setActualitys($actuality2);
+        $comment5->setCreated(new \DateTime);
+        $comment5->setUpdated(new \DateTime);
+
+        $comment6 = new Comment();
+        $comment6->setDate(new \DateTime);
+        $comment6->setContent('comment3');
+        $comment6->setActualitys($actuality2);
+        $comment6->setCreated(new \DateTime);
+        $comment6->setUpdated(new \DateTime);
+
+        $comment7 = new Comment();
+        $comment7->setDate(new \DateTime);
+        $comment7->setContent('comment1');
+        $comment7->setActualitys($actuality3);
+        $comment7->setCreated(new \DateTime);
+        $comment7->setUpdated(new \DateTime);
+
+        $comment8 = new Comment();
+        $comment8->setDate(new \DateTime);
+        $comment8->setContent('comment2');
+        $comment8->setActualitys($actuality3);
+        $comment8->setCreated(new \DateTime);
+        $comment8->setUpdated(new \DateTime);
+
+        $comment9 = new Comment();
+        $comment9->setDate(new \DateTime);
+        $comment9->setContent('comment3');
+        $comment9->setActualitys($actuality3);
+        $comment9->setCreated(new \DateTime);
+        $comment9->setUpdated(new \DateTime);
 
         $manager->persist($community);
         $manager->persist($userAdmin);
@@ -316,7 +382,17 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($hobby7);
         $manager->persist($hobby8);
         $manager->persist($actuality);
+        $manager->persist($actuality2);
+        $manager->persist($actuality3);
         $manager->persist($comment);
+        $manager->persist($comment2);
+        $manager->persist($comment3);
+        $manager->persist($comment4);
+        $manager->persist($comment5);
+        $manager->persist($comment6);
+        $manager->persist($comment7);
+        $manager->persist($comment8);
+        $manager->persist($comment9);
 
         $manager->flush();
 

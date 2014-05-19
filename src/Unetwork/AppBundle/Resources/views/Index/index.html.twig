@@ -2,12 +2,61 @@
 
 {% block body %}
 
-	{% for actuality in actualities %}
-		{{ actuality.description }} 
-		{% for comment in actuality.comments %}
-			{{ comment.content }} 
-		{% endfor %}
-	{% endfor %}
+	<div class="header">
+  				<img class="couverture" src="#" alt="couverture">
+		  		<div class="bottomBar">
+
+		  			<div class="row bottomBandeau">
+
+		  				<div class="col-md-5"></div>
+
+		  				<div class="col-md-3">
+		  					<span class="communityname">{{ user.community.name }}</span>
+		  				</div>
+
+		  				<div class="col-md-4"></div>
+
+		  			</div>
+		  				
+		  		</div>
+	</div>
+
+	<div class="contTimeline contActu">
+
+  		<div class="row">
+
+  			<div class="col-md-12">
+
+  				<ul class="timeline actu">
+
+		  		{% for actuality in actualities %}
+		  			
+		  				<li class="timeline-blue">
+							<div class="timeline-body">
+								<p class="descActu">{{actuality.description}}</p>
+								<div class="contComment">
+									{% for comment in actuality.comments %}
+
+										<div class="comments">
+											<a href="#">Nom commentateur</a>
+											<p>{{ comment.content }}</p>
+											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
+										</div>
+
+									{% endfor %}
+								</div>
+							</div>
+						</li>
+		  			
+				{% endfor %}
+
+				</ul>
+
+			</div>
+
+		</div>
+
+  	</div>
 
 {% endblock %}
 

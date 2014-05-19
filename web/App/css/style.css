@@ -83,7 +83,8 @@
 	height: 350px;
 }
 .bottomBandeau {
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(0, 0, 0, 0.5);
+	border-bottom: 1px solid #a5a5a5;
 }
 
 .header .couverture {
@@ -277,4 +278,67 @@ line-height: 22px;
 	display: inline-block;
 	margin-bottom: 5px;
 	border-radius: 10px;
+}
+.actu::before {
+	display: none;
+}
+
+.contTimeline ul.actu li.timeline-blue div.timeline-body {
+	margin:0;
+	width: 75%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+.actu > li .timeline-body:after{
+	display: none;
+}
+.actu .comments {
+	background: #fff;
+	color: #444;
+	border-radius: 2px;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+.actu .comments a {
+	font-weight: bold;
+	margin-top: 5px;
+	display: inline-block;
+}
+.actu .comments p {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 15px;
+	background: #f5f5f5;
+	border-radius: 4px;
+	padding: 5px;
+}
+.actu .comments span {
+	margin-top: 5px;	
+	font-size: 12px;
+	font-style: italic;
+}
+
+.actu .descActu {
+	padding: 10px;
+}
+.contActu {
+	margin-top: 1px;
+	background: none;
+	background: -moz-linear-gradient(top,  rgba(216,216,216,0.8) 0%, rgba(245,245,245,0.8) 25%, rgba(245,245,245,0.8) 75%, rgba(216,216,216,0.8) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(216,216,216,0.8)), color-stop(25%,rgba(245,245,245,0.8)), color-stop(75%,rgba(245,245,245,0.8)), color-stop(100%,rgba(216,216,216,0.8))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccd8d8d8', endColorstr='#ccd8d8d8',GradientType=0 ); /* IE6-9 */
+
+}
+.contComment {
+	max-height: 200px;
+	overflow-y:scroll;
+}
+.body .header .bottomBar .communityname{
+	color: white;
+	font-size: 25px;
+	margin-left:-20px; 
 }
