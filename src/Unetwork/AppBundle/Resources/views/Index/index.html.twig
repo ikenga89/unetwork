@@ -28,12 +28,26 @@
   			<div class="col-md-12">
 
   				<ul class="timeline actu">
-
+  				<!--
+  					<li class="timeline-blue">
+	  					<div class="timeline-body">
+							<p class="descActu">Poster une actualité</p>
+							<div class="comments postComments">
+								<textarea maxlength="250" placeholder="Exprimez-vous..."></textarea>
+								<input type="submit" value="Poster"/>
+							</div>
+						</div>
+					</li>
+				-->
 		  		{% for actuality in actualities %}
 		  			
 		  				<li class="timeline-blue">
 							<div class="timeline-body">
 								<p class="descActu">{{actuality.description}}</p>
+								<div class="comments postComments">
+									<textarea maxlength="250" placeholder="Commenter..."></textarea>
+									<input type="submit" value="Commenter"/>
+								</div>
 								<div class="contComment">
 									{% for comment in actuality.comments %}
 

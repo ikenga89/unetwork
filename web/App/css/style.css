@@ -64,10 +64,21 @@
 	color: #3a4147;
 	float: left;
 }
+
 .user {
-	margin-top: 5px;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 	float: right;
 	margin-right: 10px;
+	height: 50px;
+	color: #3a4147;
+	transition: 0.3s;
+}
+a.user:hover{
+	background: rgba(255,255,255,0.3);
+	text-decoration: none;
+	color: #5c6f80;
 }
 .glyphicon-cog:before {
 	font-size: 20px;
@@ -163,6 +174,19 @@ a.dropdown-toggle {
 	transition: 0.3s;
 	height: 100%;
 }
+
+a.dropdown-toggle span {
+	transition: 0.3s;
+}
+
+.dropdown a.dropdown-toggle:hover {
+	background: rgba(255,255,255,0.3)!important;
+}
+
+.dropdown a.dropdown-toggle:hover span{
+	color: #5c6f80;
+}
+
 .nav > li > a:hover, .nav > li > a:focus {
 	color: #000!important;
 }
@@ -225,6 +249,13 @@ line-height: 22px;
 }
 .rightMenu {
 	float: right;
+}
+.rightMenu a {
+	text-decoration: none;
+}
+
+.rightMenu a:hover {
+	text-decoration: none;
 }
 
 .footer {
@@ -341,4 +372,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccd8d8d8', e
 	color: white;
 	font-size: 25px;
 	margin-left:-20px; 
+}
+.postComments textarea{
+	vertical-align: middle;
+	width: 70%;
+	max-width: 70%;
+	height: 60px;
+	max-height: 60px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.postComments input{
+	height: 45px;
+	padding: 5px;
+	margin-left: 10px;
 }
