@@ -3,22 +3,22 @@
 {% block body %}
 
 	<div class="header">
-  				<img class="couverture" src="#" alt="couverture">
-		  		<div class="bottomBar">
+		<img class="couverture" src="#" alt="couverture">
+  		<div class="bottomBar">
 
-		  			<div class="row bottomBandeau">
+  			<div class="row bottomBandeau">
 
-		  				<div class="col-md-5"></div>
+  				<div class="col-md-5"></div>
 
-		  				<div class="col-md-3">
-		  					<span class="communityname">{{ user.community.name }}</span>
-		  				</div>
+  				<div class="col-md-3">
+  					<span class="communityname">{{ user.community.name }}</span>
+  				</div>
 
-		  				<div class="col-md-4"></div>
+  				<div class="col-md-4"></div>
 
-		  			</div>
-		  				
-		  		</div>
+  			</div>
+  				
+  		</div>
 	</div>
 
 	<div class="contTimeline contActu">
@@ -27,7 +27,38 @@
 
   			<div class="col-md-12">
 
-  				<ul class="timeline actu">
+  				<div id="container">
+					<div class="timeline_container">
+						<div class="indexTimeline">
+						</div>
+					</div>
+
+					{% for actuality in actualities %}
+			  			
+		  				<div class="item">
+							<div>
+								<p>{{actuality.description}}</p>
+								<div>
+									<textarea maxlength="250" placeholder="Commenter..."></textarea>
+									<input type="submit" value="Commenter"/>
+								</div>
+								<div>
+									{% for comment in actuality.comments %}
+
+										<div>
+											<a href="#">Nom commentateur</a>
+											<p>{{ comment.content }}</p>
+											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
+										</div>
+
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+		  			
+					{% endfor %}
+
+				</div>
   				<!--
   					<li class="timeline-blue">
 	  					<div class="timeline-body">
@@ -39,38 +70,37 @@
 						</div>
 					</li>
 				-->
-		  		{% for actuality in actualities %}
-		  			
-		  				<li class="timeline-blue">
-							<div class="timeline-body">
-								<p class="descActu">{{actuality.description}}</p>
-								<div class="comments postComments">
-									<textarea maxlength="250" placeholder="Commenter..."></textarea>
-									<input type="submit" value="Commenter"/>
-								</div>
-								<div class="contComment">
-									{% for comment in actuality.comments %}
 
-										<div class="comments">
-											<a href="#">Nom commentateur</a>
-											<p>{{ comment.content }}</p>
-											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
-										</div>
-
-									{% endfor %}
-								</div>
-							</div>
-						</li>
-		  			
-				{% endfor %}
-
-				</ul>
+				</div>
 
 			</div>
 
 		</div>
 
   	</div>
+  	<script type="text/javascript" >
+		$(function()
+		{
+			$('#container').masonry({itemSelector : '.item',});
+		});
+
+		function Arrow_Points()	{
+			var s = $('#container').find('.item');
+			$.each(s,function(i,obj){
+				var posLeft = $(obj).css("left");
+				$(obj).addClass('borderclass');
+				if(posLeft == "0px") {
+					html = "<span class='rightCorner'></span>";
+					$(obj).prepend(html);
+				}
+				else {
+					html = "<span class='leftCorner'></span>";
+					$(obj).prepend(html);
+				}
+			});
+		}
+		Arrow_Points();
+	</script>
 
 {% endblock %}
 

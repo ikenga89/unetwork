@@ -432,4 +432,27 @@ class Cv
     {
         return $this->hobby;
     }
+
+    /**
+     * Set jobname
+     *
+     * @param string $jobname
+     * @return Cv
+     */
+    public function setJobname($jobname)
+    {
+        $this->jobname = $jobname;
+
+        return $this;
+    }
+
+    /**
+     * Get jobname
+     *
+     * @return string 
+     */
+    public function getJobname()
+    {
+        return $this->jobname;
+    }
 }
