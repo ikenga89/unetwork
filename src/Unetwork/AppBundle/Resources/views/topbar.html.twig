@@ -21,6 +21,9 @@
 			          		<span class="glyphicon glyphicon-cog param"></span>
 			          	</a>
 			          	<ul class="dropdown-menu">
+			          		{% if user.roles.0 == "ROLE_ADMIN" %}
+							   	<li><a href="{{ path('admin_index') }}">Administration</a></li>
+							{% endif %}
 				            <li><a href="#">Paramètres</a></li>
 				            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
 			          	</ul>
