@@ -10,6 +10,7 @@ class CommunityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
+        $builder->add('alias');
         $builder->add('Ajouter', 'submit'/* , array(
         'validation_groups' => false,)*/
         );

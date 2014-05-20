@@ -27,9 +27,12 @@ class IndexController extends Controller
 
         /*
         foreach ($actualities as $actuality) {
-            $actualityCollection->getProducts()->add($actuality);
+            $actualityCollection->getActuality()->add($actuality);
         }
+
+        $collection = $this->createForm(new CommentType, $actualityCollection);
         */
+        
 
         
         $form = $this->createForm(new CommentType(), $comment);
