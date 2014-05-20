@@ -20,6 +20,11 @@ class Cv
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $jobname;
+
 	/**
      * @ORM\Column(type="string", length=100)
      */
@@ -426,5 +431,28 @@ class Cv
     public function getHobby()
     {
         return $this->hobby;
+    }
+
+    /**
+     * Set jobname
+     *
+     * @param string $jobname
+     * @return Cv
+     */
+    public function setJobname($jobname)
+    {
+        $this->jobname = $jobname;
+
+        return $this;
+    }
+
+    /**
+     * Get jobname
+     *
+     * @return string 
+     */
+    public function getJobname()
+    {
+        return $this->jobname;
     }
 }
