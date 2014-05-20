@@ -54,7 +54,7 @@
 
 										<div class="comment">
 											<p>
-												<a href="#">Nom commentateur</a>
+												<a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
 												{{ comment.content }}
 											</p>
 											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
