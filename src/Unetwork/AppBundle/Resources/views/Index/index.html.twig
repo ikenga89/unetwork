@@ -45,14 +45,21 @@
 							<div class="timeline-body">
 								<p class="descActu">{{actuality.description}}</p>
 								<div class="comments postComments">
+								
+									{{ form(form, {'action': path('app_index', {'id': actuality.id} ), 'method': 'POST'}) }}
+
+										{{ form_start(form, {'action': path('app_index', {'id': actuality.id} ), 'method': 'POST'}) }}
+										{{ form_end(form) }}
+									{#{ form(form) }#}
+									<!--
 									<textarea maxlength="250" placeholder="Commenter..."></textarea>
-									<input type="submit" value="Commenter"/>
+									<input type="submit" value="Commenter"/>-->
 								</div>
 								<div class="contComment">
 									{% for comment in actuality.comments %}
 
 										<div class="comments">
-											<a href="#">Nom commentateur</a>
+											<a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
 											<p>{{ comment.content }}</p>
 											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
 										</div>

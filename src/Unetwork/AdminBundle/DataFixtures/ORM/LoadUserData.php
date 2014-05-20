@@ -295,65 +295,65 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         *   Comment
         */
         $comment = new Comment();
-        $comment->setDate(new \DateTime);
         $comment->setContent('comment1');
         $comment->setActualitys($actuality);
+        $comment->setUser($userUser);
         $comment->setCreated(new \DateTime);
         $comment->setUpdated(new \DateTime);
 
         $comment2 = new Comment();
-        $comment2->setDate(new \DateTime);
         $comment2->setContent('comment2');
         $comment2->setActualitys($actuality);
+        $comment2->setUser($userUser);
         $comment2->setCreated(new \DateTime);
         $comment2->setUpdated(new \DateTime);
 
         $comment3 = new Comment();
-        $comment3->setDate(new \DateTime);
         $comment3->setContent('comment3');
         $comment3->setActualitys($actuality);
+        $comment3->setUser($userUser);
         $comment3->setCreated(new \DateTime);
         $comment3->setUpdated(new \DateTime);
 
         $comment4 = new Comment();
-        $comment4->setDate(new \DateTime);
         $comment4->setContent('comment1');
         $comment4->setActualitys($actuality2);
+        $comment4->setUser($userUser);
         $comment4->setCreated(new \DateTime);
         $comment4->setUpdated(new \DateTime);
 
         $comment5 = new Comment();
-        $comment5->setDate(new \DateTime);
         $comment5->setContent('comment2');
         $comment5->setActualitys($actuality2);
+        $comment5->setUser($userUser);
         $comment5->setCreated(new \DateTime);
         $comment5->setUpdated(new \DateTime);
 
         $comment6 = new Comment();
-        $comment6->setDate(new \DateTime);
         $comment6->setContent('comment3');
         $comment6->setActualitys($actuality2);
+        $comment6->setUser($userUser);
         $comment6->setCreated(new \DateTime);
         $comment6->setUpdated(new \DateTime);
 
         $comment7 = new Comment();
-        $comment7->setDate(new \DateTime);
         $comment7->setContent('comment1');
         $comment7->setActualitys($actuality3);
+        $comment7->setUser($userUser);
         $comment7->setCreated(new \DateTime);
         $comment7->setUpdated(new \DateTime);
 
         $comment8 = new Comment();
-        $comment8->setDate(new \DateTime);
         $comment8->setContent('comment2');
         $comment8->setActualitys($actuality3);
+        $comment8->setUser($userUser);
         $comment8->setCreated(new \DateTime);
         $comment8->setUpdated(new \DateTime);
 
         $comment9 = new Comment();
-        $comment9->setDate(new \DateTime);
         $comment9->setContent('comment3');
         $comment9->setActualitys($actuality3);
+        $comment9->setUser($userUser);
         $comment9->setCreated(new \DateTime);
         $comment9->setUpdated(new \DateTime);
 

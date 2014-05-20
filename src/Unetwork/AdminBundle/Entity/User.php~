@@ -112,6 +112,11 @@ class User implements UserInterface, \Serializable
     protected $community;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+    protected $comments;
+
+    /**
      * @ORM\OneToOne(targetEntity="Cv", mappedBy="user")
      **/
     private $cv;
@@ -393,20 +398,22 @@ class User implements UserInterface, \Serializable
 
     public function getWebPath()
     {
-        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+        //return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+        return null === $this->path ? null : 'App/users/'.$this->getId().'/'.$this->getUploadDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
     {
         // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
         // le document/image dans la vue.
-        return 'uploads';
+        //return 'uploads';
+        return 'image_profil';
     }
 
 
@@ -440,9 +447,26 @@ class User implements UserInterface, \Serializable
         // va automatiquement être lancée par la méthode move(). Cela va empêcher
         // proprement l'entité d'être persistée dans la base de données si
         // erreur il y a
+
+        $s = __DIR__.'/../../../../web/App/users/'.$this->getId().'/';
+        //$s = __DIR__.'../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDir();
+        //$s = $this->getUploadDir();
+        if(!is_dir($s)){
+        //if (!file_exists ( $s )) {
+            mkdir($s, 0777, true);
+            if(!is_dir($s.'/'.$this->getUploadDir())){
+                mkdir ($s.'/'.$this->getUploadDir(), 0777, true);
+            }
+        }
+        $this->file->move($s.'/'.$this->getUploadDir(), $this->path);
+         
+        unset($this->file);
+
+        /*
         $this->file->move($this->getUploadRootDir(), $this->path);
 
         unset($this->file);
+        */
     }
 
     /**
