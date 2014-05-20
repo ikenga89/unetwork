@@ -19,18 +19,18 @@ class Comment
      */
     protected $actualitys;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     */
-    protected $date;
 
 	/**
      * @ORM\Column(type="string", length=250)
@@ -49,6 +49,19 @@ class Comment
      * @Assert\NotBlank()
      */
     protected $updated;
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue() {
+        $this->setUpdatedAt(new \DateTime());
+    }
 
     /**
      * Get id

@@ -3,6 +3,7 @@
 namespace Unetwork\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -112,6 +113,11 @@ class User implements UserInterface, \Serializable
     protected $community;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     */
+    protected $comments;
+
+    /**
      * @ORM\OneToOne(targetEntity="Cv", mappedBy="user")
      **/
     private $cv;
@@ -120,6 +126,7 @@ class User implements UserInterface, \Serializable
     {
         $this->isActive = true;
         $this->salt = md5(uniqid(null, true));
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -702,5 +709,38 @@ class User implements UserInterface, \Serializable
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
+     * @return User
+     */
+    public function addComment(\Unetwork\AdminBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Unetwork\AdminBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Unetwork\AdminBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

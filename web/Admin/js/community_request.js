@@ -1,30 +1,6 @@
 
 
 
-function add_community(THIS){
-	alert( $( "#add_community_name" ).val() );
-	var community_name = $( "#add_community_name" ).val();
-
-/*
-	$.ajax({
-	  type: "POST",
-	  url: link_add_community,
-	  data: { post_community_name: community_name }
-	})
-	  .done(function( reponse ) {
-	     alert( reponse );
-	     $("#pomme").html(reponse);
-
-	  //  $('#prenom_eleve').html(reponse);
-	    
-	  })
-	  .fail(function() {
-	    alert( "error" );
-	  });
-*/
-};
-
-
 
 var communities_updating = true; // pour empecher double clic abusif
 
@@ -68,6 +44,9 @@ function update_community(THIS,ID){
 				community_alias_id = "#community_alias_" + ID;
 				$( community_alias_id ).html( community_alias );
 
+				community_updated_id = "#community_updated_" + ID;
+				$( community_updated_id ).html( date_time() );
+
 				$( THIS ).attr("src","/Admin/img/validate_green.png");
 				setTimeout( function(){ $( THIS ).attr("src","/Admin/img/edit.png"); }, 1000);
 				var onclick = "edit_community(this," + ID + ")";
@@ -84,3 +63,21 @@ function update_community(THIS,ID){
 		setTimeout( function(){ communities_updating = true; }, 2050);
 	};
 };
+
+
+
+function date_time(){
+	var time_now = new Date();
+	var minute = time_now.getMinutes();
+	var hour = time_now.getHours();
+	var day = time_now.getDate();
+	var month = time_now.getMonth() + 1;
+	var year = time_now.getFullYear();
+
+	if (minute < 10) { minute = "0" + minute };
+	if (hour < 10) { hour = "0" + hour };		
+	if (month < 10) { month = "0" + month };
+	if (day < 10) { day = "0" + day };	
+
+	return day + "/" +  month + "/" +  year + " " + hour + ":" + minute;
+}

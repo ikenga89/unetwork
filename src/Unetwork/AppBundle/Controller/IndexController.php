@@ -5,6 +5,8 @@ namespace Unetwork\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unetwork\AppBundle\Form\CommentType;
+use Unetwork\AdminBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
 
 class IndexController extends Controller
@@ -15,23 +17,51 @@ class IndexController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $user = $this->get('security.context')->getToken()->getUser();
+
         $actualities = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->findAll();
 
+
         $defaultData = array();
-        $form = $this->createFormBuilder($defaultData)
+        $form1 = $this->createFormBuilder($defaultData)
             ->add('recherche', 'text')
             ->add('rechercher', 'submit')
             ->getForm();
 
+        $comment = new Comment();
+
+        /*
+        foreach ($actualities as $actuality) {
+            $actualityCollection->getActuality()->add($actuality);
+        }
+
+        $collection = $this->createForm(new CommentType, $actualityCollection);
+        */
+        
+
+        
+        $form = $this->createForm(new CommentType(), $comment);
+
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form1->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
 
             return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
+        }
+
+        if ($form->isValid()){
+
+            $comment->setUser($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('app_index'));
         }
 
         /*
@@ -50,11 +80,12 @@ class IndexController extends Controller
         }
         */
 
-        $user = $this->get('security.context')->getToken()->getUser();
+        
 
         return array(
             "actualities" => $actualities,
             "user" => $user,
+            "form" => $form->createView(),
         );
 
     }

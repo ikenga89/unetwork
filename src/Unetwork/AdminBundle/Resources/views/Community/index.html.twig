@@ -7,10 +7,12 @@
 
 
 <div class="table-responsive">
-{% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
 
 
         {{ form(form) }}
+
+        {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
           <form action="{{ path('admin_community_create') }}" method="post">
             <label>Name</label>
@@ -41,8 +43,8 @@
  
 	                 		 <td id="community_name_{{ community.id }}">{{ community.name }}</td>
                        <td class="alias" id="community_alias_{{ community.id }}">{{ community.alias }}</td>
-                       <td class="td_id">{{ community.created|date("m/d/Y H:i") }}</td>
-                       <td class="td_id">{{ community.updated|date("m/d/Y H:i") }}</td>
+                       <td class="td_id">{{ community.created|date("d/m/Y H:i") }}</td>
+                       <td class="td_id" id="community_updated_{{ community.id }}">{{ community.updated|date("d/m/Y H:i") }}</td>
 	                 		 
 	                 		  <td class="td_modify"> 	
 	                 		   	<!--<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> -->

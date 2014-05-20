@@ -30,6 +30,11 @@ class CommunityController extends Controller
             $em->persist($community);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+            'notice',
+            "La communauté a bien été crée"
+            );
+
             return $this->redirect($this->generateUrl('admin_community'));
         }
 
