@@ -103,7 +103,7 @@ body {
 }
 
 
-/* ------  ------*/
+/* ------ Community ------*/
 .th_modify, .td_modify{
   width: 200px;
   text-align: center;
@@ -117,9 +117,18 @@ body {
   width: 100px;
 }
 
-.input{
+.input_name{
   width: 100%;
   max-width: 400px;
+}
+
+.alias{
+  width: 80px;
+}
+
+.input_alias{
+  width: 100%;
+  max-width: 55px;
 }
 
 
