@@ -293,71 +293,145 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $actuality3->setUpdated(new \DateTime);
         $actuality3->setCommunity($community);
 
+        $actuality4 = new Actuality();
+        $actuality4->setDescription('description4');
+        $actuality4->setCreated(new \DateTime);
+        $actuality4->setUpdated(new \DateTime);
+        $actuality4->setCommunity($community);
+
+        $actuality5 = new Actuality();
+        $actuality5->setDescription('description5');
+        $actuality5->setCreated(new \DateTime);
+        $actuality5->setUpdated(new \DateTime);
+        $actuality5->setCommunity($community);
+
+        $actuality6 = new Actuality();
+        $actuality6->setDescription('description6');
+        $actuality6->setCreated(new \DateTime);
+        $actuality6->setUpdated(new \DateTime);
+        $actuality6->setCommunity($community);
+
         /*
         *   Comment
         */
         $comment = new Comment();
-        $comment->setDate(new \DateTime);
         $comment->setContent('comment1');
         $comment->setActualitys($actuality);
+        $comment->setUser($userUser);
         $comment->setCreated(new \DateTime);
         $comment->setUpdated(new \DateTime);
 
         $comment2 = new Comment();
-        $comment2->setDate(new \DateTime);
         $comment2->setContent('comment2');
         $comment2->setActualitys($actuality);
+        $comment2->setUser($userUser);
         $comment2->setCreated(new \DateTime);
         $comment2->setUpdated(new \DateTime);
 
         $comment3 = new Comment();
-        $comment3->setDate(new \DateTime);
         $comment3->setContent('comment3');
         $comment3->setActualitys($actuality);
+        $comment3->setUser($userUser);
         $comment3->setCreated(new \DateTime);
         $comment3->setUpdated(new \DateTime);
 
         $comment4 = new Comment();
-        $comment4->setDate(new \DateTime);
         $comment4->setContent('comment1');
         $comment4->setActualitys($actuality2);
+        $comment4->setUser($userUser);
         $comment4->setCreated(new \DateTime);
         $comment4->setUpdated(new \DateTime);
 
         $comment5 = new Comment();
-        $comment5->setDate(new \DateTime);
         $comment5->setContent('comment2');
         $comment5->setActualitys($actuality2);
+        $comment5->setUser($userUser);
         $comment5->setCreated(new \DateTime);
         $comment5->setUpdated(new \DateTime);
 
         $comment6 = new Comment();
-        $comment6->setDate(new \DateTime);
         $comment6->setContent('comment3');
         $comment6->setActualitys($actuality2);
+        $comment6->setUser($userUser);
         $comment6->setCreated(new \DateTime);
         $comment6->setUpdated(new \DateTime);
 
         $comment7 = new Comment();
-        $comment7->setDate(new \DateTime);
         $comment7->setContent('comment1');
         $comment7->setActualitys($actuality3);
+        $comment7->setUser($userUser);
         $comment7->setCreated(new \DateTime);
         $comment7->setUpdated(new \DateTime);
 
         $comment8 = new Comment();
-        $comment8->setDate(new \DateTime);
         $comment8->setContent('comment2');
         $comment8->setActualitys($actuality3);
+        $comment8->setUser($userUser);
         $comment8->setCreated(new \DateTime);
         $comment8->setUpdated(new \DateTime);
 
         $comment9 = new Comment();
-        $comment9->setDate(new \DateTime);
         $comment9->setContent('comment3');
         $comment9->setActualitys($actuality3);
+        $comment9->setUser($userUser);
         $comment9->setCreated(new \DateTime);
         $comment9->setUpdated(new \DateTime);
+
+        $comment10 = new Comment();
+        $comment10->setDate(new \DateTime);
+        $comment10->setContent('comment1');
+        $comment10->setActualitys($actuality4);
+        $comment10->setUser($userUser);
+        $comment10->setCreated(new \DateTime);
+        $comment10->setUpdated(new \DateTime);
+
+        $comment11 = new Comment();
+        $comment11->setDate(new \DateTime);
+        $comment11->setContent('comment2');
+        $comment11->setActualitys($actuality4);
+        $comment11->setUser($userUser);
+        $comment11->setCreated(new \DateTime);
+        $comment11->setUpdated(new \DateTime);
+
+        $comment12 = new Comment();
+        $comment12->setDate(new \DateTime);
+        $comment12->setContent('comment3');
+        $comment12->setActualitys($actuality4);
+        $comment12->setUser($userUser);
+        $comment12->setCreated(new \DateTime);
+        $comment12->setUpdated(new \DateTime);
+
+        $comment13 = new Comment();
+        $comment13->setDate(new \DateTime);
+        $comment13->setContent('comment1');
+        $comment13->setActualitys($actuality5);
+        $comment13->setUser($userUser);
+        $comment13->setCreated(new \DateTime);
+        $comment13->setUpdated(new \DateTime);
+
+        $comment14 = new Comment();
+        $comment14->setDate(new \DateTime);
+        $comment14->setContent('comment2');
+        $comment14->setActualitys($actuality5);
+        $comment14->setUser($userUser);
+        $comment14->setCreated(new \DateTime);
+        $comment14->setUpdated(new \DateTime);
+
+        $comment15 = new Comment();
+        $comment15->setDate(new \DateTime);
+        $comment15->setContent('comment1');
+        $comment15->setActualitys($actuality6);
+        $comment15->setUser($userUser);
+        $comment15->setCreated(new \DateTime);
+        $comment15->setUpdated(new \DateTime);
+
+        $comment16 = new Comment();
+        $comment16->setDate(new \DateTime);
+        $comment16->setContent('comment2');
+        $comment16->setActualitys($actuality6);
+        $comment16->setUser($userUser);
+        $comment16->setCreated(new \DateTime);
+        $comment16->setUpdated(new \DateTime);
 
         $manager->persist($community);
         $manager->persist($userAdmin);
@@ -386,6 +460,9 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($actuality);
         $manager->persist($actuality2);
         $manager->persist($actuality3);
+        $manager->persist($actuality4);
+        $manager->persist($actuality5);
+        $manager->persist($actuality6); 
         $manager->persist($comment);
         $manager->persist($comment2);
         $manager->persist($comment3);
@@ -395,6 +472,13 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($comment7);
         $manager->persist($comment8);
         $manager->persist($comment9);
+        $manager->persist($comment10);
+        $manager->persist($comment11);
+        $manager->persist($comment12);
+        $manager->persist($comment13);
+        $manager->persist($comment14);
+        $manager->persist($comment15);
+        $manager->persist($comment16);
 
         $manager->flush();
 

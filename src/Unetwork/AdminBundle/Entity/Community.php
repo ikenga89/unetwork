@@ -28,7 +28,7 @@ class Community
 
     /**
      * @ORM\Column(type="string", length=4)
-     * @Assert\NotBlank(message = "Aucune valeur entrée")
+     * @Assert\NotBlank(message = "Aucun alias entrée")
      */
     protected $alias;
 
@@ -58,6 +58,16 @@ class Community
     public function __construct()
     {
         $this->actualitys = new ArrayCollection();
+        $this->setCreated(new \DateTime("now"));
+        $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function upload() {
+        $this->setUpdated(new \DateTime());
     }
 
 
