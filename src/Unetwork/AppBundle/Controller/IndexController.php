@@ -30,28 +30,23 @@ class IndexController extends Controller
             ->add('rechercher', 'submit')
             ->getForm();
 
-        $comment = new Comment();
-
-        /*
-        foreach ($actualities as $actuality) {
-            $actualityCollection->getActuality()->add($actuality);
-        }
-
-        $collection = $this->createForm(new CommentType, $actualityCollection);
-        */
-        
-
-        
-        $form = $this->createForm(new CommentType(), $comment);
-
-        $form->handleRequest($request);
-
         if ($form1->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
 
             return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
         }
+
+
+
+
+
+        $comment = new Comment();
+        
+        $form = $this->createForm(new CommentType(), $comment);
+
+        $form->handleRequest($request);
+
 
         if ($form->isValid()){
 
