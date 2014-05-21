@@ -30,17 +30,10 @@ class IndexController extends Controller
             ->add('rechercher', 'submit')
             ->getForm();
 
+
+
+
         $comment = new Comment();
-
-        /*
-        foreach ($actualities as $actuality) {
-            $actualityCollection->getActuality()->add($actuality);
-        }
-
-        $collection = $this->createForm(new CommentType, $actualityCollection);
-        */
-        
-
         
         $form = $this->createForm(new CommentType(), $comment);
 
@@ -52,6 +45,7 @@ class IndexController extends Controller
 
             return $this->redirect($this->generateUrl('app_recherche', array('recherche' => $data['recherche'])));
         }
+
 
         if ($form->isValid()){
 
