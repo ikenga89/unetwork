@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="comment")
  */
 class Comment
@@ -19,18 +20,18 @@ class Comment
      */
     protected $actualitys;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
 	/**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
-     */
-    protected $date;
 
 	/**
      * @ORM\Column(type="string", length=250)
@@ -49,6 +50,20 @@ class Comment
      * @Assert\NotBlank()
      */
     protected $updated;
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        $this->setUpdated(new \DateTime());
+    }
 
     /**
      * Get id
@@ -174,5 +189,28 @@ class Comment
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Unetwork\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Unetwork\AdminBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

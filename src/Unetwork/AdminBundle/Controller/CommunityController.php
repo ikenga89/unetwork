@@ -22,7 +22,7 @@ class CommunityController extends Controller
     {
 
         $community = new Community();
-/*        $form = $this->createForm(new CommunityType(), $community);
+       $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
 
         if ($form->isValid()){
@@ -30,15 +30,20 @@ class CommunityController extends Controller
             $em->persist($community);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+            'notice',
+            "La communauté a bien été crée"
+            );
+
             return $this->redirect($this->generateUrl('admin_community'));
         }
-*/
+
 
         $communities = $this->getDoctrine()
                             ->getRepository('UnetworkAdminBundle:Community')
                             ->findBy(Array(),Array('name'=>'ASC'));
 
-        return array("communities" => $communities/*, "form" => $form->createView()*/);
+        return array("communities" => $communities, "form" => $form->createView());
     }
 
 
@@ -49,10 +54,10 @@ class CommunityController extends Controller
      * @Route("/admin/community/create", name="admin_community_create")
      * @Template()
      */
-    public function createAction(/*Request $request*/)
+    public function createAction(Request $request)
     {
 
-/*
+
         $community = new Community();
         $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
@@ -63,10 +68,10 @@ class CommunityController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_community'));
-        }
-        return array("form" => $form->createView());
-*/
+        };
+        return array("form"=>$form->createView());
 
+/*
         $bdd = $this->get('database_connection'); 
 
         $count = 0;
@@ -89,7 +94,7 @@ class CommunityController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_community'));
-
+*/
     }
 
 
@@ -157,11 +162,14 @@ class CommunityController extends Controller
         $count = 0;
 
         if (isset( $_POST["post_community_name"]) && !empty($_POST["post_community_name"]) &&
-            isset( $_POST["post_community_id"])   && !empty($_POST["post_community_id"]) ){
+            isset( $_POST["post_community_id"])   && !empty($_POST["post_community_id"]) &&
+            isset( $_POST["post_community_alias"]) && !empty($_POST["post_community_alias"]) ){
 
             $community_name = $_POST["post_community_name"];
             $community_id = $_POST["post_community_id"];
-            $count = $bdd->executeUpdate("UPDATE community SET name = '".$community_name."', updated = NOW() WHERE id = ".$community_id." ");
+            $community_alias = $_POST["post_community_alias"];
+
+            $count = $bdd->executeUpdate("UPDATE community SET name = '".$community_name."', alias = '".$community_alias."', updated = NOW() WHERE id = ".$community_id." ");
 
         }
 

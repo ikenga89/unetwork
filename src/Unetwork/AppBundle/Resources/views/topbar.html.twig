@@ -5,10 +5,15 @@
 				<img src="/App/img/logo.png"/>
 			</a>
 			<div id="recherche">
+			
+				<!--
+				
 				<input type="text" placeholder="Rechercher utilisateurs..." class="champ"/>
+
 				<a href="#" class="bouton">
 					<span class="glyphicon glyphicon-search searchicon"></span>
 				</a>
+				-->
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -21,6 +26,9 @@
 			          		<span class="glyphicon glyphicon-cog param"></span>
 			          	</a>
 			          	<ul class="dropdown-menu">
+			          		{% if user.roles.0 == "ROLE_ADMIN" %}
+							   	<li><a href="{{ path('admin_index') }}">Administration</a></li>
+							{% endif %}
 				            <li><a href="#">Paramètres</a></li>
 				            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
 			          	</ul>
