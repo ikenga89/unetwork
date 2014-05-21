@@ -50,7 +50,8 @@
 								<p class="destActu">{{actuality.description}}</p>
 								<p class="dateActu">{{actuality.created|date("d/m/Y H:i")}}</p>
 								<div class="postComment">
-									<textarea maxlength="250" placeholder="Ecrire un commentaire..."></textarea>
+									<!--<textarea maxlength="250" placeholder="Ecrire un commentaire..."></textarea>-->
+									{{ form(form) }}
 								</div>
 								<div class="commentsActu">
 									{% for comment in actuality.comments %}
