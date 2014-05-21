@@ -50,7 +50,7 @@ class IndexController extends Controller
             // Les données sont un tableau avec les clés "name", "email", et "message"
             $data = $form->getData();
 
-            return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
+            return $this->redirect($this->generateUrl('app_recherche', array('recherche' => $data['recherche'])));
         }
 
         if ($form->isValid()){
@@ -86,15 +86,16 @@ class IndexController extends Controller
             "actualities" => $actualities,
             "user" => $user,
             "form" => $form->createView(),
+            "form1" => $form1->createView(),
         );
 
     }
 
     /**
-     * @Route("/app/recherche/{text}", name="app_recherche")
+     * @Route("/app/recherche/{recherche}", name="app_recherche")
      * @Template()
      */
-    public function rechercheAction(Request $request){
+    public function rechercheAction(Request $request, $recherche){
 
         // REQUETE
         // On recupere l'objet depuis Doctrine 
@@ -103,15 +104,17 @@ class IndexController extends Controller
         // Requete DQL 
         $query = $em->createQuery(
         'SELECT *
-         FROM UnetworkAppBundle:unetwork_users
-         WHERE nom = [recherche]' // Cherche le nom de l'user entrer par l'utilisateur
-        )->setParameter('nom');
+         FROM UnetworkAdminBundle:User
+         WHERE nom = :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+        )->setParameter('recherche',$recherche);
 
-        $products = $query->getResult();
-        //
+        $users = $query->getResult();
 
 
         // AFFICHAGE
+        return array(
+            "users" => $users,
+        );
 
     }
 }
