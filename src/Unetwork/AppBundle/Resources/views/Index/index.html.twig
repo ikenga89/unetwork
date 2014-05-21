@@ -36,16 +36,19 @@
 
   				<div id="container">
 					<div class="timeline_container">
-						<div class="indexTimeline">
-						</div>
+						<div class="indexTimeline"></div>
 					</div>
 
 					{% for actuality in actualities %}
 			  			
 		  				<div class="item">
+		  					<i class="fa fa-bookmark"></i>
 							<div class="contentItem">
+								<span class="alias">
+			  						crw
+			  					</span>&nbsp;
 								<p class="destActu">{{actuality.description}}</p>
-								<p class="dateActu">{{actuality.created|date("m/d/Y h:i:s")}}</p>
+								<p class="dateActu">{{actuality.created|date("d/m/Y H:i")}}</p>
 								<div class="postComment">
 									<textarea maxlength="250" placeholder="Ecrire un commentaire..."></textarea>
 								</div>
@@ -53,11 +56,15 @@
 									{% for comment in actuality.comments %}
 
 										<div class="comment">
+											<a href="#">
+												<img width="40" height="40" src="/{{ comment.user.getWebPath }}" />
+												{{ comment.user.prenom }} {{ comment.user.nom }}
+											</a>
+											<span>{{ comment.created|date("d/m/Y H:i") }}</span>
 											<p>
-												<a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
 												{{ comment.content }}
 											</p>
-											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
+											
 										</div>
 
 									{% endfor %}
@@ -68,25 +75,14 @@
 					{% endfor %}
 
 				</div>
-  				<!--
-  					<li class="timeline-blue">
-	  					<div class="timeline-body">
-							<p class="descActu">Poster une actualité</p>
-							<div class="comments postComments">
-								<textarea maxlength="250" placeholder="Exprimez-vous..."></textarea>
-								<input type="submit" value="Poster"/>
-							</div>
-						</div>
-					</li>
-				-->
-
-				</div>
+  				
 
 			</div>
 
 		</div>
 
-  	</div>
+	</div>
+
   	<script type="text/javascript" >
 
   	$(document).ready(function(){
