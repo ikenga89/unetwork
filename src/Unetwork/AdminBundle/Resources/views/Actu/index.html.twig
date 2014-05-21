@@ -31,8 +31,8 @@
 	                 		 <td> 	{{ actuality.id }}  </td>    
 	                 		 <td> 	{{ actuality.community.name }}   </td>
 	                 		 <td> 	{{ actuality.description|truncate(500) }}  </td>
-	                 		 <td> 	{{ actuality.created|date("m/d/Y h:i") }}  </td>
-                       <td>   {{ actuality.updated|date("m/d/Y h:i") }}  </td>
+	                 		 <td> 	{{ actuality.created|date("d/m/Y H:i") }}  </td>
+                       <td>   {{ actuality.updated|date("d/m/Y H:i") }}  </td>
 
 	                 	
 	                 		  	<td> 	
@@ -41,7 +41,7 @@
 	                 		    </td>
 
 	                 		   	<td> 	
-	                 		   		{{ actuality.comments| length }} <a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
+	                 		   		456<a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
 	                 		    </td>
 
                  		 </tr>                

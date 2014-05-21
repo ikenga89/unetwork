@@ -24,7 +24,7 @@
                     <td>{{ hobby.id }}</td>
                     <td>{{ hobby.name }}</td>
                     <td>{{ hobby.cv.user.nom }} {{ hobby.cv.user.prenom }}</td>
-                    <td>{{ hobby.updated|date("m/d/Y h:i") }}</td>
+                    <td>{{ hobby.updated|date("d/m/Y H:i") }}</td>
 
                     <td>                                 
                         <a href="{{ path('admin_hobby_delete',{'id': hobby.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 

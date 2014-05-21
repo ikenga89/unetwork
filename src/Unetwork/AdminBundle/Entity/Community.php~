@@ -58,7 +58,7 @@ class Community
     public function __construct()
     {
         $this->actualitys = new ArrayCollection();
-        $this->setCreated(new \DateTime("now"));
+        $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
 

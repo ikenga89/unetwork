@@ -84,7 +84,7 @@ class CommentController extends Controller
         $em->flush();
 
        $this->get('session')->getFlashBag()->add(
-            'alert',
+            'notice',
             "Le commentaire a bien été supprimée"
         );
 
