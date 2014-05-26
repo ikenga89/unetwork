@@ -332,9 +332,12 @@ line-height: 22px;
 	margin-left:-20px; 
 }
 
-#container{width:860px; margin: 0 auto; }
+#container {
+	width: 1290px; 
+	margin: 0 auto; 
+}
 .item {
-	width: 408px;
+	width: 612px;
 	margin: 20px 10px 10px 10px;
 	float: left;
 	background-color:#ffffff;
@@ -357,7 +360,7 @@ line-height: 22px;
 	display: block;
 	float: left;
 	height: 100%;
-	left: 426px;
+	left: 638px;
 	margin-top: 10px;
 	position: absolute;
 	width: 4px;
@@ -367,7 +370,7 @@ line-height: 22px;
 	background-image: url("../img/right.png");
 	display: block;
 	height: 15px;
-	margin-left: 407px;
+	margin-left: 611px;
 	margin-top: 8px;
 	padding: 0;
 	vertical-align: top;
@@ -380,7 +383,7 @@ line-height: 22px;
 	display: block;
 	height: 15px;
 	width: 13px;
-	margin-left: -12px;
+	margin-left: -13px;
 	margin-top: 8px;
 	position: absolute;
 	z-index:2;
@@ -389,18 +392,26 @@ line-height: 22px;
 	padding: 20px;
 }
 .rightActu, .leftActu {
-	background: #e5e5e5;
+	background: #fff;
 	border: none;
+}
+.leftActu {
+	left: 8px!important;
+}
+.rightActu {
+	left:641px!important;
 }
 .contentItem .comment a {
 	font-weight: bold;
 	color: #3b475e;
 }
 .contActu {
-	background: #fff;
+	background-image:url('../img/background_timeline.jpg');
+
 }
 .contentItem p.destActu {
 	color: #2a2a2a;
+	display: inline-block;
 }
 
 .contentItem p.dateActu {
@@ -416,14 +427,18 @@ line-height: 22px;
 	  width: 100%;
 	  border: none;
 	  margin-bottom: 10px;
+	  border: 1px solid #ddd;
 }
 
 .comment a {
 	margin-right: 5px;
 }
 
-.comment a, .comment p{ 
+.comment a { 
 	display: inline-block;
+	text-align: left;
+}
+.comment p {
 	text-align: left;
 }
 
@@ -434,8 +449,22 @@ line-height: 22px;
 	display: block;
 	font-weight: italic;
 	font-size: 12px;
+	float: right;
 }
 .commentsActu {
 	overflow-y: auto;
-	max-height: 150px;
+	max-height: 200px;
+}
+.fa-bookmark {
+	float: right;
+	margin-right: 30px;
+	font-size: 30px;
+	margin-top: -4px;
+}
+.item .alias {
+	color: #5C6C8E;
+	padding: 3px 3px 3px 3px;
+	border: 1px solid #5C6C8E;
+	text-transform: uppercase;
+	border-radius: 5px;
 }

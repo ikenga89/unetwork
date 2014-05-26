@@ -36,8 +36,7 @@
 
   				<div id="container">
 					<div class="timeline_container">
-						<div class="indexTimeline">
-						</div>
+						<div class="indexTimeline"></div>
 					</div>
 					{#{ i = 0 }#}
 					{% for actuality in actualities %}
@@ -45,9 +44,14 @@
 
 			  			
 		  				<div class="item">
+		  					<i class="fa fa-bookmark"></i>
 							<div class="contentItem">
+								<span class="alias">
+			  						crw
+			  					</span>&nbsp;
 								<p class="destActu">{{actuality.description}}</p>
 								<p class="dateActu">{{actuality.created|date("m/d/Y H:i:s")}}</p>
+
 								<div class="postComment">
 									<form class="form_comment" action="{{ path('comment_new', { 'actu_id': actuality.id }) }}" method="post">
 										<input type="text" style="width: 100%" name="content" maxlength="250" placeholder="Ecrire un commentaire..." />
@@ -57,11 +61,16 @@
 									{% for comment in actuality.comments %}
 
 										<div class="comment">
+											<a href="#">
+												<img width="40" height="40" src="/{{ comment.user.getWebPath }}" />
+												{{ comment.user.prenom }} {{ comment.user.nom }}
+											</a>
+											<span>{{ comment.created|date("d/m/Y H:i:s") }}</span>
 											<p>
-												<a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
 												{{ comment.content }}
 											</p>
-											<span>{{ comment.created|date("m/d/Y H:i:s") }}</span>
+											<!--<span>{{ comment.created|date("m/d/Y H:i:s") }}</span>-->
+											
 										</div>
 
 									{% endfor %}
@@ -72,25 +81,14 @@
 					{% endfor %}
 
 				</div>
-  				<!--
-  					<li class="timeline-blue">
-	  					<div class="timeline-body">
-							<p class="descActu">Poster une actualité</p>
-							<div class="comments postComments">
-								<textarea maxlength="250" placeholder="Exprimez-vous..."></textarea>
-								<input type="submit" value="Poster"/>
-							</div>
-						</div>
-					</li>
-				-->
-
-				</div>
+  				
 
 			</div>
 
 		</div>
 
-  	</div>
+	</div>
+
   	<script type="text/javascript" >
 
   	$(document).ready(function(){
@@ -125,7 +123,7 @@
 			$(this).find('input[name=content]').blur().val('');
 
 			$.post(url,{ content: content },function(data){
-		    	var comment = '<div class="comment" style="display:none"><p><a href="#">'+data.prenom+' '+data.nom+'</a>'+content+'</p><span>'+data.date+'</span>';
+		    	var comment = '<div class="comment" style="display:none"><a href="#"><img width="40" height="40" src="/'+data.webpath+'" /> '+data.prenom+' '+data.nom+'</a><span>'+data.date+'</span><p>'+content+'</p></div>';
 		    	$(div).prepend(comment).find('.comment:first').fadeIn('slow');
 			},'json');
 

@@ -78,18 +78,17 @@ class IndexController extends Controller
         $d['date'] = date('d/m/Y H:i:s');
         $d['nom'] = $user->getNom();
         $d['prenom'] = $user->getPrenom();
+        $d['webpath'] = $user->getWebPath();
 
         return new Response(json_encode($d));
     }
 
 
-
-
     /**
-     * @Route("/app/recherche/{text}", name="app_recherche")
+     * @Route("/app/recherche/{recherche}", name="app_recherche")
      * @Template()
      */
-    public function rechercheAction(Request $request){
+    public function rechercheAction(Request $request, $recherche){
 
         // REQUETE
         // On recupere l'objet depuis Doctrine 
@@ -98,15 +97,17 @@ class IndexController extends Controller
         // Requete DQL 
         $query = $em->createQuery(
         'SELECT *
-         FROM UnetworkAppBundle:unetwork_users
-         WHERE nom = [recherche]' // Cherche le nom de l'user entrer par l'utilisateur
-        )->setParameter('nom');
+         FROM UnetworkAdminBundle:User
+         WHERE nom = :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+        )->setParameter('recherche',$recherche);
 
-        $products = $query->getResult();
-        //
+        $users = $query->getResult();
 
 
         // AFFICHAGE
+        return array(
+            "users" => $users,
+        );
 
     }
 }

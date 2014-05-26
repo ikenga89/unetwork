@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="comment")
  */
 class Comment
@@ -57,10 +58,11 @@ class Comment
     }
 
     /**
-     * @ORM\PreUpdate
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
-    public function setUpdatedAtValue() {
-        $this->setUpdatedAt(new \DateTime());
+    public function preUpload() {
+        $this->setUpdated(new \DateTime());
     }
 
     /**
@@ -187,5 +189,28 @@ class Comment
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Unetwork\AdminBundle\Entity\User $user
+     * @return Comment
+     */
+    public function setUser(\Unetwork\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Unetwork\AdminBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

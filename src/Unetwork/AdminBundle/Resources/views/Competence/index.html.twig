@@ -24,7 +24,7 @@
         			<td>{{ competence.id }}</td>
         			<td>{{ competence.name }}</td>
         			<td>{{ competence.cv.user.nom }} {{ competence.cv.user.prenom }}</td>
-        			<td>{{ competence.updated|date("m/d/Y h:i") }}</td>
+        			<td>{{ competence.updated|date("d/m/Y H:i") }}</td>
 
 	                <td>		                 		 
 	                 	<a href="{{ path('admin_competence_delete',{'id': competence.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
