@@ -39,16 +39,19 @@
 						<div class="indexTimeline">
 						</div>
 					</div>
-
+					{#{ i = 0 }#}
 					{% for actuality in actualities %}
+
+
 			  			
 		  				<div class="item">
 							<div class="contentItem">
 								<p class="destActu">{{actuality.description}}</p>
-								<p class="dateActu">{{actuality.created|date("m/d/Y h:i:s")}}</p>
+								<p class="dateActu">{{actuality.created|date("m/d/Y H:i:s")}}</p>
 								<div class="postComment">
-									<!--<textarea maxlength="250" placeholder="Ecrire un commentaire..."></textarea>-->
-									{{ form(form) }}
+									<form class="form_comment" action="{{ path('comment_new', { 'actu_id': actuality.id }) }}" method="post">
+										<input type="text" style="width: 100%" name="content" maxlength="250" placeholder="Ecrire un commentaire..." />
+									</form>
 								</div>
 								<div class="commentsActu">
 									{% for comment in actuality.comments %}
@@ -58,14 +61,14 @@
 												<a href="#">{{ comment.user.prenom }} {{ comment.user.nom }}</a>
 												{{ comment.content }}
 											</p>
-											<span>{{ comment.created|date("m/d/Y h:i:s") }}</span>
+											<span>{{ comment.created|date("m/d/Y H:i:s") }}</span>
 										</div>
 
 									{% endfor %}
 								</div>
 							</div>
 						</div>
-		  			
+		  			{#{ i++ }#}
 					{% endfor %}
 
 				</div>
@@ -110,6 +113,26 @@
 			});
 		}
 		Arrow_Points();
+
+
+
+		//	Ajouter commentaire ajax
+		$('.form_comment').submit(function(){
+
+			var url = $(this).attr('action');
+			var content = $(this).find('input[name=content]').val();
+			var div = $(this).parent().siblings('.commentsActu');
+			$(this).find('input[name=content]').blur().val('');
+
+			$.post(url,{ content: content },function(data){
+		    	var comment = '<div class="comment" style="display:none"><p><a href="#">'+data.prenom+' '+data.nom+'</a>'+content+'</p><span>'+data.date+'</span>';
+		    	$(div).prepend(comment).find('.comment:first').fadeIn('slow');
+			},'json');
+
+			return false;
+
+		});
+
 	});
 
 	</script>
