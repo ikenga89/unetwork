@@ -154,7 +154,8 @@ a.user:focus{
 }
 .info .presentationTxt {
 	padding-top: 20px;
-	width: 550px;
+	width: 450px;
+	margin-left: -40px;
 }
 
 .info p, .info h2, .info a {
@@ -330,7 +331,7 @@ line-height: 22px;
 .body .header .bottomBar .communityname{
 	color: white;
 	font-size: 25px;
-	margin-left:-20px; 
+	margin-left:25px; 
 }
 
 #container {
@@ -413,7 +414,11 @@ line-height: 22px;
 }
 .contentItem p.destActu {
 	color: #2a2a2a;
-	display: inline-block;
+	margin-top: 10px;
+}
+.contentItem img.imgActu {
+	width: 570px;	
+	height: 200px;
 }
 
 .contentItem p.dateActu {
@@ -527,4 +532,8 @@ line-height: 22px;
 }
 .main .page-header {
   margin-top: 0;
+}
+.noteGlobale {
+	display: inline-block;
+float: right;
 }
