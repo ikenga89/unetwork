@@ -169,7 +169,7 @@ class CommunityController extends Controller
             $community_id = $_POST["post_community_id"];
             $community_alias = $_POST["post_community_alias"];
 
-            $count = $bdd->executeUpdate("UPDATE community SET name = '".$community_name."', alias = '".$community_alias."', updated = NOW() WHERE id = ".$community_id." ");
+            $count = $bdd->executeUpdate('UPDATE community SET name = "'.$community_name.'", alias = "'.$community_alias.'", updated = NOW() WHERE id = '.$community_id.' ');
 
         }
 

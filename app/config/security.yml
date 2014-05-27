@@ -25,5 +25,5 @@ security:
                 check_path: /login_check
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/app, roles: ROLE_USER }
