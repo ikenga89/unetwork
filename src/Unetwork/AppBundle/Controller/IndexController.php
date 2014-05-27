@@ -8,9 +8,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Unetwork\AppBundle\Form\CommentType;
 use Unetwork\AdminBundle\Entity\Comment;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller
 {
+
+    public function __construct(){
+        //$user = $this->get('security.context')->getToken()->getUser();
+    }
+
     /**
      * @Route("/app/index", name="app_index")
      * @Template()
@@ -30,60 +36,53 @@ class IndexController extends Controller
             ->add('rechercher', 'submit')
             ->getForm();
 
-
-
-
-        $comment = new Comment();
-        
-        $form = $this->createForm(new CommentType(), $comment);
-
-        $form->handleRequest($request);
-
         if ($form1->isValid()) {
             // Les données sont un tableau avec les clés "name", "email", et "message"
-            $data = $form->getData();
+            $data = $form1->getData();
 
-            return $this->redirect($this->generateUrl('app_recherche', array('recherche' => $data['recherche'])));
+            return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
         }
 
-
-        if ($form->isValid()){
-
-            $comment->setUser($user);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($comment);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('app_index'));
-        }
-
-        /*
-        $user = new user();
-        $form = $this->createForm(new userType(), $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            // the validation passed, do something with the $author object
-
-
-            return $this->redirect($this->generateUrl('app_recherche', array(
-                'users' => $users;
-            )));
-        }
-        */
-
-        
 
         return array(
             "actualities" => $actualities,
             "user" => $user,
-            "form" => $form->createView(),
-            "form1" => $form1->createView(),
         );
 
     }
+
+
+    /**
+     * @Route("/app/comment_new/{actu_id}", name="comment_new")
+     */
+    public function comment_newAction(Request $request, $actu_id){
+
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $actuality = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Actuality')
+        ->findOneById($actu_id);
+
+        $content = $request->request->get('content');
+
+        $comment = new Comment();
+        $comment->setUser($user);
+        $comment->setActualitys($actuality);
+        $comment->setContent($content);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        $d = array();
+        $d['date'] = date('d/m/Y H:i:s');
+        $d['nom'] = $user->getNom();
+        $d['prenom'] = $user->getPrenom();
+        $d['webpath'] = $user->getWebPath();
+
+        return new Response(json_encode($d));
+    }
+
 
     /**
      * @Route("/app/recherche/{recherche}", name="app_recherche")

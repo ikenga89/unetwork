@@ -15,6 +15,7 @@ class Actuality
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
+     * @ORM\OrderBy({"created" = "DESC"})
      */
     protected $comments;
 
