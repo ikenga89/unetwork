@@ -27,9 +27,11 @@ function update_community(THIS,ID){
 
 		var community_name_id = "#community_name_" + ID + " " + "input";
 		var community_name = $.trim( $( community_name_id ).val() );
+		community_name = community_name.replace( /"/g, "''");
 
 		var community_alias_id = "#community_alias_" + ID + " " + "input";
 		var community_alias = $.trim( $( community_alias_id ).val() );
+		community_alias = community_alias.replace( /"/g, "''");
 
 		$.ajax({
 		  type: "POST",
@@ -48,19 +50,19 @@ function update_community(THIS,ID){
 				$( community_updated_id ).html( date_time() );
 
 				$( THIS ).attr("src","/Admin/img/validate_green.png");
-				setTimeout( function(){ $( THIS ).attr("src","/Admin/img/edit.png"); }, 1000);
+				setTimeout( function(){ $( THIS ).attr("src","/Admin/img/edit.png"); }, 1200);
 				var onclick = "edit_community(this," + ID + ")";
 				$( THIS ).attr( "onclick" , onclick );
 									
 			}else{
 				$( THIS ).attr("src","/Admin/img/validate_red.png");
-				setTimeout( function(){ $( THIS ).attr("src","/Admin/img/validate.png"); }, 2000);		
+				setTimeout( function(){ $( THIS ).attr("src","/Admin/img/validate.png"); }, 1200);		
 			}
 		}).fail(function() {
 		    $( THIS ).attr("src","/Admin/img/validate_red.png");
-			setTimeout( function(){ $( THIS ).attr("src","/Admin/img/validate.png"); }, 2000);
+			setTimeout( function(){ $( THIS ).attr("src","/Admin/img/validate.png"); }, 1200);
 		});
-		setTimeout( function(){ communities_updating = true; }, 2050);
+		setTimeout( function(){ communities_updating = true; }, 1250);
 	};
 };
 

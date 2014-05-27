@@ -113,8 +113,8 @@ body {
   cursor: pointer;
 }
 
-.th_id, .td_id{
-  width: 100px;
+.th_id, .th_created, .th_updated{
+  max-width: 130px;
 }
 
 .input_name{

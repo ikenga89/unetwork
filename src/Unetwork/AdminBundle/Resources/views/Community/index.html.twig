@@ -20,8 +20,8 @@
                  		<th class="th_id">Id</th>                 		
                  		<th>Name</th>
                     <th>Alias</th>
-                    <th>Crée le</th>
-                    <th>Modifiée le</th>
+                    <th class="th_created">Crée le</th>
+                    <th class="th_updated">Modifiée le</th>
                  		<th class="th_modify">Modifier / Supprimer</th>
                 </tr>
               </thead>
@@ -30,15 +30,13 @@
 
                 	{% for community in communities  %}                 		
                  		 <tr>
-	                 		 <td class="td_id">{{ community.id }}</td>    
- 
+	                 		 <td>{{ community.id }}</td>    
 	                 		 <td id="community_name_{{ community.id }}">{{ community.name }}</td>
                        <td class="alias" id="community_alias_{{ community.id }}">{{ community.alias }}</td>
-                       <td class="td_id">{{ community.created|date("d/m/Y H:i") }}</td>
-                       <td class="td_id" id="community_updated_{{ community.id }}">{{ community.updated|date("d/m/Y H:i") }}</td>
+                       <td>{{ community.created|date("d/m/Y H:i") }}</td>
+                       <td id="community_updated_{{ community.id }}">{{ community.updated|date("d/m/Y H:i") }}</td>
 	                 		 
 	                 		  <td class="td_modify"> 	
-	                 		   	<!--<a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a> -->
                           <img src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
 	                 		   	<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
 	                 		  </td>
