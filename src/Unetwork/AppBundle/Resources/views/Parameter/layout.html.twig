@@ -1,0 +1,41 @@
+<html>
+    <head>
+            <title>U-network </title>
+            <link rel="icon" href="/img/favicon.ico" />
+            <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+            <link rel="stylesheet" href="/App/bootstrap/css/bootstrap.css" />
+            <link rel="stylesheet" href="/App/bootstrap/css/bootstrap-theme.css" />
+            <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/App/css/style.css" />
+            <!--<link rel="stylesheet" href="/App/css/components.css" />-->
+            <link rel="stylesheet" href="/App/css/timeline.css" />
+            <script src="/App/js/jquery.min.js"></script>
+            <script src="/App/bootstrap/js/bootstrap.min.js"></script>
+            <script src="/App/js/masonry.min.js"></script>
+
+    </head>
+
+  <body>
+
+{% include 'UnetworkAppBundle::topbar.html.twig' %}
+
+
+    <div class="container-fluid">
+      <div class="row body">
+ {% include 'UnetworkAppBundle:Parameter:UI/sidebar.html.twig' %}
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% block body %}
+        {% endblock %}
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/Admin/js/bootstrap.min.js"></script>
+   
+  
+</body></html>
