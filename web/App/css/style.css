@@ -220,7 +220,8 @@ background: -o-linear-gradient(top,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0
 background: -ms-linear-gradient(top,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* IE10+ */
 background: linear-gradient(to bottom,  rgba(216,216,216,0.8) 0%,rgba(245,245,245,0.8) 25%,rgba(245,245,245,0.8) 75%,rgba(216,216,216,0.8) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccd8d8d8', endColorstr='#ccd8d8d8',GradientType=0 ); /* IE6-9 */
-
+overflow-y: auto;
+max-height: 1000px;
 }
 .contTimeline ul.timeline:before{
 	background: none repeat scroll 0 0 #5C6C8E;
@@ -407,7 +408,8 @@ line-height: 22px;
 }
 .contActu {
 	background-image:url('../img/background_timeline.jpg');
-
+	overflow-y: auto; 
+	max-height: 1500px;
 }
 .contentItem p.destActu {
 	color: #2a2a2a;

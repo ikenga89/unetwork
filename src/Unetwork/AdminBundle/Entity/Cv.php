@@ -45,6 +45,7 @@ class Cv
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="cv")
+     * @ORM\OrderBy({"end" = "DESC"})
      */
     protected $experience;
 
