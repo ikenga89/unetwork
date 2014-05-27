@@ -70,6 +70,9 @@ class Cv
         $this->experience = new ArrayCollection();
         $this->competence = new ArrayCollection();
         $this->hobby = new ArrayCollection();
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+
     }
 
     /**

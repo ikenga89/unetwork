@@ -63,6 +63,12 @@ class Experience
      */
     protected $type;
 
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+
     /**
      * Get id
      *
