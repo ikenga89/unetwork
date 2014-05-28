@@ -1,0 +1,57 @@
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Profil</h1>
+  	<a href="{{ path('app_param_profil_edit') }}"> Modifier </a>
+
+    <div class="table-responsive">
+
+    	<table class="table table-striped">
+    		<tbody>
+    			<tr>
+    				<td>Nom :</td>
+    				<td>{{ user.nom }}</td>
+    			</tr>
+    			<tr>
+    				<td>Prénom :</td>
+    				<td>{{ user.prenom }}</td>
+    			</tr>
+    			<tr>
+    				<td>Ville :</td>
+    				<td>{{ user.ville }}</td>
+    			</tr>
+    			<tr>
+    				<td>Tel :</td>
+    				<td>{{ user.tel }}</td>
+    			</tr>
+    			<tr>
+    				<td>Date de naissance :</td>
+    				<td>{{ user.dateNais|date('d/m/Y') }}</td>
+    			</tr>
+    			<tr>
+    				<td>Linkedin :</td>
+    				<td>{{ user.linkedin }}</td>
+    			</tr>
+    			<tr>
+    				<td>Viadeo :</td>
+    				<td>{{ user.viadeo }}</td>
+    			</tr>
+    			<tr>
+    				<td>Twitter :</td>
+    				<td>{{ user.twitter }}</td>
+    			</tr>
+    			<tr>
+    				<td>Site Web :</td>
+    				<td>{{ user.url }}</td>
+    			</tr>
+    			<tr>
+    				<td>Photo de profil :</td>
+    				<td><img src="/{{ user.getWebPath }}" width="40" height="40" /></td>
+    			</tr>
+    		</tbody>
+    	</table>
+
+    </div>
+
+{% endblock %}

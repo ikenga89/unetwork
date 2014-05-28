@@ -1,0 +1,47 @@
+{% extends 'UnetworkAppBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Experiences</h1>
+  <a href="{{ path('app_param_experience_create') }}"> Ajouter </a>
+
+	<div class="table-responsive">
+
+            <table class="table table-striped">
+              <thead>
+                <tr>              		
+                 		<th>Type</th>     
+                 		<th>Nom</th>
+                 		<th>Description</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                 		<th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                	{% for experience in user.cv.experience  %}                 		
+                 		 <tr>  
+	                 		 <td> 	{{ experience.type.libelle }}   </td>
+	                 		 <td> 	{{ experience.name }}  </td>
+                       <td>   {{ experience.description|truncate(50) }}  </td>
+	                 		 <td> 	{{ experience.begin|date("d/m/Y") }}  </td>
+                       <td>   {{ experience.end|date("d/m/Y") }}  </td>
+	                 	
+	                 		  	<td> 	
+	                 		   		<a href="{{ path('app_param_experience_edit', {'id' : experience.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+	                 		   		<a href="{{ path('app_param_experience_delete',{'id': experience.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
+	                 		    </td>
+
+                 		 </tr>                
+               		{% endfor %}     
+
+
+               
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+

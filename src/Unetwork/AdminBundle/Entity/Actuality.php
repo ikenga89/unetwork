@@ -15,6 +15,7 @@ class Actuality
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
+     * @ORM\OrderBy({"created" = "DESC"})
      */
     protected $comments;
 
@@ -54,6 +55,8 @@ class Actuality
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
     }
 
     /**

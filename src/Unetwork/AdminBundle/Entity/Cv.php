@@ -45,6 +45,7 @@ class Cv
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="cv")
+     * @ORM\OrderBy({"end" = "DESC"})
      */
     protected $experience;
 
@@ -70,6 +71,9 @@ class Cv
         $this->experience = new ArrayCollection();
         $this->competence = new ArrayCollection();
         $this->hobby = new ArrayCollection();
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+
     }
 
     /**

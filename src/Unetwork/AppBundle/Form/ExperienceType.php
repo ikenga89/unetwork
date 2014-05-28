@@ -1,22 +1,23 @@
 <?php
 
-namespace Unetwork\AdminBundle\Form;
+namespace Unetwork\AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ActuType extends AbstractType
+class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description', 'textarea');
-        $builder->add('community', 'entity', array(
+        $builder->add('type', 'choice', array(
             'class' => 'UnetworkAdminBundle:Community',
             'property' => 'name',
         ));
-        $builder->add('created');
-        $builder->add('updated');
+        $builder->add('name', 'text');
+        $builder->add('description', 'text');
+        $builder->add('begin', 'datetime');
+        $builder->add('end', 'datetime');
         $builder->add('Envoyer', 'submit');
     }
 

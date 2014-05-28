@@ -59,12 +59,12 @@
 
 			  				<div class="info_links">
 
-			  					<a href="{{ user.ville }}">
+			  					<p>
 			  						<i class="fa fa-map-marker"></i>
 			  						{{ user.ville }}
-			  					</a>
-			  					<br/>
-			  					<a href="{{ user.email }}">
+			  					</p>
+			  					
+			  					<a href="mailto:{{ user.email }}">
 			  						<i class="fa fa-envelope"></i>
 			  						{{ user.email }}
 			  					</a>
@@ -127,9 +127,7 @@
   					<h2>Ma communauté</h2>
   					<div class="ssbloc">
 	  					<div class="community">
-		  					<span class="alias">
-		  						{{ user.community.alias }}
-		  					</span>
+		  					<span class="alias">{{user.community.alias}}</span>
 		  					<span class="name">
 		  						{{ user.community.name }}
 		  					</span>
@@ -146,9 +144,11 @@
 		  					<span class="name">
 		  						{{ competence.name }}
 		  					</span>
+		  					<div class="noteGlobale">
 	  						{% for i in 1..5 %}
 	  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
 	  						{% endfor %}
+	  						</div>
 	  					</div>
 	  					{% endfor %}
 	  				</div>

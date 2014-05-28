@@ -41,6 +41,11 @@ class Hobby
      */
     protected $cv;
 
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
 
     /**
      * Get id
