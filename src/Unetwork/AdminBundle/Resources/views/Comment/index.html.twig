@@ -20,7 +20,7 @@
 	                 		<th> Texte </th> 
 	                 		<th> Créé le </th>
 	                 		<th> Modifié le </th>    
-	                 		<th> Supprimer </th>
+	                 		<th class="th_modify" > Supprimer </th>
 	                 		
 
 	                </tr>
@@ -37,8 +37,8 @@
 		                 		 <td> 	{{ comment.updated|date("d/m/Y H:i") }}  </td>
 
 
-		                 		  	<td>		                 		 
-		                 		   		<a href="{{ path('admin_comment_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+		                 		  	<td class="td_modify" >		                 		 
+		                 		   		<a href="{{ path('admin_comment_delete',{'id': comment.id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" /> </a> 
 
 		                 		    </td>
 	                 		 </tr>                

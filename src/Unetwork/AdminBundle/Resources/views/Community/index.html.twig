@@ -37,7 +37,7 @@
                        <td id="community_updated_{{ community.id }}">{{ community.updated|date("d/m/Y H:i") }}</td>
 	                 		 
 	                 		  <td class="td_modify"> 	
-                          <img id="community_edit_{{ community.id }}" src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
+                          		<img id="community_edit_{{ community.id }}" src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
 	                 		   	<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png" onmouseover="src='/Admin/img/delete_hover.png';" onmouseout="src='/Admin/img/delete.png';"/> </a> 
 	                 		  </td>
                  		 </tr>                
