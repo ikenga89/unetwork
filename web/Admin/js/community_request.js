@@ -7,7 +7,7 @@ var communities_updating = true; // pour empecher double clic abusif
 function edit_community(THIS,ID){
 	if (communities_updating) {
 		var community_edit = "'#community_edit_" + ID + "'";
-		
+
 		var community_name_id = "#community_name_" + ID;
 		var community_name = $( community_name_id ).html();
 		$( community_name_id ).html('<input class="input_name" maxlength="200" type="texte" value="' + community_name + '" onkeypress="if (event.keyCode == 13) update_community(' + community_edit + ',' + ID + ')" >');
@@ -43,7 +43,7 @@ function update_community(THIS,ID){
 		  data: { post_community_id: ID, post_community_name: community_name, post_community_alias: community_alias,}
 
 		}).done(function( reponse ) {
-			if( reponse == 1 ) {
+			if( reponse == "1" ) {
 				community_name_id = "#community_name_" + ID;
 				$( community_name_id ).html( community_name );
 
