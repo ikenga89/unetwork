@@ -127,6 +127,8 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
     }
 
     /**
@@ -486,6 +488,7 @@ class User implements UserInterface, \Serializable
             // faites ce que vous voulez pour générer un nom unique
             $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
         }
+        $this->setUpdated(new \DateTime());
     }
 
     /**
@@ -498,6 +501,7 @@ class User implements UserInterface, \Serializable
             // faites ce que vous voulez pour générer un nom unique
             $this->path_couv = sha1(uniqid(mt_rand(), true)).'.'.$this->file_couv->guessExtension();
         }
+        $this->setUpdated(new \DateTime());
     }
 
     /**
@@ -510,18 +514,13 @@ class User implements UserInterface, \Serializable
             return;
         }
 
-        
-
         // s'il y a une erreur lors du déplacement du fichier, une exception
         // va automatiquement être lancée par la méthode move(). Cela va empêcher
         // proprement l'entité d'être persistée dans la base de données si
         // erreur il y a
 
         $s = __DIR__.'/../../../../web/App/users/'.$this->getId().'/';
-        //$s = __DIR__.'../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDir();
-        //$s = $this->getUploadDir();
         if(!is_dir($s)){
-        //if (!file_exists ( $s )) {
             mkdir($s, 0777, true);
             if(!is_dir($s.'/'.$this->getUploadDir())){
                 mkdir ($s.'/'.$this->getUploadDir(), 0777, true);
@@ -530,16 +529,6 @@ class User implements UserInterface, \Serializable
         $this->file->move($s.'/'.$this->getUploadDir(), $this->path);
          
         unset($this->file);
-
-
-
-        
-
-        /*
-        $this->file->move($this->getUploadRootDir(), $this->path);
-
-        unset($this->file);
-        */
     }
 
 
@@ -553,12 +542,8 @@ class User implements UserInterface, \Serializable
             return;
         }
 
-
         $s_couv = __DIR__.'/../../../../web/App/users/'.$this->getId().'/';
-        //$s = __DIR__.'../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDir();
-        //$s = $this->getUploadDir();
         if(!is_dir($s_couv)){
-        //if (!file_exists ( $s )) {
             mkdir($s_couv, 0777, true);
             if(!is_dir($s_couv.'/'.$this->getUploadDirCouv())){
                 mkdir ($s_couv.'/'.$this->getUploadDirCouv(), 0777, true);

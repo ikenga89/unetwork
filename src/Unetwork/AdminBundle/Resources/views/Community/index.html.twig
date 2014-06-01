@@ -2,45 +2,42 @@
 
 {% block body %}
 
-	<h1>Community</h1>
+	<h1>Commautés</h1>
 
-
+  <a href="{{ path('admin_community_create') }}"> Ajouter </a>
 
 <div class="table-responsive">
 
-
-
-        {{ form(form) }}
 
         {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
             <table class="table table-striped">
               <thead>
                 <tr>
-                 		<th class="th_id">Id</th>                 		
-                 		<th>Name</th>
+                    <th></th>
+                 		<th>Nom</th>
                     <th>Alias</th>
-                    <th class="th_created">Crée le</th>
-                    <th class="th_updated">Modifiée le</th>
-                 		<th class="th_modify">Modifier / Supprimer</th>
+                    <th>Crée le</th>
+                    <th>Modifiée le</th>
+                 		<th>Actions</th>
                 </tr>
               </thead>
 
               <tbody>
 
                 	{% for community in communities  %}                 		
-                 		 <tr>
-	                 		 <td>{{ community.id }}</td>    
-	                 		 <td id="community_name_{{ community.id }}">{{ community.name }}</td>
-                       <td class="alias" id="community_alias_{{ community.id }}">{{ community.alias }}</td>
-                       <td>{{ community.created|date("d/m/Y H:i") }}</td>
-                       <td id="community_updated_{{ community.id }}">{{ community.updated|date("d/m/Y H:i") }}</td>
+                 		<tr>
+                      <td><img width="100" height="40" src="/{{ community.getWebPath }}" /></td>
+                   		<td>{{ community.name }}</td>
+                      <td>{{ community.alias }}</td>
+                      <td>{{ community.created|date("d/m/Y H:i") }}</td>
+                      <td>{{ community.updated|date("d/m/Y H:i") }}</td>
 	                 		 
-	                 		  <td class="td_modify"> 	
-                          		<img id="community_edit_{{ community.id }}" src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
-	                 		   	<a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img src="/Admin/img/delete.png" onmouseover="src='/Admin/img/delete_hover.png';" onmouseout="src='/Admin/img/delete.png';"/> </a> 
-	                 		  </td>
-                 		 </tr>                
+	                 	  <td> 	
+                        <a href="{{ path('admin_community_edit', {'id' : community.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+                        <a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a>
+	                 		</td>
+                 		</tr>                
                		{% endfor %}     
 
 
@@ -48,14 +45,6 @@
               </tbody>
             </table>
           </div>
-
-
-
-<!-- Request -->
-<script type="text/javascript">
-  var link_update_community = "{{ path('admin_community_update') }}" ;
-</script>
-<script src="/Admin/js/community_request.js"></script>
 
 
 {% endblock %}

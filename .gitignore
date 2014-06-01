@@ -1,6 +1,7 @@
 /web/bundles/
 /web/uploads/*
 /web/App/users/*
+/web/Admin/communities/*
 /app/bootstrap*
 /app/cache/*
 /app/logs/*

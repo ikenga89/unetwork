@@ -11,9 +11,10 @@ class CommunityType extends AbstractType
     {
         $builder->add('name');
         $builder->add('alias');
-        $builder->add('Ajouter', 'submit'/* , array(
-        'validation_groups' => false,)*/
-        );
+        $builder->add('file', 'file', array(
+            'label' => 'Photo de couverture',
+            'required' => false,
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

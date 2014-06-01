@@ -60,6 +60,16 @@ class Actuality
     }
 
     /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        $this->setUpdated(new \DateTime());
+    }
+
+    
+
+    /**
      * Get id
      *
      * @return integer 
