@@ -274,7 +274,7 @@
 	#header-wrapper
 	{
 		padding: 0;
-		height: 415px!important;
+		height: 430px!important;
 	}
 
 		.homepage #header-wrapper
@@ -284,7 +284,7 @@
 
 	#intro-wrapper
 	{
-		padding-bottom: 5em;
+		padding: 2em 0 5em 0;
 	}
 
 /*********************************************************************************/
@@ -299,7 +299,7 @@
 
 		.homepage #header
 		{
-			height: 573px;
+			height: 453px;
 		}
 
 /*********************************************************************************/
