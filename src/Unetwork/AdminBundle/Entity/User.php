@@ -422,6 +422,59 @@ class User implements UserInterface, \Serializable
 
 
 
+    /*****************/
+    /*  COUVERTURE
+
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file_couv;
+
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $path_couv;
+
+
+    public function getAbsolutePathCouv()
+    {
+        return null === $this->path_couv ? null : $this->getUploadRootDirCouv().'/'.$this->path_couv;
+    }
+
+    public function getWebPathCouv()
+    {
+        //return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+        return null === $this->path_couv ? null : 'App/users/'.$this->getId().'/'.$this->getUploadDirCouv().'/'.$this->path_couv;
+    }
+
+    protected function getUploadRootDirCouv()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDirCouv();
+    }
+
+    protected function getUploadDirCouv()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        //return 'uploads';
+        return 'image_couv';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @ORM\PrePersist()
@@ -436,6 +489,18 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUploadCouv()
+    {
+        if (null !== $this->file_couv) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->path_couv = sha1(uniqid(mt_rand(), true)).'.'.$this->file_couv->guessExtension();
+        }
+    }
+
+    /**
      * @ORM\PostPersist()
      * @ORM\PostUpdate()
      */
@@ -444,6 +509,8 @@ class User implements UserInterface, \Serializable
         if (null === $this->file) {
             return;
         }
+
+        
 
         // s'il y a une erreur lors du déplacement du fichier, une exception
         // va automatiquement être lancée par la méthode move(). Cela va empêcher
@@ -464,12 +531,46 @@ class User implements UserInterface, \Serializable
          
         unset($this->file);
 
+
+
+        
+
         /*
         $this->file->move($this->getUploadRootDir(), $this->path);
 
         unset($this->file);
         */
     }
+
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function uploadCouv()
+    {
+        if (null === $this->file_couv) {
+            return;
+        }
+
+
+        $s_couv = __DIR__.'/../../../../web/App/users/'.$this->getId().'/';
+        //$s = __DIR__.'../../../../web/App/users/'.$this->getId().'/'.$this->getUploadDir();
+        //$s = $this->getUploadDir();
+        if(!is_dir($s_couv)){
+        //if (!file_exists ( $s )) {
+            mkdir($s_couv, 0777, true);
+            if(!is_dir($s_couv.'/'.$this->getUploadDirCouv())){
+                mkdir ($s_couv.'/'.$this->getUploadDirCouv(), 0777, true);
+            }
+        }
+        $this->file_couv->move($s_couv.'/'.$this->getUploadDirCouv(), $this->path_couv);
+         
+        unset($this->file_couv);
+
+    }
+
+
 
     /**
      * @ORM\PostRemove()
@@ -480,6 +581,23 @@ class User implements UserInterface, \Serializable
             unlink($file);
         }
     }
+
+
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUploadCouv()
+    {
+        if ($file_couv = $this->getAbsolutePathCouv()) {
+            unlink($file_couv);
+        }
+    }
+
+
+
+
+
 
     /**
      * Set path
@@ -742,5 +860,28 @@ class User implements UserInterface, \Serializable
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set path_couv
+     *
+     * @param string $pathCouv
+     * @return User
+     */
+    public function setPathCouv($pathCouv)
+    {
+        $this->path_couv = $pathCouv;
+
+        return $this;
+    }
+
+    /**
+     * Get path_couv
+     *
+     * @return string 
+     */
+    public function getPathCouv()
+    {
+        return $this->path_couv;
     }
 }

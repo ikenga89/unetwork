@@ -1,0 +1,40 @@
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Compétences</h1>
+  <a href="{{ path('app_param_competence_create') }}"> Ajouter </a>
+
+	<div class="table-responsive">
+
+            <table class="table table-striped">
+              <thead>
+                <tr>    
+                 		<th>Nom</th>
+                 		<th>Note</th>
+                    <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                	{% for competence in user.cv.competence  %}                 		
+                 		 <tr>  
+	                 		 <td> 	{{ competence.name }}  </td>
+                       <td>   {{ competence.note }}  </td>
+	                 		  	<td> 	
+	                 		   		<a href="{{ path('app_param_competence_edit', {'id' : competence.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+	                 		   		<a href="{{ path('app_param_competence_delete',{'id': competence.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
+	                 		    </td>
+
+                 		 </tr>                
+               		{% endfor %}     
+
+
+               
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+

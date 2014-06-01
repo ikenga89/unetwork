@@ -10,26 +10,41 @@ class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type', 'choice', array(
-            'class' => 'UnetworkAdminBundle:Community',
-            'property' => 'name',
+        
+        $builder->add('type', 'entity', array(
+            'class' => 'UnetworkAdminBundle:ExperienceType',
+            'property' => 'libelle',
+            'multiple' => false,
+            'expanded' => true,
         ));
-        $builder->add('name', 'text');
-        $builder->add('description', 'text');
-        $builder->add('begin', 'datetime');
-        $builder->add('end', 'datetime');
-        $builder->add('Envoyer', 'submit');
+        
+        $builder->add('name', 'text', array(
+            'label' => 'Nom',
+        ));
+        $builder->add('description', 'text', array(
+            'label' => 'Description',
+        ));
+        $builder->add('begin', 'datetime', array(
+            'label' => 'Début',
+            'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy',
+        ));
+        $builder->add('end', 'datetime', array(
+            'label' => 'Fin',
+            'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy',
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Unetwork\AdminBundle\Entity\Actuality',
+            'data_class' => 'Unetwork\AdminBundle\Entity\Experience',
         ));
     }
 
     public function getName()
     {
-        return 'actuality';
+        return 'experience';
     }
 }

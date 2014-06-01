@@ -5,7 +5,7 @@ namespace Unetwork\AppBundle\Controller\Parameter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Unetwork\AdminBundle\Form\ExperienceType;
+use Unetwork\AppBundle\Form\ExperienceType;
 use Unetwork\AdminBundle\Entity\Experience;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -43,7 +43,10 @@ class ExperienceController extends Controller
             return $this->redirect($this->generateUrl('app_param_experiences'));
         }
 
-        return array("form"=>$form->createView());
+        return array(
+            'user' => $user,
+            "form"=>$form->createView(),
+        );
     }
 
     /**
@@ -52,6 +55,8 @@ class ExperienceController extends Controller
      */
     public function editAction(Request $request, $id)
     {   
+        $user = $this->get('security.context')->getToken()->getUser();
+
         $experience = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Experience')
         ->find($id);
@@ -67,7 +72,10 @@ class ExperienceController extends Controller
             return $this->redirect($this->generateUrl('app_param_experiences'));
         }
 
-        return array("form"=>$form->createView());
+        return array(
+            "form" => $form->createView(),
+            'user' => $user,
+        );
     }
 
     /**

@@ -1,0 +1,38 @@
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Hobbies</h1>
+  <a href="{{ path('app_param_hobby_create') }}"> Ajouter </a>
+
+	<div class="table-responsive">
+
+            <table class="table table-striped">
+              <thead>
+                <tr>    
+                 		<th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                	{% for hobby in user.cv.hobby  %}                 		
+                 		 <tr>  
+	                 		 <td> 	{{ hobby.name }}  </td>
+	                 		  	<td> 	
+	                 		   		<a href="{{ path('app_param_hobby_edit', {'id' : hobby.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+	                 		   		<a href="{{ path('app_param_hobby_delete',{'id': hobby.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
+	                 		    </td>
+
+                 		 </tr>                
+               		{% endfor %}     
+
+
+               
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+

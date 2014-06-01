@@ -35,6 +35,7 @@ class ProfilController extends Controller
         if ($form->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $user->preUpload();
+        $user->preUploadCouv();
         $em->persist($user);
         $em->flush();
 

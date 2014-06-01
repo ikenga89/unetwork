@@ -1,0 +1,51 @@
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Nouvelle Expérience</h1>
+
+	{{ form_start(form, { 'attr': { 'role': 'form' }}) }}
+	    {{ form_errors(form) }}
+
+	    <div class="form-group">
+		{% for type in form.type %}
+			{{ form_widget(type) }}
+			{% set object=form.type.vars.choices[type.vars.value].data %}
+		    <i class="{{ object.libelle }}"></i>
+		{% endfor %}
+		</div>
+		<div class="form-group">
+	    {{ form_label(form.name) }}
+	    {{ form_widget(form.name) }}
+	    </div>
+
+	    <div class="form-group">
+	    {{ form_label(form.description) }}
+	    {{ form_widget(form.description) }}
+	    </div>
+
+	    <div class="form-group">
+	    {{ form_label(form.begin) }}
+	    {{ form_widget(form.begin, { 'attr': {'class': 'datepicker'} }) }}
+	    </div>
+
+	    <div class="form-group">
+	    {{ form_label(form.end) }}
+	    {{ form_widget(form.end, { 'attr': {'class': 'datepicker'} }) }}
+	    </div>
+
+	    <input type="submit" class="btn btn-default" />
+
+	{{ form_end(form) }}
+
+	<script>
+        $(document).ready(function(){
+            $( ".datepicker" ).datepicker({
+            	showOn: "button",
+				buttonImage: "../../../../jquery-ui-1.10.4/development-bundle/demos/datepicker/images/calendar.gif",
+				buttonImageOnly: true,
+			});
+        });
+    </script>
+
+{% endblock %}

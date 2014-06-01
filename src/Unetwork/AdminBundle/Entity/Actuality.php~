@@ -15,6 +15,7 @@ class Actuality
 
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="actualitys", cascade={"all"})
+     * @ORM\OrderBy({"created" = "DESC"})
      */
     protected $comments;
 
@@ -26,7 +27,7 @@ class Actuality
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="text")
      * @Assert\NotBlank(message = "Aucune valeur saisie")
      */
     protected $description;
@@ -54,6 +55,8 @@ class Actuality
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
     }
 
     /**
