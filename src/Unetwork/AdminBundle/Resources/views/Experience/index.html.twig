@@ -14,7 +14,7 @@
                 <th> Description</th>                     
                 <th> User</th>     
                 <th> Date </th>
-                <th>Suprimer</th>
+                <th class="th_modify" >Supprimer</th>
             </tr>
         </thead> 
 
@@ -28,8 +28,8 @@
                     <td>{{ experience.cv.user.nom }} {{ experience.cv.user.prenom }}</td>
                     <td>{{ experience.updated|date("d/m/Y H:i") }}</td>
 
-                    <td>                                 
-                        <a href="{{ path('admin_experience_delete',{'id': experience.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+                    <td class="td_modify" >                                 
+                        <a href="{{ path('admin_experience_delete',{'id': experience.id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" /> </a> 
                     </td>
                 </tr>      
             {% endfor %} 

@@ -55,6 +55,7 @@ class Comment
     {
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
+        $this->setDate(new \DateTime());
     }
 
     /**

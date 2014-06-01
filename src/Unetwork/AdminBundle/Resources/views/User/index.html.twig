@@ -17,7 +17,7 @@
              		<th> Nom  </th>     
              		<th> Prénom</th>
              		<th> Communauté </th>
-             		<th> Actions </th>
+             		<th class="th_modify" > Modifier / Supprimer </th>
 
             </tr>
           </thead>
@@ -32,7 +32,7 @@
 	 <td> {{ user.community.name }} </td>
 
 
-	  	<td> 	
+	  	<td class="td_modify" > 	
 	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
 	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
 	    </td>

@@ -13,7 +13,7 @@
              	<th> Competence </th>                 		
              	<th> User</th>     
              	<th> Date </th>
-             	<th>Suprimer</th>
+             	<th class="th_modify" >Supprimer</th>
             </tr>
         </thead> 
 
@@ -26,8 +26,8 @@
         			<td>{{ competence.cv.user.nom }} {{ competence.cv.user.prenom }}</td>
         			<td>{{ competence.updated|date("d/m/Y H:i") }}</td>
 
-	                <td>		                 		 
-	                 	<a href="{{ path('admin_competence_delete',{'id': competence.id } ) }}"> <img src="/Admin/img/delete.png"/> </a> 
+	                <td class="td_modify" >		                 		 
+	                 	<a href="{{ path('admin_competence_delete',{'id': competence.id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" /> </a> 
 	                </td>
         		</tr>      
            	{% endfor %} 
