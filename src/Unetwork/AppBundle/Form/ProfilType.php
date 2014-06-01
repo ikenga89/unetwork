@@ -29,7 +29,9 @@ class ProfilType extends AbstractType
         ));
         $builder->add('file_couv', 'file', array(
             'label' => 'Photo de couverture',
-            'required' => false));
+            'required' => false,
+        ));
+        $builder->add('password', 'password');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
