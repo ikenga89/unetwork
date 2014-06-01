@@ -43,6 +43,7 @@ class ActuController extends Controller
 
         return array("form"=>$form->createView());
     }
+
     /**
      * @Route("/admin/actu/edit/{id}", name="admin_actu_edit")
      * @Template()
@@ -57,15 +58,19 @@ class ActuController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($actu);
-        $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_actu'));
+            $actu->preUpload();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($actu);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('admin_actu'));
         }
 
         return array("form"=>$form->createView());
     }
+
     /**
      * @Route("/admin/actu/delete/{id}", name="admin_actu_delete")
      */

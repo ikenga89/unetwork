@@ -2,7 +2,7 @@
 
 {% block body %}
 
-	<h1>Actu</h1>
+	<h1>Actualités</h1>
   <a href="{{ path('admin_actu_create') }}"> Ajouter </a>
 
 	<div class="table-responsive">
@@ -12,12 +12,12 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                 		<th> Id </th>                 		
+                 		<th> Image </th>                 		
                  		<th> Communauté  </th>     
                  		<th> Contenu</th>
-                 		<th> Date Création</th>
-                    	<th> Date Modification</th>
-                 		<th class="th_modify"> Modifier/Supprimer </th>
+                 		<th> Créé le</th>
+                    	<th> Modifié le</th>
+                 		<th class="th_modify"> Actions </th>
                  		<th> Commentaires </th>
                  		
 
@@ -28,7 +28,7 @@
 
                 	{% for actuality in actualities  %}                 		
                  		 <tr>
-	                 		 <td> 	{{ actuality.id }}  </td>    
+	                 		 <td> 	<img src="/{{ actuality.getWebPath }}" width="100" height="40" />  </td>    
 	                 		 <td> 	{{ actuality.community.name }}   </td>
 	                 		 <td> 	{{ actuality.description|truncate(500) }}  </td>
 	                 		 <td> 	{{ actuality.created|date("d/m/Y H:i") }}  </td>
