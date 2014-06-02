@@ -22,7 +22,7 @@ class CommunityController extends Controller
     {
 
         $community = new Community();
-       $form = $this->createForm(new CommunityType(), $community);
+        $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
 
         if ($form->isValid()){

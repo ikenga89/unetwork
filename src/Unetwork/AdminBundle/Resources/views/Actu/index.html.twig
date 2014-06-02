@@ -10,29 +10,30 @@
             {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
             <table class="table table-striped">
-              <thead>
-                <tr>
+              	<thead>
+                	<tr>
                  		<th> Id </th>                 		
                  		<th> Communauté  </th>     
                  		<th> Contenu</th>
                  		<th> Date Création</th>
                     	<th> Date Modification</th>
                  		<th class="th_modify"> Modifier/Supprimer </th>
-                 		<th> Commentaires </th>
+                 		<th class="th_modify"> Commentaires </th>
                  		
 
-                </tr>
-              </thead>
+                	</tr>
+              	</thead>
 
-              <tbody>
+              	<tbody>
 
-                	{% for actuality in actualities  %}                 		
-                 		 <tr>
-	                 		 <td> 	{{ actuality.id }}  </td>    
-	                 		 <td> 	{{ actuality.community.name }}   </td>
-	                 		 <td> 	{{ actuality.description|truncate(500) }}  </td>
-	                 		 <td> 	{{ actuality.created|date("d/m/Y H:i") }}  </td>
-                       <td>   {{ actuality.updated|date("d/m/Y H:i") }}  </td>
+                	{% for actuality in actualities  %} 
+
+                 		<tr>
+	                 		<td> {{ actuality.id }}  </td>    
+	                 		<td> {{ actuality.community.name }}   </td>
+	                 		<td> {{ actuality.description|truncate(500) }}  </td>
+	                 		<td> {{ actuality.created|date("d/m/Y H:i") }}  </td>
+                       		<td> {{ actuality.updated|date("d/m/Y H:i") }}  </td>
 
 	                 	
 	                 		  	<td class="td_modify"> 	
@@ -40,8 +41,8 @@
 	                 		   		<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
 	                 		    </td>
 
-	                 		   	<td> 	
-	                 		   		456<a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
+	                 		   	<td class="td_modify"> 	
+	                 		   		{{ actuality.comments | length }}<a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
 	                 		    </td>
 
                  		 </tr>                
