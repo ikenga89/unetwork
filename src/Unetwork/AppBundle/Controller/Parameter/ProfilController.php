@@ -33,8 +33,16 @@ class ProfilController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+        $encoder = $this
+            ->get('security.encoder_factory')
+            ->getEncoder($user);
+        $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+        $user->setPassword($password);
+
         $em = $this->getDoctrine()->getManager();
         $user->preUpload();
+        $user->preUploadCouv();
         $em->persist($user);
         $em->flush();
 

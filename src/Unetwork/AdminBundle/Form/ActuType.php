@@ -15,8 +15,10 @@ class ActuType extends AbstractType
             'class' => 'UnetworkAdminBundle:Community',
             'property' => 'name',
         ));
-        $builder->add('created');
-        $builder->add('updated');
+        $builder->add('file', 'file', array(
+            'label' => 'Image',
+            'required' => false,
+        ));
         $builder->add('Envoyer', 'submit');
     }
 

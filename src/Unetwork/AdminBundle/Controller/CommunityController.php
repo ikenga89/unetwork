@@ -56,8 +56,6 @@ class CommunityController extends Controller
      */
     public function createAction(Request $request)
     {
-
-
         $community = new Community();
         $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
@@ -70,31 +68,6 @@ class CommunityController extends Controller
             return $this->redirect($this->generateUrl('admin_community'));
         };
         return array("form"=>$form->createView());
-
-/*
-        $bdd = $this->get('database_connection'); 
-
-        $count = 0;
-
-        if (isset($_POST["community_name"]) && !empty($_POST["community_name"]) ){
-            $community_name = $_POST["community_name"];
-            $count = $bdd->executeUpdate("INSERT INTO community VALUES ('', '".$community_name."', NOW(), NOW() ) ");
-        }
- 
-        if ($count == 1){
-            $this->get('session')->getFlashBag()->add(
-            'notice',
-            "La communauté ".$community_name." a bien été crée"
-            );
-        }else{
-            $this->get('session')->getFlashBag()->add(
-            'alert',
-            "Erreur : la communauté n'a pas pu être crée"
-            );
-        }
-
-        return $this->redirect($this->generateUrl('admin_community'));
-*/
     }
 
 
@@ -104,7 +77,7 @@ class CommunityController extends Controller
      */
     public function editAction(Request $request ,$id)
     {   
-/*        $community = $this->getDoctrine()
+        $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
         ->find($id);
 
@@ -113,6 +86,7 @@ class CommunityController extends Controller
 
         if ($form->isValid()){
             $em = $this->getDoctrine()->getManager();
+            $community->preUpload();
             $em->persist($community);
             $em->flush();
 
@@ -121,7 +95,7 @@ class CommunityController extends Controller
         return array("form" => $form->createView());
 
 
-        return array('community' => $community);*/
+        return array('community' => $community);
     }
 
 
@@ -152,10 +126,11 @@ class CommunityController extends Controller
 
 
 
-/**
+    /**
      * @Route("/admin/community/update", name="admin_community_update")
      * @Template()
      */
+    /*
     public function updateAction()
     {   
         $bdd = $this->get('database_connection'); 
@@ -175,6 +150,7 @@ class CommunityController extends Controller
 
         return new Response($count);
     }
+    */
 
 
     

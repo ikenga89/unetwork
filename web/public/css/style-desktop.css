@@ -38,7 +38,7 @@
 
 	header.style1 h2
 	{
-		font-size: 2em;
+		font-size: 1.5em;
 		letter-spacing: 0.075em;
 		line-height: 1.5em;
 	}
@@ -113,7 +113,7 @@
 
 		.feature-list section
 		{
-			padding-top: 2em;
+			padding-top: 1em;
 			border-top: solid 1px #eee;
 		}
 
@@ -256,7 +256,7 @@
 
 	.wrapper
 	{
-		padding: 6em 0 9em 0;
+		padding: 3em 0 6em 0;
 	}
 
 		.wrapper .title
@@ -274,7 +274,7 @@
 	#header-wrapper
 	{
 		padding: 0;
-		height: 400px;
+		height: 430px!important;
 	}
 
 		.homepage #header-wrapper
@@ -284,7 +284,7 @@
 
 	#intro-wrapper
 	{
-		padding-bottom: 8em;
+		padding: 2em 0 5em 0;
 	}
 
 /*********************************************************************************/
@@ -299,7 +299,7 @@
 
 		.homepage #header
 		{
-			height: 573px;
+			height: 453px;
 		}
 
 /*********************************************************************************/
@@ -344,7 +344,7 @@
 	{
 		position: absolute;
 		display: block;
-		top: 2.5em;
+		top: 1em;
 		left: 0;
 		width: 100%;
 		text-align: center;
@@ -467,7 +467,7 @@
 			font-size: 2.75em;
 			letter-spacing: 0.075em;
 			line-height: 1.35em;
-			padding: 1em 0 1em 0;
+			padding: 0.5em 0 0.5em 0;
 			margin-bottom: 1em;
 		}
 		
@@ -489,7 +489,7 @@
 
 		#features header.style1
 		{
-			padding-bottom: 5em;
+			padding-bottom: 3em;
 		}
 		
 		#features .actions
@@ -605,7 +605,7 @@
 
 	#copyright
 	{
-		margin: 6em 0 0 0;
+		margin: 0em 0 0 0;
 	}
 	
 		#copyright span
@@ -614,3 +614,22 @@
 			line-height: 1em;
 			font-size: 0.8em;
 		}
+
+/*********************************************************************************/
+/* Custom                                                                        */
+/*********************************************************************************/
+
+	.connexionHead {
+		position: absolute;
+		margin-top: 16em;
+		margin-left: 27.5em;
+	}
+
+	.connexionHead a {
+		min-width: 11em;
+		font-size: 0.9em;
+	}
+
+	.row + .row > * {
+		padding-top: 0px!important;
+	}

@@ -1,4 +1,4 @@
-{% extends 'UnetworkAppBundle::layout.html.twig' %}
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
 
 {% block body %}
 
@@ -23,7 +23,7 @@
 
                 	{% for experience in user.cv.experience  %}                 		
                  		 <tr>  
-	                 		 <td> 	{{ experience.type.libelle }}   </td>
+	                 		 <td> 	<i class="{{ experience.type.libelle }}"></i>   </td>
 	                 		 <td> 	{{ experience.name }}  </td>
                        <td>   {{ experience.description|truncate(50) }}  </td>
 	                 		 <td> 	{{ experience.begin|date("d/m/Y") }}  </td>

@@ -10,7 +10,7 @@
 	
 
 	<div class="header">
-		<img class="couverture" src="#" alt="couverture">
+		<img class="couverture" src="/{{ user.community.getWebPath }}" alt="couverture">
   		<div class="bottomBar">
 
   			<div class="row bottomBandeau">
@@ -50,7 +50,9 @@
 			  						{{ actuality.community.alias }}
 			  					</span>
 								<p class="destActu">{{actuality.description}}</p>
-								<img class="imgActu" src="#" alt="image actualité">
+								{% if actuality.path!="" %}
+									<img class="imgActu" src="/{{actuality.getWebPath}}" alt="image actualité">
+								{% endif %}
 								<p class="dateActu">{{actuality.created|date("m/d/Y H:i:s")}}</p>
 
 								<div class="postComment">

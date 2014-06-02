@@ -963,7 +963,7 @@
 		background: #282b34 url('/public/css/images/overlay.png');
 		color: #eee;
 		color: rgba(255,255,255,0.5);
-		padding-top: 20px;
+		padding: 1em 0 2em 0!important;
 	}
 
 		#footer-wrapper h1,
@@ -1178,10 +1178,12 @@
 	
 		#intro .style1
 		{
+			font-size: 1.3em!important;
 		}	
 		
 		#intro .style2
 		{
+			font-size: 2em!important;
 			font-weight: 700;
 			color: #fff;
 			border-radius: 0.35em;
@@ -1196,6 +1198,7 @@
 		
 		#intro .style3
 		{
+			font-size: 1.2em!important;
 		}
 		
 /*********************************************************************************/
