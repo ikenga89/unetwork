@@ -50,9 +50,9 @@
 			  						{{ actuality.community.alias }}
 			  					</span>
 								<p class="destActu">{{actuality.description}}</p>
-								{#% if actuality.getWebPath=="" %}
+								{% if actuality.path!="" %}
 									<img class="imgActu" src="/{{actuality.getWebPath}}" alt="image actualité">
-								{% endif %#}
+								{% endif %}
 								<p class="dateActu">{{actuality.created|date("m/d/Y H:i:s")}}</p>
 
 								<div class="postComment">
