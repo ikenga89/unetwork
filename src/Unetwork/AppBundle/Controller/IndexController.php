@@ -83,31 +83,36 @@ class IndexController extends Controller
         return new Response(json_encode($d));
     }
 
-
+    // Eric : la recherche ici =O
     /**
      * @Route("/app/recherche/{recherche}", name="app_recherche")
      * @Template()
      */
     public function rechercheAction(Request $request, $recherche){
 
-        // REQUETE
-        // On recupere l'objet depuis Doctrine 
-        $em = $this->getDoctrine()->getManager();
+
+        // on créer le formulaire pour la recherche
+        $form = $this->createFormBuilder($task)
+            ->add('recherche', 'text')
+            ->add('rechercher', 'submit')
+            ->getForm();  
+
+        if ($form1->isValid()){
 
         // Requete DQL 
         $query = $em->createQuery(
         'SELECT *
          FROM UnetworkAdminBundle:User
-         WHERE nom = :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+         WHERE nom = :[recherche]' // Cherche le nom de l'user entrer par l'utilisateur
         )->setParameter('recherche',$recherche);
 
         $users = $query->getResult();
 
+          // on affiche le formulaire dans la vue avec le render    
+        return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
+            'form' => $form->createView(),
+        ));
 
-        // AFFICHAGE
-        return array(
-            "users" => $users,
-        );
-
+        }
     }
-}
+    }
