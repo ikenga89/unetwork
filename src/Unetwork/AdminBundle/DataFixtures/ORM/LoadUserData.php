@@ -365,7 +365,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment9->setUpdated(new \DateTime);
 
         $comment10 = new Comment();
-        $comment10->setDate(new \DateTime);
         $comment10->setContent('eros varius ut');
         $comment10->setActualitys($actuality4);
         $comment10->setUser($userUser);
@@ -373,7 +372,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment10->setUpdated(new \DateTime);
 
         $comment11 = new Comment();
-        $comment11->setDate(new \DateTime);
         $comment11->setContent('Phasellus dictum ipsum odio');
         $comment11->setActualitys($actuality4);
         $comment11->setUser($userUser);
@@ -381,7 +379,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment11->setUpdated(new \DateTime);
 
         $comment12 = new Comment();
-        $comment12->setDate(new \DateTime);
         $comment12->setContent('Lorem ipsum dolor sit amet');
         $comment12->setActualitys($actuality4);
         $comment12->setUser($userUser);
@@ -389,7 +386,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment12->setUpdated(new \DateTime);
 
         $comment13 = new Comment();
-        $comment13->setDate(new \DateTime);
         $comment13->setContent('Sed faucibus ante id arcu porttitor tincidun');
         $comment13->setActualitys($actuality5);
         $comment13->setUser($userUser);
@@ -397,7 +393,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment13->setUpdated(new \DateTime);
 
         $comment14 = new Comment();
-        $comment14->setDate(new \DateTime);
         $comment14->setContent('eros varius ut');
         $comment14->setActualitys($actuality5);
         $comment14->setUser($userUser);
@@ -405,7 +400,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment14->setUpdated(new \DateTime);
 
         $comment15 = new Comment();
-        $comment15->setDate(new \DateTime);
         $comment15->setContent('Phasellus dictum ipsum odio');
         $comment15->setActualitys($actuality6);
         $comment15->setUser($userUser);
@@ -413,7 +407,6 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment15->setUpdated(new \DateTime);
 
         $comment16 = new Comment();
-        $comment16->setDate(new \DateTime);
         $comment16->setContent('lementum, a viverra arcu euismod');
         $comment16->setActualitys($actuality6);
         $comment16->setUser($userUser);

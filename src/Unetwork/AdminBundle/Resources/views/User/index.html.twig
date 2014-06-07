@@ -13,34 +13,38 @@
           <thead>
             <tr>
             		<th></th>
-             		<th> Id </th>                 		
-             		<th> Nom  </th>     
-             		<th> Prénom</th>
-             		<th> Communauté </th>
-             		<th class="th_modify" > Actions </th>
-
+             		<th>Id</th>
+             		<th>Nom</th>
+             		<th>Prénom</th>
+             		<th>Communauté</th>
+             		<th class="th_modify">Actions</th>
             </tr>
           </thead>
 
           <tbody>
-{% for user in users %}
-<tr>
-	<td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
-	 <td> 	{{ user.id }}  </td>    
-	 <td> 	{{ user.nom }}   </td>
-	 <td> 	{{ user.prenom }}  </td>
-	 <td> {{ user.community.name }} </td>
 
+            {% for user in users %}
 
-	  	<td class="td_modify" > 	
-	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
-	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
-	    </td>
+              <tr>
+              
+                <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
+              	<td>{{ user.id }}</td>
+              	<td>{{ user.nom }}</td>
+              	<td>{{ user.prenom }}</td>
+              	<td>{{ user.community.name }}</td>
 
- </tr>
-{% endfor %}
-</tbody>
-            </table>
-          </div>
+          	  	<td class="td_modify">
+          	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png"/></a>
+          	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/></a>
+          	    </td>
+
+              </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+  </div>
 
 {% endblock %}
