@@ -135,7 +135,7 @@ class Actuality
         // proprement l'entité d'être persistée dans la base de données si
         // erreur il y a
 
-        $s = __DIR__.'/../../../../web/App/users/'.$this->getId().'/';
+        $s = __DIR__.'/../../../../web/Admin/actualities/'.$this->getId().'/';
         if(!is_dir($s)){
             mkdir($s, 0777, true);
             if(!is_dir($s.'/'.$this->getUploadDir())){
@@ -297,5 +297,28 @@ class Actuality
     public function getCommunity()
     {
         return $this->community;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Actuality
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

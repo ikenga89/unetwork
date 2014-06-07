@@ -55,7 +55,6 @@ class Comment
     {
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
-        $this->setDate(new \DateTime());
     }
 
     /**
@@ -74,29 +73,6 @@ class Comment
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Comment
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 
     /**

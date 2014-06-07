@@ -30,11 +30,6 @@ class CommunityController extends Controller
             $em->persist($community);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add(
-            'notice',
-            "La communauté a bien été crée"
-            );
-
             return $this->redirect($this->generateUrl('admin_community'));
         }
 
@@ -65,6 +60,11 @@ class CommunityController extends Controller
             $em->persist($community);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+            'notice',
+            "La communauté a bien été crée"
+            );
+
             return $this->redirect($this->generateUrl('admin_community'));
         };
         return array("form"=>$form->createView());
@@ -75,7 +75,7 @@ class CommunityController extends Controller
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")
      * @Template()
      */
-    public function editAction(Request $request ,$id)
+/*    public function editAction(Request $request ,$id)
     {   
         $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
@@ -97,7 +97,7 @@ class CommunityController extends Controller
 
         return array('community' => $community);
     }
-
+*/
 
 
 
@@ -130,11 +130,13 @@ class CommunityController extends Controller
      * @Route("/admin/community/update", name="admin_community_update")
      * @Template()
      */
-    /*
+    
     public function updateAction()
     {   
         $bdd = $this->get('database_connection'); 
-        $count = 0;
+        $name_and_alias_insert = 0;
+        $image_insert = 0;
+        $new_image_link = "";
 
         if (isset( $_POST["post_community_name"]) && !empty($_POST["post_community_name"]) &&
             isset( $_POST["post_community_id"])   && !empty($_POST["post_community_id"]) &&
@@ -144,14 +146,44 @@ class CommunityController extends Controller
             $community_id = $_POST["post_community_id"];
             $community_alias = $_POST["post_community_alias"];
 
-            $count = $bdd->executeUpdate('UPDATE community SET name = "'.$community_name.'", alias = "'.$community_alias.'", updated = NOW() WHERE id = '.$community_id.' ');
+            $name_and_alias_insert = $bdd->executeUpdate('UPDATE community SET name = "'.$community_name.'", alias = "'.$community_alias.'", updated = NOW() WHERE id = '.$community_id.' ');
 
+            if ( isset( $_FILES["post_community_image"]) && !empty($_FILES["post_community_image"]) ){
+                if ( ( $_FILES["post_community_image"]["error"] == 0 )
+                    && ($_FILES["post_community_image"]["type"] == "image/gif")
+                    || ($_FILES["post_community_image"]["type"] == "image/jpeg")
+                    || ($_FILES["post_community_image"]["type"] == "image/jpg")
+                    || ($_FILES["post_community_image"]["type"] == "image/pjpeg")
+                    || ($_FILES["post_community_image"]["type"] == "image/x-png")
+                    || ($_FILES["post_community_image"]["type"] == "image/png")
+                    && ($_FILES["post_community_image"]["size"] < 1000000) ){ // 1 mo = 1000000 octet
+
+                    $community_image = $_FILES["post_community_image"];
+                    $extention = pathinfo($community_image["name"], PATHINFO_EXTENSION);
+                    $new_image_name = sha1(uniqid(mt_rand(), true)).".".$extention;
+
+                    if(!is_dir( "Admin/communities/".$community_id."/" )){
+                        mkdir( "Admin/communities/".$community_id."/" );
+                    }
+                    if(!is_dir( "Admin/communities/".$community_id."/image_couv/" )){
+                        mkdir( "Admin/communities/".$community_id."/image_couv/" );
+                    }
+
+                    move_uploaded_file( $community_image["tmp_name"], "Admin/communities/".$community_id."/image_couv/".$new_image_name );
+
+                    if ( file_exists( "Admin/communities/".$community_id."/image_couv/".$new_image_name ) ) {
+                        $image_insert = $bdd->executeUpdate('UPDATE community SET path = "'.$new_image_name.'" WHERE id = '.$community_id.' ');
+
+                        $new_image_link = "/Admin/communities/".$community_id."/image_couv/".$new_image_name;
+                    }
+                }
+            }
         }
 
-        return new Response($count);
-    }
-    */
+        $insertion = array("name_and_alias_insert" => $name_and_alias_insert, "image_insert" => $image_insert, "new_image_link" => $new_image_link);
 
+        return new Response( json_encode($insertion) );
+    }
 
     
 }
