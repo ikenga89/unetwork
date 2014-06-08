@@ -69,10 +69,11 @@ class CommentController extends Controller
 
         return array("form"=>$form->createView());
     }
-     /**
+
+    /**
      * @Route("/admin/comment/delete/{id}", name="admin_comment_delete")
      */
-   public function deleteAction($id)
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -90,5 +91,46 @@ class CommentController extends Controller
 
 
         return $this->redirect($this->generateUrl('admin_comment'));
+    }
+
+
+    /**
+     * @Route("/admin/comment/actu/{actuality_id}", name="admin_comment_actu")
+     * @Template()
+     */
+    public function actuAction($actuality_id)
+    {
+        
+        $comments = $this->getDoctrine()
+                         ->getRepository('UnetworkAdminBundle:Comment')
+                         ->findBy(Array(),Array('created'=>'DESC'));
+
+        $actualities = $this->getDoctrine()
+                            ->getRepository('UnetworkAdminBundle:Actuality')
+                            ->findBy(Array(),Array('updated'=>'DESC'));
+
+        return array("comments"=>$comments, "actuality_id"=>$actuality_id, "actualities"=>$actualities);
+    }
+
+    /**
+     * @Route("/admin/comment/delete/actu/{id}/{actuality_id}", name="admin_comment_delete_actu")
+     */
+    public function actudeleteAction($id,$actuality_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comment = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:Comment')
+        ->find($id);
+
+        $em->remove($comment);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add(
+            'notice',
+            "Le commentaire a bien été supprimée"
+        );
+
+        return $this->redirect($this->generateUrl('admin_comment_actu', array('actuality_id' => $actuality_id) ) );
     }
 }
