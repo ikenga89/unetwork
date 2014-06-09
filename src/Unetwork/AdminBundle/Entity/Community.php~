@@ -34,9 +34,9 @@ class Community
     protected $alias;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Section", mappedBy="community", cascade={"all"})
      */
-    protected $actualitys;
+    protected $sections;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="community")

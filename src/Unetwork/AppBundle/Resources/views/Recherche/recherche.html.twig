@@ -4,6 +4,40 @@
 
 	<h1>Recherche</h1>
 
-	{{users.nom}}
+	<div class="table-responsive">
+
+        {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+            		<th></th>
+             		<th>Id</th>
+             		<th>Nom</th>
+             		<th>Prénom</th>
+             		<th>Communauté</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {% for user in users %}
+
+              <tr>
+              
+                <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
+              	<td>{{ user.id }}</td>
+              	<td>{{ user.nom }}</td>
+              	<td>{{ user.prenom }}</td>
+              	<td>{{ user.community.name }}</td>
+
+              </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+  </div>
 
 {% endblock %}

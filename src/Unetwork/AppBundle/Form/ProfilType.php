@@ -31,7 +31,9 @@ class ProfilType extends AbstractType
             'label' => 'Photo de couverture',
             'required' => false,
         ));
-        $builder->add('password', 'password');
+        $builder->add('password', 'password', array(
+            'required' => false,
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
