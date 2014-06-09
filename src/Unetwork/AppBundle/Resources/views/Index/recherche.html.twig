@@ -1,0 +1,10 @@
+{{ form_start(form2) }}
+    {{ form_errors(form2) }}
+
+    {{ form_widget(form2.recherche, { 'attr': { 'class': 'champ' }}) }}
+
+    <button type="submit" class="bouton">
+    <span class="glyphicon glyphicon-search searchicon"></span>
+  </button>
+
+{{ form_end(form2) }}

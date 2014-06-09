@@ -57,23 +57,16 @@ class IndexController extends Controller
             $query = $em->createQuery(
             'SELECT u
              FROM UnetworkAdminBundle:User u
-             WHERE u.nom = :recherche' // Cherche le nom de l'user entrer par l'utilisateur
-            )->setParameter('recherche',$data['recherche']);
+             WHERE u.nom like :recherche
+             OR u.prenom like :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+            )->setParameter('recherche','%'.$data['recherche'].'%');
 
             $users = $query->getResult();
 
-
-            // on affiche le formulaire dans la vue avec le render
-            
-            //return $this->redirect($this->generateUrl('app_users', array('users' => $users)));
             return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
                 'users' => $users,
             ));
-            
-            
-
         }
-
         
         return $this->render('UnetworkAppBundle::topbar.html.twig', array(
             'user' => $user,
@@ -116,18 +109,52 @@ class IndexController extends Controller
 
 
     /**
-     * @Route("/app/users", name="app_users")
+     * @Route("/app/recherche", name="app_recherche")
      * @Template()
      */
     /*
-    public function usersAction(){
+    public function rechercheAction(Request $request){
 
-        return array(
-            'users' => $users,
-        );
+        $defaultData = array();
+        $form2 = $this->createFormBuilder($defaultData)
+            ->setAction($this->generateUrl('app_recherche'))
+            ->add('recherche', 'text')
+            ->getForm();
+
+        $form2->handleRequest($request);
+
+        if ($form2->isValid()){
+
+            $data = $form2->getData();
+
+            // Requete DQL
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(
+            'SELECT u
+             FROM UnetworkAdminBundle:User u
+             WHERE u.nom like :recherche
+             OR u.prenom like :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+            //)->setParameter('recherche','%'.$data['recherche'].'%');
+            )->setParameter('recherche',$data['recherche']);
+
+            $users = $query->getResult();
+
+
+            // on affiche le formulaire dans la vue avec le render
+            
+            //return $this->redirect($this->generateUrl('app_recherche', array('users' => serialize($users))));
+            return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
+                'users' => $users,
+            ));
+        }
+
+        return $this->render('UnetworkAppBundle:Index:recherche.html.twig', array(
+            'form2' => $form2->createView(),
+        ));
 
     }
     */
+    
 
 
 }
