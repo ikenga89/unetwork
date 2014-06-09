@@ -114,35 +114,4 @@ class IndexController extends Controller
         return new Response(json_encode($d));
     }
 
-
-    /**
-     * @Route("/app/users", name="app_users")
-     * @Template()
-     */
-    /*
-    public function usersAction(){
-
-<<<<<<< HEAD
-        if ($form->isValid()){
-
-        // Requete DQL 
-        $query = $em->createQuery(
-        'SELECT *
-         FROM UnetworkAdminBundle:User
-         WHERE nom = :[recherche]' // Cherche le nom de l'user entrer par l'utilisateur
-        )->setParameter('recherche',$recherche);
-
-        $users = $query->getResult();
-
-        return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
-
-        }
-=======
-        return array(
-            'users' => $users,
-        );
->>>>>>> be4fe0ed88325a964c86e9a3b2c42cbbcde8386c
-    }
-    */
-
 }
