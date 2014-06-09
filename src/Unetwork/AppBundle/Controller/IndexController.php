@@ -114,8 +114,6 @@ class IndexController extends Controller
         return new Response(json_encode($d));
     }
 
-<<<<<<< HEAD
-=======
 
     /**
      * @Route("/app/users", name="app_users")
@@ -131,5 +129,5 @@ class IndexController extends Controller
     }
     */
 
->>>>>>> f82ff7d4822fa87e1c878b7306b7097a611d6768
+
 }
