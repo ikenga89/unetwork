@@ -1,0 +1,65 @@
+<?php
+
+namespace Unetwork\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="section")
+ */
+class Section
+{
+    
+	/**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+	/**
+     * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message = "Aucune valeur entrée")
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     * @Assert\NotBlank(message = "Aucun alias entrée")
+     */
+    protected $alias;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="section")
+     */
+    protected $actualitys;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Community", inversedBy="sections")
+     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     */
+    protected $community;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message = "Erreur insertion date created")
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message = "Erreur insertion date update")
+     */
+    protected $updated;
+
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+
+}

@@ -13,10 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 class IndexController extends Controller
 {
 
-    public function __construct(){
-        //$user = $this->get('security.context')->getToken()->getUser();
-    }
-
     /**
      * @Route("/app/index", name="app_index")
      * @Template()
@@ -29,25 +25,60 @@ class IndexController extends Controller
         ->getRepository('UnetworkAdminBundle:Actuality')
         ->findAll();
 
-
-        $defaultData = array();
-        $form1 = $this->createFormBuilder($defaultData)
-            ->add('recherche', 'text')
-            ->add('rechercher', 'submit')
-            ->getForm();
-
-        if ($form1->isValid()) {
-            // Les données sont un tableau avec les clés "name", "email", et "message"
-            $data = $form1->getData();
-
-            return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
-        }
-
-
         return array(
             "actualities" => $actualities,
             "user" => $user,
         );
+
+    }
+
+    /**
+     * @Route("/app/topbar", name="app_topbar")
+     * @Template()
+     */
+    public function topbarAction(Request $request)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $defaultData = array();
+        $form2 = $this->createFormBuilder($defaultData)
+            ->setAction($this->generateUrl('app_topbar'))
+            ->add('recherche', 'text')
+            ->getForm();
+
+        $form2->handleRequest($request);
+
+        if ($form2->isValid()){
+
+            $data = $form2->getData();
+
+            // Requete DQL
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(
+            'SELECT u
+             FROM UnetworkAdminBundle:User u
+             WHERE u.nom = :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+            )->setParameter('recherche',$data['recherche']);
+
+            $users = $query->getResult();
+
+
+            // on affiche le formulaire dans la vue avec le render
+            
+            //return $this->redirect($this->generateUrl('app_users', array('users' => $users)));
+            return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
+                'users' => $users,
+            ));
+            
+            
+
+        }
+
+        
+        return $this->render('UnetworkAppBundle::topbar.html.twig', array(
+            'user' => $user,
+            'form2' => $form2->createView(),
+        ));
 
     }
 
@@ -83,20 +114,15 @@ class IndexController extends Controller
         return new Response(json_encode($d));
     }
 
-    // Eric : la recherche ici =O
+
     /**
-     * @Route("/app/recherche/{recherche}", name="app_recherche")
+     * @Route("/app/users", name="app_users")
      * @Template()
      */
-    public function rechercheAction(Request $request, $recherche){
+    /*
+    public function usersAction(){
 
-
-        // on créer le formulaire pour la recherche
-        $form = $this->createFormBuilder($task)
-            ->add('recherche', 'text')
-            ->add('rechercher', 'submit')
-            ->getForm();  
-
+<<<<<<< HEAD
         if ($form->isValid()){
 
         // Requete DQL 
@@ -111,5 +137,12 @@ class IndexController extends Controller
         return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
 
         }
+=======
+        return array(
+            'users' => $users,
+        );
+>>>>>>> be4fe0ed88325a964c86e9a3b2c42cbbcde8386c
     }
-    }
+    */
+
+}

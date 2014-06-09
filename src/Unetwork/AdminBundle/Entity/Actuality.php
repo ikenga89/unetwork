@@ -47,10 +47,10 @@ class Actuality
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Community", inversedBy="actualitys")
-     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Section", inversedBy="actualitys")
+     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
      */
-    protected $community;
+    protected $section;
 
 
     public function __construct()
@@ -277,29 +277,6 @@ class Actuality
     }
 
     /**
-     * Set community
-     *
-     * @param \Unetwork\AdminBundle\Entity\Community $community
-     * @return Actuality
-     */
-    public function setCommunity(\Unetwork\AdminBundle\Entity\Community $community = null)
-    {
-        $this->community = $community;
-
-        return $this;
-    }
-
-    /**
-     * Get community
-     *
-     * @return \Unetwork\AdminBundle\Entity\Community 
-     */
-    public function getCommunity()
-    {
-        return $this->community;
-    }
-
-    /**
      * Set path
      *
      * @param string $path
@@ -321,4 +298,28 @@ class Actuality
     {
         return $this->path;
     }
+
+    /**
+     * Set section
+     *
+     * @param \Unetwork\AdminBundle\Entity\Section $section
+     * @return Actuality
+     */
+    public function setSection(\Unetwork\AdminBundle\Entity\Section $section = null)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Unetwork\AdminBundle\Entity\Section 
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
+
 }

@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Unetwork\AdminBundle\Entity\User;
 use Unetwork\AdminBundle\Entity\Community;
+use Unetwork\AdminBundle\Entity\Section;
 use Unetwork\AdminBundle\Entity\Actuality;
 use Unetwork\AdminBundle\Entity\Comment;
 use Unetwork\AdminBundle\Entity\Cv;
@@ -48,6 +49,30 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $community->setAlias('info');
         $community->setCreated(new \DateTime);
         $community->setUpdated(new \DateTime);
+
+        /*
+        *   Section
+        */
+        $section = new Section();
+        $section->setName('Concepteur Réalisateur Web');
+        $section->setAlias('crw');
+        $section->setCommunity($community);
+        $section->setCreated(new \DateTime);
+        $section->setUpdated(new \DateTime);
+
+        $section2 = new Section();
+        $section2->setName('Chargé de Projet en Systemes Informatiques Appliqués');
+        $section2->setAlias('csia');
+        $section2->setCommunity($community);
+        $section2->setCreated(new \DateTime);
+        $section2->setUpdated(new \DateTime);
+
+        $section3 = new Section();
+        $section3->setName('Expert en Ingénierie Informatique');
+        $section3->setAlias('eii');
+        $section3->setCommunity($community);
+        $section3->setCreated(new \DateTime);
+        $section3->setUpdated(new \DateTime);
 
         /*
         *   User
@@ -266,37 +291,37 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $actuality->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum');
         $actuality->setCreated(new \DateTime);
         $actuality->setUpdated(new \DateTime);
-        $actuality->setCommunity($community);
+        $actuality->setSection($section);
 
         $actuality2 = new Actuality();
         $actuality2->setDescription('Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.');
         $actuality2->setCreated(new \DateTime);
         $actuality2->setUpdated(new \DateTime);
-        $actuality2->setCommunity($community);
+        $actuality2->setSection($section);
 
         $actuality3 = new Actuality();
         $actuality3->setDescription('Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum');
         $actuality3->setCreated(new \DateTime);
         $actuality3->setUpdated(new \DateTime);
-        $actuality3->setCommunity($community);
+        $actuality3->setSection($section);
 
         $actuality4 = new Actuality();
         $actuality4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.');
         $actuality4->setCreated(new \DateTime);
         $actuality4->setUpdated(new \DateTime);
-        $actuality4->setCommunity($community);
+        $actuality4->setSection($section);
 
         $actuality5 = new Actuality();
         $actuality5->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. ');
         $actuality5->setCreated(new \DateTime);
         $actuality5->setUpdated(new \DateTime);
-        $actuality5->setCommunity($community);
+        $actuality5->setSection($section);
 
         $actuality6 = new Actuality();
         $actuality6->setDescription('Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui.');
         $actuality6->setCreated(new \DateTime);
         $actuality6->setUpdated(new \DateTime);
-        $actuality6->setCommunity($community);
+        $actuality6->setSection($section);
 
         /*
         *   Comment
@@ -414,21 +439,31 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $comment16->setUpdated(new \DateTime);
 
         $manager->persist($community);
+
+        $manager->persist($section);
+        $manager->persist($section2);
+        $manager->persist($section3);
+
         $manager->persist($userAdmin);
         $manager->persist($userUser);
+
         $manager->persist($cvAdmin);
         $manager->persist($cvUser);
+
         $manager->persist($experience_type1);
         $manager->persist($experience_type2);
+
         $manager->persist($experienceAdmin);
         $manager->persist($experienceAdmin2);
         $manager->persist($experienceAdmin3);
         $manager->persist($experienceUser);
         $manager->persist($experienceUser2);
         $manager->persist($experienceUser3);
+
         $manager->persist($competence);
         $manager->persist($competence2);
         $manager->persist($competence3);
+
         $manager->persist($hobby);
         $manager->persist($hobby2);
         $manager->persist($hobby3);
@@ -437,12 +472,14 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($hobby6);
         $manager->persist($hobby7);
         $manager->persist($hobby8);
+
         $manager->persist($actuality);
         $manager->persist($actuality2);
         $manager->persist($actuality3);
         $manager->persist($actuality4);
         $manager->persist($actuality5);
-        $manager->persist($actuality6); 
+        $manager->persist($actuality6);
+
         $manager->persist($comment);
         $manager->persist($comment2);
         $manager->persist($comment3);

@@ -16,7 +16,8 @@
 	</head>
 
 		<body class="homepage">
-			{% include 'UnetworkAppBundle::topbar.html.twig' %}
+
+			{{ render(controller('UnetworkAppBundle:Index:topbar')) }}
 
 			<div class="row body">
 
@@ -30,7 +31,6 @@
 
 			</div>
 
-	
 		</body>
 
 </html>

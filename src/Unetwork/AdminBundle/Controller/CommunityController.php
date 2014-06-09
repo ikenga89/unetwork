@@ -20,7 +20,7 @@ class CommunityController extends Controller
      */
     public function indexAction(Request $request)
     {
-
+        /*
         $community = new Community();
         $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
@@ -32,13 +32,16 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         }
+        */
 
 
         $communities = $this->getDoctrine()
                             ->getRepository('UnetworkAdminBundle:Community')
                             ->findBy(Array(),Array('name'=>'ASC'));
 
-        return array("communities" => $communities, "form" => $form->createView());
+        return array(
+            "communities" => $communities,
+        );
     }
 
 
@@ -95,7 +98,7 @@ class CommunityController extends Controller
         return array("form" => $form->createView());
 
 
-        return array('community' => $community);
+        //return array('community' => $community);
     }
 */
 

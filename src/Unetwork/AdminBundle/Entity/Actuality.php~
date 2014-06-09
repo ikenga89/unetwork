@@ -47,10 +47,10 @@ class Actuality
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Community", inversedBy="actualitys")
-     * @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Section", inversedBy="actualitys")
+     * @ORM\JoinColumn(name="section_id", referencedColumnName="id")
      */
-    protected $community;
+    protected $section;
 
 
     public function __construct()

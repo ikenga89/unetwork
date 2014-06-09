@@ -60,7 +60,7 @@ class User implements UserInterface, \Serializable
     private $tel;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date_nais;
 
@@ -127,6 +127,7 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
+        $this->setPath('../../../../../img/default_user.png');
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
