@@ -70,7 +70,10 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         };
-        return array("form"=>$form->createView());
+
+        return array(
+            "form"=>$form->createView(),
+        );
     }
 
 
@@ -78,7 +81,7 @@ class CommunityController extends Controller
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")
      * @Template()
      */
-/*    public function editAction(Request $request ,$id)
+    public function editAction(Request $request ,$id)
     {   
         $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
@@ -95,12 +98,11 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         }
-        return array("form" => $form->createView());
 
-
-        //return array('community' => $community);
+        return array(
+            "form" => $form->createView(),
+        );
     }
-*/
 
 
 
@@ -133,7 +135,7 @@ class CommunityController extends Controller
      * @Route("/admin/community/update", name="admin_community_update")
      * @Template()
      */
-    
+    /*
     public function updateAction()
     {   
         $bdd = $this->get('database_connection'); 
@@ -187,6 +189,7 @@ class CommunityController extends Controller
 
         return new Response( json_encode($insertion) );
     }
+    */
 
     
 }

@@ -33,7 +33,8 @@
                       <td id="community_updated_{{ community.id }}" >{{ community.updated|date("d/m/Y H:i") }}</td>
 	                 		 
 	                 	  <td> 	
-                        <img id="community_edit_{{ community.id }}" src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{{ community.id }})">
+                        <!--<img id="community_edit_{#{ community.id }#}" src="/Admin/img/edit.png" alt="edit" onclick="edit_community(this,{#{ community.id }#})">-->
+                        <a href="{{ path('admin_community_edit',{'id': community.id } ) }}"> <img src="/Admin/img/edit.png" alt="edit"></a>
                         <a href="{{ path('admin_community_delete',{'id': community.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png" alt="delete"/> </a>
                     </tr> 
 	                 		</td>
@@ -49,10 +50,12 @@
 
 
 <!-- Request -->
+<!--
 <script type="text/javascript">
-  var link_update_community = "{{ path('admin_community_update') }}" ;
+  var link_update_community = "{#{ path('admin_community_update') }#}" ;
 </script>
 <script src="/Admin/js/community_request.js"></script>
+-->
 
 
 {% endblock %}
