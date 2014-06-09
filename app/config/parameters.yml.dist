@@ -13,5 +13,5 @@ parameters:
     mailer_user:       unetwork89@gmail.com
     mailer_password:   sciencesu
 
-    locale:            en
+    locale:            fr
     secret:            ThisTokenIsNotSoSecretChangeIt

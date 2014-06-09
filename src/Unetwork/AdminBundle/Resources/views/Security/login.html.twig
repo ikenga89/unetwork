@@ -33,7 +33,7 @@
 		<img class="logo"src="/Admin/img/logo.png">
 
 		{% if error %}
- 		   <div>{{ error.message }}</div>
+ 		   <div>{{ error.message|trans({},'messages') }}</div>
 		{% endif %}
         
 
