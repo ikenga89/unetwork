@@ -97,7 +97,7 @@ class IndexController extends Controller
             ->add('rechercher', 'submit')
             ->getForm();  
 
-        if ($form1->isValid()){
+        if ($form->isValid()){
 
         // Requete DQL 
         $query = $em->createQuery(
@@ -109,11 +109,6 @@ class IndexController extends Controller
         $users = $query->getResult();
 
         return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
-
-          // on affiche le formulaire dans la vue avec le render    
-        return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
-            'form' => $form->createView(),
-        ));
 
         }
     }
