@@ -274,7 +274,7 @@
 	#header-wrapper
 	{
 		padding: 0;
-		height: 430px!important;
+		height: 460px!important;
 	}
 
 		.homepage #header-wrapper
@@ -621,8 +621,8 @@
 
 	.connexionHead {
 		position: absolute;
-		margin-top: 16em;
-		margin-left: 27.5em;
+		margin-top: 18em;
+		margin-left: 27.8em;
 	}
 
 	.connexionHead a {

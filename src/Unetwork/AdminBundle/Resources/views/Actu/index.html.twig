@@ -38,7 +38,7 @@
                  		   	<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
                  		  </td>
                  		  <td class="td_modify"> 	
-                 		   	{{ actuality.comments | length }}<a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
+                 		   	{{ actuality.comments | length }}<a href="{{ path('admin_comment_actu',{'actuality_id': actuality.id } ) }}"> <img src="/Admin/img/comments.png"/> </a> 
                  		  </td>
                  		</tr>                
                		{% endfor %}     

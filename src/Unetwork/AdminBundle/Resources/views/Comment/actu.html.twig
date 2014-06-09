@@ -1,0 +1,98 @@
+{% extends 'UnetworkAdminBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Commentaires</h1>
+
+
+		<!--<a href="{{ path('admin_comment_create') }}"> Ajouter commentaire </a>-->
+
+<br/><br/><br/>
+
+		{% for actuality in actualities   %}
+			{% if actuality.id == actuality_id %}
+
+                <table class="table table-striped">
+		            <thead>
+		                <tr>
+		                 	<th> Image </th>                 		
+		                 	<th> Communauté  </th>     
+		                 	<th> Contenu</th>
+		                 	<th> Créé le</th>
+		                    <th> Modifié le</th>
+		                 	<th class="th_modify"> Actions </th>
+		                 	<th class="th_modify"> Commentaires </th>
+		                </tr>
+		            </thead>
+
+              		<tbody>       	                		
+                 		<tr>
+	                 		<td> 	<img src="/{{ actuality.getWebPath }}" width="100" height="40" />  </td>    
+	                 		<td> 	{{ actuality.community.name }}   </td>
+	                 		<td> 	{{ actuality.description|truncate(500) }}  </td>
+	                 		<td> 	{{ actuality.created|date("d/m/Y H:i") }}  </td>
+                      		<td>   {{ actuality.updated|date("d/m/Y H:i") }}  </td>
+                 		  	<td class="td_modify"> 	
+                 		   	<a href="{{ path('admin_actu_edit', {'id' : actuality.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
+                 		   	<a href="{{ path('admin_actu_delete',{'id': actuality.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a> 
+                 		  	</td>
+                 		  	<td class="td_modify"> 	
+                 		   	{{ actuality.comments | length }}<a href="{{ path('admin_comment') }}"> <img src="/Admin/img/comments.png"/> </a> 
+                 		  </td>
+                 		</tr>                
+              		</tbody>
+            	</table>
+
+			{% endif %}
+		{% endfor %}
+
+<br/><br/>
+
+
+		<div class="table-responsive">
+		
+		{% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
+<br/>				
+	            <table class="table table-striped">
+	              	<thead>
+		                <tr>
+		                 		<th> Id </th>                 		
+		                 		<th> Texte </th> 
+		                 		<th> Créé le </th>
+		                 		<th> Modifié le </th>    
+		                 		<th class="th_modify" > Supprimer </th>
+		                 		
+
+		                </tr>
+	              	</thead>
+
+	              	<tbody>
+
+	                	{% for comment in comments   %}
+
+	                		{% if comment.actualitys.id == actuality_id %}
+
+		                 		<tr>
+			                 		<td> 	{{ comment.id }}  </td>    
+		 
+			                 		<td> 	{{ comment.content|truncate(500) }}  </td>
+			                 		<td> 	{{ comment.created|date("d/m/Y H:i") }}  </td>
+			                 		<td> 	{{ comment.updated|date("d/m/Y H:i") }}  </td>
+
+
+			                 		<td class="td_modify" >		                 		 
+			                 		   	<a href="{{ path('admin_comment_delete_actu',{'id': comment.id, 'actuality_id': actuality_id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" /> </a> 
+			                 		</td>
+		                 		</tr>   
+
+	                 		{% endif %}
+	               		{% endfor %}     
+
+
+	               
+	              	</tbody>
+	            </table>
+	          </div>
+
+{% endblock %}

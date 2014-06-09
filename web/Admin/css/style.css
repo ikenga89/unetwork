@@ -119,6 +119,20 @@ body {
   cursor: pointer;
 }
 
+.community_img{
+  width: 
+}
+
+.community_img{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 110px;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 40px;
+}
+
 .th_id, .th_created, .th_updated{
   max-width: 130px;
 }
@@ -137,8 +151,31 @@ body {
   max-width: 55px;
 }
 
+.div_image_upload{
+  margin-left: auto;
+  margin-right: auto;
+  width: 110px;
+}
 
+.div_image_upload input{
+  display: none;
+}
 
+.div_image_upload img{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  cursor: pointer;
+}
 
+.div_image_upload p{
+  text-align: center;
+  margin: 0px;
+  font-size: 11px;
+  margin-bottom: -7px;
+  white-space: nowrap;
+}
 
-
+.red_outline{
+  outline: 1px solid #FF0000;
+}

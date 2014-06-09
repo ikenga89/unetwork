@@ -125,7 +125,6 @@ class IndexController extends Controller
         return array(
             'users' => $users,
         );
-
     }
     */
 
