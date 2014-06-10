@@ -43,6 +43,7 @@ class IndexController extends Controller
         $defaultData = array();
         $form2 = $this->createFormBuilder($defaultData)
             ->setAction($this->generateUrl('app_topbar'))
+            ->setMethod('GET')
             ->add('recherche', 'text')
             ->getForm();
 
