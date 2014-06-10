@@ -418,7 +418,7 @@ line-height: 22px;
 }
 .contentItem img.imgActu {
 	width: 40.7em;
-	height: 15em;
+	max-height: 25em;
 }
 
 .contentItem p.dateActu {
@@ -488,7 +488,7 @@ line-height: 22px;
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;
-    top: 51px;
+    top: 50px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -535,5 +535,36 @@ line-height: 22px;
 }
 .noteGlobale {
 	display: inline-block;
-float: right;
+	float: right;
+}
+.contentForm .form-group {
+	padding: 5px;
+	border-top: 1px solid #eee;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 0px;
+}
+.contentForm .form-group input {
+	border-radius: 5px;
+	padding: 5px;
+}
+.contentForm .form-group label {
+	margin-right: 15px;
+	margin-left: 10px;
+}
+.contentForm div:nth-child(odd) {
+	background: #fafafa;
+}
+
+.contentForm .btn-default {
+	margin-top: 15px;
+	background: #fff;
+}
+.main h1 {
+	font-size: 30px;
+}
+.contentForm i {
+	font-size: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 }

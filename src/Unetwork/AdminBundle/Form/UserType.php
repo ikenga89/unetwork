@@ -37,7 +37,6 @@ class UserType extends AbstractType
                 'expanded'  => true,
             ));
         }
-        $builder->add('save', 'submit');
 
     }
 

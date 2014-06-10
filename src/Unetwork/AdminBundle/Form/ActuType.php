@@ -24,7 +24,6 @@ class ActuType extends AbstractType
             'label' => 'Image',
             'required' => false,
         ));
-        $builder->add('Envoyer', 'submit');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

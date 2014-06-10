@@ -7,13 +7,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">U-Network Admin</a>
+        <a href="{{ path('app_index') }}" class="logo">
+          <img src="/App/img/logo.png"/> 
+        </a>
+        <span class="logo_admin">Admin</span>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Paramètres</a></li>
-            <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-           
+            <li><a href="{{ path('logout') }}">Déconnexion</a></li>    
           </ul>
         </div>
       </div>
