@@ -568,3 +568,19 @@ line-height: 22px;
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+
+/*
+ *	Table result search user
+ */
+ table.searchUser tbody tr{
+ 	cursor: pointer;
+ }
+  table.searchUser tbody tr td{
+ 	transition: 0.2s ease-in-out;
+ 	-moz-transition: 0.2s ease-in-out;
+ }
+ table.searchUser tbody tr:hover td{
+ 	background: rgba(0,0,0,0.1);
+ }
+
