@@ -232,6 +232,9 @@ border-color: #ccc;
 .contentForm .form-group label {
   margin-right: 15px;
   margin-left: 10px;
+  vertical-align: middle;
+}
+.contentForm .groupDesc label {
   vertical-align: top;
 }
 .contentForm div:nth-child(odd) {
