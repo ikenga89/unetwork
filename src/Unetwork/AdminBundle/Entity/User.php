@@ -30,12 +30,12 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     private $salt;
 
@@ -95,6 +95,11 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
+     * @ORM\Column(name="register_token", length=125, type="string", nullable=true)
+     */
+    private $registerToken;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */
@@ -124,7 +129,7 @@ class User implements UserInterface, \Serializable
 
     public function __construct()
     {
-        $this->isActive = true;
+        $this->isActive = false;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
         $this->setPath('../../../../../img/default_user.png');
@@ -869,5 +874,28 @@ class User implements UserInterface, \Serializable
     public function getPathCouv()
     {
         return $this->path_couv;
+    }
+
+    /**
+     * Set registerToken
+     *
+     * @param string $registerToken
+     * @return User
+     */
+    public function setRegisterToken($registerToken)
+    {
+        $this->registerToken = $registerToken;
+
+        return $this;
+    }
+
+    /**
+     * Get registerToken
+     *
+     * @return string 
+     */
+    public function getRegisterToken()
+    {
+        return $this->registerToken;
     }
 }

@@ -1,0 +1,15 @@
+<h1>Inscription</h1>
+
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+    	{{ form_errors(form.password) }}
+    	{{ form_label(form.password) }}
+    	{{ form_widget(form.password) }}
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Enregistrer" />
+
+{{ form_end(form) }}

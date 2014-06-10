@@ -2,6 +2,7 @@
 
 namespace Unetwork\PublicBundle\Controller;
 
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -29,7 +30,7 @@ class DefaultController extends Controller
             ->setSubject('Demande d\'inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo('maxime.sifflet@gmail.com')
-            ->setBody($this->renderView('UnetworkPublicBundle:Default:email.txt.twig', array('data' => $data)));
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.txt.twig', array('data' => $data)));
             $this->get('mailer')->send($message);
 
 
@@ -73,6 +74,74 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         );
     }
+
+
+    /**
+     * @Route("/register/{register_token}", name="public_register")
+     * @Template()
+     */
+    public function registerAction(Request $request, $register_token = NULL){
+
+        $user = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->findOneByRegisterToken($register_token);
+
+        if(empty($user)){
+
+            return $this->render('UnetworkPublicBundle:Default:tokenwrong.html.twig');
+
+        }else{
+
+            $defaultData = array();
+            $form = $this->createFormBuilder($defaultData)
+                ->setAction($this->generateUrl('public_register', array('register_token' => $register_token)))
+                ->add('password', 'repeated', array(
+                    'label' => 'Choisissez un mot de passe :',
+                    'type' => 'password',
+                    'invalid_message' => 'Les mots de passe doivent correspondre',
+                    'options' => array('required' => true),
+                    'first_options'  => array('label' => 'Mot de passe'),
+                    'second_options' => array('label' => 'Mot de passe (validation)'),
+                ))
+                ->getForm();
+
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+
+                $user->setPassword($form['password']->getData());
+
+                $encoder = $this
+                ->get('security.encoder_factory')
+                ->getEncoder($user);
+                $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+                $user->setPassword($password);
+
+                $user->setIsActive(true);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                // Connexion
+                $token = new UsernamePasswordToken($user, $user->getPassword(), 'admin_area', $user->getRoles());
+                $this->get('security.context')->setToken($token);
+                $this->get('session')->set('_security_main',serialize($token));
+
+                return $this->redirect($this->generateUrl('app_index'));
+
+            }
+
+            return array(
+                'form'=>$form->createView(),
+            );
+
+        }
+
+    }
+
+
+
 
     /**
      * @Route("/thanks", name="public_thanks")

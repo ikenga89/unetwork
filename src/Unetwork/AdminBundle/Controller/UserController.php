@@ -36,15 +36,35 @@ class UserController extends Controller
 
         if ($form->isValid()) {
 
+            $data = $form->getData();
+
+            //$token = uniqid(mt_rand(), true);
+            $token = uniqid(true);
+            $link = 'http://dev.unetwork.loc/app_dev.php/register/'.$token;
+            $user->setRegisterToken($token);
+
+            /*
             $encoder = $this
             ->get('security.encoder_factory')
             ->getEncoder($user);
             $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
             $user->setPassword($password);
+            */
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+
+            $message = \Swift_Message::newInstance()
+            ->setSubject('Inscription')
+            ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
+            ->setTo($form['email']->getData())
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.txt.twig', array(
+                'data' => $data,
+                'link' => $link,
+            )));
+            $this->get('mailer')->send($message);
 
             return $this->redirect($this->generateUrl('admin_user'));
         }
