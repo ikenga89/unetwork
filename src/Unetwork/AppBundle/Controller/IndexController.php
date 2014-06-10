@@ -52,14 +52,28 @@ class IndexController extends Controller
 
             $data = $form2->getData();
 
+            //modif explode trouver les noms et prenom lors d'une recherche
+
+            $mots = explode(' ', $data['recherche']);
+            $parameters = array();
+
+            // on stock la requete dans la variable $dql
+            $dql = 'SELECT u FROM UnetworkAdminBundle:User u WHERE ';
+
+            // on affecte chaque mot d'un id pour qu'elle soit unique
+            foreach ($mots as $key => $mot) {
+                if($key > 0){
+                    $dql = $dql .  ' OR ';
+                }
+                //concaténation de la requete dql avec les mots rechercher         
+                $dql = $dql . 'u.nom like :recherche'.$key.' OR u.prenom like :recherche'.$key;
+                $parameters['recherche'.$key] = '%'.$mot.'%';
+            }
+            
             // Requete DQL
             $em = $this->getDoctrine()->getManager();
-            $query = $em->createQuery(
-            'SELECT u
-             FROM UnetworkAdminBundle:User u
-             WHERE u.nom like :recherche
-             OR u.prenom like :recherche' // Cherche le nom de l'user entrer par l'utilisateur
-            )->setParameter('recherche','%'.$data['recherche'].'%');
+            // on envoie les données de la requetes qui reçoit les paramètre rentrer par l'utilisateur
+            $query = $em->createQuery($dql)->setParameters($parameters);
 
             $users = $query->getResult();
 
