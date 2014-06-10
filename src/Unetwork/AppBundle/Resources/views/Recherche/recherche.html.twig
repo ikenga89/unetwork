@@ -8,11 +8,10 @@
 
         {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
-        <table class="table table-striped">
+        <table class="table table-striped searchUser">
           <thead>
             <tr>
             		<th></th>
-             		<th>Id</th>
              		<th>Nom</th>
              		<th>Prénom</th>
              		<th>Communauté</th>
@@ -23,10 +22,10 @@
 
             {% for user in users %}
 
-              <tr>
+              <tr onclick="document.location = 'profil/{{ user.id }}';">
+
               
                 <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
-              	<td>{{ user.id }}</td>
               	<td>{{ user.nom }}</td>
               	<td>{{ user.prenom }}</td>
               	<td>{{ user.community.name }}</td>
