@@ -34,8 +34,8 @@
                       <td>{{ section.updated|date("d/m/Y H:i") }}</td>
 	                 		 
 	                 	  <td> 	
-                        <a href="{{ path('admin_section_edit', {'id' : section.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>
-                        <a href="{{ path('admin_section_delete',{'id': section.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/> </a>
+                        <a href="{{ path('admin_section_edit', {'id' : section.id } ) }}"> <img src="/Admin/img/edit.png" alt="edit" /> </a>
+                        <a href="{{ path('admin_section_delete',{'id': section.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png" alt="delete" /> </a>
 	                 		</td>
                  		</tr>                
                		{% endfor %}     
