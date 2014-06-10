@@ -179,3 +179,83 @@ body {
 .red_outline{
   outline: 1px solid #FF0000;
 }
+.contentForm .form-group input, .contentForm .form-group textarea, .contentForm .form-group select {
+  border-radius: 5px;
+  padding: 5px;
+}
+.contentForm .form-group textarea {
+  min-width: 500px;
+  min-height: 150px;
+}
+.contentForm .btn-default {
+  margin-top: 15px;
+  background: #fff;
+}
+.main h1 {
+  font-size: 30px;
+}
+.contentForm i {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+  display: inline-block;
+margin-bottom: 0;
+font-weight: 400;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+background-image: none;
+border: 1px solid transparent;
+white-space: nowrap;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+border-radius: 4px;
+-webkit-user-select: none;
+color: #333;
+background-color: #fff;
+border-color: #ccc;
+}
+.contentForm .form-group {
+  padding: 5px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0px;
+}
+.contentForm .form-group input {
+  border-radius: 5px;
+  padding: 5px;
+}
+.contentForm .form-group label {
+  margin-right: 15px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.contentForm .groupDesc label {
+  vertical-align: top;
+}
+.contentForm div:nth-child(odd) {
+  background: #fafafa;
+}
+
+.contentForm .btn-default {
+  margin-top: 15px;
+  background: #fff;
+}
+.main h1 {
+  font-size: 30px;
+}
+.contentForm i {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.logo_admin {
+  color: #fff;
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+}

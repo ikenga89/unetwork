@@ -5,7 +5,7 @@
 	<h1>Ajouter un utilisateur</h1>
 
 	{#{ form(form) }#}
-
+<div class="contentForm">
 	{{ form_start(form, {'attr': {'role': 'form'}}) }}
 
 	    {{ form_errors(form) }}
@@ -39,7 +39,7 @@
         	{{ form_errors(form.roles) }}
         	{{ form_widget(form.roles) }}
 	    </div>
-
+</div>
 	{{ form_end(form) }}
 
 {% endblock %}
