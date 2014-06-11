@@ -29,6 +29,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'UnetworkAppBundle:Form:fields.html.twig'
 
 services:
     twig.extension.text:
