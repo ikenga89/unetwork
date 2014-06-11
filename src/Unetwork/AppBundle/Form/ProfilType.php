@@ -31,9 +31,15 @@ class ProfilType extends AbstractType
             'label' => 'Photo de couverture',
             'required' => false,
         ));
-        $builder->add('password', 'password', array(
-            'required' => false,
-        ));
+        $builder->add('password', 'repeated', array(
+                    'label' => 'Choisissez un mot de passe :',
+                    'type' => 'password',
+                    'required' => false,
+                    'invalid_message' => 'Les mots de passe doivent correspondre',
+                    'options' => array('required' => true),
+                    'first_options'  => array('label' => 'Mot de passe'),
+                    'second_options' => array('label' => 'Mot de passe (validation)'),
+                ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
