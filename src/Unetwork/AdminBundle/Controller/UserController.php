@@ -38,9 +38,15 @@ class UserController extends Controller
 
             $data = $form->getData();
 
-            //$token = uniqid(mt_rand(), true);
             $token = uniqid(true);
-            $link = 'http://dev.unetwork.loc/app_dev.php/register/'.$token;
+
+            $uri = $this->get('router')->generate('public_home');
+            $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+            $currentRoute = $request->attributes->get('_route');
+            $currentUrl = $this->get('router')
+                ->generate($currentRoute, array(), true);
+            
+            $link = $baseurl.$uri.'register/'.$token;
             $user->setRegisterToken($token);
 
             /*

@@ -123,6 +123,13 @@ class DefaultController extends Controller
                 $em->persist($user);
                 $em->flush();
 
+                $message = \Swift_Message::newInstance()
+                ->setSubject('Inscription terminé')
+                ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
+                ->setTo($user->getEmail())
+                ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_end.txt.twig'));
+                $this->get('mailer')->send($message);
+
                 // Connexion
                 $token = new UsernamePasswordToken($user, $user->getPassword(), 'admin_area', $user->getRoles());
                 $this->get('security.context')->setToken($token);
