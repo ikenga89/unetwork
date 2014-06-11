@@ -42,25 +42,13 @@ class UserController extends Controller
 
             $uri = $this->get('router')->generate('public_home');
             $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
-            $currentRoute = $request->attributes->get('_route');
-            $currentUrl = $this->get('router')
-                ->generate($currentRoute, array(), true);
-            
             $link = $baseurl.$uri.'register/'.$token;
-            $user->setRegisterToken($token);
 
-            /*
-            $encoder = $this
-            ->get('security.encoder_factory')
-            ->getEncoder($user);
-            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-            $user->setPassword($password);
-            */
+            $user->setRegisterToken($token);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
 
             $message = \Swift_Message::newInstance()
             ->setSubject('Inscription')

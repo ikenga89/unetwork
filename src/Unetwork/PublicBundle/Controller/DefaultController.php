@@ -148,6 +148,159 @@ class DefaultController extends Controller
     }
 
 
+    /**
+     * @Route("/repassword/email", name="public_repassword_email")
+     * @Template()
+     */
+    public function repassword_emailAction(Request $request)
+    {
+
+        $defaultData = array();
+        $form = $this->createFormBuilder($defaultData)
+            ->setAction($this->generateUrl('public_repassword_email'))
+            ->add('email', 'email', array(
+                'label' => 'Veuillez saisir votre identifiant :',
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $user = $this->getDoctrine()
+                ->getRepository('UnetworkAdminBundle:User')
+                ->findOneByEmail($form['email']->getData());
+
+            if(empty($user)){
+
+                return $this->render('UnetworkPublicBundle:Default:emailwrong.html.twig');
+
+            }else{
+
+                $data = $form->getData();
+
+                $token = uniqid(true);
+
+                $currentDate = new \DateTime();
+                $tokenDate = $currentDate->modify('+3 day');
+
+                $uri = $this->get('router')->generate('public_home');
+                $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+                $link = $baseurl.$uri.'repassword/'.$token;
+
+                $user->setRepasswordToken($token);
+
+                $user->setRepasswordTokenDate($tokenDate);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                $message = \Swift_Message::newInstance()
+                ->setSubject('Oubli de mot de passe')
+                ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
+                ->setTo($user->getEmail())
+                ->setBody($this->renderView('UnetworkAdminBundle:Mail:repassword.txt.twig', array(
+                    'data' => $data,
+                    'link' => $link,
+                )));
+                $this->get('mailer')->send($message);
+
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Un email vous à été envoyé pour récuperer votre mot de passe !'
+                );
+
+                return $this->redirect($this->generateUrl('public_home'));
+
+            }
+
+        }
+
+        return array(
+            'form' => $form->createView(),
+        );
+    }
+
+
+    /**
+     * @Route("/repassword/{repassword_token}", name="public_repassword")
+     * @Template()
+     */
+    public function repasswordAction(Request $request, $repassword_token = NULL)
+    {
+        $user = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->findOneByRepasswordToken($repassword_token);
+
+        if(empty($user)){
+
+            return $this->render('UnetworkPublicBundle:Default:tokenwrong.html.twig');
+
+        }else{
+
+            $currentDate = new \Datetime();
+
+            if($currentDate > $user->getRepasswordTokenDate()){
+
+                return $this->render('UnetworkPublicBundle:Default:tokenwrong.html.twig');
+
+            }else{
+
+                $defaultData = array();
+                    $form = $this->createFormBuilder($defaultData)
+                        ->setAction($this->generateUrl('public_repassword', array('repassword_token' => $repassword_token)))
+                        ->add('password', 'repeated', array(
+                            'label' => 'Choisissez un mot de passe :',
+                            'type' => 'password',
+                            'invalid_message' => 'Les mots de passe doivent correspondre',
+                            'options' => array('required' => true),
+                            'first_options'  => array('label' => 'Mot de passe'),
+                            'second_options' => array('label' => 'Mot de passe (validation)'),
+                        ))
+                        ->getForm();
+
+                $form->handleRequest($request);
+
+                if ($form->isValid()) {
+
+                    $encoder = $this
+                    ->get('security.encoder_factory')
+                    ->getEncoder($user);
+                    $password = $encoder->encodePassword($form['password']->getData(), $user->getSalt());
+                    $user->setPassword($password);
+
+                    $user->setRepasswordToken(null);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+
+                    $message = \Swift_Message::newInstance()
+                    ->setSubject('Modification de mot de passe')
+                    ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
+                    ->setTo($user->getEmail())
+                    ->setBody($this->renderView('UnetworkAdminBundle:Mail:repassword_end.txt.twig'));
+                    $this->get('mailer')->send($message);
+
+                    // Connexion
+                    $token = new UsernamePasswordToken($user, $user->getPassword(), 'admin_area', $user->getRoles());
+                    $this->get('security.context')->setToken($token);
+                    $this->get('session')->set('_security_main',serialize($token));
+
+                    return $this->redirect($this->generateUrl('app_index'));
+
+                }
+
+                return array(
+                    'form' => $form->createView(),
+                );
+
+            }
+
+        }
+
+    }
 
 
     /**

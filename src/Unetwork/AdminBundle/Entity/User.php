@@ -100,6 +100,16 @@ class User implements UserInterface, \Serializable
     private $registerToken;
 
     /**
+     * @ORM\Column(name="repassword_token", length=125, type="string", nullable=true)
+     */
+    private $repasswordToken;
+
+    /**
+     * @ORM\Column(name="repassword_token_date", type="datetime", nullable=true)
+     */
+    private $repasswordTokenDate;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */
@@ -897,5 +907,51 @@ class User implements UserInterface, \Serializable
     public function getRegisterToken()
     {
         return $this->registerToken;
+    }
+
+    /**
+     * Set repasswordToken
+     *
+     * @param string $repasswordToken
+     * @return User
+     */
+    public function setRepasswordToken($repasswordToken)
+    {
+        $this->repasswordToken = $repasswordToken;
+
+        return $this;
+    }
+
+    /**
+     * Get repasswordToken
+     *
+     * @return string 
+     */
+    public function getRepasswordToken()
+    {
+        return $this->repasswordToken;
+    }
+
+    /**
+     * Set repasswordTokenDate
+     *
+     * @param \DateTime $repasswordTokenDate
+     * @return User
+     */
+    public function setRepasswordTokenDate($repasswordTokenDate)
+    {
+        $this->repasswordTokenDate = $repasswordTokenDate;
+
+        return $this;
+    }
+
+    /**
+     * Get repasswordTokenDate
+     *
+     * @return \DateTime 
+     */
+    public function getRepasswordTokenDate()
+    {
+        return $this->repasswordTokenDate;
     }
 }
