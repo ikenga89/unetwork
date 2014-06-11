@@ -135,7 +135,6 @@ class CommunityController extends Controller
      * @Route("/admin/community/update", name="admin_community_update")
      * @Template()
      */
-    /*
     public function updateAction()
     {   
         $bdd = $this->get('database_connection'); 
@@ -189,7 +188,7 @@ class CommunityController extends Controller
 
         return new Response( json_encode($insertion) );
     }
-    */
+    
 
     
 }
