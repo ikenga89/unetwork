@@ -95,11 +95,11 @@
 		  			
 		  				<li class="timeline-blue">
 		  					<div class="timeline-time">
-		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
-								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'en', null, 'MMMM') }} </span> <!-- en -> fr_FR -->
+								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'en', null, 'y') }} </span>
 
-								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
-								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'en', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'en', null, 'y') }} </span>
 		  					</div>
 							<div class="timeline-icon">
 								<i class="{{ experience.type.libelle }}"></i>

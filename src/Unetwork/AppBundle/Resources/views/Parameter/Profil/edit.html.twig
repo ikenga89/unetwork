@@ -8,69 +8,66 @@
 	{{ form_start(form, { 'attr': { 'role': 'form' }}) }}
 	    {{ form_errors(form) }}
 
-		<div class="form-group">
-	    {{ form_label(form.nom) }}
-	    {{ form_widget(form.nom) }}
-	    </div>
 
-	    <div class="form-group">
-	    {{ form_label(form.prenom) }}
-	    {{ form_widget(form.prenom) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.ville) }}
-	    {{ form_widget(form.ville) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.tel) }}
-	    {{ form_widget(form.tel) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.date_nais) }}
-	    {{ form_widget(form.date_nais, { 'attr': {'class': 'datepicker'} }) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.linkedin) }}
-	    {{ form_widget(form.linkedin) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.viadeo) }}
-	    {{ form_widget(form.viadeo) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.twitter) }}
-	    {{ form_widget(form.twitter) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.url) }}
-	    {{ form_widget(form.url) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.file) }}
-	    {{ form_widget(form.file) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.file_couv) }}
-	    {{ form_widget(form.file_couv) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.password) }}
-	    {{ form_widget(form.password) }}
-	    </div>
-
-	    <input type="submit" class="btn btn-default" />
-
+	    <table>
+	    	<tbody>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.nom) }}</td>
+	    			<td>{{ form_widget(form.nom) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.prenom) }}</td>
+	    			<td>{{ form_widget(form.prenom) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.ville) }}</td>
+	    			<td>{{ form_widget(form.ville) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.tel) }}</td>
+	    			<td>{{ form_widget(form.tel) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.date_nais) }}</td>
+	    			<td>{{ form_widget(form.date_nais, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.linkedin) }}</td>
+	    			<td>{{ form_widget(form.linkedin) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.viadeo) }}</td>
+	    			<td>{{ form_widget(form.viadeo) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.twitter) }}</td>
+	    			<td>{{ form_widget(form.twitter) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.url) }}</td>
+	    			<td>{{ form_widget(form.url) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.file) }}</td>
+	    			<td>{{ form_widget(form.file) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.file_couv) }}</td>
+	    			<td>{{ form_widget(form.file_couv) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.password) }}</td>
+	    			<td>{{ form_widget(form.password) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td><input type="submit" class="btn btn-default" /></td>
+	    			<td></td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+	    
 	{{ form_end(form) }}
+
 	</div>
 
 

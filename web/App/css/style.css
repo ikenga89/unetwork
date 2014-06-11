@@ -1,3 +1,7 @@
+a:hover{
+	text-decoration: none;
+}
+
 .row{
 	margin-left: 0px;
 	margin-right: 0px;
@@ -554,6 +558,23 @@ line-height: 22px;
 }
 .contentForm div:nth-child(odd) {
 	background: #fafafa;
+}
+
+.contentForm table{
+	width: 100%;
+}
+.contentForm tr:nth-child(odd) {
+	background: #fafafa;
+}
+
+.contentForm input[type='submit']{
+	margin-left: 10px;
+	margin-top: 0px;
+}
+
+.contentForm tr td{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .contentForm .btn-default {
