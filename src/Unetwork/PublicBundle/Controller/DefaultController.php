@@ -109,15 +109,15 @@ class DefaultController extends Controller
 
             if ($form->isValid()) {
 
-                $user->setPassword($form['password']->getData());
-
                 $encoder = $this
                 ->get('security.encoder_factory')
                 ->getEncoder($user);
-                $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+                $password = $encoder->encodePassword($form['password']->getData(), $user->getSalt());
                 $user->setPassword($password);
 
                 $user->setIsActive(true);
+
+                $user->setRegisterToken(null);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
