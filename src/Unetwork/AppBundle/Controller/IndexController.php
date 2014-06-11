@@ -80,12 +80,14 @@ class IndexController extends Controller
 
             return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
                 'users' => $users,
+                'recherche' => $data['recherche'],
             ));
         }
         
         return $this->render('UnetworkAppBundle::topbar.html.twig', array(
             'user' => $user,
             'form2' => $form2->createView(),
+            
         ));
 
     }
