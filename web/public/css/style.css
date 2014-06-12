@@ -940,6 +940,8 @@
 		margin: 0 auto;
 		padding: 0px 10px;
 		width: 600px;
+		margin-top: -20px;
+		margin-bottom: 20px;
 	}
 
 	#header-wrapper .alert1 .close
