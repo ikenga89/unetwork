@@ -100,6 +100,21 @@ class UserController extends Controller
      */
     public function deleteAction()
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->find($id);
+
+        $em->remove($user);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "L'utilisateur a bien été supprimé"
+        );
+
+
+        return $this->redirect($this->generateUrl('admin_user'));
     }
 }
