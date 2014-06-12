@@ -1,7 +1,18 @@
-Yo !
+{% extends 'UnetworkPublicBundle::layout.html.twig' %}
 
-Ton inscription est terminé !
+	{% block text %}
 
-Voila tout ce que tu peux des a présent faire sur la plateforme Unetwork :
+		Bonjour, <br/>
 
-	-
+		Ton inscription sur U-network est terminé !
+
+	{% endblock %}
+
+	{% block bouton %}
+
+	<a style="text-decoration:none; color:#FFF" href="{{ baseurl }}login"> Me connecter		
+
+	{% endblock  %}
+
+
+
