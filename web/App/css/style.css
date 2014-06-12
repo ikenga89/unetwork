@@ -22,48 +22,6 @@ a:hover{
 	margin-left: 10px;
 }
 
-#recherche {
-	float: left;
-	margin-top: 12px;
-	margin-right: 10px;
-}
-
-#recherche .champ {
-	background:#fff;
-	border:none;
-	color:#000;
-	vertical-align: middle;
-	border-radius: 12px 0px 0 12px;
-	padding: 0px 15px 0px 15px;
-	border: 2px solid #dedede;
-	border-right: none;
-	height: 25px;
-	width: 190px;
-}
-
-
-#recherche .bouton {
-	display: inline-block;
-	background:#fff;
-	border:none;
-	vertical-align: middle;
-	margin-left: -5px;
-	border-radius: 0 12px 12px 0;
-	padding: 5px 0px 0px 5px;
-	border: 2px solid #dedede;
-	border-left: none;
-	height: 25px;
-}
-#recherche .searchicon {
-	vertical-align: middle;
-	margin-right: 10px;
-	top: -1px;
-	color: #dedede;
-	transition: 0.3s;
-}
-#recherche .searchicon:hover{
-	color: #bbb;
-}
 
 .param {
 	color: #3a4147;
@@ -643,4 +601,91 @@ line-height: 22px;
  table.searchUser tbody tr:hover td{
  	background: rgba(0,0,0,0.1);
  }
+
+
+
+
+/* search */
+#form_recherche:active, #form_recherche:focus {
+	outline: none;
+}
+
+#recherche {
+	float: left;
+	margin-top: 12px;
+	margin-right: 10px;
+	z-index: 10001;
+}
+
+#recherche .champ {
+	background:#fff;
+	border:none;
+	color:#000;
+	vertical-align: middle;
+	border-radius: 12px 0px 0 12px;
+	padding: 0px 15px 0px 15px;
+	border: 2px solid #dedede;
+	border-right: none;
+	height: 25px;
+	width: 240px;
+}
+
+
+#recherche .bouton {
+	display: inline-block;
+	background:#fff;
+	border:none;
+	vertical-align: middle;
+	margin-left: -5px;
+	border-radius: 0 12px 12px 0;
+	padding: 5px 0px 0px 5px;
+	border: 2px solid #dedede;
+	border-left: none;
+	height: 25px;
+}
+#recherche .searchicon {
+	vertical-align: middle;
+	margin-right: 10px;
+	top: -1px;
+	color: #dedede;
+	transition: 0.3s;
+}
+#recherche .searchicon:hover{
+	color: #bbb;
+}
+
+
+.ui-widget-content{
+	
+}
+
+.a_autocomplete{
+	width: 235px;
+}
+
+.a_autocomplete img{
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.a_autocomplete p{
+	width: 173px;
+	display: inline-block;
+	padding-left: 14px;
+	margin-bottom: 9px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.ui-autocomplete {
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	z-index: 10000;
+  }
 
