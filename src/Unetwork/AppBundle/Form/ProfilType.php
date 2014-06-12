@@ -10,19 +10,36 @@ class ProfilType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom', 'text');
-        $builder->add('prenom', 'text');
-        $builder->add('ville', 'text');
-        $builder->add('tel', 'text');
+        $builder->add('nom', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('prenom', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('ville', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('tel', 'text', array(
+            'required' => false,
+        ));
         $builder->add('date_nais', 'datetime', array(
+            'required' => false,
             'label' => 'Date de naissance',
             'widget' => 'single_text',
             'format' => 'dd/MM/yyyy',
         ));
-        $builder->add('linkedin', 'text');
-        $builder->add('viadeo', 'text');
-        $builder->add('twitter', 'text');
-        $builder->add('url', 'text');
+        $builder->add('linkedin', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('viadeo', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('twitter', 'text', array(
+            'required' => false,
+        ));
+        $builder->add('url', 'text', array(
+            'required' => false,
+        ));
         $builder->add('file', 'file', array(
             'label' => 'Photo de profil',
             'required' => false,
