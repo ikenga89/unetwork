@@ -93,6 +93,36 @@ class IndexController extends Controller
     }
 
 
+
+    /**
+     * @Route("/app/autocomplete", name="app_autocomplete")
+     */
+    public function autocompleteAction(Request $request){
+
+
+        $search = $request->query->get('search');
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $results = $em-> createQuery( 
+            'SELECT u.nom 
+             FROM UnetworkAdminBundle:User u
+             WHERE u.nom LIKE :search')
+        ->setParameter('search', $search.'%')
+        ->getResult();
+
+        $reponse = array();
+        foreach ($results as $result) {
+           $reponse[] = $result['nom'];
+        }
+
+        return new Response(json_encode($reponse));
+    }
+
+
+
+
     /**
      * @Route("/app/comment_new/{actu_id}", name="comment_new")
      */
