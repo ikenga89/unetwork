@@ -22,37 +22,67 @@ class ProfilController extends Controller
     }
 
     /**
-     * @Route("/app/parameter/profil/edit", name="app_param_profil_edit")
+     * @Route("/app/parameter/profil/edit/{type}", name="app_param_profil_edit")
      * @Template()
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, $type)
     {   
         $user = $this->get('security.context')->getToken()->getUser();
     
-        $form = $this->createForm(new ProfilType(), $user);
+        $form = $this->createForm(new ProfilType($type), $user);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
-        $encoder = $this
-            ->get('security.encoder_factory')
-            ->getEncoder($user);
-        $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-        $user->setPassword($password);
+            if($type == 'password'){
 
-        $em = $this->getDoctrine()->getManager();
-        $user->preUpload();
-        $user->preUploadCouv();
-        $em->persist($user);
-        $em->flush();
+                $encoder = $this
+                    ->get('security.encoder_factory')
+                    ->getEncoder($user);
+                $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+                $user->setPassword($password);
 
-        return $this->redirect($this->generateUrl('app_param_profil'));
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $user->preUpload();
+            $user->preUploadCouv();
+            $em->persist($user);
+            $em->flush();
+
+            if($type == 'profil'){
+
+                return $this->redirect($this->generateUrl('app_param_profil'));
+
+            }else{
+
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Votre mot de passe à bien été modifié !'
+                );
+
+                return $this->redirect($this->generateUrl('app_param_profil_edit', array('type'=>'password')));
+
+            }
+
         }
 
-        return array(
-            'user' => $user,
-            "form"=>$form->createView()
-        );
+
+        if($type == 'profil'){
+
+            return array(
+                'user' => $user,
+                "form"=>$form->createView()
+            );
+
+        }else{
+
+            return $this->render('UnetworkAppBundle:Parameter:Profil/edit_password.html.twig', array(
+                'form' => $form->createView(),
+            ));
+
+        }
+        
     }
     
 }
