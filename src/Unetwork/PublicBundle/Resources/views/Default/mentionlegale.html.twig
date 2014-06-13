@@ -1,10 +1,12 @@
-<body>
+{% extends 'UnetworkPublicBundle::layout.html.twig' %}
+
+{% block body %}
 
 
 
-Mentions légales
+<h1>Mentions légales</h1>
 
-Ce site est exploité par l'AITPE, l'Association des ENTPE Alumni et Ingénieurs TPE
+<h3>Ce site est exploité par l'AITPE, l'Association des ENTPE Alumni et Ingénieurs TPE</h3>
 
 AITPE
 ENTPE - Rue Maurice Audin
@@ -47,7 +49,6 @@ la réutilisation, par la mise à disposition du public de la totalité ou d’u
 
 Tout utilisateur de nos bases de données qui donnera, louera, échangera, vendra ou bien prêtera tout ou partie de nos bases de données s’exposera donc à des poursuites.
 
- 
 
 Contactez-nous
 
@@ -63,9 +64,4 @@ Fax : 04 72 04 72 80
 
 aitpe@entpe.fr
 
- 
-
-
-
-
- </body>
+{% endblock %}

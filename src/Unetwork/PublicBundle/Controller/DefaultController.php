@@ -304,6 +304,17 @@ class DefaultController extends Controller
 
 
     /**
+     * @Route("/mentionslegales", name="public_mentionslegales")
+     * @Template()
+     */
+    public function mentionslegalesAction()
+    {
+            return $this->render('UnetworkPublicBundle:Default:mentionlegale.html.twig');
+    }
+
+
+
+    /**
      * @Route("/thanks", name="public_thanks")
      * @Template()
      */
@@ -311,5 +322,6 @@ class DefaultController extends Controller
     {
         return array();
     }
+
 
 }
