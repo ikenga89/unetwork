@@ -30,7 +30,7 @@ class DefaultController extends Controller
             ->setSubject('Demande d\'inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo('maxime.sifflet@gmail.com')
-            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.html.twig', array('data' => $data)));
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.txt.twig', array('data' => $data)));
             $this->get('mailer')->send($message);
 
 
@@ -127,7 +127,7 @@ class DefaultController extends Controller
                 ->setSubject('Inscription terminé')
                 ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
                 ->setTo($user->getEmail())
-                ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_end.html.twig'));
+                ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_end.txt.twig'));
                 $this->get('mailer')->send($message);
 
                 // Connexion
@@ -173,7 +173,7 @@ class DefaultController extends Controller
 
             if(empty($user)){
 
-                return $this->render('UnetworkPublicBundle:Default:emailwrong.html.twig');
+                return $this->render('UnetworkPublicBundle:Default:emailwrong.txt.twig');
 
             }else{
 
@@ -200,7 +200,7 @@ class DefaultController extends Controller
                 ->setSubject('Oubli de mot de passe')
                 ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
                 ->setTo($user->getEmail())
-                ->setBody($this->renderView('UnetworkAdminBundle:Mail:repassword.html.twig', array(
+                ->setBody($this->renderView('UnetworkAdminBundle:Mail:repassword.txt.twig', array(
                     'data' => $data,
                     'link' => $link,
                 )));
