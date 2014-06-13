@@ -61,7 +61,7 @@ class Community
         $this->actualitys = new ArrayCollection();
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
-        $this->setPath('../../../../../img/community_couverture_default.png');
+        $this->setPath('../../../../img/community_couverture_default.png');
     }
 
     /**
