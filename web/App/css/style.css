@@ -67,7 +67,8 @@ a.user:focus{
 }
 
 .header .couverture {
-	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
 	height: 351px;
 	margin-top: -1px;
 }
