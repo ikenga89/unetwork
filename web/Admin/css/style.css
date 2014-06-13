@@ -259,3 +259,17 @@ border-color: #ccc;
   vertical-align: middle;
   margin-left: 5px;
 }
+
+/*
+ *  list user
+ */
+ table.adminUsers tbody tr{
+  cursor: pointer;
+ }
+ table.adminUsers tbody tr td{
+  transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+ }
+ table.adminUsers tbody tr:hover td{
+  background: rgba(0,0,0,0.1);
+ }
