@@ -37,20 +37,17 @@
 	</div>
 	<div class="filtreSection">
 		<div class="row">
-			<div class="col-md-12 contentAlias">
-				<ul>
+			<div class="col-md-12">
+				<ul class="contentAlias">
 					<li>
-						<a class="alias" href="">TOUS</a>
+						<a class="alias" href="{{ path('app_index') }}">TOUS</a>
 					</li>
-					<li>
-						<a class="alias" href="">CRW</a>
-					</li>
-					<li>
-						<a class="alias" href="">CSIA</a>
-					</li>
-					<li>
-						<a class="alias" href="">EII</a>
-					</li>
+
+					{% for section in sections %}
+						<li>
+							<a class="alias" href="{{ path('app_index') }}/{{ section.id }}">{{ section.alias }}</a>
+						</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
