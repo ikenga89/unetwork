@@ -61,7 +61,7 @@ class Community
         $this->actualitys = new ArrayCollection();
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
-        $this->setPath('../../../../img/community_couverture_default.png');
+        $this->setPath('../../../../../img/community_couverture_default.jpg');
     }
 
     /**
@@ -148,7 +148,7 @@ class Community
      */
     public function removeUpload()
     {
-        if($this->getPath() != '../../../../../img/community_couverture_default.png'){
+        if($this->getPath() != '../../../../../img/community_couverture_default.jpg'){
 
             if ($file = $this->getAbsolutePath()) {
                 unlink($file);

@@ -143,7 +143,7 @@ class User implements UserInterface, \Serializable
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
         $this->setPath('../../../../../img/user_profil_default.png');
-        $this->setPathCouv('../../../../../img/user_couverture_default.png');
+        $this->setPathCouv('../../../../../img/user_couverture_default.jpg');
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -595,7 +595,7 @@ class User implements UserInterface, \Serializable
      */
     public function removeUploadCouv()
     {
-        if($this->getPathCouv() != '../../../../../img/user_couverture_default.png'){
+        if($this->getPathCouv() != '../../../../../img/user_couverture_default.jpg'){
 
             if ($file_couv = $this->getAbsolutePathCouv()) {
                 unlink($file_couv);
