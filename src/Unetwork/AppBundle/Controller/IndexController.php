@@ -135,7 +135,8 @@ class IndexController extends Controller
            $reponse[] = array('nom' => $result['nom'], 
                               'prenom' => $result['prenom'], 
                               'id' => $result['id'], 
-                              'path' => $result['path']
+                              'path' => $result['path'],
+
                                );
         }
 

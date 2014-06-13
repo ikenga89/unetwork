@@ -3,7 +3,7 @@
 $(function() {
 
 $( "#form_recherche" ).autocomplete({
-	minLength: 5,
+	minLength: 3,
 	open: function(event, ui) {
             $(this).autocomplete("widget").css({
                 "width": "250px",

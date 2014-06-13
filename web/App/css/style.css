@@ -638,10 +638,11 @@ line-height: 22px;
 	vertical-align: middle;
 	margin-left: -5px;
 	border-radius: 0 12px 12px 0;
-	padding: 5px 0px 0px 5px;
+	padding: 2px 0px 0px 5px;
 	border: 2px solid #dedede;
 	border-left: none;
 	height: 25px;
+	outline: none;
 }
 #recherche .searchicon {
 	vertical-align: middle;
