@@ -99,7 +99,7 @@ class UserController extends Controller
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")
      * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
