@@ -28,10 +28,3 @@ $( "#form_recherche" ).autocomplete({
 	};
 
 });
-
-
-
-
-
-
-

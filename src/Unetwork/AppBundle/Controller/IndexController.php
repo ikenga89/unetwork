@@ -14,20 +14,32 @@ class IndexController extends Controller
 {
 
     /**
-     * @Route("/app/index", name="app_index")
+     * @Route("/app/index/{id}", name="app_index")
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id = null)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
-        $actualities = $this->getDoctrine()
-        ->getRepository('UnetworkAdminBundle:Actuality')
-        ->findAll();
+        if ($id){
+            $actualities = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Actuality')
+            ->findBySection($id);
+        }else{
+            $actualities = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Actuality')
+            ->findAll();
+        }
+
+        $sections = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Section')
+            ->findAll();
+
 
         return array(
             "actualities" => $actualities,
             "user" => $user,
+            "sections" => $sections
         );
 
     }
