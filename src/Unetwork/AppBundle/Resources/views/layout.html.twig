@@ -6,6 +6,7 @@
 			<link rel="stylesheet" href="/App/bootstrap/css/bootstrap.css" />
 			<link rel="stylesheet" href="/App/bootstrap/css/bootstrap-theme.css" />
 			<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" />
+			<link rel="stylesheet" href="/App/css/jquery-ui-1.10.4.custom.min.css" />
 			<link rel="stylesheet" href="/App/css/style.css" />
 			<!--<link rel="stylesheet" href="/App/css/components.css" />-->
 			<link rel="stylesheet" href="/App/css/timeline.css" />
@@ -20,6 +21,8 @@
 		<body class="homepage">
 
 			{{ render(controller('UnetworkAppBundle:Index:topbar')) }}
+			
+
 
 			<div class="row body">
 
@@ -32,6 +35,11 @@
 				</div>
 
 			</div>
+
+			    <script type="text/javascript">
+			    	var link_autocomplete = "{{ path('app_autocomplete') }}" ;
+			    	var link_user_profil = "{{ path('app_profil') }}" ;
+			    </script>
 
 		</body>
 

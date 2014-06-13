@@ -98,8 +98,23 @@ class UserController extends Controller
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")
      * @Template()
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
-        return array();
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:User')
+        ->find($id);
+
+        $em->remove($user);
+        $em->flush();
+
+       $this->get('session')->getFlashBag()->add(
+            'notice',
+            "L'utilisateur a bien été supprimé"
+        );
+
+
+        return $this->redirect($this->generateUrl('admin_user'));
     }
 }

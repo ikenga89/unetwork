@@ -23,6 +23,7 @@ class ExperienceType extends AbstractType
         ));
         $builder->add('description', 'text', array(
             'label' => 'Description',
+            'required' => false,
         ));
         $builder->add('begin', 'datetime', array(
             'label' => 'Début',

@@ -173,7 +173,7 @@ class DefaultController extends Controller
 
             if(empty($user)){
 
-                return $this->render('UnetworkPublicBundle:Default:emailwrong.html.twig');
+                return $this->render('UnetworkPublicBundle:Default:emailwrong.txt.twig');
 
             }else{
 
@@ -208,7 +208,7 @@ class DefaultController extends Controller
 
                 $this->get('session')->getFlashBag()->add(
                     'notice',
-                    'Un email vous à été envoyé pour récuperer votre mot de passe !'
+                    'Un email vous a été envoyé pour récuperer votre mot de passe !'
                 );
 
                 return $this->redirect($this->generateUrl('public_home'));

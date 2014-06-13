@@ -17,7 +17,7 @@
 		  				<div class="col-md-2">
 		  					<div class="imgProfil">
 		  						<img src="/{{ user.getWebPath }}" />
-		  						<span>{{ user.cv.jobname }}</span>
+		  						<span>{% if user.cv.jobname is defined %}{{ user.cv.jobname }}{% endif %}</span>
 		  					</div>
 		  				</div>
 
@@ -38,7 +38,7 @@
 		  				<div class="col-md-1"></div>
 
 		  				<div class="col-md-6">
-		  					<p class="presentationTxt">{{ user.cv.presentation }}</p>
+		  					<p class="presentationTxt">{% if user.cv.presentation is defined %}{{ user.cv.presentation }}{% endif %}</p>
 		  				</div>
 
 		  				<div class="col-md-5">
@@ -139,31 +139,35 @@
   				<div class="bloc">
   					<h2>Mes compétences</h2>
   					<div class="ssbloc">
-	  					{% for competence in user.cv.competence %} 
-	  					<div class="competence">
-		  					<span class="name">
-		  						{{ competence.name }}
-		  					</span>
-		  					<div class="noteGlobale">
-	  						{% for i in 1..5 %}
-	  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
-	  						{% endfor %}
-	  						</div>
-	  					</div>
-	  					{% endfor %}
+	  					{% if user.cv.competence is defined %}
+	  						{% for competence in user.cv.competence %} 
+		  					<div class="competence">
+			  					<span class="name">
+			  						{{ competence.name }}
+			  					</span>
+			  					<div class="noteGlobale">
+		  						{% for i in 1..5 %}
+		  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
+		  						{% endfor %}
+		  						</div>
+		  					</div>
+		  					{% endfor %}
+		  				{% endif %}
 	  				</div>
   				</div>
   			</div>
   			<div class="col-md-3">
   				<div class="bloc">
   					<h2>Mes Hobbies</h2>
-  					{% for hobby in user.cv.hobby %} 
-					<div class="hobby">
-	  					<span class="name">
-	  						{{ hobby.name }}
-	  					</span>
-  					</div>
-  					{% endfor %}
+  					{% if user.cv.hobby is defined %}
+	  					{% for hobby in user.cv.hobby %} 
+						<div class="hobby">
+		  					<span class="name">
+		  						{{ hobby.name }}
+		  					</span>
+	  					</div>
+	  					{% endfor %}
+	  				{% endif %}
 	  			</div>
   			</div>
   		</div>

@@ -24,7 +24,11 @@ class ProfilController extends Controller
 
         $cvs = $user->getCv();
 
-        $experiences = $cvs->getExperience();
+        if($cvs){
+            $experiences = $cvs->getExperience();
+        }else{
+            $experiences = array();
+        }
         
         return array(
             "user" => $user,

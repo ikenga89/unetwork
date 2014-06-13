@@ -93,6 +93,59 @@ class IndexController extends Controller
     }
 
 
+
+    /**
+     * @Route("/app/autocomplete", name="app_autocomplete")
+     */
+    public function autocompleteAction(Request $request){
+
+
+        $search = $request->query->get('search');
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $mots = explode(' ', $search);
+
+        $parameters = array();
+
+        // on stock la requete dans la variable $dql
+        $dql = 'SELECT u.nom, u.prenom, u.id, u.path FROM UnetworkAdminBundle:User u WHERE ';
+
+        // on affecte chaque mot d'un id pour qu'elle soit unique
+        foreach ($mots as $key => $mot) {
+            if($key > 0){
+                $dql = $dql .  ' OR ';
+            }
+            //concaténation de la requete dql avec les mots rechercher         
+            $dql = $dql . 'u.nom like :recherche'.$key.' OR u.prenom like :recherche'.$key;
+            $parameters['recherche'.$key] = $mot.'%';
+        }
+        
+        // Requete DQL
+        $em = $this->getDoctrine()->getManager();
+        // on envoie les données de la requetes qui reçoit les paramètre rentrer par l'utilisateur
+        $query = $em->createQuery($dql)->setParameters($parameters);
+
+
+        $results = $query->getResult();
+
+        $reponse = array();
+        foreach ($results as $result) {
+           $reponse[] = array('nom' => $result['nom'], 
+                              'prenom' => $result['prenom'], 
+                              'id' => $result['id'], 
+                              'path' => $result['path'],
+
+                               );
+        }
+
+        return new Response(json_encode($reponse));
+    }
+
+
+
+
     /**
      * @Route("/app/comment_new/{actu_id}", name="comment_new")
      */
