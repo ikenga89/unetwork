@@ -53,7 +53,7 @@ class Experience
 
     /**
      * @ORM\ManyToOne(targetEntity="Cv", inversedBy="experience")
-     * @ORM\JoinColumn(name="cv_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="cv_id", referencedColumnName="id", onDelete="cascade")
      */
     protected $cv;
 
