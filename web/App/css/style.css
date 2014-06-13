@@ -660,8 +660,18 @@ line-height: 22px;
 }
 
 .a_autocomplete{
-	width: 235px;
+	width: 246px;
 }
+
+.ui-autocomplete {
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	z-index: 10000;
+	position: fixed;
+  }
 
 .a_autocomplete img{
 	width: 40px;
@@ -680,12 +690,5 @@ line-height: 22px;
 	text-overflow: ellipsis;
 }
 
-.ui-autocomplete {
-    max-height: 150px;
-    overflow-y: auto;
-    overflow-x: hidden;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	z-index: 10000;
-  }
+
 

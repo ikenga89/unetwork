@@ -3,7 +3,14 @@
 $(function() {
 
 $( "#form_recherche" ).autocomplete({
-	//minLength: 0,
+	minLength: 5,
+	open: function(event, ui) {
+            $(this).autocomplete("widget").css({
+                "width": "250px",
+                "left": "94px",
+                "top": "35px"
+            });
+        },
 	source: function( request, response ) {
 			$.ajax({
 				url: link_autocomplete + "?search=" + request.term,
