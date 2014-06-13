@@ -67,7 +67,8 @@ a.user:focus{
 }
 
 .header .couverture {
-	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
 	height: 351px;
 	margin-top: -1px;
 }
@@ -586,6 +587,10 @@ line-height: 22px;
 }
 .filtreSection .contentAlias {
 	margin-left: 38%;
+}
+
+.filtreSection .contentAlias li, .filtreSection .contentAlias ul{
+	list-style: none;
 }
 
 /*

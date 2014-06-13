@@ -25,7 +25,7 @@
 
             {% for user in users %}
 
-              <tr>
+              <tr onclick="document.location = 'profil/{{ user.id }}';">
               
                 <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
               	<td>{{ user.id }}</td>

@@ -61,7 +61,7 @@ class Cv
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="cv")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="cascade")
      **/
     private $user;
 

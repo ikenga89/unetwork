@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Unetwork\AdminBundle\Form\UserType;
 use Unetwork\AdminBundle\Entity\User;
+use Unetwork\AdminBundle\Entity\Cv;
+use Unetwork\AdminBundle\Entity\Experience;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
@@ -30,6 +32,14 @@ class UserController extends Controller
     {
         $user = new User;
 
+        $cv = new Cv;
+
+        $experience = new Experience;
+
+        $experienceType = $this->getDoctrine()
+        ->getRepository('UnetworkAdminBundle:ExperienceType')
+        ->findAll();
+
         $form = $this->createForm(new UserType(), $user);
 
         $form->handleRequest($request);
@@ -45,9 +55,24 @@ class UserController extends Controller
             $link = $baseurl.$uri.'register/'.$token;
 
             $user->setRegisterToken($token);
+            $user->setVille('Ville');
+            $user->setUrl('Site web');
+
+            $cv->setUser($user);
+            $cv->setJobName('Emploi');
+            $cv->setPresentation('Présentation du cv');
+
+            $experience->setCv($cv);
+            $experience->setType($experienceType[0]);
+            $experience->setName('Nom de l\'expérience');
+            $experience->setDescription('Votre description');
+            $experience->setBegin(new \DateTime());
+            $experience->setEnd(new \DateTime());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
+            $em->persist($cv);
+            $em->persist($experience);
             $em->flush();
 
             $message = \Swift_Message::newInstance()

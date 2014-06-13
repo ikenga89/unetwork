@@ -578,8 +578,12 @@ class User implements UserInterface, \Serializable
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
+        if($this->getPath() != '../../../../../img/default_user.png'){
+
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+            
         }
     }
 
