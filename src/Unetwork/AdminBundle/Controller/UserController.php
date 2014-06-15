@@ -79,7 +79,7 @@ class UserController extends Controller
             ->setSubject('Inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo($form['email']->getData())
-            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.txt.twig', array(
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.html.twig', array(
                 'data' => $data,
                 'link' => $link,
             )));

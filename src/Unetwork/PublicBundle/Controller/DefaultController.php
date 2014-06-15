@@ -30,7 +30,7 @@ class DefaultController extends Controller
             ->setSubject('Demande d\'inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo('maxime.sifflet@gmail.com')
-            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.txt.twig', array('data' => $data)));
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.html.twig', array('data' => $data)));
             $this->get('mailer')->send($message);
 
 
@@ -48,23 +48,31 @@ class DefaultController extends Controller
               'secret' => 'd7e480e45243e668ee39e6c868af52db',
             ));
             $facebook_posts = $facebook->api('/110864882309437/posts');
-        } catch (Exception $e) {
-            $facebook_posts = array();
+        } catch (\Exception $e) {
+            $facebook_posts = array(
+                'data' => '',
+            );
+
         }
 
+        try {
 
-        $twitterClient = $this->container->get('guzzle.twitter.client');
-        $tweets = $twitterClient->get('statuses/user_timeline.json');
-        $tweets->getQuery()->set('count', 5);
-        $tweets->getQuery()->set('screen_name', 'SciencesULyon');
-        $response = $tweets->send();
+            $twitterClient = $this->container->get('guzzle.twitter.client');
+            $tweets = $twitterClient->get('statuses/user_timeline.json');
+            $tweets->getQuery()->set('count', 5);
+            $tweets->getQuery()->set('screen_name', 'SciencesULyon');
+            $response = $tweets->send();
 
-        $tweets = json_decode($response->getBody());
+            $tweets = json_decode($response->getBody());
 
-        $all_tweet = array();
-        foreach ($tweets as $tweet) {
-            $text_tweet = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" TARGET=_BLANK >$1</a>', $tweet->text);
-            $all_tweet[] = array('text' => $text_tweet, 'created_at' => $tweet->created_at);
+            $all_tweet = array();
+            foreach ($tweets as $tweet) {
+                $text_tweet = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" TARGET=_BLANK >$1</a>', $tweet->text);
+                $all_tweet[] = array('text' => $text_tweet, 'created_at' => $tweet->created_at);
+            }
+
+        } catch (\Exception $e) {
+            $all_tweet = array();
         }
 
 
