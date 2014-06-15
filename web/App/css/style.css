@@ -67,8 +67,7 @@ a.user:focus{
 }
 
 .header .couverture {
-	background-position: center;
-	background-repeat: no-repeat;
+
 	height: 351px;
 	margin-top: -1px;
 }
@@ -500,11 +499,14 @@ line-height: 22px;
 	float: right;
 }
 .contentForm .form-group {
+	font-weight: bold;
 	padding: 5px;
 	border-top: 1px solid #eee;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	margin-bottom: 0px;
+	margin-left: 10px;
+
 }
 .contentForm .form-group input {
 	border-radius: 5px;
@@ -512,7 +514,7 @@ line-height: 22px;
 }
 .contentForm .form-group label {
 	margin-right: 15px;
-	margin-left: 10px;
+	
 }
 .contentForm div:nth-child(odd) {
 	background: #fafafa;
@@ -698,7 +700,9 @@ line-height: 22px;
 
 
 .mini_couv{
-	height: 10px;
-	width:10px;
+	height: 50px;
+	width:50px;
+	margin-top: 25px;
 	
 }
+
