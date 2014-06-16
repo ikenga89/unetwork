@@ -82,7 +82,7 @@ class UserController extends Controller
             ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.txt.twig', array(
                 'data' => $data,
                 'link' => $link,
-            )));
+            )), 'text/plain');
             $this->get('mailer')->send($message);
 
             return $this->redirect($this->generateUrl('admin_user'));
