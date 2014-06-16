@@ -30,7 +30,7 @@ class DefaultController extends Controller
             ->setSubject('Demande d\'inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo('maxime.sifflet@gmail.com')
-            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.html.twig', array('data' => $data)));
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register_request.txt.twig', array('data' => $data)));
             $this->get('mailer')->send($message);
 
 
