@@ -11,10 +11,8 @@ body {
 
 .connexion{
   color:white;
-  background-color: #7694cb;
+  background-color: #ccc;
   text-align: center;
-  border-radius: 5px;
-  box-shadow: 2px 2px 9px 0px #999;
 }
 
 .logo{
@@ -46,8 +44,17 @@ font-size:  1em;
 .btnSubmit:hover {
   background-color: #3f434b;
   box-shadow: 0px 0px 8px 0px #acb6d8;
-  color: #fff;
+  color: #ccc;
 }
 .btnSubmit:active{
   box-shadow: 0px 0px 8px 0px #inset;
+}
+.losePassword {
+  color: #fff;
+  float: right;
+  padding-top: 1em;
+  font-size: 1.2em;
+}
+.losePassword:hover {
+  color: #fff;
 }
