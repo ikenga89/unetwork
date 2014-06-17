@@ -1,0 +1,25 @@
+{% extends 'UnetworkAppBundle:Parameter:layout.html.twig' %}
+
+{% block body %}
+
+	<h1>Informations Cv</h1>
+  <a href="{{ path('app_param_cv_edit') }}"> Modifier </a>
+
+	<div class="table-responsive">
+
+            <table class="table table-striped">
+              <tbody>
+                    <tr>
+                      <td>Votre présentation</td>
+                       <td>{{ user.cv.presentation }}</td>
+                     </tr>              		
+                 		 <tr>
+                      <td>Nom de l'emploi actuel</td>
+	                 		 <td>{{ user.cv.jobname }}</td>
+                 		 </tr>
+              </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+

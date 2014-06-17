@@ -34,6 +34,7 @@ class ExperienceType extends AbstractType
             'label' => 'Fin',
             'widget' => 'single_text',
             'format' => 'dd/MM/yyyy',
+            'required' => false,
         ));
     }
 

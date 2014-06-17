@@ -35,7 +35,7 @@ class Experience
     protected $begin;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     protected $end;
 
@@ -156,7 +156,11 @@ class Experience
      */
     public function setEnd($end)
     {
-        $this->end = $end;
+        if(empty($end)){
+            $this->end = null;
+        }else{
+            $this->end = $end;
+        }
 
         return $this;
     }

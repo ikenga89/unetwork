@@ -27,7 +27,7 @@ class Cv
     protected $jobname;
 
 	/**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=250)
      */
 	protected $presentation;
 
