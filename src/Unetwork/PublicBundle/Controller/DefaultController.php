@@ -165,7 +165,7 @@ class DefaultController extends Controller
 
         $defaultData = array();
         $form = $this->createFormBuilder($defaultData)
-            ->setAction($this->generateUrl('public_repassword_email'))
+            //->setAction($this->generateUrl('public_repassword_email'))
             ->add('email', 'email', array(
                 'label' => 'Veuillez saisir votre identifiant :',
             ))
@@ -181,7 +181,7 @@ class DefaultController extends Controller
 
             if(empty($user)){
 
-                return $this->render('UnetworkPublicBundle:Default:emailwrong.txt.twig');
+                return $this->render('UnetworkPublicBundle:Default:tokenwrong.html.twig');
 
             }else{
 
