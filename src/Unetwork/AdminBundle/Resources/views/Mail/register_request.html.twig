@@ -1,10 +1,37 @@
+{% extends 'UnetworkPublicBundle::layout_classique.html.twig' %}
 
+		{% block titre %}		
+			Une personne veut rejoindre Unetwork !
+		{% endblock %}
 		
-		NOM: {{ data.nom }}
-		MAIL: {{ data.email }}
-		SECTION: {{ data.section }}
-		MESSAGE: {{ data.compose }}
 
+		{% block text %}		
+		<table >
+							<tr>
+								<td >NOM:</td>
+								<td>{{ data.nom }}</td> 
+							</tr>
+
+							<tr>
+								<td> TD </td>
+								<td> {{ data.email }}</td> 
+							</tr>
+					
+							<tr>
+								<td>SECTION:</td>
+								<td> {{ data.section }}</td> 
+							</tr>		
+							
+							<tr>
+								<td colspan="2">MESSAGE</td>
+							</tr>		
+
+							<tr>
+								<td colspan="2">{{ data.message }}</td>
+							</tr>
+		</table>
+
+		{% endblock %} 
 
 
 
