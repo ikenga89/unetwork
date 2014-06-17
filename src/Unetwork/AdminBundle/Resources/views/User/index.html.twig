@@ -15,6 +15,7 @@
             		<th></th>
              		<th>Nom</th>
              		<th>Prénom</th>
+                <th>Email</th>
              		<th>Communauté</th>
              		<th class="th_modify">Actions</th>
             </tr>
@@ -29,6 +30,7 @@
                 <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
               	<td>{{ user.nom }}</td>
               	<td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
               	<td>{{ user.community.name }}</td>
 
           	  	<td class="td_modify">

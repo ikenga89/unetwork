@@ -79,10 +79,10 @@ class UserController extends Controller
             ->setSubject('Inscription')
             ->setFrom(array('unetwork89@gmail.com' => 'Unetwork'))
             ->setTo($form['email']->getData())
-            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.html.twig', array(
+            ->setBody($this->renderView('UnetworkAdminBundle:Mail:register.txt.twig', array(
                 'data' => $data,
                 'link' => $link,
-            )));
+            )), 'text/plain');
             $this->get('mailer')->send($message);
 
             return $this->redirect($this->generateUrl('admin_user'));

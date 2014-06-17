@@ -53,10 +53,31 @@ class ProfilType extends AbstractType
                 'label' => 'Photo de profil',
                 'required' => false,
             ));
+            $builder->add('path_couv', 'choice', array(
+                'choices'   => array(
+                    '../../../../img/couverture_profil/couv_1.jpg' => '/img/couverture_profil/couv_1.jpg',
+                    '../../../../img/couverture_profil/couv_2.jpg' => '/img/couverture_profil/couv_2.jpg',
+                    '../../../../img/couverture_profil/couv_3.jpg' => '/img/couverture_profil/couv_3.jpg',
+                    '../../../../img/couverture_profil/couv_4.jpg' => '/img/couverture_profil/couv_4.jpg',
+                    '../../../../img/couverture_profil/couv_5.jpg' => '/img/couverture_profil/couv_5.jpg',
+                    '../../../../img/couverture_profil/couv_6.jpg' => '/img/couverture_profil/couv_6.jpg',
+                    '../../../../img/couverture_profil/couv_7.jpg' => '/img/couverture_profil/couv_7.jpg',
+                    '../../../../img/couverture_profil/couv_8.jpg' => '/img/couverture_profil/couv_8.jpg',
+                    '../../../../img/couverture_profil/couv_9.jpg' => '/img/couverture_profil/couv_9.jpg',
+                    '../../../../img/couverture_profil/couv_10.jpg' => '/img/couverture_profil/couv_10.jpg',
+                ),
+                'multiple' => false,
+                'required' => false,
+                'expanded' => true,
+                'empty_value' => false,
+                'label' => 'Image de couverture',
+            ));
+            /*
             $builder->add('file_couv', 'file', array(
                 'label' => 'Photo de couverture',
                 'required' => false,
             ));
+            */
 
         }else{
 
