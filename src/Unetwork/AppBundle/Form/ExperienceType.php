@@ -25,15 +25,13 @@ class ExperienceType extends AbstractType
             'label' => 'Description',
             'required' => false,
         ));
-        $builder->add('begin', 'datetime', array(
+        $builder->add('begin', 'date', array(
             'label' => 'Début',
-            'widget' => 'single_text',
-            'format' => 'dd/MM/yyyy',
+            'format' => 'ddMMMMyyyy',
         ));
-        $builder->add('end', 'datetime', array(
+        $builder->add('end', 'date', array(
             'label' => 'Fin',
-            'widget' => 'single_text',
-            'format' => 'dd/MM/yyyy',
+            'format' => 'ddMMMMyyyy',
             'required' => false,
         ));
     }

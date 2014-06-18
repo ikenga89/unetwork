@@ -28,13 +28,15 @@
 	    			<td>{{ form_label(form.description) }}</td>
 	    			<td>{{ form_widget(form.description) }}</td>
 	    		</tr>
+
 	    		<tr class="form-group">
 	    			<td>{{ form_label(form.begin) }}</td>
-	    			<td>{{ form_widget(form.begin, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    			<td>{{ form_widget(form.begin, {'date_pattern': '<span style="display: none;">{{ day }}</span> {{ month }} <span>&nbsp;</span> {{ year }}'}) }}</td>
+	    			{#{ form_widget(form.begin) }#}
 	    		</tr>
 	    		<tr class="form-group">
 	    			<td>{{ form_label(form.end) }}</td>
-	    			<td>{{ form_widget(form.end, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    			<td>{{ form_widget(form.end, {'date_pattern': '<span style="display: none;">{{ day }}</span> {{ month }} <span>&nbsp;</span> {{ year }}'}) }}</td>
 	    		</tr>
 	    		<tr class="form-group">
 	    			<td><input type="submit" class="btn btn-default" /></td>
@@ -45,19 +47,6 @@
 
 	{{ form_end(form) }}
 </div>
-	<script>
-        $(document).ready(function(){
-            $( ".datepicker" ).datepicker({
-            	showOn: "button",
-				buttonImage: "../../../../../jquery-ui-1.10.4/development-bundle/demos/datepicker/images/calendar.gif",
-				buttonImageOnly: true,
-				changeMonth: true,
-				changeYear: true,
-				minDate: "-150Y",
-				maxDate: "+5Y",
-			});
-        });
-    </script>
 
 {% endblock %}
 

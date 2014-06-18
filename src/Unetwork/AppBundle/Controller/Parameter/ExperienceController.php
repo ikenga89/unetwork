@@ -33,8 +33,17 @@ class ExperienceController extends Controller
         $form = $this->createForm(new ExperienceType(), $experience);
         $form->handleRequest($request);
 
+        $data = $form->getData();
+
+        var_dump($data);
+        exit;
+
         if ($form->isValid()) {
 
+            $data = $form->getData();
+
+            var_dump($data);
+            exit;
             $experience->setCv($user->getCv());
             $em = $this->getDoctrine()->getManager();
             $em->persist($experience);
@@ -65,6 +74,11 @@ class ExperienceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $data = $form->getData();
+
+        var_dump($data);
+        exit;
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($experience);
             $em->flush();

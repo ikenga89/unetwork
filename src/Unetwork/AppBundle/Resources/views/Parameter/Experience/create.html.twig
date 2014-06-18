@@ -30,11 +30,11 @@
 	    		</tr>
 	    		<tr class="form-group">
 	    			<td>{{ form_label(form.begin) }}</td>
-	    			<td>{{ form_widget(form.begin, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    			<td>{{ form_widget(form.begin, {'date_pattern': '<span style="display: none;">{{ day }}</span> {{ month }} <span>&nbsp;</span> {{ year }}'}) }}</td>
 	    		</tr>
 	    		<tr class="form-group">
 	    			<td>{{ form_label(form.end) }}</td>
-	    			<td>{{ form_widget(form.end, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    			<td>{{ form_widget(form.end, {'date_pattern': '<span style="display: none;">{{ day }}</span> {{ month }} <span>&nbsp;</span> {{ year }}'}) }}</td>
 	    		</tr>
 	    		<tr class="form-group">
 	    			<td><input type="submit" class="btn btn-default" /></td>

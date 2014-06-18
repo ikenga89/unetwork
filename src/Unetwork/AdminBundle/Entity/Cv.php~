@@ -27,7 +27,7 @@ class Cv
     protected $jobname;
 
 	/**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=250)
      */
 	protected $presentation;
 
@@ -61,7 +61,7 @@ class Cv
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="cv")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="cascade")
      **/
     private $user;
 

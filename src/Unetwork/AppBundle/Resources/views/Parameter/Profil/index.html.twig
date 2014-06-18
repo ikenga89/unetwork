@@ -27,7 +27,7 @@
     			</tr>
     			<tr>
     				<td>Date de naissance :</td>
-    				<td>{{ user.dateNais|date('d/m/Y') }}</td>
+    				<td>{{ user.dateNais is empty ? "" : user.dateNais|date('d/m/Y') }}</td>
     			</tr>
     			<tr>
     				<td>Linkedin :</td>
