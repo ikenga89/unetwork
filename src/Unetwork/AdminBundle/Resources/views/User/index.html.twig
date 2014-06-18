@@ -9,13 +9,13 @@
 
         {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
 
-        <table class="table table-striped">
+        <table class="table table-striped adminUsers">
           <thead>
             <tr>
             		<th></th>
-             		<th>Id</th>
              		<th>Nom</th>
              		<th>Prénom</th>
+                <th>Email</th>
              		<th>Communauté</th>
              		<th class="th_modify">Actions</th>
             </tr>
@@ -25,17 +25,17 @@
 
             {% for user in users %}
 
-              <tr>
+              <tr onclick="document.location = '../app/profil/{{ user.id }}';">
               
                 <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
-              	<td>{{ user.id }}</td>
               	<td>{{ user.nom }}</td>
               	<td>{{ user.prenom }}</td>
+                <td>{{ user.email }}</td>
               	<td>{{ user.community.name }}</td>
 
           	  	<td class="td_modify">
-          	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png"/></a>
-          	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png"/></a>
+          	   		<a href="{{ path('admin_user_edit', {'id' : user.id } ) }}"> <img src="/Admin/img/edit.png" alt="edit"/></a>
+          	   		<a href="{{ path('admin_user_delete',{'id': user.id } ) }}"> <img onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" src="/Admin/img/delete.png" alt="delete"/></a>
           	    </td>
 
               </tr>

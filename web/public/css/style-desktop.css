@@ -273,7 +273,7 @@
 
 	#header-wrapper
 	{
-		padding: 0;
+		padding-top: 2em;
 		height: 460px!important;
 	}
 
@@ -284,7 +284,7 @@
 
 	#intro-wrapper
 	{
-		padding: 2em 0 5em 0;
+		padding: 3em 0 5em 0;
 	}
 
 /*********************************************************************************/
@@ -344,7 +344,7 @@
 	{
 		position: absolute;
 		display: block;
-		top: 1em;
+		
 		left: 0;
 		width: 100%;
 		text-align: center;
@@ -542,7 +542,7 @@
 
 		.homepage #main
 		{
-			margin: 0;
+			margin: 2em;
 		}
 
 /*********************************************************************************/
@@ -621,7 +621,7 @@
 
 	.connexionHead {
 		position: absolute;
-		margin-top: 18em;
+		margin-top: 22em;
 		margin-left: 27.8em;
 	}
 

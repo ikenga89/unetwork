@@ -16,7 +16,7 @@
 		            <thead>
 		                <tr>
 		                 	<th> Image </th>                 		
-		                 	<th> Communauté  </th>     
+		                 	<th> Section  </th>     
 		                 	<th> Contenu</th>
 		                 	<th> Créé le</th>
 		                    <th> Modifié le</th>
@@ -28,7 +28,7 @@
               		<tbody>       	                		
                  		<tr>
 	                 		<td> 	<img src="/{{ actuality.getWebPath }}" width="100" height="40" />  </td>    
-	                 		<td> 	{{ actuality.community.name }}   </td>
+	                 		<td> 	{{ actuality.section.name }} ({{ actuality.section.community.name }})  </td>
 	                 		<td> 	{{ actuality.description|truncate(500) }}  </td>
 	                 		<td> 	{{ actuality.created|date("d/m/Y H:i") }}  </td>
                       		<td>   {{ actuality.updated|date("d/m/Y H:i") }}  </td>

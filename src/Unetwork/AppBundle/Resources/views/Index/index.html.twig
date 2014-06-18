@@ -10,24 +10,49 @@
 	
 
 	<div class="header">
-		<img class="couverture" src="/{{ user.community.getWebPath }}" alt="couverture">
+		<!--<div class="couverture" style="background-image:url('/');"> </div>-->
+		<img src="/{{ user.community.getWebPath }}" width="100%" height="100%" />
   		<div class="bottomBar">
 
   			<div class="row bottomBandeau">
 
-  				<div class="col-md-5"></div>
+  				<div class="col-md-3">
+  					<a class="btnOffre" href="#">Offres d'emplois</a>
+  				</div>
+
+  				<div class="col-md-2"></div>
 
   				<div class="col-md-3">
   					<span class="communityname">{{ user.community.name }}</span>
   				</div>
 
-  				<div class="col-md-4"></div>
+  				<div class="col-md-1"></div>
+
+  				<div class="col-md-3">
+  					<a class="btnGroupe" href="#">Groupe de travail</a>
+  				</div>
 
   			</div>
   				
   		</div>
 	</div>
+	<div class="filtreSection">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="contentAlias">
+					<li>
+						<a class="alias" href="{{ path('app_index') }}">TOUS</a>
+					</li>
 
+					{% for section in sections %}
+						<li>
+							<a class="alias" href="{{ path('app_index') }}/{{ section.id }}">{{ section.alias }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="contTimeline contActu">
 
   		<div class="row">
@@ -47,7 +72,7 @@
 		  					<i class="fa fa-bookmark"></i>
 							<div class="contentItem">
 								<span class="alias">
-			  						{{ actuality.community.alias }}
+			  						{{ actuality.section.alias }}
 			  					</span>
 								<p class="destActu">{{actuality.description}}</p>
 								{% if actuality.path!="" %}

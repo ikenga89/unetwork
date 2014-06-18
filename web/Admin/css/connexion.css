@@ -11,10 +11,8 @@ body {
 
 .connexion{
   color:white;
-  background-color: #7694cb;
+  background-color: #eee;
   text-align: center;
-  border-radius: 5px;
-  box-shadow: 2px 2px 9px 0px #999;
 }
 
 .logo{
@@ -27,6 +25,9 @@ body {
   cursor: text;
   margin-top: 35px;
   text-align: left;
+}
+.connexion .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background: #fff;
 }
 .connexion input{
 width:75%;
@@ -44,10 +45,19 @@ font-size:  1em;
   border: none;
 }
 .btnSubmit:hover {
-  background-color: #3f434b;
+  background: #3f434b!important;
   box-shadow: 0px 0px 8px 0px #acb6d8;
   color: #fff;
 }
 .btnSubmit:active{
   box-shadow: 0px 0px 8px 0px #inset;
+}
+.losePassword {
+  color: #444;
+  float: right;
+  margin-top: 1em;
+  font-size: 1.2em;
+}
+.losePassword:hover {
+  color: #bbb;
 }

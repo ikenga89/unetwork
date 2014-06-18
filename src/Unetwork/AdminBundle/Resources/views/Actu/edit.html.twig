@@ -2,9 +2,30 @@
 
 {% block body %}
 
-	<h1>Edit Actu</h1>
+<h1>Editer actualité</h1>
 
-	{{ form(form) }}
+<div class="contentForm">
+	{{ form_start(form, { 'attr': { 'role': 'form' }}) }}
+	    {{ form_errors(form) }}
 
+		<div class="form-group groupDesc">
+	    {{ form_label(form.description) }}
+	    {{ form_widget(form.description) }}
+	    </div>
+
+	    <div class="form-group">
+	    {{ form_label(form.section) }}
+	    {{ form_widget(form.section) }}
+	    </div>
+
+	    <div class="form-group">
+	    {{ form_label(form.file) }}
+	    {{ form_widget(form.file) }}
+	    </div>
+
+	    <input type="submit" class="btn btn-default" />
+
+	{{ form_end(form) }}
+</div>
 {% endblock %}
 

@@ -5,6 +5,7 @@
 	<h1>Ajouter un utilisateur</h1>
 
 	{#{ form(form) }#}
+        <div class="contentForm">
 
 	{{ form_start(form, {'attr': {'role': 'form'}}) }}
 
@@ -14,12 +15,6 @@
         	{{ form_label(form.email) }}
         	{{ form_errors(form.email) }}
         	{{ form_widget(form.email) }}
-	    </div>
-
-	    <div class="form-group">
-        	{{ form_label(form.password) }}
-        	{{ form_errors(form.password) }}
-        	{{ form_widget(form.password) }}
 	    </div>
 
 	    <div class="form-group">
@@ -35,12 +30,6 @@
 	    </div>
 
 	    <div class="form-group">
-        	{{ form_label(form.file) }}
-        	{{ form_errors(form.file) }}
-        	{{ form_widget(form.file) }}
-	    </div>
-
-	    <div class="form-group">
         	{{ form_label(form.community) }}
         	{{ form_errors(form.community) }}
         	{{ form_widget(form.community) }}
@@ -51,6 +40,10 @@
         	{{ form_errors(form.roles) }}
         	{{ form_widget(form.roles) }}
 	    </div>
+
+            <input type="submit" class="btn btn-default" />
+
+        </div>
 
 	{{ form_end(form) }}
 

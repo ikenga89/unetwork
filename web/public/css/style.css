@@ -2,6 +2,11 @@
 
 @font-face{font-family:'FontAwesome';src:url('font/fontawesome-webfont.eot?v=4.0.1');src:url('font/fontawesome-webfont.eot?#iefix&v=4.0.1') format('embedded-opentype'),url('font/fontawesome-webfont.woff?v=4.0.1') format('woff'),url('font/fontawesome-webfont.ttf?v=4.0.1') format('truetype'),url('font/fontawesome-webfont.svg?v=4.0.1#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}
 
+@font-face {
+font-family: 'Source Sans Pro';
+src: url('../font/SourceSansPro-Regular.ttf') format('truetype'), url('../font/SourceSansPro-Regular.woff') format('woff');
+}
+
 /*
 	Escape Velocity 2.5 by HTML5 UP
 	html5up.net | @n33co
@@ -345,7 +350,7 @@
 		.button-style1
 		{
 			background: #70a0e9 url('/public/css/images/overlay.png');
-			color: #fff;
+			color: #3f434b;
 		}
 
 			.button-style1:hover
@@ -940,6 +945,8 @@
 		margin: 0 auto;
 		padding: 0px 10px;
 		width: 600px;
+		margin-top: -20px;
+		margin-bottom: 20px;
 	}
 
 	#header-wrapper .alert1 .close

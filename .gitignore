@@ -1,3 +1,4 @@
+composer.lock
 /web/bundles/
 /web/uploads/*
 /web/App/users/*

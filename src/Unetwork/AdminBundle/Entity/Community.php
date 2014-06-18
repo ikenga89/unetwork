@@ -34,9 +34,9 @@ class Community
     protected $alias;
 
     /**
-     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="community", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Section", mappedBy="community", cascade={"all"})
      */
-    protected $actualitys;
+    protected $sections;
 
     /**
      * @ORM\OneToMany(targetEntity="User", mappedBy="community")
@@ -61,6 +61,7 @@ class Community
         $this->actualitys = new ArrayCollection();
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
+        $this->setPath('../../../../../img/community_couverture_default.jpg');
     }
 
     /**
@@ -147,8 +148,12 @@ class Community
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
+        if($this->getPath() != '../../../../../img/community_couverture_default.jpg'){
+
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+
         }
     }
 
@@ -353,5 +358,38 @@ class Community
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Add sections
+     *
+     * @param \Unetwork\AdminBundle\Entity\Section $sections
+     * @return Community
+     */
+    public function addSection(\Unetwork\AdminBundle\Entity\Section $sections)
+    {
+        $this->sections[] = $sections;
+
+        return $this;
+    }
+
+    /**
+     * Remove sections
+     *
+     * @param \Unetwork\AdminBundle\Entity\Section $sections
+     */
+    public function removeSection(\Unetwork\AdminBundle\Entity\Section $sections)
+    {
+        $this->sections->removeElement($sections);
+    }
+
+    /**
+     * Get sections
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSections()
+    {
+        return $this->sections;
     }
 }

@@ -3,7 +3,7 @@
 {% block body %}
 
   	<div class="header">
-  				<img class="couverture" src="/{{ user.getWebPathCouv }}" alt="couverture">
+  	<div class="couverture" style="background-image:url('/{{ user.getWebPathCouv }}');"> </div>
 		  		<div class="bottomBar">
 
 		  			<div class="row bottomBandeau">
@@ -17,7 +17,7 @@
 		  				<div class="col-md-2">
 		  					<div class="imgProfil">
 		  						<img src="/{{ user.getWebPath }}" />
-		  						<span>{{ user.cv.jobname }}</span>
+		  						<span>{% if user.cv.jobname is defined %}{{ user.cv.jobname }}{% endif %}</span>
 		  					</div>
 		  				</div>
 
@@ -38,20 +38,20 @@
 		  				<div class="col-md-1"></div>
 
 		  				<div class="col-md-6">
-		  					<p class="presentationTxt">{{ user.cv.presentation }}</p>
+		  					<p class="presentationTxt">{% if user.cv.presentation is defined %}{{ user.cv.presentation }}{% endif %}</p>
 		  				</div>
 
 		  				<div class="col-md-5">
 
 		  					<div class="social_links">
 
-			  					<a href="{{ user.linkedin }}">
+			  					<a href="{{ user.linkedin }}" target="_blank">
 			  						<i class="fa fa-linkedin-square fa-2x"></i>
 			  					</a>
-			  					<a href="{{ user.viadeo }}">
+			  					<a href="{{ user.viadeo }}" target="_blank">
 			  						<i class="fa fa-vimeo-square fa-2x"></i>
 			  					</a>
-			  					<a href="{{ user.twitter }}">
+			  					<a href="{{ user.twitter }}" target="_blank">
 			  						<i class="fa fa-twitter-square fa-2x"></i>
 			  					</a>
 
@@ -69,7 +69,7 @@
 			  						{{ user.email }}
 			  					</a>
 			  					<br />
-			  					<a href="{{ user.url }}">
+			  					<a href="{{ user.url }}" target="_blank">
 			  						<i class="fa fa-link"></i>
 			  						{{ user.url }}
 			  					</a>
@@ -95,11 +95,11 @@
 		  			
 		  				<li class="timeline-blue">
 		  					<div class="timeline-time">
-		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
-								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+		  						<span class="date"> {{ experience.begin|localizeddate('none', 'none', 'en', null, 'MMMM') }} </span> <!-- en -> fr_FR -->
+								<span class="time"> {{ experience.begin|localizeddate('none', 'none', 'en', null, 'y') }} </span>
 
-								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'MMMM') }} </span>
-								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'fr_FR', null, 'y') }} </span>
+								<span class="date"> {{ experience.end|localizeddate('none', 'none', 'en', null, 'MMMM') }} </span>
+								<span class="time"> {{ experience.end|localizeddate('none', 'none', 'en', null, 'y') }} </span>
 		  					</div>
 							<div class="timeline-icon">
 								<i class="{{ experience.type.libelle }}"></i>
@@ -139,31 +139,35 @@
   				<div class="bloc">
   					<h2>Mes compétences</h2>
   					<div class="ssbloc">
-	  					{% for competence in user.cv.competence %} 
-	  					<div class="competence">
-		  					<span class="name">
-		  						{{ competence.name }}
-		  					</span>
-		  					<div class="noteGlobale">
-	  						{% for i in 1..5 %}
-	  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
-	  						{% endfor %}
-	  						</div>
-	  					</div>
-	  					{% endfor %}
+	  					{% if user.cv.competence is defined %}
+	  						{% for competence in user.cv.competence %} 
+		  					<div class="competence">
+			  					<span class="name">
+			  						{{ competence.name }}
+			  					</span>
+			  					<div class="noteGlobale">
+		  						{% for i in 1..5 %}
+		  							<span class="note {% if i <= competence.note %} active {% endif %}"></span>
+		  						{% endfor %}
+		  						</div>
+		  					</div>
+		  					{% endfor %}
+		  				{% endif %}
 	  				</div>
   				</div>
   			</div>
   			<div class="col-md-3">
   				<div class="bloc">
   					<h2>Mes Hobbies</h2>
-  					{% for hobby in user.cv.hobby %} 
-					<div class="hobby">
-	  					<span class="name">
-	  						{{ hobby.name }}
-	  					</span>
-  					</div>
-  					{% endfor %}
+  					{% if user.cv.hobby is defined %}
+	  					{% for hobby in user.cv.hobby %} 
+						<div class="hobby">
+		  					<span class="name">
+		  						{{ hobby.name }}
+		  					</span>
+	  					</div>
+	  					{% endfor %}
+	  				{% endif %}
 	  			</div>
   			</div>
   		</div>

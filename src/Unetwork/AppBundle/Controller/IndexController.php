@@ -13,43 +13,149 @@ use Symfony\Component\HttpFoundation\Response;
 class IndexController extends Controller
 {
 
-    public function __construct(){
-        //$user = $this->get('security.context')->getToken()->getUser();
-    }
-
     /**
-     * @Route("/app/index", name="app_index")
+     * @Route("/app/index/{id}", name="app_index")
      * @Template()
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id = null)
     {
         $user = $this->get('security.context')->getToken()->getUser();
 
-        $actualities = $this->getDoctrine()
-        ->getRepository('UnetworkAdminBundle:Actuality')
-        ->findAll();
-
-
-        $defaultData = array();
-        $form1 = $this->createFormBuilder($defaultData)
-            ->add('recherche', 'text')
-            ->add('rechercher', 'submit')
-            ->getForm();
-
-        if ($form1->isValid()) {
-            // Les données sont un tableau avec les clés "name", "email", et "message"
-            $data = $form1->getData();
-
-            return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
+        if ($id){
+            $actualities = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Actuality')
+            ->findBySection($id);
+        }else{
+            $actualities = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Actuality')
+            ->findAll();
         }
+
+        $sections = $this->getDoctrine()
+            ->getRepository('UnetworkAdminBundle:Section')
+            ->findAll();
 
 
         return array(
             "actualities" => $actualities,
             "user" => $user,
+            "sections" => $sections
         );
 
     }
+
+    /**
+     * @Route("/app/topbar", name="app_topbar")
+     * @Template()
+     */
+    public function topbarAction(Request $request)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $defaultData = array();
+        $form2 = $this->createFormBuilder($defaultData)
+            ->setAction($this->generateUrl('app_topbar'))
+            ->setMethod('GET')
+            ->add('recherche', 'text')
+            ->getForm();
+
+        $form2->handleRequest($request);
+
+        if ($form2->isValid()){
+
+            $data = $form2->getData();
+
+            //modif explode trouver les noms et prenom lors d'une recherche
+
+            $mots = explode(' ', $data['recherche']);
+            $parameters = array();
+
+            // on stock la requete dans la variable $dql
+            $dql = 'SELECT u FROM UnetworkAdminBundle:User u WHERE ';
+
+            // on affecte chaque mot d'un id pour qu'elle soit unique
+            foreach ($mots as $key => $mot) {
+                if($key > 0){
+                    $dql = $dql .  ' OR ';
+                }
+                //concaténation de la requete dql avec les mots rechercher         
+                $dql = $dql . 'u.nom like :recherche'.$key.' OR u.prenom like :recherche'.$key;
+                $parameters['recherche'.$key] = '%'.$mot.'%';
+            }
+            
+            // Requete DQL
+            $em = $this->getDoctrine()->getManager();
+            // on envoie les données de la requetes qui reçoit les paramètre rentrer par l'utilisateur
+            $query = $em->createQuery($dql)->setParameters($parameters);
+
+            $users = $query->getResult();
+
+            return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
+                'users' => $users,
+                'recherche' => $data['recherche'],
+            ));
+        }
+        
+        return $this->render('UnetworkAppBundle::topbar.html.twig', array(
+            'user' => $user,
+            'form2' => $form2->createView(),
+            
+        ));
+
+    }
+
+
+
+    /**
+     * @Route("/app/autocomplete", name="app_autocomplete")
+     */
+    public function autocompleteAction(Request $request){
+
+
+        $search = $request->query->get('search');
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $mots = explode(' ', $search);
+
+        $parameters = array();
+
+        // on stock la requete dans la variable $dql
+        $dql = 'SELECT u.nom, u.prenom, u.id, u.path FROM UnetworkAdminBundle:User u WHERE ';
+
+        // on affecte chaque mot d'un id pour qu'elle soit unique
+        foreach ($mots as $key => $mot) {
+            if($key > 0){
+                $dql = $dql .  ' OR ';
+            }
+            //concaténation de la requete dql avec les mots rechercher         
+            $dql = $dql . 'u.nom like :recherche'.$key.' OR u.prenom like :recherche'.$key;
+            $parameters['recherche'.$key] = $mot.'%';
+        }
+        
+        // Requete DQL
+        $em = $this->getDoctrine()->getManager();
+        // on envoie les données de la requetes qui reçoit les paramètre rentrer par l'utilisateur
+        $query = $em->createQuery($dql)->setParameters($parameters);
+
+
+        $results = $query->getResult();
+
+        $reponse = array();
+        foreach ($results as $result) {
+           $reponse[] = array('nom' => $result['nom'], 
+                              'prenom' => $result['prenom'], 
+                              'id' => $result['id'], 
+                              'path' => $result['path'],
+
+                               );
+        }
+
+        return new Response(json_encode($reponse));
+    }
+
+
 
 
     /**
@@ -83,38 +189,54 @@ class IndexController extends Controller
         return new Response(json_encode($d));
     }
 
-    // Eric : la recherche ici =O
+
     /**
-     * @Route("/app/recherche/{recherche}", name="app_recherche")
+     * @Route("/app/recherche", name="app_recherche")
      * @Template()
      */
-    public function rechercheAction(Request $request, $recherche){
+    /*
+    public function rechercheAction(Request $request){
 
-
-        // on créer le formulaire pour la recherche
-        $form = $this->createFormBuilder($task)
+        $defaultData = array();
+        $form2 = $this->createFormBuilder($defaultData)
+            ->setAction($this->generateUrl('app_recherche'))
             ->add('recherche', 'text')
-            ->add('rechercher', 'submit')
-            ->getForm();  
+            ->getForm();
 
-        if ($form1->isValid()){
+        $form2->handleRequest($request);
 
-        // Requete DQL 
-        $query = $em->createQuery(
-        'SELECT *
-         FROM UnetworkAdminBundle:User
-         WHERE nom = :[recherche]' // Cherche le nom de l'user entrer par l'utilisateur
-        )->setParameter('recherche',$recherche);
+        if ($form2->isValid()){
 
-        $users = $query->getResult();
+            $data = $form2->getData();
 
-        return $this->redirect($this->generateUrl('app_recherche', array('text' => $data['recherche'])));
+            // Requete DQL
+            $em = $this->getDoctrine()->getManager();
+            $query = $em->createQuery(
+            'SELECT u
+             FROM UnetworkAdminBundle:User u
+             WHERE u.nom like :recherche
+             OR u.prenom like :recherche' // Cherche le nom de l'user entrer par l'utilisateur
+            //)->setParameter('recherche','%'.$data['recherche'].'%');
+            )->setParameter('recherche',$data['recherche']);
 
-          // on affiche le formulaire dans la vue avec le render    
-        return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
-            'form' => $form->createView(),
+            $users = $query->getResult();
+
+
+            // on affiche le formulaire dans la vue avec le render
+            
+            //return $this->redirect($this->generateUrl('app_recherche', array('users' => serialize($users))));
+            return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
+                'users' => $users,
+            ));
+        }
+
+        return $this->render('UnetworkAppBundle:Index:recherche.html.twig', array(
+            'form2' => $form2->createView(),
         ));
 
-        }
     }
-    }
+    */
+    
+
+
+}

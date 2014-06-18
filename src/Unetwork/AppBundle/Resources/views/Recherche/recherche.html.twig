@@ -4,10 +4,41 @@
 
 	<h1>Recherche</h1>
 
-		//on affiche le formulaire dans la vue avec le render    
-        return $this->render('UnetworkAppBundle:Recherche:recherche.html.twig', array(
-            'form' => $form->createView(),
-        ));
+  <h3>Votre resultat pour la recherche : "{{ recherche }}" </h3>
 
+	<div class="table-responsive">
+
+        {% include 'UnetworkAdminBundle:UI:popup.html.twig'%}
+
+        <table class="table table-striped searchUser">
+          <thead>
+            <tr>
+            		<th></th>
+             		<th>Nom</th>
+             		<th>Prénom</th>
+             		<th>Communauté</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            {% for user in users %}
+
+              <tr onclick="document.location = 'profil/{{ user.id }}';">
+
+              
+                <td><img width="40" height="40" src="/{{ user.getWebPath }}" /></td>
+              	<td>{{ user.nom }}</td>
+              	<td>{{ user.prenom }}</td>
+              	<td>{{ user.community.name }}</td>
+
+              </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+        </table>
+  </div>
 
 {% endblock %}

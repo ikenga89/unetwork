@@ -30,12 +30,12 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, nullable=true)
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=32)
+     * @ORM\Column(type="string", length=32, nullable=true)
      */
     private $salt;
 
@@ -95,6 +95,21 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
+     * @ORM\Column(name="register_token", length=125, type="string", nullable=true)
+     */
+    private $registerToken;
+
+    /**
+     * @ORM\Column(name="repassword_token", length=125, type="string", nullable=true)
+     */
+    private $repasswordToken;
+
+    /**
+     * @ORM\Column(name="repassword_token_date", type="datetime", nullable=true)
+     */
+    private $repasswordTokenDate;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */
@@ -124,10 +139,11 @@ class User implements UserInterface, \Serializable
 
     public function __construct()
     {
-        $this->isActive = true;
+        $this->isActive = false;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
-        $this->setPath('../../../../../img/default_user.png');
+        $this->setPath('../../../../../img/user_profil_default.png');
+        $this->setPathCouv('../../../../../img/user_couverture_default.jpg');
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -563,8 +579,12 @@ class User implements UserInterface, \Serializable
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
+        if($this->getPath() != '../../../../../img/user_profil_default.png'){
+
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+
         }
     }
 
@@ -575,8 +595,12 @@ class User implements UserInterface, \Serializable
      */
     public function removeUploadCouv()
     {
-        if ($file_couv = $this->getAbsolutePathCouv()) {
-            unlink($file_couv);
+        if($this->getPathCouv() != '../../../../../img/user_couverture_default.jpg'){
+
+            if ($file_couv = $this->getAbsolutePathCouv()) {
+                unlink($file_couv);
+            }
+
         }
     }
 
@@ -869,5 +893,74 @@ class User implements UserInterface, \Serializable
     public function getPathCouv()
     {
         return $this->path_couv;
+    }
+
+    /**
+     * Set registerToken
+     *
+     * @param string $registerToken
+     * @return User
+     */
+    public function setRegisterToken($registerToken)
+    {
+        $this->registerToken = $registerToken;
+
+        return $this;
+    }
+
+    /**
+     * Get registerToken
+     *
+     * @return string 
+     */
+    public function getRegisterToken()
+    {
+        return $this->registerToken;
+    }
+
+    /**
+     * Set repasswordToken
+     *
+     * @param string $repasswordToken
+     * @return User
+     */
+    public function setRepasswordToken($repasswordToken)
+    {
+        $this->repasswordToken = $repasswordToken;
+
+        return $this;
+    }
+
+    /**
+     * Get repasswordToken
+     *
+     * @return string 
+     */
+    public function getRepasswordToken()
+    {
+        return $this->repasswordToken;
+    }
+
+    /**
+     * Set repasswordTokenDate
+     *
+     * @param \DateTime $repasswordTokenDate
+     * @return User
+     */
+    public function setRepasswordTokenDate($repasswordTokenDate)
+    {
+        $this->repasswordTokenDate = $repasswordTokenDate;
+
+        return $this;
+    }
+
+    /**
+     * Get repasswordTokenDate
+     *
+     * @return \DateTime 
+     */
+    public function getRepasswordTokenDate()
+    {
+        return $this->repasswordTokenDate;
     }
 }

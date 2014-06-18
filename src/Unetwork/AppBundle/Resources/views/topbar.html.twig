@@ -5,11 +5,25 @@
 				<img src="/App/img/logo.png"/>
 			</a>
 			<div id="recherche">				
-				<input type="text" placeholder="Rechercher utilisateurs..." class="champ"/>
+				<!--<input type="text" placeholder="Rechercher utilisateurs..." class="champ"/>-->
 
-				<a href="#" class="bouton">
+				{#{ render(controller('UnetworkAppBundle:Index:recherche')) }#}
+
+				{{ form_start(form2) }}
+				    {{ form_errors(form2) }}
+
+				    {{ form_widget(form2.recherche, { 'attr': { 'class': 'champ' }}) }}
+
+				    <button type="submit" class="bouton">
+				    <span class="glyphicon glyphicon-search searchicon"></span>
+				  </button>
+
+				{{ form_end(form2) }}
+
+
+				<!--<a href="#" class="bouton">
 					<span class="glyphicon glyphicon-search searchicon"></span>
-				</a>
+				</a>-->
 			</div>
 		</div>
 		<div class="col-md-4">

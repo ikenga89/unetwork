@@ -20,7 +20,7 @@ class CommunityController extends Controller
      */
     public function indexAction(Request $request)
     {
-
+        /*
         $community = new Community();
         $form = $this->createForm(new CommunityType(), $community);
         $form->handleRequest($request);
@@ -32,13 +32,16 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         }
+        */
 
 
         $communities = $this->getDoctrine()
                             ->getRepository('UnetworkAdminBundle:Community')
                             ->findBy(Array(),Array('name'=>'ASC'));
 
-        return array("communities" => $communities, "form" => $form->createView());
+        return array(
+            "communities" => $communities,
+        );
     }
 
 
@@ -67,7 +70,10 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         };
-        return array("form"=>$form->createView());
+
+        return array(
+            "form"=>$form->createView(),
+        );
     }
 
 
@@ -75,7 +81,7 @@ class CommunityController extends Controller
      * @Route("/admin/community/edit/{id}", name="admin_community_edit")
      * @Template()
      */
-/*    public function editAction(Request $request ,$id)
+    public function editAction(Request $request ,$id)
     {   
         $community = $this->getDoctrine()
         ->getRepository('UnetworkAdminBundle:Community')
@@ -92,12 +98,11 @@ class CommunityController extends Controller
 
             return $this->redirect($this->generateUrl('admin_community'));
         }
-        return array("form" => $form->createView());
 
-
-        return array('community' => $community);
+        return array(
+            "form" => $form->createView(),
+        );
     }
-*/
 
 
 
@@ -130,7 +135,6 @@ class CommunityController extends Controller
      * @Route("/admin/community/update", name="admin_community_update")
      * @Template()
      */
-    
     public function updateAction()
     {   
         $bdd = $this->get('database_connection'); 
@@ -184,6 +188,7 @@ class CommunityController extends Controller
 
         return new Response( json_encode($insertion) );
     }
+    
 
     
 }

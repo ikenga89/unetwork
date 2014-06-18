@@ -3,73 +3,97 @@
 {% block body %}
 
 <h1>Modifier profil</h1>
+	<div class="contentForm">
 
 	{{ form_start(form, { 'attr': { 'role': 'form' }}) }}
 	    {{ form_errors(form) }}
 
-		<div class="form-group">
-	    {{ form_label(form.nom) }}
-	    {{ form_widget(form.nom) }}
-	    </div>
 
-	    <div class="form-group">
-	    {{ form_label(form.prenom) }}
-	    {{ form_widget(form.prenom) }}
-	    </div>
+	    <table>
+	    	<tbody>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.nom) }}</td>
+	    			<td>{{ form_widget(form.nom) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.prenom) }}</td>
+	    			<td>{{ form_widget(form.prenom) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.ville) }}</td>
+	    			<td>{{ form_widget(form.ville) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.tel) }}</td>
+	    			<td>{{ form_widget(form.tel) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.date_nais) }}</td>
+	    			<td>{{ form_widget(form.date_nais, { 'attr': {'class': 'datepicker'} }) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.linkedin) }}</td>
+	    			<td>{{ form_widget(form.linkedin) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.viadeo) }}</td>
+	    			<td>{{ form_widget(form.viadeo) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.twitter) }}</td>
+	    			<td>{{ form_widget(form.twitter) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.url) }}</td>
+	    			<td>{{ form_widget(form.url) }}</td>
+	    		</tr>
+	    		<tr class="form-group">
+	    			<td>{{ form_label(form.file) }}</td>
+	    			<td>{{ form_widget(form.file) }}</td>
+	    		</tr>
+	    		<tr>
+	    			<td>{{ form_label(form.path_couv) }}</td>
+	    			<td>
+	    				{% for path_couv in form.path_couv %}
+	    				{{ form_widget(path_couv) }}
+    					{#% set index = path_couv.vars.value %#}
+    					{#% set object = form.path_couv.vars.choices[path_couv.vars.value].data %#}
+    					{% set object = form.path_couv.vars.choices[((loop.index)-1)].label %}
+    					<img src="{{ object }}" class="mini_couv" />
+    					{% endfor %}
+    				</td>
+    			</tr>
 
-	    <div class="form-group">
-	    {{ form_label(form.ville) }}
-	    {{ form_widget(form.ville) }}
-	    </div>
 
-	    <div class="form-group">
-	    {{ form_label(form.tel) }}
-	    {{ form_widget(form.tel) }}
-	    </div>
+	    		<!--
+	    		<tr class="form-group">
+	    			<td >Photo de couverture</td>
+	    			<td>
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_1.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_1.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_2.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_2.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_3.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_3.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_4.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_4.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_5.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_5.jpg"><br/>
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_6.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_6.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_7.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_7.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_8.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_8.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_9.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_9.jpg">
+							<input type= "radio" name="couv" value="/img/couverture_profil/couv_10.jpg"> <img class="mini_couv" src="/img/couverture_profil/couv_10.jpg">
+	    			</td>
+	    		</tr>
+	    		-->
 
-	    <div class="form-group">
-	    {{ form_label(form.date_nais) }}
-	    {{ form_widget(form.date_nais, { 'attr': {'class': 'datepicker'} }) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.linkedin) }}
-	    {{ form_widget(form.linkedin) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.viadeo) }}
-	    {{ form_widget(form.viadeo) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.twitter) }}
-	    {{ form_widget(form.twitter) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.url) }}
-	    {{ form_widget(form.url) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.file) }}
-	    {{ form_widget(form.file) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.file_couv) }}
-	    {{ form_widget(form.file_couv) }}
-	    </div>
-
-	    <div class="form-group">
-	    {{ form_label(form.password) }}
-	    {{ form_widget(form.password) }}
-	    </div>
-
-	    <input type="submit" class="btn btn-default" />
-
+	    		<tr class="form-group">
+	    			<td><input type="submit" class="btn btn-default" /></td>
+	    			<td></td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+	    
 	{{ form_end(form) }}
+
+	</div>
+
 
 	<script>
         $(document).ready(function(){
@@ -77,6 +101,11 @@
             	showOn: "button",
 				buttonImage: "../../../../../jquery-ui-1.10.4/development-bundle/demos/datepicker/images/calendar.gif",
 				buttonImageOnly: true,
+				changeMonth: true,
+				changeYear: true,
+				minDate: new Date(1900, 0, 1),
+      			maxDate: new Date(2100, 11, 31),
+      			yearRange: '1900:2100',
 			});
         });
     </script>

@@ -29,7 +29,7 @@
                     <td>{{ experience.updated|date("d/m/Y H:i") }}</td>
 
                     <td class="td_modify" >                                 
-                        <a href="{{ path('admin_experience_delete',{'id': experience.id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" /> </a> 
+                        <a href="{{ path('admin_experience_delete',{'id': experience.id } ) }}"> <img src="/Admin/img/delete.png" onMouseOver="src='/Admin/img/delete_hover.png';" onMouseOut="src='/Admin/img/delete.png';" alt="delete"/> </a> 
                     </td>
                 </tr>      
             {% endfor %} 
