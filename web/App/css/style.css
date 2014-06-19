@@ -596,6 +596,12 @@ line-height: 22px;
 	border: 1px solid #5C6C8E;
 	text-transform: uppercase;
 	border-radius: 5px;
+	transition: 0.2s ease-in-out;
+	outline: none;
+}
+.filtreSection a.alias:hover, .filtreSection a.alias.active{
+	background-color: #5C6C8E;
+	color: #ffffff;
 }
 .filtreSection .contentAlias {
 	margin-left: 38%;

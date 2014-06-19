@@ -41,12 +41,12 @@
 			<div class="col-md-12">
 				<ul class="contentAlias">
 					<li>
-						<a class="alias" href="{{ path('app_index') }}">TOUS</a>
+						<a class="alias {% if id_section is null %}active{% endif %}" href="{{ path('app_index') }}">TOUS</a>
 					</li>
 
 					{% for section in sections %}
 						<li>
-							<a class="alias" href="{{ path('app_index') }}/{{ section.id }}">{{ section.alias }}</a>
+							<a class="alias {% if section.id == id_section %}active{% endif %}" href="{{ path('app_index') }}/{{ section.id }}">{{ section.alias }}</a>
 						</li>
 					{% endfor %}
 				</ul>

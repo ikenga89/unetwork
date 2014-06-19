@@ -39,7 +39,8 @@ class IndexController extends Controller
         return array(
             "actualities" => $actualities,
             "user" => $user,
-            "sections" => $sections
+            "sections" => $sections,
+            "id_section" => $id,
         );
 
     }
