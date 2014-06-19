@@ -41,6 +41,11 @@ class CvController extends Controller
             $em->persist($cv);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'cv',
+                "Les informations du cv ont bien été modifiées"
+            );
+
             return $this->redirect($this->generateUrl('app_param_cv'));
         }
 

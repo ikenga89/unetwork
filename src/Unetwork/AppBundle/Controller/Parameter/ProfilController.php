@@ -52,12 +52,17 @@ class ProfilController extends Controller
 
             if($type == 'profil'){
 
+                $this->get('session')->getFlashBag()->add(
+                    'edit_profil',
+                    'Votre profil à bien été modifié !'
+                );
+
                 return $this->redirect($this->generateUrl('app_param_profil'));
 
             }else{
 
                 $this->get('session')->getFlashBag()->add(
-                    'notice',
+                    'good_repassword',
                     'Votre mot de passe à bien été modifié !'
                 );
 

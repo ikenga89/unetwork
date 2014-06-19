@@ -33,17 +33,8 @@ class ExperienceController extends Controller
         $form = $this->createForm(new ExperienceType(), $experience);
         $form->handleRequest($request);
 
-        $data = $form->getData();
-
-        var_dump($data);
-        exit;
-
         if ($form->isValid()) {
 
-            $data = $form->getData();
-
-            var_dump($data);
-            exit;
             $experience->setCv($user->getCv());
             $em = $this->getDoctrine()->getManager();
             $em->persist($experience);
@@ -74,14 +65,15 @@ class ExperienceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $data = $form->getData();
-
-        var_dump($data);
-        exit;
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($experience);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'experience',
+                "L'experience a bien été modifiée"
+            );
 
             return $this->redirect($this->generateUrl('app_param_experiences'));
         }
@@ -107,7 +99,7 @@ class ExperienceController extends Controller
         $em->flush();
 
         $this->get('session')->getFlashBag()->add(
-            'notice',
+            'experience',
             "L'experience a bien été supprimée"
         );
 

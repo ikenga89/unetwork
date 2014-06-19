@@ -69,6 +69,11 @@ class HobbyController extends Controller
             $em->persist($hobby);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'hobby',
+                "Le hobby a bien été modifié"
+            );
+
             return $this->redirect($this->generateUrl('app_param_hobbies'));
         }
 
@@ -93,7 +98,7 @@ class HobbyController extends Controller
         $em->flush();
 
         $this->get('session')->getFlashBag()->add(
-            'notice',
+            'hobby',
             "Le hobby a bien été supprimé"
         );
 

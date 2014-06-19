@@ -508,13 +508,23 @@ line-height: 22px;
 	margin-left: 10px;
 
 }
-.contentForm .form-group input {
+.contentForm .form-group input,  .contentForm .form-group textarea{
 	border-radius: 5px;
 	padding: 5px;
+	border: 1px solid #dddddd;
+	color: #666666;
+	transition: 0.2s ease-in-out;
+}
+.contentForm .form-group input:hover, .contentForm .form-group input:focus,  .contentForm .form-group textarea:hover, .contentForm .form-group textarea:focus{
+	border: 1px solid #aaaaaa;
+}
+.contentForm .form-group textarea{
+	width: 350px;
+	height: 100px;
 }
 .contentForm .form-group label {
+	margin-left: 15px;
 	margin-right: 15px;
-	
 }
 .contentForm div:nth-child(odd) {
 	background: #fafafa;
@@ -529,7 +539,7 @@ line-height: 22px;
 
 .contentForm input[type='submit']{
 	margin-left: 10px;
-	margin-top: 0px;
+	margin-top: 10px;
 }
 
 .contentForm tr td{
@@ -706,3 +716,7 @@ line-height: 22px;
 	
 }
 
+.parameter_experience_ico{
+	padding-left: 10px;
+	padding-top: 4px;
+}

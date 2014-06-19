@@ -21,7 +21,7 @@ class ExperienceType extends AbstractType
         $builder->add('name', 'text', array(
             'label' => 'Nom',
         ));
-        $builder->add('description', 'text', array(
+        $builder->add('description', 'textarea', array(
             'label' => 'Description',
             'required' => false,
         ));
