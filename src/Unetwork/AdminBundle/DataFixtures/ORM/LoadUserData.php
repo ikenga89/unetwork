@@ -323,6 +323,42 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $actuality6->setUpdated(new \DateTime);
         $actuality6->setSection($section);
 
+        $actuality7 = new Actuality();
+        $actuality7->setDescription('Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui.');
+        $actuality7->setCreated(new \DateTime);
+        $actuality7->setUpdated(new \DateTime);
+        $actuality7->setSection($section2);
+
+        $actuality8 = new Actuality();
+        $actuality8->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.');
+        $actuality8->setCreated(new \DateTime);
+        $actuality8->setUpdated(new \DateTime);
+        $actuality8->setSection($section2);
+
+        $actuality9 = new Actuality();
+        $actuality9->setDescription('Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum.');
+        $actuality9->setCreated(new \DateTime);
+        $actuality9->setUpdated(new \DateTime);
+        $actuality9->setSection($section2);
+
+        $actuality10 = new Actuality();
+        $actuality10->setDescription('Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui.');
+        $actuality10->setCreated(new \DateTime);
+        $actuality10->setUpdated(new \DateTime);
+        $actuality10->setSection($section3);
+
+        $actuality11 = new Actuality();
+        $actuality11->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.');
+        $actuality11->setCreated(new \DateTime);
+        $actuality11->setUpdated(new \DateTime);
+        $actuality11->setSection($section3);
+
+        $actuality12 = new Actuality();
+        $actuality12->setDescription('Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum.');
+        $actuality12->setCreated(new \DateTime);
+        $actuality12->setUpdated(new \DateTime);
+        $actuality12->setSection($section3);
+
         /*
         *   Comment
         */
@@ -479,6 +515,12 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
         $manager->persist($actuality4);
         $manager->persist($actuality5);
         $manager->persist($actuality6);
+        $manager->persist($actuality7);
+        $manager->persist($actuality8);
+        $manager->persist($actuality9);
+        $manager->persist($actuality10);
+        $manager->persist($actuality11);
+        $manager->persist($actuality12);
 
         $manager->persist($comment);
         $manager->persist($comment2);

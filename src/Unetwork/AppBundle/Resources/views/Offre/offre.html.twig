@@ -1,0 +1,159 @@
+{% extends 'UnetworkAppBundle::layout.html.twig' %}
+
+{% block body %}
+
+	<script type="text/javascript">
+		$(function() {
+			$('#container').masonry({itemSelector : '.item',});
+		});
+	</script>
+	
+
+	<div class="header">
+		<!--<div class="couverture" style="background-image:url('/');"> </div>-->
+		<img src="/Admin/communities/2/image_couv/../../../../../img/community_couverture_default.jpg" width="100%">
+  		<div class="bottomBar">
+
+  			<div class="row bottomBandeau">
+
+  				<div class="col-md-3">
+  					<a class="btnOffre" href="{{ path('app_index') }}">Communauté</a>
+  				</div>
+
+  				<div class="col-md-2"></div>
+
+  				<div class="col-md-3">
+  					<span class="communityname">Offres d'emplois</span>
+  				</div>
+
+  				<div class="col-md-1"></div>
+
+  				<div class="col-md-3">
+  					<a class="btnGroupe" href="#">Groupe de travail</a>
+  				</div>
+
+  			</div>
+  				
+  		</div>
+	</div>
+	<div class="contTimeline contActu">
+
+  		<div class="row">
+
+  			<div class="col-md-12">
+
+  				<div id="container" style="position: relative; height: 1370.8250017166138px;">
+					<div class="timeline_container">
+						<div class="indexTimeline"></div>
+					</div>
+
+		  				<div class="item borderclass leftActu" style="position: absolute; left: 0px; top: 0px; margin-bottom: 20px;"><span class="rightCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">06/19/2014</p>	
+								<p class="destActu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum</p>
+								
+								<p class="destActu">Contrat : CDI</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>
+		  				<div class="item borderclass rightActu" style="position: absolute; left: 631px; top: 0px; margin-top: 100px;"><span class="leftCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">06/14/2014</p>
+								<p class="destActu">Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.</p>
+								
+								<p class="destActu">Contrat : Alternance (1 an)</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>
+		  				<div class="item borderclass rightActu" style="position: absolute; left: 631px; top: 450px; margin-top: 100px;"><span class="leftCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">06/10/2014</p>
+								<p class="destActu">Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum</p>
+								<p class="destActu">Contrat : Stage (1 mois)</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>
+		  				<div class="item borderclass leftActu" style="position: absolute; left: 0px; top: 470px; margin-bottom: 20px;"><span class="rightCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">05/29/2014</p>
+								<p class="destActu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. Nam tempus libero sit amet sagittis hendrerit. Integer sit amet urna pellentesque, condimentum sem in, porta arcu. Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui. Morbi pellentesque, erat quis convallis nullam.</p>
+								<p class="destActu">Contrat : CDD (6 mois)</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>
+		  				<div class="item borderclass rightActu" style="position: absolute; left: 631px; top: 880px; margin-top: 100px;"><span class="leftCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">05/15/2014</p>
+								<p class="destActu">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nisi orci, pretium vel pharetra a, facilisis vel justo. </p>
+								<p class="destActu">Contrat : CDI</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>
+		  				<div class="item borderclass leftActu" style="position: absolute; left: 0px; top: 980px; margin-bottom: 20px;"><span class="rightCorner"></span>
+		  					<i class="fa fa-bookmark"></i>
+							<div class="contentItem">
+								<p class="dateActu">05/20/2014</p>
+								<p class="destActu">Praesent faucibus odio sed faucibus rutrum. Ut feugiat, odio id laoreet rutrum, purus felis ultricies lectus, in convallis tellus diam ultrices quam. Duis porta sed ante ac blandit. Pellentesque at sollicitudin dui.</p>
+								<p class="destActu">Contrat : CDD (3 mois)</p>
+								<p class="destActu">Mail : postuler@post.fr</p>
+							</div>
+						</div>		
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+  	<script type="text/javascript">
+/*
+  	$(document).ready(function(){
+		function Arrow_Points()	{
+			var s = $('#container').find('.item');
+			$.each(s,function(i,obj){
+				var posLeft = $(obj).css("left");
+				if(posLeft == "0px") {
+					html = "<span class='rightCorner'></span>";
+					$(obj).addClass('borderclass leftActu');
+				$('.leftActu').css('margin-bottom', '20px')
+					$(obj).prepend(html);
+				}
+				else {
+					$(obj).addClass('borderclass rightActu');
+					$('.rightActu').css('margin-top', '100px')
+					html = "<span class='leftCorner'></span>";
+					$(obj).prepend(html);
+				}
+			});
+		}
+		Arrow_Points();
+
+
+
+		//	Ajouter commentaire ajax
+		$('.form_comment').submit(function(){
+
+			var url = $(this).attr('action');
+			var content = $(this).find('input[name=content]').val();
+			var div = $(this).parent().siblings('.commentsActu');
+			$(this).find('input[name=content]').blur().val('');
+
+			$.post(url,{ content: content },function(data){
+		    	var comment = '<div class="comment" style="display:none"><a href="#"><img width="40" height="40" src="/'+data.webpath+'" /> '+data.prenom+' '+data.nom+'</a><span>'+data.date+'</span><p>'+content+'</p></div>';
+		    	$(div).prepend(comment).find('.comment:first').fadeIn('slow');
+			},'json');
+
+			return false;
+
+		});
+
+	});
+*/
+	</script>
+
+{% endblock %}

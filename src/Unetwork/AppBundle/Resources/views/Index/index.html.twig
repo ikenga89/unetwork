@@ -11,13 +11,13 @@
 
 	<div class="header">
 		<!--<div class="couverture" style="background-image:url('/');"> </div>-->
-		<img src="/{{ user.community.getWebPath }}" width="100%" height="100%" />
+		<img src="/{{ user.community.getWebPath }}" width="100%" height="100%"/>
   		<div class="bottomBar">
 
   			<div class="row bottomBandeau">
 
   				<div class="col-md-3">
-  					<a class="btnOffre" href="#">Offres d'emplois</a>
+  					<a class="btnOffre" href="{{ path('app_offre') }}">Offres d'emplois</a>
   				</div>
 
   				<div class="col-md-2"></div>
@@ -127,7 +127,7 @@
 				if(posLeft == "0px") {
 					html = "<span class='rightCorner'></span>";
 					$(obj).addClass('borderclass leftActu');
-				$('.leftActu').css('margin-bottom', '20px')
+					$('.leftActu').css('margin-bottom', '20px')
 					$(obj).prepend(html);
 				}
 				else {
