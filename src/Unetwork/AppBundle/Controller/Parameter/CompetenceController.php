@@ -69,6 +69,11 @@ class CompetenceController extends Controller
             $em->persist($competence);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'competence',
+                "La compétence a bien été modifié"
+            );
+
             return $this->redirect($this->generateUrl('app_param_competences'));
         }
 
@@ -93,7 +98,7 @@ class CompetenceController extends Controller
         $em->flush();
 
         $this->get('session')->getFlashBag()->add(
-            'notice',
+            'competence',
             "La compétence a bien été supprimée"
         );
 

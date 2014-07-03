@@ -62,7 +62,7 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $date_nais;
+    private $date_nais = NULL;
 
     /**
      * @ORM\Column(type="string", length=150, nullable=true)
@@ -142,7 +142,8 @@ class User implements UserInterface, \Serializable
         $this->isActive = false;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
-        $this->setPath('../../../../../img/default_user.png');
+        $this->setPath('../../../../../img/user_profil_default.png');
+        $this->setPathCouv('../../../../../img/user_couverture_default.jpg');
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -578,8 +579,12 @@ class User implements UserInterface, \Serializable
      */
     public function removeUpload()
     {
-        if ($file = $this->getAbsolutePath()) {
-            unlink($file);
+        if($this->getPath() != '../../../../../img/user_profil_default.png'){
+
+            if ($file = $this->getAbsolutePath()) {
+                unlink($file);
+            }
+
         }
     }
 
@@ -590,8 +595,12 @@ class User implements UserInterface, \Serializable
      */
     public function removeUploadCouv()
     {
-        if ($file_couv = $this->getAbsolutePathCouv()) {
-            unlink($file_couv);
+        if($this->getPathCouv() != '../../../../../img/user_couverture_default.jpg'){
+
+            if ($file_couv = $this->getAbsolutePathCouv()) {
+                unlink($file_couv);
+            }
+
         }
     }
 

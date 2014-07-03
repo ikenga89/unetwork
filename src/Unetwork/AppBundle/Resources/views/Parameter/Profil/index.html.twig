@@ -2,6 +2,16 @@
 
 {% block body %}
 
+    {% for flashMessage in app.session.flashbag.get('edit_profil') %}
+
+        <div class="flash-notice">
+            <div class="alert alert-success alert1">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{ flashMessage }}
+            </div>
+        </div>
+    {% endfor %}
+
 	<h1>Profil</h1>
   	<a href="{{ path('app_param_profil_edit', {'type': 'profil'}) }}"> Modifier </a>
 
@@ -27,7 +37,7 @@
     			</tr>
     			<tr>
     				<td>Date de naissance :</td>
-    				<td>{{ user.dateNais|date('d/m/Y') }}</td>
+    				<td>{{ user.dateNais is empty ? "" : user.dateNais|date('d/m/Y') }}</td>
     			</tr>
     			<tr>
     				<td>Linkedin :</td>

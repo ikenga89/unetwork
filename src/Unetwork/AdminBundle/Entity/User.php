@@ -62,7 +62,7 @@ class User implements UserInterface, \Serializable
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $date_nais;
+    private $date_nais = NULL;
 
     /**
      * @ORM\Column(type="string", length=150, nullable=true)
@@ -142,6 +142,7 @@ class User implements UserInterface, \Serializable
         $this->isActive = false;
         $this->salt = md5(uniqid(null, true));
         $this->comments = new ArrayCollection();
+        $this->setDateNais(NULL);
         $this->setPath('../../../../../img/user_profil_default.png');
         $this->setPathCouv('../../../../../img/user_couverture_default.jpg');
         $this->setCreated(new \DateTime());
@@ -681,12 +682,13 @@ class User implements UserInterface, \Serializable
     /**
      * Set date_nais
      *
-     * @param \DateTime $dateNais
+     * @param \DateTime|null $dateNais
      * @return User
      */
-    public function setDateNais($dateNais)
+    public function setDateNais($dateNais = null)
     {
-        $this->date_nais = $dateNais;
+        //$this->date_nais = $dateNais;
+        $this->date_nais = $dateNais ? clone $dateNais : null;
 
         return $this;
     }
@@ -694,11 +696,12 @@ class User implements UserInterface, \Serializable
     /**
      * Get date_nais
      *
-     * @return \DateTime 
+     * @return \DateTime|null 
      */
     public function getDateNais()
     {
-        return $this->date_nais;
+        //return $this->date_nais;
+        return $this->date_nais ? clone $this->date_nais : null;
     }
 
     /**

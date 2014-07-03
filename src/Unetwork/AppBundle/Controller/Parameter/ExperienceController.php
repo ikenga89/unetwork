@@ -65,9 +65,15 @@ class ExperienceController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($experience);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'experience',
+                "L'experience a bien été modifiée"
+            );
 
             return $this->redirect($this->generateUrl('app_param_experiences'));
         }
@@ -93,7 +99,7 @@ class ExperienceController extends Controller
         $em->flush();
 
         $this->get('session')->getFlashBag()->add(
-            'notice',
+            'experience',
             "L'experience a bien été supprimée"
         );
 

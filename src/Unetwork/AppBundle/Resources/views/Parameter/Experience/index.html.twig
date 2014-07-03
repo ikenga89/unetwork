@@ -2,6 +2,16 @@
 
 {% block body %}
 
+  {% for flashMessage in app.session.flashbag.get('experience') %}
+
+      <div class="flash-notice">
+          <div class="alert alert-success alert1">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              {{ flashMessage }}
+          </div>
+      </div>
+  {% endfor %}
+
 	<h1>Experiences</h1>
   <a href="{{ path('app_param_experience_create') }}"> Ajouter </a>
 
@@ -21,13 +31,13 @@
 
               <tbody>
 
-                	{% for experience in user.cv.experience  %}                 		
+                	{% for experience in user.cv.experience  %}
                  		 <tr>  
-	                 		 <td> 	<i class="{{ experience.type.libelle }}"></i>   </td>
+	                 		 <td> 	<div class='parameter_experience_ico'><i class="{{ experience.type.libelle }}"></i></div>   </td>
 	                 		 <td> 	{{ experience.name }}  </td>
                        <td>   {{ experience.description|truncate(50) }}  </td>
-	                 		 <td> 	{{ experience.begin|date("d/m/Y") }}  </td>
-                       <td>   {{ experience.end|date("d/m/Y") }}  </td>
+	                 		 <td> 	{{ experience.begin|localizeddate('none', 'none', 'en', null, 'MMMM') }} {{ experience.begin|localizeddate('none', 'none', 'en', null, 'y') }}  </td>
+                       <td>   {{ experience.end is empty ? "" : experience.end|localizeddate('none', 'none', 'en', null, 'MMMM') }} {{ experience.end is empty ? "" : experience.end|localizeddate('none', 'none', 'en', null, 'y') }}</td>
 	                 	
 	                 		  	<td> 	
 	                 		   		<a href="{{ path('app_param_experience_edit', {'id' : experience.id } ) }}"> <img src="/Admin/img/edit.png"/> </a>

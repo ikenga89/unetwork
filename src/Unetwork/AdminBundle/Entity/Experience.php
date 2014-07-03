@@ -25,17 +25,17 @@ class Experience
     protected $name;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $begin;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     protected $end;
 
@@ -141,7 +141,7 @@ class Experience
     /**
      * Get begin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBegin()
     {
@@ -151,16 +151,12 @@ class Experience
     /**
      * Set end
      *
-     * @param \DateTime $end
+     * @param \DateTime|null $end
      * @return Experience
      */
-    public function setEnd($end)
+    public function setEnd($end = null)
     {
-        if(empty($end)){
-            $this->end = null;
-        }else{
-            $this->end = $end;
-        }
+        $this->end = $end;
 
         return $this;
     }
